@@ -47,6 +47,8 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-11" who="#contrib-charles-w-loder">Revised lineation.
+      </change>
       <change when="2026-10-11T00:58:36.032903+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-10T12:39:09.333565+00:00" who="#contrib-charles-w-loder">Aligned folio.
@@ -299,9 +301,9 @@
             <w xml:id="f079B-w-53135">שֶׁ֖קֶל</w>
             <w xml:id="f079B-w-53136">בְּשֶׁ֣קֶל</w>
             <w xml:id="f079B-w-53137">הַקֹּ֑דֶשׁ</w>
+          <lb xml:id="f079B-lb-2-13" n="13"/>
             <w xml:id="f079B-w-53138">שְׁנֵיהֶ֣ם </w>
             <pc type="paseq" xml:id="f079B-pc-53138">׀</pc>
-          <lb xml:id="f079B-lb-2-13" n="13"/>
             <w xml:id="f079B-w-53139">מְלֵאִ֗ים</w>
             <w xml:id="f079B-w-53140">סֹ֛לֶת</w>
             <w xml:id="f079B-w-53141">בְּלוּלָ֥ה</w>
@@ -365,27 +367,26 @@
             <w xml:id="f079B-w-53181">עָכְרָֽן</w>
             <pc type="sof-pasuq" xml:id="f079B-pc-53181">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f079B-s-Numbers-7-77"/>
-          <lb xml:id="f079B-lb-2-24" n="24"/>
-          <lb xml:id="f079B-lb-2-25" n="25"/>
+          <lb xml:id="f079B-lb-2-25" n="24"/>
             <milestone unit="verse" n="Numbers-7-78" xml:id="f079B-v-Numbers-7-78"/>
             <w xml:id="f079B-w-53182">בְּיֹום֙</w>
             <w xml:id="f079B-w-53183">שְׁנֵ֣ים</w>
             <w xml:id="f079B-w-53184">עָשָׂ֣ר</w>
             <w xml:id="f079B-w-53185">יֹ֔ום</w>
             <w xml:id="f079B-w-53186">נָשִׂ֖יא</w>
-          <lb xml:id="f079B-lb-2-26" n="26"/>
+          <lb xml:id="f079B-lb-2-26" n="25"/>
             <w xml:id="f079B-w-53187">לִבְנֵ֣י</w>
             <w xml:id="f079B-w-53188">נַפְתָּלִ֑י</w>
             <w xml:id="f079B-w-53189">אֲחִירַ֖ע</w>
             <w xml:id="f079B-w-53190">בֶּן־</w>
-          <lb xml:id="f079B-lb-2-27" n="27"/>
+          <lb xml:id="f079B-lb-2-27" n="26"/>
             <w xml:id="f079B-w-53191">עֵינָֽן</w>
             <pc type="sof-pasuq" xml:id="f079B-pc-53191">׃</pc>
             <milestone unit="verse" n="Numbers-7-79" xml:id="f079B-v-Numbers-7-79"/>
             <w xml:id="f079B-w-53192">קָרְבָּנֹ֞ו</w>
             <w xml:id="f079B-w-53193">קַֽ͏עֲרַת־</w>
             <w xml:id="f079B-w-53194">כֶּ֣סֶף</w>
-          <lb xml:id="f079B-lb-2-28" n="28"/>
+          <lb xml:id="f079B-lb-2-28" n="27"/>
             <w xml:id="f079B-w-53195">אַחַ֗ת</w>
             <w xml:id="f079B-w-53196">שְׁלֹשִׁ֣ים</w>
             <w xml:id="f079B-w-53197">וּמֵאָה֮</w>
