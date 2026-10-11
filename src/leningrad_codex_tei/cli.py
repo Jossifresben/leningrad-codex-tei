@@ -616,23 +616,43 @@ def download_batch(config: Config, batch: str | None) -> None:
     default=None,
     help="Parse a single folio (e.g. 028A) from its raw response. Omit to parse everything in raw/.",
 )
+@click.option(
+    "--start-folio",
+    "start_folio",
+    default=None,
+    help="Parse raw responses from this folio onward in sorted order. Cannot be used with --folio.",
+)
 @click.pass_obj
-def parse_raw(config: Config, folio: str | None) -> None:
+def parse_raw(config: Config, folio: str | None, start_folio: str | None) -> None:
     """Parse raw model responses into alignment records.
 
     Reads ``alignments/raw/{folio}.xml`` (editable) so a hand-fixed model
     reply can be re-parsed without re-downloading. Slices are recomputed
     from the current seed file. With ``--folio`` only that folio is parsed;
-    otherwise every raw response is parsed. Conversations are owned by
-    ``download-batch`` and left alone here.
+    with ``--start-folio`` parsing starts at that folio and continues
+    through the rest in sorted order; otherwise every raw response is
+    parsed. Conversations are owned by ``download-batch`` and left alone
+    here.
     """
+    if folio is not None and start_folio is not None:
+        raise click.ClickException("--folio cannot be used with --start-folio")
     raw_dir = config.paths.alignments / "raw"
     if folio is not None:
         folios = [folio]
     else:
-        folios = (
+        all_folios = (
             sorted(p.stem for p in raw_dir.glob("*.xml")) if raw_dir.exists() else []
         )
+        if start_folio is not None:
+            folios = [f for f in all_folios if f >= start_folio]
+            if not folios:
+                if not all_folios:
+                    raise click.ClickException(f"no raw responses in {raw_dir}")
+                raise click.ClickException(
+                    f"no raw responses at or after {start_folio!r} in {raw_dir}"
+                )
+        else:
+            folios = all_folios
     if not folios:
         if folio is not None:
             raise click.ClickException(
@@ -759,10 +779,28 @@ def parse_raw(config: Config, folio: str | None) -> None:
 
 @cli.command()
 @click.option("--folio", help="Validate a single folio. Omit for all.")
+@click.option(
+    "--start-folio",
+    "start_folio",
+    default=None,
+    help="Validate this folio onward in sorted order. Cannot be used with --folio.",
+)
 @click.pass_obj
-def validate(config: Config, folio: str | None) -> None:
+def validate(config: Config, folio: str | None, start_folio: str | None) -> None:
     """Run cross-checks on alignment records."""
-    folios = [folio] if folio else _alignment_folios(config)
+    if folio is not None and start_folio is not None:
+        raise click.ClickException("--folio cannot be used with --start-folio")
+    if start_folio is not None:
+        all_folios = _alignment_folios(config)
+        folios = [f for f in all_folios if f >= start_folio]
+        if not folios:
+            raise click.ClickException(
+                f"no alignments at or after {start_folio!r}"
+                if all_folios
+                else "no alignments found"
+            )
+    else:
+        folios = [folio] if folio else _alignment_folios(config)
     for page in folios:
         _seed, _stream, sl, record = _load_pipeline(config, page)
         result = validate_stage.validate_folio(sl, record, _stream)
@@ -781,10 +819,28 @@ def validate(config: Config, folio: str | None) -> None:
 
 @cli.command()
 @click.option("--folio", help="Generate TEI for a single folio. Omit for all.")
+@click.option(
+    "--start-folio",
+    "start_folio",
+    default=None,
+    help="Generate TEI from this folio onward in sorted order. Cannot be used with --folio.",
+)
 @click.pass_obj
-def generate_tei(config: Config, folio: str | None) -> None:
+def generate_tei(config: Config, folio: str | None, start_folio: str | None) -> None:
     """Generate per-folio TEI XML from alignment records."""
-    folios = [folio] if folio else _alignment_folios(config)
+    if folio is not None and start_folio is not None:
+        raise click.ClickException("--folio cannot be used with --start-folio")
+    if start_folio is not None:
+        all_folios = _alignment_folios(config)
+        folios = [f for f in all_folios if f >= start_folio]
+        if not folios:
+            raise click.ClickException(
+                f"no alignments at or after {start_folio!r}"
+                if all_folios
+                else "no alignments found"
+            )
+    else:
+        folios = [folio] if folio else _alignment_folios(config)
     contributor = _current_contributor()
     for page in folios:
         _seed, _stream, sl, record = _load_pipeline(config, page)
