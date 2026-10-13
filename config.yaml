@@ -35,7 +35,7 @@ ai:
   timeout_ms: 600000
   fallback_to_standard: false
   image_transport: "encode"
-  thinking_level: "low"
+  thinking_level: "medium"
 
 validation:
   odd: schema/leningrad.odd
