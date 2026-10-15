@@ -24,7 +24,7 @@ Always respond to the user in plain language using asd-ste100 simplified technic
 - **Biblical reference**: Logical address (e.g. Exod 3:24). *Not* structural: marked by verse milestones within folio documents; per-word references are derived by the index build, not stored on each word.
 - **Ketiv**: The consonantal text as written in the codex; what is physically on the page.
 - **Verse milestone**: A TEI `<milestone unit="verse">` marking the point where a verse's text begins within a folio document; present on every folio that contains words of that verse, enabling per-folio search by reference.
-- **samekh / pe**: Paragraph-division markers in the scroll. Samekh = open (petucha); pe = closed (setuma). Encoded as milestones with subtype.
+- **samekh / pe**: Paragraph-division markers in the codex. Pe = open (petucha); samekh = closed (setuma). Encoded as milestones with subtype.
 - **Atom number**: Position index in the UXLC word stream. The seed mapping uses these to tie page boundaries to the textual base.
 - **Seed mapping**: A pre-existing verse→location mapping used as the starting point for alignment, verified and corrected rather than derived from scratch.
 - **Alignment**: Determining where a verse appears in the manuscript (column + line span) and encoding it.
