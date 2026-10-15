@@ -83,16 +83,6 @@ This folio is {folio}, the {side} of the leaf, and contains column(s) of Hebrew 
 Hebrew is written right-to-left, so the rightmost column on the folio is the first column.
 
 The text contained on this folio is {range}.
-{notes_section}
-## Example Output
-
-```xml
-<cb n="1" />
-<lb n="1" />
-בְּרֵאשִׁית בָּרָא אֱלֹהִים
-<lb n="2" />
-אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ׃
-```
 
 ## Goal
 
@@ -116,11 +106,16 @@ You do NOT need a high fidelity understanding of the text on the page since you 
     - Crop each column at most once and use at most 3 code-execution calls in total.
     - Use extra image work only when columns disagree on line counts or the text is hard to read.
 
-## Important
+## Notes
+{notes_section}
 
-If the line numbers in each column aren't the same, then it is likely there is a blank line somewhere.
+## Lineation
 
-It is possible that a line is blank. That should receive it's own milestone.
+Unles indicated in the #notes, if the line numbers in each column aren't the same, then it is likely there is a blank line somewhere.
+
+As the #instructions say, use code to check line counts.
+
+A blank line should receive its own milestone.
 
 Example:
 
@@ -144,6 +139,15 @@ Be careful to count the lines correctly.
 ## Response
 
 Return ONLY the TEI XML, with no commentary and no markdown fences.
+
+## Example Output
+
+<cb n="1" />
+<lb n="1" />
+בְּרֵאשִׁית בָּרָא אֱלֹהִים
+<lb n="2" />
+אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ׃
+
 
 <TEXT>
 {text}
@@ -328,11 +332,11 @@ def _notes_section(sl: SeedSlice) -> str:
     """Prompt block for seed notes (empty when the seed has none)."""
     notes = _seed_notes(sl)
     if not notes:
-        return ""
+        return "No additional notes"
     if len(notes) == 1:
-        return f"\nNote on this folio: {notes[0]}\n"
+        return f"Note on this folio: {notes[0]}"
     items = "\n".join(f"- {note}" for note in notes)
-    return f"\nNotes on this folio:\n{items}\n"
+    return f"Notes on this folio:\n{items}"
 
 
 def _build_prompt(sl: SeedSlice, word_stream: WordStream) -> str:
