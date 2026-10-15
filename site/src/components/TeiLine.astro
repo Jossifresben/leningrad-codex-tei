@@ -72,7 +72,19 @@ const verseMarks = [
     font-size: 1.3rem;
     line-height: 1.9;
     margin: 0;
-    font-family: 'SBL Hebrew', 'Noto Serif Hebrew', 'Ezra SIL', 'Times New Roman', serif;
+    font-family: 'SBL Hebrew', 'Noto Serif Hebrew', 'Ezra SIL', 'Cardo', 'Times New Roman', serif;
+    /* Alternate glyphs: keep contextual alternates on so the font
+       uses its alternate ayin when ayin carries a vowel. Named
+       alternates (font-variant-alternates + @font-feature-values)
+       need a named ayin variant in the font; these fonts expose
+       the voweled ayin only as a contextual alternate. */
+    font-variant-ligatures: contextual;
+  }
+
+  /* Blank manuscript lines (e.g. open petucha lines) carry no words.
+     Hold their full line height so the line stays visible. */
+  .he:empty::before {
+    content: '\00A0';
   }
 
   .verse-tag {
@@ -148,5 +160,42 @@ const verseMarks = [
     outline: 1px solid var(--accent);
     outline-offset: -1px;
     border-radius: 0.4rem;
+  }
+
+  @media print {
+    .tei-line {
+      break-inside: avoid;
+      border-top: 0;
+      padding: 0.12rem 0;
+      grid-template-columns: 1fr;
+    }
+
+    .gutter {
+      display: none;
+    }
+
+    .verse-tag {
+      display: none;
+    }
+
+    .he {
+      font-size: 1.75vh;
+      line-height: 1.7;
+      color: #000;
+    }
+
+    .he :global(span.hl) {
+      background: none;
+      box-shadow: none;
+    }
+
+    .section-tag {
+      display: none;
+    }
+
+    .he :global(.sof-pasuq),
+    .he :global(.paseq) {
+      color: #000;
+    }
   }
 </style>

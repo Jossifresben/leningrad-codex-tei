@@ -26,4 +26,14 @@ const { title, range } = Astro.props;
     color: var(--muted);
     margin: 0.3rem 0 1rem;
   }
+
+  @media print {
+    .folio-head {
+      padding: 0 0 0.4rem;
+    }
+    .folio-head h1,
+    .folio-head .range {
+      display: none;
+    }
+  }
 </style>

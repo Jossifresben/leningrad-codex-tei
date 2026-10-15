@@ -31,6 +31,8 @@ const prev = idx > 0 ? folios[idx - 1] : null;
 const next = idx >= 0 && idx < folios.length - 1 ? folios[idx + 1] : null;
 
 const folioTitle = `Folio ${folioSideLabel(folio ?? '')} · Leningrad Codex TEI`;
+const folioRef = entry ? abbreviateRange(entry.range) : doc.title;
+const folioIdLine = `Leningrad Codex TEI · ${meta.version} · folio ${folioSideLabel(folio ?? '')} · ${folioRef}`;
 const folioDescription = entry
   ? `Folio ${folioSideLabel(folio ?? '')} of the Leningrad Codex (${abbreviateRange(entry.range)}), with transcription and facsimile image.`
   : doc.title;
@@ -45,10 +47,12 @@ const folioSchema = {
 
 <Base title={folioTitle} description={folioDescription} type="article" jsonLd={folioSchema}>
   <FolioHead title={`Folio ${folioSideLabel(folio ?? '')}`} range={entry ? abbreviateRange(entry.range) : doc.title}>
+    <p class="print-only">{folioIdLine}</p>
     <Pager prev={prev} next={next} />
     <FolioToolbar>
       {doc.graphicUrl && <Button variant="primary" target="_blank" rel="noopener noreferrer" href={doc.graphicUrl}>Facsimile image <svg class="external-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg></Button>}
       <Button href={`/edition/${folio}.xml`} target="_blank">Raw TEI XML</Button>
+      <Button id="print-folio" type="button">Print</Button>
       <Toggle />
       <FeedbackForm folio={folio ?? ''} version={meta.version} />
     </FolioToolbar>
@@ -69,6 +73,8 @@ const folioSchema = {
     };
     toggle?.addEventListener('change', (e) => apply((e.target as HTMLInputElement).checked));
     apply(toggle?.checked ?? false);
+
+    document.querySelector('#print-folio')?.addEventListener('click', () => window.print());
 
     const columns = document.querySelector('.columns');
     const highlight = (ref: string | null, on: boolean) => {

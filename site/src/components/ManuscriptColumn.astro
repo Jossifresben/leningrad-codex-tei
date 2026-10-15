@@ -33,4 +33,19 @@ const { col } = Astro.props;
     text-transform: uppercase;
     color: var(--muted);
   }
+
+  @media print {
+    .column {
+      background: none;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 0;
+      break-inside: auto;
+    }
+
+    .column h2 {
+      display: none;
+    }
+  }
 </style>
