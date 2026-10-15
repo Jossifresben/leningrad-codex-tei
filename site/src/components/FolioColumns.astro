@@ -32,4 +32,23 @@ const { columns } = Astro.props;
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  @media print {
+    .columns {
+      gap: 0.9rem;
+      padding-bottom: 0;
+    }
+
+    .columns[data-cols='3'] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .columns[data-cols='2'] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .columns[data-cols='1'] {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
