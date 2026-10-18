@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import replace
 from pathlib import Path
-import re
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from leningrad_codex_tei.schemas import AlignmentRecord, PipelineRun, RunStage
-from leningrad_codex_tei.util.hebrew import sequence_texts
 
 TEMPLATE_DIR = Path(__file__).resolve().parents[3] / "templates"
 
@@ -169,11 +168,9 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
         section_by_atom[sm.atom] = (sm.subtype, _milestone_id(sm.verse))
 
     flat = [(cix, line) for cix, col in enumerate(record.columns) for line in col.lines]
-    sequenced = sequence_texts([w.text for _, line in flat for w in line.atoms])
-    it = iter(sequenced)
     annotated: list[tuple[int, dict]] = []
     for cix, line in flat:
-        atoms = [replace(w, text=next(it)) for w in line.atoms]
+        atoms = list(line.atoms)
         tokens: list[dict] = []
         for w in atoms:
             verse = verse_by_atom.get(w.atom)

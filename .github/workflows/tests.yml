@@ -51,8 +51,5 @@ jobs:
       - name: Install Python dependencies
         run: uv sync --locked --group dev
 
-      - name: Install Node dependencies
-        run: npm ci
-
       - name: Run tests
         run: uv run pytest -q
