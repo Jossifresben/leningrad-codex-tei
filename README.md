@@ -22,8 +22,6 @@ Prerequisites:
 
 - Python 3.11 or later
 - [uv](https://docs.astral.sh/uv/)
-- Node.js 18 or later (required for Hebrew text sequencing in `generate-tei`)
-- [npm](https://docs.npmjs.com/) (ships with Node.js)
 
 Clone the project:
 
