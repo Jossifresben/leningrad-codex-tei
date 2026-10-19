@@ -66,7 +66,9 @@ def changes() -> list[dict]:
     ]
 
 
-def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
+def test_rendered_xml_is_well_formed_and_structured(
+    alignment, changes, word_stream
+) -> None:
     xml = render_folio_tei(
         folio="001B",
         verse_range="Genesis 1:1 – 2:2",
@@ -91,24 +93,12 @@ def test_rendered_xml_is_well_formed_and_structured(alignment, changes) -> None:
     words = root.findall(f".//{_q('w')}")
     assert [_id(w) for w in words] == [f"f001B-w-{i}" for i in range(1, 11)]
     assert {etree.QName(w.getparent()).localname for w in words} == {"ab"}
-    # generate-tei emits SBL-sequenced Hebrew; only words whose marks
-    # arrive out of order differ from the raw fixture text.
+    # generate-tei keeps UXLC code points. No reorder.
     # Trailing sof-pasuq / paseq live in pc, never inside w.
-    assert (
-        [w.text for w in words]
-        == [
-            "בְּרֵאשִׁ֖ית",
-            "בָּרָ֣א",
-            "אֱלֹהִ֑ים",
-            "וְהָאָ֗רֶץ",
-            "בְּעֵ֖דֶן",
-            "\u05d0\u05bd\u05b9\u05d5\u05e8",  # sequenced: holam precedes vav; sof-pasuq split to pc
-            "אֶחָד",
-            "\u05d9\u0594\u05b9\u05d5\u05dd",  # sequenced: holam precedes vav
-            "כֶּתֶב",
-            "דָּבָר",
-        ]
-    )
+    expected = [split_trailing_punct(w.text)[0] for w in word_stream.words[:10]]
+    assert [w.text for w in words] == expected
+    assert expected[5] == "\u05d0\u05bd\u05d5\u05b9\u05e8"
+    assert expected[7] == "\u05d9\u0594\u05d5\u05b9\u05dd"
 
     pcs = root.findall(f".//{_q('pc')}")
     assert [(p.get("type"), _id(p), p.text) for p in pcs] == [
