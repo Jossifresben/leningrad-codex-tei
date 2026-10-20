@@ -168,7 +168,7 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
     ]
 
     # document order: the verse milestone precedes its verse's first word,
-    # the section milestone follows the verse's last word
+    # the section milestone follows the atom the UXLC marker follows
     seen: list[str] = []
     for el in root.iter():
         tag = etree.QName(el).localname
@@ -189,11 +189,34 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
         "section:pe",
         "verse:Genesis-2-1",
         "f001B-w-7",
-        "f001B-w-8",
         "section:samekh",
+        "f001B-w-8",
         "verse:Genesis-2-2",
         "f001B-w-9",
         "f001B-w-10",
+    ]
+
+
+def test_repeat_section_ids_in_one_verse_are_suffixed(
+    seed_slice, word_stream, changes
+) -> None:
+    slice_words = word_stream.words[seed_slice.atom_start - 1 : seed_slice.atom_end]
+    slice_words[7].section = "samekh"  # a second marker in Gen 2:1
+    rec = build_alignment_record(seed_slice, slice_words, _TEI_PLACEMENTS)
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=rec,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="0.1.0-dev",
+    )
+    root = etree.fromstring(xml.encode())
+    section_ms = root.findall(f".//{_q('milestone')}[@unit='section']")
+    assert [_id(m) for m in section_ms] == [
+        "f001B-s-Genesis-1-3",
+        "f001B-s-Genesis-2-1",
+        "f001B-s-Genesis-2-1-2",
     ]
 
 

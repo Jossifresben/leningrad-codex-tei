@@ -231,11 +231,29 @@ def test_build_section_milestones(seed_slice, word_stream) -> None:
     sections = [(m.subtype, m.atom, m.verse) for m in rec.section_milestones]
     assert sections == [
         ("pe", 6, "Genesis 1:3"),
-        ("samekh", 8, "Genesis 2:1"),
+        ("samekh", 7, "Genesis 2:1"),
     ]
     for m in rec.section_milestones:
         assert 1 <= m.column <= 3
         assert m.line >= 1
+
+
+def test_section_milestone_stays_with_its_atom_across_a_page_break(
+    seed_slice, word_stream
+) -> None:
+    # Gen 2:1's samekh follows atom 7; split the verse across two pages
+    first_page = build_alignment_record(
+        seed_slice, word_stream.words[:7], [(i, 1, 1) for i in range(1, 8)]
+    )
+    second_page = build_alignment_record(
+        seed_slice, word_stream.words[7:], [(i, 1, 1) for i in range(8, 11)]
+    )
+    assert [(m.subtype, m.atom) for m in first_page.section_milestones] == [
+        ("pe", 6),
+        ("samekh", 7),
+    ]
+    # the later page has part of Gen 2:1 but not the marker's atom
+    assert second_page.section_milestones == []
 
 
 def test_build_groups_by_column_and_line(seed_slice, word_stream) -> None:

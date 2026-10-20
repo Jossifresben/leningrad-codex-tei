@@ -163,9 +163,16 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
             "n": ref,
             "id": ref,
         }
+    # a verse can hold several markers (e.g. Neh 3:4); later ones on the
+    # folio take a -2, -3 ... suffix so xml:ids stay unique
     section_by_atom: dict[int, tuple[str, str]] = {}
-    for sm in record.section_milestones:
-        section_by_atom[sm.atom] = (sm.subtype, _milestone_id(sm.verse))
+    per_verse: dict[str, int] = {}
+    for sm in sorted(record.section_milestones, key=lambda m: m.atom):
+        ref = _milestone_id(sm.verse)
+        per_verse[ref] = per_verse.get(ref, 0) + 1
+        if per_verse[ref] > 1:
+            ref = f"{ref}-{per_verse[ref]}"
+        section_by_atom[sm.atom] = (sm.subtype, ref)
 
     flat = [(cix, line) for cix, col in enumerate(record.columns) for line in col.lines]
     annotated: list[tuple[int, dict]] = []
