@@ -52,17 +52,11 @@ def test_keeps_vocalization(uxlc_fixture_dir: Path) -> None:
     assert ws.words[0].text == "בְּרֵאשִׁ֖ית"
 
 
-def test_pe_and_samekh_flags(uxlc_fixture_dir: Path) -> None:
+def test_section_marker_sits_on_the_atom_it_follows(uxlc_fixture_dir: Path) -> None:
     ws = build_word_stream(uxlc_fixture_dir, book_order=["Genesis"])
-    by_verse: dict[tuple[int, int], list] = {}
-    for w in ws.words:
-        by_verse.setdefault((w.chapter, w.verse), []).append(w)
-
-    assert all(w.has_pe for w in by_verse[(1, 3)])
-    assert not any(w.has_pe for w in by_verse[(1, 1)])
-    assert not any(w.has_pe for w in by_verse[(2, 2)])
-    assert all(w.has_samekh for w in by_verse[(2, 1)])
-    assert not any(w.has_samekh for w in by_verse[(1, 3)])
+    marked = [(w.atom, w.section) for w in ws.words if w.section is not None]
+    # Gen 1:3 ends with <pe/>; Gen 2:1 has <samekh/> mid-verse, after its first word
+    assert marked == [(6, "pe"), (7, "samekh")]
 
 
 def test_metadata_fields(uxlc_fixture_dir: Path) -> None:

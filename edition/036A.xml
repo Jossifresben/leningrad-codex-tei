@@ -47,7 +47,10 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
-      <change when="2026-09-18" who="#contrib-charles-w-loder">
+      <change when="2026-10-19" who="#contrib-charles-w-loder">
+      Fix incorrect pe and samekh milestone placement
+      </change>
+      <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
       <change when="2026-09-18T04:38:21.864853+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
@@ -566,7 +569,6 @@
             <w xml:id="f036A-w-23908">יְהוָ֑ה</w>
             <w xml:id="f036A-w-23909">וַֽיַּעֲזֹ֛ב</w>
             <w xml:id="f036A-w-23910">אֶת־</w>
-            <milestone unit="section" subtype="pe" xml:id="f036A-s-Exodus-9-21"/>
         </ab>
       </div>
     </body>

@@ -18,8 +18,8 @@ class Word:
     chapter: int
     verse: int
     word_index: int
-    has_pe: bool = False
-    has_samekh: bool = False
+    # "pe" | "samekh" when the UXLC puts that marker right after this atom
+    section: str | None = None
 
 
 @dataclass

@@ -124,11 +124,15 @@ def build_word_stream(
                 if verse_str is None:
                     continue
                 verse = int(verse_str)
-                has_pe = any(_local_name(c) == "pe" for c in verse_el)
-                has_samekh = any(_local_name(c) == "samekh" for c in verse_el)
                 in_verse = 0
                 for child in verse_el:
                     tag = _local_name(child)
+                    if tag in ("pe", "samekh"):
+                        # a marker belongs to the atom it follows, which may
+                        # be mid-verse (e.g. Gen 35:22)
+                        if in_verse:
+                            words[-1].section = tag
+                        continue
                     if tag not in ("w", "k"):
                         continue
                     in_verse += 1
@@ -141,8 +145,6 @@ def build_word_stream(
                             chapter=chapter,
                             verse=verse,
                             word_index=in_verse,
-                            has_pe=has_pe,
-                            has_samekh=has_samekh,
                         )
                     )
 

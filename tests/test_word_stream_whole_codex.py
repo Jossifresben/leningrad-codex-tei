@@ -79,11 +79,9 @@ def test_genesis_1_slice_matches_the_pilot_stream() -> None:
     assert v26[8].atom == 326
 
 
-def test_samekh_and_pe_flags_surface_across_the_book() -> None:
+def test_samekh_and_pe_markers_surface_across_the_book() -> None:
     ws = _source_stream()
-    pe = [w for w in ws.words if w.has_pe]
-    samekh = [w for w in ws.words if w.has_samekh]
-    # paragraph markers exist in the real text and are carried per-word,
-    # mutually exclusive within any single verse
-    assert pe and samekh
-    assert all(not (w.has_pe and w.has_samekh) for w in ws.words)
+    # paragraph markers exist in the real text and sit on single atoms
+    assert any(w.section == "pe" for w in ws.words)
+    assert any(w.section == "samekh" for w in ws.words)
+    assert all(w.section in (None, "pe", "samekh") for w in ws.words)
