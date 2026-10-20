@@ -41,6 +41,7 @@ _env = Environment(
 
 SOF_PASUQ = "\u05c3"
 PASEQ = "\u05c0"
+NUN_HAFUKHA = "\u05c6"
 
 _PUNCT_TYPES = {
     SOF_PASUQ: "sof-pasuq",
@@ -152,7 +153,8 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     the raw atom stream while emitted TEI carries SBL-ordered Hebrew.
 
     Trailing sof-pasuq / paseq are split off each sequenced atom into
-    ``pc`` tokens. The ``w`` keeps the UXLC atom number; each ``pc`` takes
+    ``pc`` tokens; an inverted nun flagged on the atom follows them as one
+    more ``pc``. The ``w`` keeps the UXLC atom number; each ``pc`` takes
     a derived ``pc-{atom}`` id (``pc-{atom}-{n}`` when one atom yields
     several marks) so validation stays atom-faithful.
     """
@@ -184,6 +186,9 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
             if verse is not None:
                 tokens.append({"kind": "verse", "n": verse["n"], "id": verse["id"]})
             base, marks = split_trailing_punct(w.text)
+            if w.inverted_nun:
+                # not part of the UXLC atom text; written on the page after it
+                marks.append((NUN_HAFUKHA, "inverted-nun"))
             if base:
                 tokens.append({"kind": "w", "atom": w.atom, "text": base})
             for i, (char, punct_type) in enumerate(marks):

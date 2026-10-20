@@ -20,6 +20,8 @@ class Word:
     word_index: int
     # "pe" | "samekh" when the UXLC puts that marker right after this atom
     section: str | None = None
+    # True when the UXLC puts <reversednun/> right after this atom
+    inverted_nun: bool = False
 
 
 @dataclass

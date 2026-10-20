@@ -59,6 +59,13 @@ def test_section_marker_sits_on_the_atom_it_follows(uxlc_fixture_dir: Path) -> N
     assert marked == [(6, "pe"), (7, "samekh")]
 
 
+def test_inverted_nun_sits_on_the_atom_it_follows(uxlc_fixture_dir: Path) -> None:
+    ws = build_word_stream(uxlc_fixture_dir, book_order=["Genesis"])
+    assert [w.atom for w in ws.words if w.inverted_nun] == [6]
+    # the mark is not part of the atom text
+    assert ws.words[5].text == "אֽוֹר׃"
+
+
 def test_metadata_fields(uxlc_fixture_dir: Path) -> None:
     ws = build_word_stream(uxlc_fixture_dir, book_order=["Genesis"])
     first = ws.words[0]

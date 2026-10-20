@@ -21,7 +21,7 @@ export type InlineMark = VerseMark | SectionMark;
 
 export interface Token {
   text: string;
-  kind: 'w' | 'sof-pasuq' | 'paseq';
+  kind: 'w' | 'sof-pasuq' | 'paseq' | 'inverted-nun';
   marks: InlineMark[];
   verse: string | null;
 }
@@ -258,7 +258,7 @@ export function parseFolioXml(xml: string): FolioDoc {
       let kind: Token['kind'] = 'w';
       if (tok.tag === 'pc') {
         const t = tok.attrs['type'] ?? '';
-        kind = t === 'paseq' ? 'paseq' : 'sof-pasuq';
+        kind = t === 'paseq' || t === 'inverted-nun' ? t : 'sof-pasuq';
       }
       currentLine.tokens.push({ text, kind, marks: pending, verse: currentVerse });
       pending = [];

@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-19" who="#contrib-charles-w-loder">
+      Add inverted nun marks
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -285,7 +288,8 @@
           <lb xml:id="f081B-lb-2-6" n="6"/>
             <w xml:id="f081B-w-54443">מִן־</w>
             <w xml:id="f081B-w-54444">הַֽמַּחֲנֶֽה</w>
-            <pc type="sof-pasuq" xml:id="f081B-pc-54444">׃</pc>
+            <pc type="sof-pasuq" xml:id="f081B-pc-54444-1">׃</pc>
+            <pc type="inverted-nun" xml:id="f081B-pc-54444-2">׆</pc>
             <milestone unit="section" subtype="samekh" xml:id="f081B-s-Numbers-10-34"/>
           <lb xml:id="f081B-lb-2-7" n="7"/>
             <milestone unit="verse" n="Numbers-10-35" xml:id="f081B-v-Numbers-10-35"/>
@@ -315,9 +319,10 @@
             <w xml:id="f081B-w-54461">רִֽבְב֖וֹת</w>
             <w xml:id="f081B-w-54462">אַלְפֵ֥י</w>
             <w xml:id="f081B-w-54463">יִשְׂרָאֵֽל</w>
-            <pc type="sof-pasuq" xml:id="f081B-pc-54463">׃</pc>
-            <milestone unit="section" subtype="samekh" xml:id="f081B-s-Numbers-10-36"/>
+            <pc type="sof-pasuq" xml:id="f081B-pc-54463-1">׃</pc>
           <lb xml:id="f081B-lb-2-12" n="12"/>
+            <pc type="inverted-nun" xml:id="f081B-pc-54463-2">׆</pc>
+            <milestone unit="section" subtype="samekh" xml:id="f081B-s-Numbers-10-36"/>
             <milestone unit="verse" n="Numbers-11-1" xml:id="f081B-v-Numbers-11-1"/>
             <w xml:id="f081B-w-54464">וַיְהִ֤י</w>
             <w xml:id="f081B-w-54465">הָעָם֙</w>

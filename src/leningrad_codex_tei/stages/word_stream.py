@@ -133,6 +133,10 @@ def build_word_stream(
                         if in_verse:
                             words[-1].section = tag
                         continue
+                    if tag == "reversednun":
+                        if in_verse:
+                            words[-1].inverted_nun = True
+                        continue
                     if tag not in ("w", "k"):
                         continue
                     in_verse += 1
