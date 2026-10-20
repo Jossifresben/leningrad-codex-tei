@@ -4,25 +4,51 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from urllib.parse import urlparse
 
 from leningrad_codex_tei.config import Config
 from leningrad_codex_tei.util import net
 
 
-def seed_url(config: Config) -> str:
-    """raw URL for the pinned seed file, e.g. …/owner/repo/{commit}/path."""
+_FULL_SHA = re.compile(r"[0-9a-f]{40}")
+
+
+def _owner_repo(config: Config) -> tuple[str, str]:
     parsed = urlparse(config.seed.upstream_url)
     parts = [p for p in parsed.path.split("/") if p]
     if len(parts) < 2:
         raise ValueError(f"cannot parse owner/repo from {config.seed.upstream_url}")
-    owner, repo = parts[0], parts[1]
-    return f"https://raw.githubusercontent.com/{owner}/{repo}/{config.seed.commit}/{config.seed.file}"
+    return parts[0], parts[1]
+
+
+def seed_url(config: Config, commit: str | None = None) -> str:
+    """raw URL for the seed file, e.g. …/owner/repo/{commit}/path."""
+    owner, repo = _owner_repo(config)
+    ref = commit or config.seed.commit
+    return f"https://raw.githubusercontent.com/{owner}/{repo}/{ref}/{config.seed.file}"
+
+
+def resolve_commit(config: Config, fetcher=None) -> str:
+    """Resolve ``seed.commit`` (branch, tag or short sha) to a full commit sha."""
+    ref = config.seed.commit
+    if _FULL_SHA.fullmatch(ref):
+        return ref
+    owner, repo = _owner_repo(config)
+    url = f"https://api.github.com/repos/{owner}/{repo}/commits/{ref}"
+    try:
+        sha = json.loads((fetcher or net.fetch_url)(url))["sha"]
+    except (json.JSONDecodeError, KeyError, TypeError) as exc:
+        raise ValueError(f"cannot resolve seed ref {ref!r} via {url}") from exc
+    if not _FULL_SHA.fullmatch(sha):
+        raise ValueError(f"seed ref {ref!r} resolved to a non-sha value: {sha!r}")
+    return sha
 
 
 def vendor_seed(config: Config, fetcher=None) -> dict:
-    """Fetch the seed JSON, validate its shape, and pin it at the config path."""
-    url = seed_url(config)
+    """Resolve the seed ref to a commit, fetch that file, validate it, and pin it."""
+    commit = resolve_commit(config, fetcher)
+    url = seed_url(config, commit)
     data = (fetcher or net.fetch_url)(url)
 
     try:
@@ -40,8 +66,8 @@ def vendor_seed(config: Config, fetcher=None) -> dict:
 
     return {
         "url": url,
-        "commit": config.seed.commit,
-        "snapshot_commit": config.seed.snapshot_commit,
+        "ref": config.seed.commit,
+        "commit": commit,
         "sha256": hashlib.sha256(data).hexdigest(),
         "records": len(doc["body"]),
         "path": str(path),

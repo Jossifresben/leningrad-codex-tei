@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from datetime import datetime
 
 from leningrad_codex_tei.provenance import (
@@ -117,7 +118,6 @@ def test_provenance_roundtrip_preserves_sections(tmp_path) -> None:
         seed=SeedProvenance(
             url="https://example.invalid/seed.json",
             commit="main",
-            snapshot_commit="deadbee",
             sha256="s" * 64,
             records=1,
             path=str(tmp_path / "seed.json"),
@@ -152,7 +152,6 @@ def test_update_sets_one_section_and_keeps_others(tmp_path) -> None:
     seed = SeedProvenance(
         url="https://example.invalid/seed.json",
         commit="main",
-        snapshot_commit="deadbee",
         sha256="s" * 64,
         records=1,
         path=str(tmp_path / "seed.json"),
@@ -166,3 +165,20 @@ def test_update_sets_one_section_and_keeps_others(tmp_path) -> None:
     assert loaded.seed == seed
     assert loaded.index == IndexProvenance(path="index.xml", entries=1)
     assert loaded.uxlc is None
+
+
+def test_load_ignores_dropped_seed_snapshot_commit(tmp_path) -> None:
+    path = tmp_path / "provenance.json"
+    seed = SeedProvenance(
+        url="https://example.invalid/seed.json",
+        commit="main",
+        sha256="s" * 64,
+        records=1,
+        path=str(tmp_path / "seed.json"),
+    )
+    update_pipeline_provenance(path, "0.1.0-dev", seed=seed)
+    data = json.loads(path.read_text())
+    data["seed"]["snapshot_commit"] = "deadbee"
+    path.write_text(json.dumps(data))
+
+    assert load_pipeline_provenance(path).seed == seed

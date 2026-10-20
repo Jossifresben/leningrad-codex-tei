@@ -22,7 +22,6 @@ class SeedConfig:
     upstream_url: str
     commit: str
     file: str
-    snapshot_commit: str | None = None
 
 
 @dataclass
@@ -120,7 +119,9 @@ def load_config(config_path: Path = Path("config.yaml")) -> Config:
             provenance=Path(p["provenance"]),
         ),
         images=ImageConfig(**raw["images"]),
-        seed=SeedConfig(**raw["seed"]),
+        seed=SeedConfig(
+            **{k: v for k, v in raw["seed"].items() if k != "snapshot_commit"}
+        ),
         uxlc=UxlcConfig(**raw["uxlc"]),
         ai=AiConfig(**ai_raw),
     )
