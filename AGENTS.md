@@ -8,6 +8,11 @@ To learn about this project, view the @README.md at the root of this repo.
 
 Always respond to the user in plain language using asd-ste100 simplified technical english.
 
+## Git & Github
+
+- use the `gh` cli if it is available
+- run `uv run ruff format` before committing/pushing
+
 ## Versioning
 
 - Single source of truth: root `pyproject.toml` `[project].version` (bare semver, e.g. `0.2.1`). Bump with `uv version --bump minor|patch|major` or `uv version X.Y.Z`. Note `uv version` only edits the file; the owner commits it and creates the release tag by hand.
