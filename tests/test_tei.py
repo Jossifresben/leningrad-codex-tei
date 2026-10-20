@@ -498,9 +498,28 @@ def test_source_image_renders_graphic_in_facsimile(alignment, changes) -> None:
     graphic = surface.find(_q("graphic"))
     assert graphic is not None
     assert graphic.get("url") == "https://example.org/001B.jpg"
+    sha = graphic.find(_q("desc"))
+    assert sha is not None
+    assert sha.get("type") == "sha256"
+    assert sha.text == "abc123"
     ms_desc = root.find(f".//{_q('sourceDesc')}/{_q('msDesc')}")
     assert ms_desc is not None
     assert root.find(f".//{_q('sourceDesc')}/{_q('p')}") is None
+
+
+def test_graphic_omits_sha256_desc_when_unknown(alignment, changes) -> None:
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        source_image={"url": "https://example.org/001B.jpg", "sha256": None},
+    )
+    root = etree.fromstring(xml.encode())
+    graphic = root.find(f".//{_q('graphic')}")
+    assert graphic is not None
+    assert graphic.find(_q("desc")) is None
 
 
 def test_facsimile_omits_graphic_without_image(alignment, changes) -> None:

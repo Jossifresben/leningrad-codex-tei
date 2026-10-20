@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import tomllib
@@ -249,6 +250,10 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     graphic = root.find(".//t:facsimile/t:surface/t:graphic", ns)
     assert graphic is not None
     assert graphic.get("url").endswith("BIB_LENCDX_F001B.jpg")
+    assert (
+        graphic.find("t:desc[@type='sha256']", ns).text
+        == hashlib.sha256(JPEG_BYTES).hexdigest()
+    )
     surface = root.find(".//t:facsimile/t:surface", ns)
     assert surface is not None
     assert surface.get("{http://www.w3.org/XML/1998/namespace}id") == "surf-001B"
