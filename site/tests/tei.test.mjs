@@ -21,7 +21,8 @@ describe('parseFolioXml', () => {
     assert.ok(doc.verses.includes('Gen 1:26'));
     assert.ok(doc.verses.includes('Gen 2:19'));
     const firstToken = doc.columns[0].lines[0].tokens[0];
-    assert.equal(firstToken.text, 'וּבְעֹ֣וף');
+    // UXLC spelling: vav then holam (holam male), as the edition keeps it
+    assert.equal(firstToken.text, 'וּבְע֣וֹף');
     assert.equal(firstToken.verse, 'Gen 1:26');
   });
 
