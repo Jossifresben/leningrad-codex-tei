@@ -7,6 +7,7 @@ from pathlib import Path
 from lxml import etree
 
 TEI = "http://www.tei-c.org/ns/1.0"
+REPO_URL = "https://github.com/charlesLoder/leningrad-codex-tei"
 XML_ID = "http://www.w3.org/XML/1998/namespace"
 
 
@@ -22,7 +23,7 @@ def _contributors_and_date(
     Contributors are ``titleStmt/respStmt`` entries other than the pipeline
     one and the static source credits (``source-*``); the date is the latest
     ``revisionDesc/change`` whose ``who``
-    points at such a contributor, falling back to ``application/@when``.
+    points at such a contributor, falling back to the latest change.
     """
     contributors: list[dict] = []
     for el in root_element.iter():
@@ -45,27 +46,37 @@ def _contributors_and_date(
 
     contrib_ids = {c["xml_id"] for c in contributors}
     latest: str | None = None
+    latest_any: str | None = None
     for el in root_element.iter():
         if _local(el) != "change":
             continue
-        who = (el.get("who") or "").lstrip("#")
-        if who not in contrib_ids:
-            continue
         when = el.get("when")
-        if when and (latest is None or when > latest):
+        if not when:
+            continue
+        if latest_any is None or when > latest_any:
+            latest_any = when
+        who = (el.get("who") or "").lstrip("#")
+        if who in contrib_ids and (latest is None or when > latest):
             latest = when
-    if latest is None:
-        app = next(
-            (el for el in root_element.iter() if _local(el) == "application"), None
-        )
-        if app is not None and app.get("when"):
-            latest = app.get("when")
-    return contributors, latest
+    return contributors, latest or latest_any
 
 
-def build_index(output_dir: Path) -> str:
-    """Scan ``output_dir/*.xml`` (excluding index.xml) and produce the index."""
+def build_index(output_dir: Path, version: str | None = None) -> str:
+    """Scan ``output_dir/*.xml`` (excluding index.xml) and produce the index.
+
+    ``version`` is the edition version; when given, the index opens with an
+    ``appInfo/application`` naming it and pointing at its release tag.
+    """
     root = etree.Element("index")
+    if version:
+        app_info = etree.SubElement(root, "appInfo")
+        app = etree.SubElement(app_info, "application")
+        app.set("ident", "leningrad-codex-tei")
+        app.set("version", version)
+        etree.SubElement(app, "label").text = "Leningrad Codex TEI"
+        ptr = etree.SubElement(app, "ptr")
+        ptr.set("type", "release")
+        ptr.set("target", f"{REPO_URL}/releases/tag/v{version}")
     for path in sorted(output_dir.glob("*.xml")):
         if path.stem == "index":
             continue

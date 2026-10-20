@@ -49,6 +49,25 @@ def test_build_index_empty_dir(tmp_path: Path) -> None:
     assert root.findall("entry") == []
 
 
+def test_build_index_records_edition_version(tmp_path: Path) -> None:
+    out = tmp_path / "out"
+    out.mkdir()
+    (out / "001B.xml").write_text(_tei("001B", "Genesis 1:1 – 2:2"))
+
+    root = etree.fromstring(build_index(out, "1.2.3").encode())
+    app = root.find("appInfo/application")
+    assert app.get("ident") == "leningrad-codex-tei"
+    assert app.get("version") == "1.2.3"
+    assert app.find("ptr").get("target").endswith("/releases/tag/v1.2.3")
+    assert len(root.findall("entry")) == 1
+
+
+def test_build_index_omits_app_info_without_version(tmp_path: Path) -> None:
+    out = tmp_path / "out"
+    out.mkdir()
+    assert etree.fromstring(build_index(out).encode()).find("appInfo") is None
+
+
 def _tei_with_contributor(folio: str, verse_range: str) -> str:
     return (
         '<?xml version="1.0" encoding="UTF-8"?>'
@@ -61,8 +80,6 @@ def _tei_with_contributor(folio: str, verse_range: str) -> str:
         "<resp>TEI encoding and alignment</resp>"
         '<persName ref="mailto:scribe@example.org">Test Scribe</persName>'
         "</respStmt></titleStmt></fileDesc>"
-        '<encodingDesc><appInfo><application ident="leningrad-codex-tei" '
-        'version="0.1.0" when="2026-09-12T00:00:02+00:00"/></appInfo></encodingDesc>'
         "<revisionDesc>"
         '<change when="2026-09-12T00:00:01+00:00" who="#leningrad-codex-tei">'
         "Aligned folio.</change>"

@@ -858,8 +858,6 @@ def generate_tei(config: Config, folio: str | None, start_folio: str | None) -> 
                 },
             ),
         )
-        repo = _repo_hash()
-        generate_ts = trail.runs[-1].timestamp if trail.runs else None
         edition = _stream.uxlc_edition
         xml = tei_stage.render_folio_tei(
             folio=page,
@@ -868,9 +866,6 @@ def generate_tei(config: Config, folio: str | None, start_folio: str | None) -> 
             page_milestones=[{"folio": page}],
             changes=tei_stage.changes_from_audit(trail.runs),
             contributors=tei_stage.contributors_from_audit(trail.runs),
-            pipeline_version=config.project_version,
-            repo_hash=repo,
-            generated_when=generate_ts.isoformat() if generate_ts else None,
             source_image=tei_stage.source_image_from_audit(trail.runs),
             uxlc_edition=asdict(edition) if edition else None,
         )
@@ -887,7 +882,9 @@ def build_index(config: Config) -> None:
     dest = config.paths.output / "index.xml"
     dest.parent.mkdir(parents=True, exist_ok=True)
     generated = [p for p in config.paths.output.glob("*.xml") if p.stem != "index"]
-    dest.write_text(index_stage.build_index(config.paths.output))
+    dest.write_text(
+        index_stage.build_index(config.paths.output, config.project_version)
+    )
     update_pipeline_provenance(
         config.paths.provenance,
         config.project_version,

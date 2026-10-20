@@ -1096,7 +1096,7 @@ def _parse_raw_config(config, seed_fixture, word_stream):
     conf.write_text(
         yaml.safe_dump(
             {
-                "project": {"name": "t", "version": "0.1.0-dev"},
+                "project": {"name": "t"},
                 "paths": {k: str(v) for k, v in config.paths.__dict__.items()},
                 "images": {
                     "base_url": "https://example.invalid/",

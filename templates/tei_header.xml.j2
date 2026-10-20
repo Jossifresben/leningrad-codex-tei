@@ -42,14 +42,6 @@
         </msDesc>
       </sourceDesc>
     </fileDesc>
-    <encodingDesc>
-      <appInfo>
-        <application ident="leningrad-codex-tei" version="{{ pipeline_version }}"{% if generated_when %} when="{{ generated_when }}"{% endif %}>
-          <label>Leningrad Codex TEI</label>
-          <ptr target="{{ repo_snapshot_url or repo_hash }}" type="repo-hash"/>
-        </application>
-      </appInfo>
-    </encodingDesc>
     <revisionDesc>
       {% for change in changes %}
       <change when="{{ change.when }}" who="{{ change.who | default('#leningrad-codex-tei', true) }}">{{ change.text }}
