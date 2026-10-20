@@ -5,7 +5,11 @@
   <facsimile>
     <surface xml:id="surf-{{ folio }}">
       {% if source_image %}
-      <graphic url="{{ source_image.url }}"/>
+      <graphic{% if source_image.xml_id %} xml:id="{{ source_image.xml_id }}"{% endif %} url="{{ source_image.url }}">
+        {% if source_image.sha256 %}
+        <desc type="sha256">{{ source_image.sha256 }}</desc>
+        {% endif %}
+      </graphic>
       {% endif %}
     </surface>
   </facsimile>

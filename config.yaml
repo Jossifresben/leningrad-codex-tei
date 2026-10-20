@@ -14,6 +14,7 @@ paths:
 images:
   base_url: "https://manuscripts.sefaria.org/leningrad-color/"
   naming: "BIB_LENCDX_F{folio}.jpg"
+  source: "sefaria"
 
 seed:
   upstream_url: "https://github.com/bdenckla/MAM-basics/"

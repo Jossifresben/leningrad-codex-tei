@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import io
 import json
 import tomllib
@@ -59,6 +60,7 @@ def _write_config(tmp_path: Path) -> Path:
                 "images": {
                     "base_url": "https://example.invalid/",
                     "naming": "BIB_LENCDX_F{folio}.jpg",
+                    "source": "test",
                 },
                 "seed": {
                     "upstream_url": "https://github.com/bdenckla/codex-index-leningrad",
@@ -206,6 +208,8 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
         audit["runs"][0]["input_image_sha256"]
         == "9fcc33dc022d9bd49683e465e4b5134dc7fca46db47a414ea556f724490c1dba"
     )
+    align_run = next(r for r in audit["runs"] if r["stage"] == "align-folio")
+    assert align_run["input_image_sha256"] == hashlib.sha256(JPEG_BYTES).hexdigest()
     assert all("input_hashes" not in r for r in audit["runs"])
     assert all("seed_source" not in r for r in audit["runs"])
 
@@ -249,6 +253,13 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     graphic = root.find(".//t:facsimile/t:surface/t:graphic", ns)
     assert graphic is not None
     assert graphic.get("url").endswith("BIB_LENCDX_F001B.jpg")
+    assert (
+        graphic.find("t:desc[@type='sha256']", ns).text
+        == hashlib.sha256(JPEG_BYTES).hexdigest()
+    )
+    assert graphic.get("{http://www.w3.org/XML/1998/namespace}id") == "f001B-img-test"
+    image_ptrs = root.findall(".//t:revisionDesc/t:change/t:ptr[@type='image']", ns)
+    assert [p.get("target") for p in image_ptrs] == ["#f001B-img-test"]
     surface = root.find(".//t:facsimile/t:surface", ns)
     assert surface is not None
     assert surface.get("{http://www.w3.org/XML/1998/namespace}id") == "surf-001B"

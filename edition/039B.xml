@@ -49,6 +49,7 @@
       </change>
       <change when="2026-09-18T18:24:17.292863+00:00" who="#contrib-charles-w-loder">Aligned folio.
         <ptr type="prompt" target="https://github.com/charlesLoder/leningrad-codex-tei/blob/c79e517b4feb989080bf8627e5958e978ca33ed9/src/leningrad_codex_tei/stages/align.py"/>
+        <ptr type="image" target="#f039B-img-sefaria"/>
         <fs type="ai-params">
           <f name="stage"><string>align-folio</string></f>
           <f name="model"><string>gemini-3.8-flash</string></f>
@@ -65,7 +66,9 @@
   </teiHeader>
   <facsimile>
     <surface xml:id="surf-039B">
-      <graphic url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F039B.jpg"/>
+      <graphic xml:id="f039B-img-sefaria" url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F039B.jpg">
+        <desc type="sha256">9562dafe4d9add5a7f36c123d29d5ce327f501c180cc7c3d292d6ee5e03b9fa7</desc>
+      </graphic>
     </surface>
   </facsimile>
 

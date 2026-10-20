@@ -13,6 +13,8 @@ import yaml
 class ImageConfig:
     base_url: str
     naming: str
+    # short name of the image source; part of each graphic's xml:id
+    source: str | None = None
 
 
 @dataclass
