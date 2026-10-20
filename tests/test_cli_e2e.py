@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import io
 import json
+import tomllib
 import zipfile
 from pathlib import Path
 from unittest.mock import patch
@@ -21,6 +22,9 @@ from leningrad_codex_tei.stages.align import SeedSlice
 from leningrad_codex_tei.util import net
 
 FIXTURES = Path(__file__).parent / "fixtures"
+PYPROJECT_VERSION = tomllib.loads(
+    (Path(__file__).parents[1] / "pyproject.toml").read_text()
+)["project"]["version"]
 JPEG_BYTES = b"\xff\xd8\xff\xe0fake-jpeg\xff\xd9"
 
 
@@ -41,7 +45,7 @@ def _write_config(tmp_path: Path) -> Path:
     conf.write_text(
         yaml.safe_dump(
             {
-                "project": {"name": "leningrad-codex-tei", "version": "0.1.0-dev"},
+                "project": {"name": "leningrad-codex-tei"},
                 "paths": {
                     "uxlc": str(uxlc),
                     "seed": str(tmp_path / "seed" / "lci_recs.json"),
@@ -207,7 +211,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
 
     # pipeline provenance: each corpus-level input recorded exactly once
     prov = json.loads((tmp_path / "provenance.json").read_text())
-    assert prov["project_version"] == "0.1.0-dev"
+    assert prov["project_version"] == PYPROJECT_VERSION
     assert prov["seed"]["records"] == 1
     assert len(prov["seed"]["sha256"]) == 64
     assert len(prov["uxlc"]["zip_sha256"]) == 64
@@ -249,7 +253,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert surface is not None
     assert surface.get("{http://www.w3.org/XML/1998/namespace}id") == "surf-001B"
     assert root.find(".//t:sourceDesc/t:msDesc", ns) is not None
-    assert root.find(".//t:application", ns).get("version") == "0.1.0-dev"
+    assert root.find(".//t:application", ns).get("version") == PYPROJECT_VERSION
     source_uxlc = [
         s
         for s in root.findall(".//t:titleStmt/t:respStmt", ns)

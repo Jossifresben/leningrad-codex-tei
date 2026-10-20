@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -89,6 +90,12 @@ class Config:
     ai: AiConfig
 
 
+def _pyproject_version() -> str:
+    """Edition version: the single source of truth is ``pyproject.toml``."""
+    pyproject = Path(__file__).resolve().parents[2] / "pyproject.toml"
+    return tomllib.loads(pyproject.read_text())["project"]["version"]
+
+
 def load_config(config_path: Path = Path("config.yaml")) -> Config:
     raw = yaml.safe_load(config_path.read_text())
     p = raw["paths"]
@@ -99,7 +106,7 @@ def load_config(config_path: Path = Path("config.yaml")) -> Config:
         ai_raw.pop("service_tier", None)
     return Config(
         project_name=raw["project"]["name"],
-        project_version=raw["project"]["version"],
+        project_version=_pyproject_version(),
         paths=PathsConfig(
             uxlc=Path(p["uxlc"]),
             seed=Path(p["seed"]),
