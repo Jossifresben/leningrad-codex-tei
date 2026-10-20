@@ -40,6 +40,9 @@
     </fileDesc>
     <revisionDesc>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix duplicate xml:id's for blank lines
+      </change>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
       Remove the space left in the word before each paseq.
       </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
@@ -219,9 +222,9 @@
             <w xml:id="f050A-w-32722">וְרַגְלֵיהֶ֖ם</w>
             <w xml:id="f050A-w-32723">וְלֹ֣א</w>
             <w xml:id="f050A-w-32724">יָמֻ֑תוּ</w>
-          <lb xml:id="f050A-lb-1-24" n="25"/>
-          <lb xml:id="f050A-lb-1-24" n="26"/>
-          <lb xml:id="f050A-lb-1-24" n="27"/>
+          <lb xml:id="f050A-lb-1-25" n="25"/>
+          <lb xml:id="f050A-lb-1-26" n="26"/>
+          <lb xml:id="f050A-lb-1-27" n="27"/>
         <cb xml:id="f050A-cb-2" n="2"/>
           <lb xml:id="f050A-lb-2-1" n="1"/>
             <w xml:id="f050A-w-32725">וְהָיְתָ֨ה</w>
