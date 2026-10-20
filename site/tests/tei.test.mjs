@@ -99,4 +99,19 @@ describe('parseFolioXml', () => {
     assert.equal(doc.columns[0].lines[0].tokens[1].kind, 'paseq');
     assert.deepEqual(doc.verses, ['Gen 1:2']);
   });
+
+  it('keeps the inverted nun as its own token kind', () => {
+    const xml = `<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader><fileDesc><titleStmt><title>T</title></titleStmt></fileDesc></teiHeader>
+  <text><body><div type="edition">
+      <cb n="1"/><lb n="1"/>
+      <w xml:id="w1">a</w>
+      <pc type="sof-pasuq" xml:id="p1">׃</pc>
+      <pc type="inverted-nun" xml:id="p2">׆</pc>
+    </div></body></text>
+</TEI>`;
+    const doc = parseFolioXml(xml);
+    const kinds = doc.columns[0].lines[0].tokens.map((t) => t.kind);
+    assert.deepEqual(kinds, ['w', 'sof-pasuq', 'inverted-nun']);
+  });
 });
