@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -369,7 +372,7 @@
             <w xml:id="f010A-w-6037">קֹרָתִֽי</w>
             <pc type="sof-pasuq" xml:id="f010A-pc-6037">׃</pc>
             <milestone unit="verse" n="Genesis-19-9" xml:id="f010A-v-Genesis-19-9"/>
-            <w xml:id="f010A-w-6038">וַיֹּאמְר֣וּ </w>
+            <w xml:id="f010A-w-6038">וַיֹּאמְר֣וּ</w>
             <pc type="paseq" xml:id="f010A-pc-6038">׀</pc>
           <lb xml:id="f010A-lb-2-24" n="24"/>
             <w xml:id="f010A-w-6039">גֶּשׁ־</w>
@@ -480,10 +483,10 @@
             <milestone unit="verse" n="Genesis-19-14" xml:id="f010A-v-Genesis-19-14"/>
             <w xml:id="f010A-w-6116">וַיֵּצֵ֨א</w>
             <w xml:id="f010A-w-6117">ל֜וֹט</w>
-            <w xml:id="f010A-w-6118">וַיְדַבֵּ֣ר </w>
+            <w xml:id="f010A-w-6118">וַיְדַבֵּ֣ר</w>
             <pc type="paseq" xml:id="f010A-pc-6118">׀</pc>
             <w xml:id="f010A-w-6119">אֶל־</w>
-            <w xml:id="f010A-w-6120">חֲתָנָ֣יו </w>
+            <w xml:id="f010A-w-6120">חֲתָנָ֣יו</w>
             <pc type="paseq" xml:id="f010A-pc-6120">׀</pc>
           <lb xml:id="f010A-lb-3-16" n="16"/>
             <w xml:id="f010A-w-6121">לֹקְחֵ֣י</w>
@@ -534,7 +537,7 @@
             <w xml:id="f010A-w-6156">הָעִֽיר</w>
             <pc type="sof-pasuq" xml:id="f010A-pc-6156">׃</pc>
             <milestone unit="verse" n="Genesis-19-16" xml:id="f010A-v-Genesis-19-16"/>
-            <w xml:id="f010A-w-6157">וֽ͏ַיִּתְמַהְמָ֓הּ </w>
+            <w xml:id="f010A-w-6157">וֽ͏ַיִּתְמַהְמָ֓הּ</w>
             <pc type="paseq" xml:id="f010A-pc-6157">׀</pc>
           <lb xml:id="f010A-lb-3-25" n="25"/>
             <w xml:id="f010A-w-6158">וַיַּחֲזִ֨קוּ</w>

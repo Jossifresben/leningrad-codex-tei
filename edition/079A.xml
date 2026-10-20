@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -169,7 +172,7 @@
             <w xml:id="f079A-w-52735">שֶׁ֖קֶל</w>
             <w xml:id="f079A-w-52736">בְּשֶׁ֣קֶל</w>
             <w xml:id="f079A-w-52737">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f079A-w-52738">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f079A-w-52738">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f079A-pc-52738">׀</pc>
           <lb xml:id="f079A-lb-1-16" n="16"/>
             <w xml:id="f079A-w-52739">מְלֵאִ֗ים</w>
@@ -266,7 +269,7 @@
             <w xml:id="f079A-w-52802">בְּשֶׁ֣קֶל</w>
           <lb xml:id="f079A-lb-2-6" n="6"/>
             <w xml:id="f079A-w-52803">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f079A-w-52804">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f079A-w-52804">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f079A-pc-52804">׀</pc>
             <w xml:id="f079A-w-52805">מְלֵאִ֗ים</w>
             <w xml:id="f079A-w-52806">סֹ֛לֶת</w>
@@ -363,7 +366,7 @@
             <w xml:id="f079A-w-52868">בְּשֶׁ֣קֶל</w>
           <lb xml:id="f079A-lb-2-23" n="23"/>
             <w xml:id="f079A-w-52869">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f079A-w-52870">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f079A-w-52870">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f079A-pc-52870">׀</pc>
             <w xml:id="f079A-w-52871">מְלֵאִ֗ים</w>
           <lb xml:id="f079A-lb-2-24" n="24"/>
@@ -462,7 +465,7 @@
             <w xml:id="f079A-w-52934">שֶׁ֖קֶל</w>
             <w xml:id="f079A-w-52935">בְּשֶׁ֣קֶל</w>
             <w xml:id="f079A-w-52936">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f079A-w-52937">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f079A-w-52937">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f079A-pc-52937">׀</pc>
           <lb xml:id="f079A-lb-3-15" n="15"/>
             <w xml:id="f079A-w-52938">מְלֵאִ֗ים</w>

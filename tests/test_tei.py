@@ -566,6 +566,12 @@ def test_split_trailing_punct() -> None:
         [("׀", "paseq"), ("׃", "sof-pasuq")],
     )
     assert split_trailing_punct("") == ("", [])
+    # UXLC puts a space before the paseq; it must not stay in the word
+    assert split_trailing_punct("אֱלֹהִים ׀") == ("אֱלֹהִים", [("׀", "paseq")])
+    assert split_trailing_punct("אֱלֹהִים ׀ ׃") == (
+        "אֱלֹהִים",
+        [("׀", "paseq"), ("׃", "sof-pasuq")],
+    )
 
 
 def test_pc_follows_its_word_in_document_order(alignment, changes) -> None:

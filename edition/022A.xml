@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-19" who="#contrib-charles-w-loder">
       Fix incorrect pe and samekh milestone placement
       </change>
@@ -268,7 +271,7 @@
             <pc type="sof-pasuq" xml:id="f022A-pc-14042">׃</pc>
           <lb xml:id="f022A-lb-2-4" n="4"/>
             <milestone unit="verse" n="Genesis-36-12" xml:id="f022A-v-Genesis-36-12"/>
-            <w xml:id="f022A-w-14043">וְתִמְנַ֣ע </w>
+            <w xml:id="f022A-w-14043">וְתִמְנַ֣ע</w>
             <pc type="paseq" xml:id="f022A-pc-14043">׀</pc>
             <w xml:id="f022A-w-14044">הָיְתָ֣ה</w>
             <w xml:id="f022A-w-14045">פִילֶ֗גֶשׁ</w>

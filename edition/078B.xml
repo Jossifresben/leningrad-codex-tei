@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
       Add missing blank lines.
       </change>
@@ -142,7 +145,7 @@
             <w xml:id="f078B-w-52380">הַלְוִיִּֽם</w>
             <pc type="sof-pasuq" xml:id="f078B-pc-52380">׃</pc>
             <milestone unit="verse" n="Numbers-7-7" xml:id="f078B-v-Numbers-7-7"/>
-            <w xml:id="f078B-w-52381">אֵ֣ת </w>
+            <w xml:id="f078B-w-52381">אֵ֣ת</w>
             <pc type="paseq" xml:id="f078B-pc-52381">׀</pc>
             <w xml:id="f078B-w-52382">שְׁתֵּ֣י</w>
           <lb xml:id="f078B-lb-1-10" n="10"/>
@@ -159,7 +162,7 @@
             <pc type="sof-pasuq" xml:id="f078B-pc-52391">׃</pc>
           <lb xml:id="f078B-lb-1-12" n="12"/>
             <milestone unit="verse" n="Numbers-7-8" xml:id="f078B-v-Numbers-7-8"/>
-            <w xml:id="f078B-w-52392">וְאֵ֣ת </w>
+            <w xml:id="f078B-w-52392">וְאֵ֣ת</w>
             <pc type="paseq" xml:id="f078B-pc-52392">׀</pc>
             <w xml:id="f078B-w-52393">אַרְבַּ֣ע</w>
             <w xml:id="f078B-w-52394">הָעֲגָלֹ֗ת</w>
@@ -271,7 +274,7 @@
           <lb xml:id="f078B-lb-2-4" n="4"/>
             <w xml:id="f078B-w-52470">בְּשֶׁ֣קֶל</w>
             <w xml:id="f078B-w-52471">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f078B-w-52472">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f078B-w-52472">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f078B-pc-52472">׀</pc>
             <w xml:id="f078B-w-52473">מְלֵאִ֗ים</w>
           <lb xml:id="f078B-lb-2-5" n="5"/>
@@ -369,7 +372,7 @@
             <w xml:id="f078B-w-52537">שֶׁ֖קֶל</w>
             <w xml:id="f078B-w-52538">בְּשֶׁ֣קֶל</w>
             <w xml:id="f078B-w-52539">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f078B-w-52540">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f078B-w-52540">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f078B-pc-52540">׀</pc>
           <lb xml:id="f078B-lb-2-21" n="21"/>
             <w xml:id="f078B-w-52541">מְלֵאִ֗ים</w>
@@ -467,7 +470,7 @@
             <w xml:id="f078B-w-52604">בְּשֶׁ֣קֶל</w>
           <lb xml:id="f078B-lb-3-10" n="10"/>
             <w xml:id="f078B-w-52605">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f078B-w-52606">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f078B-w-52606">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f078B-pc-52606">׀</pc>
             <w xml:id="f078B-w-52607">מְלֵאִ֗ים</w>
           <lb xml:id="f078B-lb-3-11" n="11"/>
@@ -563,7 +566,7 @@
             <w xml:id="f078B-w-52669">שֶׁ֖קֶל</w>
             <w xml:id="f078B-w-52670">בְּשֶׁ֣קֶל</w>
             <w xml:id="f078B-w-52671">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f078B-w-52672">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f078B-w-52672">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f078B-pc-52672">׀</pc>
           <lb xml:id="f078B-lb-3-27" n="27"/>
             <w xml:id="f078B-w-52673">מְלֵאִ֗ים</w>

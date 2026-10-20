@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
       Add missing blank lines.
       </change>
@@ -349,7 +352,7 @@
             <milestone unit="verse" n="Numbers-26-2" xml:id="f091A-v-Numbers-26-2"/>
             <w xml:id="f091A-w-60982">שְׂא֞וּ</w>
             <w xml:id="f091A-w-60983">אֶת־</w>
-            <w xml:id="f091A-w-60984">רֹ֣אשׁ </w>
+            <w xml:id="f091A-w-60984">רֹ֣אשׁ</w>
             <pc type="paseq" xml:id="f091A-pc-60984">׀</pc>
           <lb xml:id="f091A-lb-2-19" n="19"/>
             <w xml:id="f091A-w-60985">כָּל־</w>

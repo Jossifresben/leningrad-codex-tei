@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
       Move words to correct lines
       </change>
@@ -383,7 +386,7 @@
             <w xml:id="f080B-w-53852">אִ֣ישׁ</w>
             <w xml:id="f080B-w-53853">כִּי־</w>
             <w xml:id="f080B-w-53854">יִהְיֶֽה־</w>
-            <w xml:id="f080B-w-53855">טָמֵ֣א </w>
+            <w xml:id="f080B-w-53855">טָמֵ֣א</w>
             <pc type="paseq" xml:id="f080B-pc-53855">׀</pc>
           <lb xml:id="f080B-lb-2-26" n="26"/>
             <w xml:id="f080B-w-53856">לָנֶ֡פֶשׁ</w>
@@ -455,7 +458,7 @@
             <w xml:id="f080B-w-53904">הַנֶּ֥פֶשׁ</w>
             <w xml:id="f080B-w-53905">הַהִ֖וא</w>
             <w xml:id="f080B-w-53906">מֵֽעַמֶּ֑יהָ</w>
-            <w xml:id="f080B-w-53907">כִּ֣י </w>
+            <w xml:id="f080B-w-53907">כִּ֣י</w>
             <pc type="paseq" xml:id="f080B-pc-53907">׀</pc>
           <lb xml:id="f080B-lb-3-11" n="11"/>
             <w xml:id="f080B-w-53908">קָרְבַּ֣ן</w>

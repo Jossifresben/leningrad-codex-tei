@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -431,7 +434,7 @@
             <milestone unit="verse" n="Numbers-6-20" xml:id="f078A-v-Numbers-6-20"/>
             <w xml:id="f078A-w-52213">וְהֵנִיף֩</w>
             <w xml:id="f078A-w-52214">אוֹתָ֨ם</w>
-            <w xml:id="f078A-w-52215">הַכֹּהֵ֥ן </w>
+            <w xml:id="f078A-w-52215">הַכֹּהֵ֥ן</w>
             <pc type="paseq" xml:id="f078A-pc-52215">׀</pc>
           <lb xml:id="f078A-lb-2-26" n="26"/>
             <w xml:id="f078A-w-52216">תְּנוּפָה֮</w>
@@ -521,7 +524,7 @@
           <lb xml:id="f078A-lb-3-12" n="12"/>
             <milestone unit="verse" n="Numbers-6-25" xml:id="f078A-v-Numbers-6-25"/>
             <w xml:id="f078A-w-52275">יָאֵ֨ר</w>
-            <w xml:id="f078A-w-52276">יְהוָ֧ה </w>
+            <w xml:id="f078A-w-52276">יְהוָ֧ה</w>
             <pc type="paseq" xml:id="f078A-pc-52276">׀</pc>
             <w xml:id="f078A-w-52277">פָּנָ֛יו</w>
           <lb xml:id="f078A-lb-3-13" n="13"/>
@@ -532,7 +535,7 @@
           <lb xml:id="f078A-lb-3-14" n="14"/>
             <milestone unit="verse" n="Numbers-6-26" xml:id="f078A-v-Numbers-6-26"/>
             <w xml:id="f078A-w-52280">יִשָּׂ֨א</w>
-            <w xml:id="f078A-w-52281">יְהוָ֤ה </w>
+            <w xml:id="f078A-w-52281">יְהוָ֤ה</w>
             <pc type="paseq" xml:id="f078A-pc-52281">׀</pc>
             <w xml:id="f078A-w-52282">פָּנָיו֙</w>
             <w xml:id="f078A-w-52283">אֵלֶ֔יךָ</w>

@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -309,16 +312,16 @@
             <milestone unit="verse" n="Genesis-18-15" xml:id="f009B-v-Genesis-18-15"/>
             <w xml:id="f009B-w-5658">וַתְּכַחֵ֨שׁ</w>
           <lb xml:id="f009B-lb-2-13" n="13"/>
-            <w xml:id="f009B-w-5659">שָׂרָ֧ה </w>
+            <w xml:id="f009B-w-5659">שָׂרָ֧ה</w>
             <pc type="paseq" xml:id="f009B-pc-5659">׀</pc>
             <w xml:id="f009B-w-5660">לֵאמֹ֛ר</w>
             <w xml:id="f009B-w-5661">לֹ֥א</w>
             <w xml:id="f009B-w-5662">צָחַ֖קְתִּי</w>
           <lb xml:id="f009B-lb-2-14" n="14"/>
-            <w xml:id="f009B-w-5663">כִּ֣י </w>
+            <w xml:id="f009B-w-5663">כִּ֣י</w>
             <pc type="paseq" xml:id="f009B-pc-5663">׀</pc>
             <w xml:id="f009B-w-5664">יָרֵ֑אָה</w>
-            <w xml:id="f009B-w-5665">וַיֹּ֥אמֶ֥ר </w>
+            <w xml:id="f009B-w-5665">וַיֹּ֥אמֶ֥ר</w>
             <pc type="paseq" xml:id="f009B-pc-5665">׀</pc>
             <w xml:id="f009B-w-5666">לֹ֖א</w>
             <w xml:id="f009B-w-5667">כִּ֥י</w>
@@ -427,7 +430,7 @@
             <w xml:id="f009B-w-5739">הַבָּ֥אָה</w>
           <lb xml:id="f009B-lb-3-6" n="6"/>
             <w xml:id="f009B-w-5740">אֵלַ֖י</w>
-            <w xml:id="f009B-w-5741">עָשׂ֣וּ </w>
+            <w xml:id="f009B-w-5741">עָשׂ֣וּ</w>
             <pc type="paseq" xml:id="f009B-pc-5741">׀</pc>
             <w xml:id="f009B-w-5742">כָּלָ֑ה</w>
             <w xml:id="f009B-w-5743">וְאִם־</w>
@@ -487,7 +490,7 @@
             <w xml:id="f009B-w-5780">חָלִ֨לָה</w>
             <w xml:id="f009B-w-5781">לְּךָ֜</w>
           <lb xml:id="f009B-lb-3-16" n="16"/>
-            <w xml:id="f009B-w-5782">מֵעֲשֹׂ֣ת </w>
+            <w xml:id="f009B-w-5782">מֵעֲשֹׂ֣ת</w>
             <pc type="paseq" xml:id="f009B-pc-5782">׀</pc>
             <w xml:id="f009B-w-5783">כַּדָּבָ֣ר</w>
             <w xml:id="f009B-w-5784">הַזֶּ֗ה</w>

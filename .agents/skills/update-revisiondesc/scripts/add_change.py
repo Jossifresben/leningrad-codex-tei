@@ -61,7 +61,9 @@ def resolve_path(arg: str) -> Path:
     return Path(arg)
 
 
-def add_resp_stmt(text: str, xml_id: str, name: str, email: str | None, resp: str) -> str:
+def add_resp_stmt(
+    text: str, xml_id: str, name: str, email: str | None, resp: str
+) -> str:
     stmts = list(RESP_STMT_RE.finditer(text))
     if not stmts:
         raise ValueError("no respStmt found; cannot add contributor")

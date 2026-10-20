@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-19" who="#contrib-charles-w-loder">
       Fix incorrect pe and samekh milestone placement
       </change>
@@ -319,7 +322,7 @@
             <w xml:id="f086B-w-57873">וּבַבְּהֵמָ֖ה</w>
             <w xml:id="f086B-w-57874">יִֽהְיֶה־</w>
             <w xml:id="f086B-w-57875">לָּ֑ךְ</w>
-            <w xml:id="f086B-w-57876">אַ֣ךְ </w>
+            <w xml:id="f086B-w-57876">אַ֣ךְ</w>
             <pc type="paseq" xml:id="f086B-pc-57876">׀</pc>
             <w xml:id="f086B-w-57877">פָּדֹ֣ה</w>
           <lb xml:id="f086B-lb-2-18" n="18"/>
@@ -401,7 +404,7 @@
             <w xml:id="f086B-w-57933">יִהְיֶֽה</w>
             <pc type="sof-pasuq" xml:id="f086B-pc-57933">׃</pc>
             <milestone unit="verse" n="Numbers-18-19" xml:id="f086B-v-Numbers-18-19"/>
-            <w xml:id="f086B-w-57934">כֹּ֣ל </w>
+            <w xml:id="f086B-w-57934">כֹּ֣ל</w>
             <pc type="paseq" xml:id="f086B-pc-57934">׀</pc>
             <w xml:id="f086B-w-57935">תְּרוּמֹ֣ת</w>
           <lb xml:id="f086B-lb-3-5" n="5"/>

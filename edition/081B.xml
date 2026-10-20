@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-19" who="#contrib-charles-w-loder">
       Add inverted nun marks
       </change>
@@ -174,7 +177,7 @@
           <lb xml:id="f081B-lb-1-15" n="15"/>
             <w xml:id="f081B-w-54361">חֹתֵ֣ן</w>
             <w xml:id="f081B-w-54362">מֹשֶׁה֒</w>
-            <w xml:id="f081B-w-54363">נֹסְעִ֣ים </w>
+            <w xml:id="f081B-w-54363">נֹסְעִ֣ים</w>
             <pc type="paseq" xml:id="f081B-pc-54363">׀</pc>
             <w xml:id="f081B-w-54364">אֲנַ֗חְנוּ</w>
           <lb xml:id="f081B-lb-1-16" n="16"/>
@@ -223,7 +226,7 @@
             <w xml:id="f081B-w-54397">תַּעֲזֹ֣ב</w>
             <w xml:id="f081B-w-54398">אֹתָ֑נוּ</w>
           <lb xml:id="f081B-lb-1-23" n="23"/>
-            <w xml:id="f081B-w-54399">כִּ֣י </w>
+            <w xml:id="f081B-w-54399">כִּ֣י</w>
             <pc type="paseq" xml:id="f081B-pc-54399">׀</pc>
             <w xml:id="f081B-w-54400">עַל־</w>
             <w xml:id="f081B-w-54401">כֵּ֣ן</w>
@@ -241,7 +244,7 @@
           <lb xml:id="f081B-lb-1-25" n="25"/>
             <w xml:id="f081B-w-54410">תֵלֵ֣ךְ</w>
             <w xml:id="f081B-w-54411">עִמָּ֑נוּ</w>
-            <w xml:id="f081B-w-54412">וְהָיָ֣ה </w>
+            <w xml:id="f081B-w-54412">וְהָיָ֣ה</w>
             <pc type="paseq" xml:id="f081B-pc-54412">׀</pc>
             <w xml:id="f081B-w-54413">הַטּ֣וֹב</w>
             <w xml:id="f081B-w-54414">הַה֗וּא</w>
@@ -299,7 +302,7 @@
           <lb xml:id="f081B-lb-2-8" n="8"/>
             <w xml:id="f081B-w-54448">וַיֹּ֣אמֶר</w>
             <w xml:id="f081B-w-54449">מֹשֶׁ֑ה</w>
-            <w xml:id="f081B-w-54450">קוּמָ֣ה </w>
+            <w xml:id="f081B-w-54450">קוּמָ֣ה</w>
             <pc type="paseq" xml:id="f081B-pc-54450">׀</pc>
             <w xml:id="f081B-w-54451">יְהוָ֗ה</w>
           <lb xml:id="f081B-lb-2-9" n="9"/>

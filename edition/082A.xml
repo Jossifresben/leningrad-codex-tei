@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
       Add missing blank lines.
       </change>
@@ -107,7 +110,7 @@
           <lb xml:id="f082A-lb-1-4" n="4"/>
             <milestone unit="verse" n="Numbers-11-15" xml:id="f082A-v-Numbers-11-15"/>
             <w xml:id="f082A-w-54660">וְאִם־</w>
-            <w xml:id="f082A-w-54661">כָּ֣כָה </w>
+            <w xml:id="f082A-w-54661">כָּ֣כָה</w>
             <pc type="paseq" xml:id="f082A-pc-54661">׀</pc>
             <w xml:id="f082A-w-54662">אַתְּ־</w>
             <w xml:id="f082A-w-54663">עֹ֣שֶׂה</w>
@@ -227,7 +230,7 @@
             <w xml:id="f082A-w-54747">וְלֹ֣א</w>
             <w xml:id="f082A-w-54748">יוֹמָ֑יִם</w>
           <lb xml:id="f082A-lb-1-26" n="26"/>
-            <w xml:id="f082A-w-54749">וְלֹ֣א </w>
+            <w xml:id="f082A-w-54749">וְלֹ֣א</w>
             <pc type="paseq" xml:id="f082A-pc-54749">׀</pc>
             <w xml:id="f082A-w-54750">חֲמִשָּׁ֣ה</w>
             <w xml:id="f082A-w-54751">יָמִ֗ים</w>
@@ -242,7 +245,7 @@
         <cb xml:id="f082A-cb-2" n="2"/>
           <lb xml:id="f082A-lb-2-1" n="1"/>
             <milestone unit="verse" n="Numbers-11-20" xml:id="f082A-v-Numbers-11-20"/>
-            <w xml:id="f082A-w-54758">עַ֣ד </w>
+            <w xml:id="f082A-w-54758">עַ֣ד</w>
             <pc type="paseq" xml:id="f082A-pc-54758">׀</pc>
             <w xml:id="f082A-w-54759">חֹ֣דֶשׁ</w>
             <w xml:id="f082A-w-54760">יָמִ֗ים</w>
@@ -363,7 +366,7 @@
             <pc type="sof-pasuq" xml:id="f082A-pc-54844">׃</pc>
             <milestone unit="verse" n="Numbers-11-25" xml:id="f082A-v-Numbers-11-25"/>
             <w xml:id="f082A-w-54845">וַיֵּ֨רֶד</w>
-            <w xml:id="f082A-w-54846">יְהוָ֥ה </w>
+            <w xml:id="f082A-w-54846">יְהוָ֥ה</w>
             <pc type="paseq" xml:id="f082A-pc-54846">׀</pc>
           <lb xml:id="f082A-lb-2-23" n="23"/>
             <w xml:id="f082A-w-54847">בֶּעָנָן֮</w>
@@ -396,12 +399,12 @@
             <milestone unit="verse" n="Numbers-11-26" xml:id="f082A-v-Numbers-11-26"/>
             <w xml:id="f082A-w-54867">וַיִשָּׁאֲר֣וּ</w>
             <w xml:id="f082A-w-54868">שְׁנֵֽי־</w>
-            <w xml:id="f082A-w-54869">אֲנָשִׁ֣ים </w>
+            <w xml:id="f082A-w-54869">אֲנָשִׁ֣ים</w>
             <pc type="paseq" xml:id="f082A-pc-54869">׀</pc>
             <w xml:id="f082A-w-54870">בַּֽמַּחֲנֶ֡ה</w>
           <lb xml:id="f082A-lb-3-2" n="2"/>
             <w xml:id="f082A-w-54871">שֵׁ֣ם</w>
-            <w xml:id="f082A-w-54872">הָאֶחָ֣ד </w>
+            <w xml:id="f082A-w-54872">הָאֶחָ֣ד</w>
             <pc type="paseq" xml:id="f082A-pc-54872">׀</pc>
             <w xml:id="f082A-w-54873">אֶלְדָּ֡ד</w>
             <w xml:id="f082A-w-54874">וְשֵׁם֩</w>
@@ -488,7 +491,7 @@
           <lb xml:id="f082A-lb-3-17" n="17"/>
             <milestone unit="verse" n="Numbers-11-31" xml:id="f082A-v-Numbers-11-31"/>
             <w xml:id="f082A-w-54932">וְר֜וּחַ</w>
-            <w xml:id="f082A-w-54933">נָסַ֣ע </w>
+            <w xml:id="f082A-w-54933">נָסַ֣ע</w>
             <pc type="paseq" xml:id="f082A-pc-54933">׀</pc>
             <w xml:id="f082A-w-54934">מֵאֵ֣ת</w>
             <w xml:id="f082A-w-54935">יְהוָ֗ה</w>
@@ -526,7 +529,7 @@
           <lb xml:id="f082A-lb-3-23" n="23"/>
             <w xml:id="f082A-w-54960">וְכָל־</w>
             <w xml:id="f082A-w-54961">הַלַּ֜יְלָה</w>
-            <w xml:id="f082A-w-54962">וְכֹ֣ל </w>
+            <w xml:id="f082A-w-54962">וְכֹ֣ל</w>
             <pc type="paseq" xml:id="f082A-pc-54962">׀</pc>
             <w xml:id="f082A-w-54963">י֣וֹם</w>
             <w xml:id="f082A-w-54964">הַֽמָּחֳרָ֗ת</w>
