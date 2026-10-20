@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-09-19" who="#contrib-charles-w-loder">
+      Add missing blank lines.
+      </change>
       <change when="2026-09-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -171,6 +174,7 @@
             <pc type="sof-pasuq" xml:id="f040B-pc-26543">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f040B-s-Exodus-15-19"/>
           <lb xml:id="f040B-lb-1-11" n="11"/>
+          <lb xml:id="f040B-lb-1-12" n="12"/>
             <milestone unit="verse" n="Exodus-15-20" xml:id="f040B-v-Exodus-15-20"/>
             <w xml:id="f040B-w-26544">וַתִּקַּח֩</w>
             <w xml:id="f040B-w-26545">מִרְיָ֨ם</w>
@@ -183,7 +187,7 @@
             <w xml:id="f040B-w-26552">וַתֵּצֶ֤אןָ</w>
             <w xml:id="f040B-w-26553">כָֽל־</w>
             <w xml:id="f040B-w-26554">הַנָּשִׁים֙</w>
-          <lb xml:id="f040B-lb-1-12" n="12"/>
+          <lb xml:id="f040B-lb-1-13" n="13"/>
             <w xml:id="f040B-w-26555">אַחֲרֶ֔יהָ</w>
             <w xml:id="f040B-w-26556">בְּתֻפִּ֖ים</w>
             <w xml:id="f040B-w-26557">וּבִמְחֹלֹֽת</w>
@@ -199,7 +203,7 @@
             <w xml:id="f040B-w-26565">גָּאָ֔ה</w>
             <w xml:id="f040B-w-26566">ס֥וּס</w>
             <w xml:id="f040B-w-26567">וְרֹכְב֖וֹ</w>
-          <lb xml:id="f040B-lb-1-13" n="13"/>
+          <lb xml:id="f040B-lb-1-14" n="14"/>
             <w xml:id="f040B-w-26568">רָמָ֥ה</w>
             <w xml:id="f040B-w-26569">בַיָּֽם</w>
             <pc type="sof-pasuq" xml:id="f040B-pc-26569">׃</pc>
@@ -213,7 +217,7 @@
             <w xml:id="f040B-w-26575">ס֔וּף</w>
             <w xml:id="f040B-w-26576">וַיֵּצְא֖וּ</w>
             <w xml:id="f040B-w-26577">אֶל־</w>
-          <lb xml:id="f040B-lb-1-14" n="14"/>
+          <lb xml:id="f040B-lb-1-15" n="15"/>
             <w xml:id="f040B-w-26578">מִדְבַּר־</w>
             <w xml:id="f040B-w-26579">שׁ֑וּר</w>
             <w xml:id="f040B-w-26580">וַיֵּלְכ֧וּ</w>
@@ -228,7 +232,7 @@
             <w xml:id="f040B-w-26587">וַיָּבֹ֣אוּ</w>
             <w xml:id="f040B-w-26588">מָרָ֔תָה</w>
             <w xml:id="f040B-w-26589">וְלֹ֣א</w>
-          <lb xml:id="f040B-lb-1-15" n="15"/>
+          <lb xml:id="f040B-lb-1-16" n="16"/>
             <w xml:id="f040B-w-26590">יָֽכְל֗וּ</w>
             <w xml:id="f040B-w-26591">לִשְׁתֹּ֥ת</w>
             <w xml:id="f040B-w-26592">מַ֙יִם֙</w>
@@ -245,7 +249,7 @@
             <milestone unit="verse" n="Exodus-15-24" xml:id="f040B-v-Exodus-15-24"/>
             <w xml:id="f040B-w-26602">וַיִּלֹּ֧נוּ</w>
             <w xml:id="f040B-w-26603">הָעָ֛ם</w>
-          <lb xml:id="f040B-lb-1-16" n="16"/>
+          <lb xml:id="f040B-lb-1-17" n="17"/>
             <w xml:id="f040B-w-26604">עַל־</w>
             <w xml:id="f040B-w-26605">מֹשֶׁ֥ה</w>
             <w xml:id="f040B-w-26606">לֵּאמֹ֖ר</w>
@@ -261,7 +265,7 @@
             <w xml:id="f040B-w-26614">עֵ֔ץ</w>
             <w xml:id="f040B-w-26615">וַיַּשְׁלֵךְ֙</w>
             <w xml:id="f040B-w-26616">אֶל־</w>
-          <lb xml:id="f040B-lb-1-17" n="17"/>
+          <lb xml:id="f040B-lb-1-18" n="18"/>
             <w xml:id="f040B-w-26617">הַמַּ֔יִם</w>
             <w xml:id="f040B-w-26618">וַֽיִּמְתְּק֖וּ</w>
             <w xml:id="f040B-w-26619">הַמָּ֑יִם</w>
@@ -277,7 +281,7 @@
             <w xml:id="f040B-w-26627">וַיֹּאמֶר֩</w>
             <w xml:id="f040B-w-26628">אִם־</w>
             <w xml:id="f040B-w-26629">שָׁמ֨וֹעַ</w>
-          <lb xml:id="f040B-lb-1-18" n="18"/>
+          <lb xml:id="f040B-lb-1-19" n="19"/>
             <w xml:id="f040B-w-26630">תִּשְׁמַ֜ע</w>
             <w xml:id="f040B-w-26631">לְק֣וֹל </w>
             <pc type="paseq" xml:id="f040B-pc-26631">׀</pc>
@@ -288,7 +292,7 @@
             <w xml:id="f040B-w-26636">תַּעֲשֶׂ֔ה</w>
             <w xml:id="f040B-w-26637">וְהֽ͏ַאֲזַנְתָּ֙</w>
             <w xml:id="f040B-w-26638">לְמִצְוֺתָ֔יו</w>
-          <lb xml:id="f040B-lb-1-19" n="19"/>
+          <lb xml:id="f040B-lb-1-20" n="20"/>
             <w xml:id="f040B-w-26639">וְשָׁמַרְתָּ֖</w>
             <w xml:id="f040B-w-26640">כָּל־</w>
             <w xml:id="f040B-w-26641">חֻקָּ֑יו</w>
@@ -300,7 +304,7 @@
             <w xml:id="f040B-w-26647">לֹא־</w>
             <w xml:id="f040B-w-26648">אָשִׂ֣ים</w>
             <w xml:id="f040B-w-26649">עָלֶ֔יךָ</w>
-          <lb xml:id="f040B-lb-1-20" n="20"/>
+          <lb xml:id="f040B-lb-1-21" n="21"/>
             <w xml:id="f040B-w-26650">כִּ֛י</w>
             <w xml:id="f040B-w-26651">אֲנִ֥י</w>
             <w xml:id="f040B-w-26652">יְהוָ֖ה</w>
@@ -312,7 +316,7 @@
             <w xml:id="f040B-w-26655">אֵילִ֔מָה</w>
             <w xml:id="f040B-w-26656">וְשָׁ֗ם</w>
             <w xml:id="f040B-w-26657">שְׁתֵּ֥ים</w>
-          <lb xml:id="f040B-lb-1-21" n="21"/>
+          <lb xml:id="f040B-lb-1-22" n="22"/>
             <w xml:id="f040B-w-26658">עֶשְׂרֵ֛ה</w>
             <w xml:id="f040B-w-26659">עֵינֹ֥ת</w>
             <w xml:id="f040B-w-26660">מַ֖יִם</w>
@@ -326,7 +330,7 @@
             <milestone unit="verse" n="Exodus-16-1" xml:id="f040B-v-Exodus-16-1"/>
             <w xml:id="f040B-w-26667">וַיִּסְעוּ֙</w>
             <w xml:id="f040B-w-26668">מֵֽאֵילִ֔ם</w>
-          <lb xml:id="f040B-lb-1-22" n="22"/>
+          <lb xml:id="f040B-lb-1-23" n="23"/>
             <w xml:id="f040B-w-26669">וַיָּבֹ֜אוּ</w>
             <w xml:id="f040B-w-26670">כָּל־</w>
             <w xml:id="f040B-w-26671">עֲדַ֤ת</w>
@@ -340,7 +344,7 @@
             <w xml:id="f040B-w-26679">אֵילִ֖ם</w>
             <w xml:id="f040B-w-26680">וּבֵ֣ין</w>
             <w xml:id="f040B-w-26681">סִינָ֑י</w>
-          <lb xml:id="f040B-lb-1-23" n="23"/>
+          <lb xml:id="f040B-lb-1-24" n="24"/>
             <w xml:id="f040B-w-26682">בַּחֲמִשָּׁ֨ה</w>
             <w xml:id="f040B-w-26683">עָשָׂ֥ר</w>
             <w xml:id="f040B-w-26684">יוֹם֙</w>
@@ -352,7 +356,7 @@
             <pc type="sof-pasuq" xml:id="f040B-pc-26689">׃</pc>
             <milestone unit="verse" n="Exodus-16-2" xml:id="f040B-v-Exodus-16-2"/>
             <w xml:id="f040B-w-26690">וילינו</w>
-          <lb xml:id="f040B-lb-1-24" n="24"/>
+          <lb xml:id="f040B-lb-1-25" n="25"/>
             <w xml:id="f040B-w-26691">כָּל־</w>
             <w xml:id="f040B-w-26692">עֲדַ֧ת</w>
             <w xml:id="f040B-w-26693">בְּנֵי־</w>
@@ -366,7 +370,7 @@
             <milestone unit="verse" n="Exodus-16-3" xml:id="f040B-v-Exodus-16-3"/>
             <w xml:id="f040B-w-26700">וַיֹּאמְר֨וּ</w>
             <w xml:id="f040B-w-26701">אֲלֵהֶ֜ם</w>
-          <lb xml:id="f040B-lb-1-25" n="25"/>
+          <lb xml:id="f040B-lb-1-26" n="26"/>
             <w xml:id="f040B-w-26702">בְּנֵ֣י</w>
             <w xml:id="f040B-w-26703">יִשְׂרָאֵ֗ל</w>
             <w xml:id="f040B-w-26704">מִֽי־</w>

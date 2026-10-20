@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-09-19" who="#contrib-charles-w-loder">
+      Add missing blank lines.
+      </change>
       <change when="2026-09-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -234,18 +237,19 @@
             <pc type="sof-pasuq" xml:id="f068A-pc-45262">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f068A-s-Leviticus-19-19"/>
           <lb xml:id="f068A-lb-1-24" n="24"/>
+          <lb xml:id="f068A-lb-1-25" n="25"/>
             <milestone unit="verse" n="Leviticus-19-20" xml:id="f068A-v-Leviticus-19-20"/>
             <w xml:id="f068A-w-45263">וְ֠אִישׁ</w>
             <w xml:id="f068A-w-45264">כִּֽי־</w>
             <w xml:id="f068A-w-45265">יִשְׁכַּ֨ב</w>
             <w xml:id="f068A-w-45266">אֶת־</w>
             <w xml:id="f068A-w-45267">אִשָּׁ֜ה</w>
-          <lb xml:id="f068A-lb-1-25" n="25"/>
+          <lb xml:id="f068A-lb-1-26" n="26"/>
             <w xml:id="f068A-w-45268">שִׁכְבַת־</w>
             <w xml:id="f068A-w-45269">זֶ֗רַע</w>
             <w xml:id="f068A-w-45270">וְהִ֤וא</w>
             <w xml:id="f068A-w-45271">שִׁפְחָה֙</w>
-          <lb xml:id="f068A-lb-1-26" n="26"/>
+          <lb xml:id="f068A-lb-1-27" n="27"/>
             <w xml:id="f068A-w-45272">נֶחֱרֶ֣פֶת</w>
             <w xml:id="f068A-w-45273">לְאִ֔ישׁ</w>
             <w xml:id="f068A-w-45274">וְהָפְדֵּה֙</w>

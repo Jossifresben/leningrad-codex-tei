@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-09-19" who="#contrib-charles-w-loder">
+      Add missing blank lines.
+      </change>
       <change when="2026-09-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -221,6 +224,9 @@
             <w xml:id="f050A-w-32722">וְרַגְלֵיהֶ֖ם</w>
             <w xml:id="f050A-w-32723">וְלֹ֣א</w>
             <w xml:id="f050A-w-32724">יָמֻ֑תוּ</w>
+          <lb xml:id="f050A-lb-1-24" n="25"/>
+          <lb xml:id="f050A-lb-1-24" n="26"/>
+          <lb xml:id="f050A-lb-1-24" n="27"/>
         <cb xml:id="f050A-cb-2" n="2"/>
           <lb xml:id="f050A-lb-2-1" n="1"/>
             <w xml:id="f050A-w-32725">וְהָיְתָ֨ה</w>

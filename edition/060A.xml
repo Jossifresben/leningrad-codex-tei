@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-09-19" who="#contrib-charles-w-loder">
+      Add missing blank lines.
+      </change>
       <change when="2026-09-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -358,6 +361,7 @@
             <pc type="sof-pasuq" xml:id="f060A-pc-39578">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f060A-s-Leviticus-7-21"/>
           <lb xml:id="f060A-lb-2-20" n="20"/>
+          <lb xml:id="f060A-lb-2-21" n="21"/>
             <milestone unit="verse" n="Leviticus-7-22" xml:id="f060A-v-Leviticus-7-22"/>
             <w xml:id="f060A-w-39579">וַיְדַבֵּ֥ר</w>
             <w xml:id="f060A-w-39580">יְהוָ֖ה</w>
@@ -365,33 +369,33 @@
             <w xml:id="f060A-w-39582">מֹשֶׁ֥ה</w>
             <w xml:id="f060A-w-39583">לֵּאמֹֽר</w>
             <pc type="sof-pasuq" xml:id="f060A-pc-39583">׃</pc>
-          <lb xml:id="f060A-lb-2-21" n="21"/>
+          <lb xml:id="f060A-lb-2-22" n="22"/>
             <milestone unit="verse" n="Leviticus-7-23" xml:id="f060A-v-Leviticus-7-23"/>
             <w xml:id="f060A-w-39584">דַּבֵּ֛ר</w>
             <w xml:id="f060A-w-39585">אֶל־</w>
             <w xml:id="f060A-w-39586">בְּנֵ֥י</w>
             <w xml:id="f060A-w-39587">יִשְׂרָאֵ֖ל</w>
             <w xml:id="f060A-w-39588">לֵאמֹ֑ר</w>
-          <lb xml:id="f060A-lb-2-22" n="22"/>
+          <lb xml:id="f060A-lb-2-23" n="23"/>
             <w xml:id="f060A-w-39589">כָּל־</w>
             <w xml:id="f060A-w-39590">חֵ֜לֶב</w>
             <w xml:id="f060A-w-39591">שׁ֥וֹר</w>
             <w xml:id="f060A-w-39592">וְכֶ֛שֶׂב</w>
             <w xml:id="f060A-w-39593">וָעֵ֖ז</w>
             <w xml:id="f060A-w-39594">לֹ֥א</w>
-          <lb xml:id="f060A-lb-2-23" n="23"/>
+          <lb xml:id="f060A-lb-2-24" n="24"/>
             <w xml:id="f060A-w-39595">תֹאכֵֽלוּ</w>
             <pc type="sof-pasuq" xml:id="f060A-pc-39595">׃</pc>
             <milestone unit="verse" n="Leviticus-7-24" xml:id="f060A-v-Leviticus-7-24"/>
             <w xml:id="f060A-w-39596">וְחֵ֤לֶב</w>
             <w xml:id="f060A-w-39597">נְבֵלָה֙</w>
             <w xml:id="f060A-w-39598">וְחֵ֣לֶב</w>
-          <lb xml:id="f060A-lb-2-24" n="24"/>
+          <lb xml:id="f060A-lb-2-25" n="25"/>
             <w xml:id="f060A-w-39599">טְרֵפָ֔ה</w>
             <w xml:id="f060A-w-39600">יֵעָשֶׂ֖ה</w>
             <w xml:id="f060A-w-39601">לְכָל־</w>
             <w xml:id="f060A-w-39602">מְלָאכָ֑ה</w>
-          <lb xml:id="f060A-lb-2-25" n="25"/>
+          <lb xml:id="f060A-lb-2-26" n="26"/>
             <w xml:id="f060A-w-39603">וְאָכֹ֖ל</w>
             <w xml:id="f060A-w-39604">לֹ֥א</w>
             <w xml:id="f060A-w-39605">תֹאכְלֻֽהוּ</w>
@@ -399,7 +403,7 @@
             <milestone unit="verse" n="Leviticus-7-25" xml:id="f060A-v-Leviticus-7-25"/>
             <w xml:id="f060A-w-39606">כִּ֚י</w>
             <w xml:id="f060A-w-39607">כָּל־</w>
-          <lb xml:id="f060A-lb-2-26" n="26"/>
+          <lb xml:id="f060A-lb-2-27" n="27"/>
             <w xml:id="f060A-w-39608">אֹכֵ֣ל</w>
             <w xml:id="f060A-w-39609">חֵ֔לֶב</w>
             <w xml:id="f060A-w-39610">מִן־</w>
