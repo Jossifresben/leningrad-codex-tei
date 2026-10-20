@@ -34,18 +34,18 @@ From the project root:
 
 ```bash
 uv sync
-npm install
 ```
 
-This will:
-- create the virtual environment in `.venv/`
-- install all dependencies (Python via `uv`, Node via `npm`)
+This will create the virtual environment in `.venv/`
 
 The `leningrad` command-line tool becomes available via `uv run`:
 
 ```bash
 uv run leningrad --help
 ```
+
+> [!NOTE]
+> For setting up the site, see the [README there](site/README.md)
 
 ### Configuration
 
