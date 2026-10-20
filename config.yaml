@@ -19,7 +19,6 @@ images:
 seed:
   upstream_url: "https://github.com/bdenckla/MAM-basics/"
   commit: "main"
-  snapshot_commit: "748ee2fee5536722b2323b22e71a879f597cf1c0"
   file: "in/lci_recs.json"
 
 uxlc:

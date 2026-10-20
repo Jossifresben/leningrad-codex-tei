@@ -26,6 +26,7 @@ FIXTURES = Path(__file__).parent / "fixtures"
 PYPROJECT_VERSION = tomllib.loads(
     (Path(__file__).parents[1] / "pyproject.toml").read_text()
 )["project"]["version"]
+SEED_SHA = "0123456789abcdef0123456789abcdef01234567"
 JPEG_BYTES = b"\xff\xd8\xff\xe0fake-jpeg\xff\xd9"
 
 
@@ -65,7 +66,6 @@ def _write_config(tmp_path: Path) -> Path:
                 "seed": {
                     "upstream_url": "https://github.com/bdenckla/codex-index-leningrad",
                     "commit": "main",
-                    "snapshot_commit": "deadbee",
                     "file": "UXLC-utils-sparse/data/lci_recs.json",
                 },
                 "uxlc": {
@@ -106,6 +106,8 @@ def _run_pipeline(
 ) -> None:
     def fake(url: str) -> bytes:
         assert url.startswith("https://"), url
+        if url.startswith("https://api.github.com/"):
+            return json.dumps({"sha": SEED_SHA}).encode()
         if "lci_recs.json" in url:
             return (FIXTURES / "seed" / "lci_recs.json").read_bytes()
         if "Tanach.xml.zip" in url:
@@ -210,6 +212,13 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     )
     align_run = next(r for r in audit["runs"] if r["stage"] == "align-folio")
     assert align_run["input_image_sha256"] == hashlib.sha256(JPEG_BYTES).hexdigest()
+    assert align_run["result_summary"]["seed_commit"] == SEED_SHA
+    assert (
+        align_run["result_summary"]["seed_sha256"]
+        == hashlib.sha256(
+            (FIXTURES / "seed" / "lci_recs.json").read_bytes()
+        ).hexdigest()
+    )
     assert all("input_hashes" not in r for r in audit["runs"])
     assert all("seed_source" not in r for r in audit["runs"])
 
@@ -217,6 +226,8 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     prov = json.loads((tmp_path / "provenance.json").read_text())
     assert prov["project_version"] == PYPROJECT_VERSION
     assert prov["seed"]["records"] == 1
+    assert prov["seed"]["commit"] == SEED_SHA
+    assert prov["seed"]["ref"] == "main"
     assert len(prov["seed"]["sha256"]) == 64
     assert len(prov["uxlc"]["zip_sha256"]) == 64
     assert prov["uxlc"]["files"] == 1

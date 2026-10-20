@@ -10,7 +10,11 @@ from pathlib import Path
 import click
 
 from leningrad_codex_tei.config import Config, load_config
-from leningrad_codex_tei.provenance import append_run, update_pipeline_provenance
+from leningrad_codex_tei.provenance import (
+    append_run,
+    load_pipeline_provenance,
+    update_pipeline_provenance,
+)
 from leningrad_codex_tei.schemas import (
     FolioStatus,
     IndexProvenance,
@@ -48,6 +52,20 @@ def _image_sha(config: Config, folio: str) -> str | None:
     """sha256 of the folio image sent to the model, if it is on disk."""
     path = config.paths.images / config.images.naming.format(folio=folio)
     return _file_sha(path) if path.exists() else None
+
+
+def _seed_info(config: Config) -> dict:
+    """sha256 of the seed file in use, plus its upstream commit when known.
+
+    The commit comes from the vendor-seed provenance, and only when that
+    entry describes the same file (same sha256).
+    """
+    sha = _file_sha(config.paths.seed)
+    info = {"seed_sha256": sha}
+    prov = load_pipeline_provenance(config.paths.provenance).seed
+    if prov is not None and prov.sha256 == sha and prov.ref is not None:
+        info["seed_commit"] = prov.commit
+    return info
 
 
 def _seed_folios(config: Config) -> list[str]:
@@ -418,6 +436,7 @@ def align_folio(
                 click.echo(f"--- end prompt {sl.folio} ---")
         return
     contributor = _current_contributor()
+    seed_info = _seed_info(config)
     if config.ai.inference == "batch":
         slices = [align_stage.compute_seed_slice(seed, page, stream) for page in folios]
         merged = {sl.folio: _merged_record_count(sl) for sl in slices}
@@ -436,6 +455,7 @@ def align_folio(
                     contributor_name=(contributor or {}).get("name"),
                     contributor_email=(contributor or {}).get("email"),
                     result_summary={
+                        **seed_info,
                         "batch_job": batch_record["job_name"],
                         "records_merged": merged.get(page, 1),
                         "upload_path": batch_record["upload_path"],
@@ -472,6 +492,7 @@ def align_folio(
                 contributor_name=(contributor or {}).get("name"),
                 contributor_email=(contributor or {}).get("email"),
                 result_summary={
+                    **seed_info,
                     "method": record.alignment_method.value,
                     "atoms": sl.atom_end - sl.atom_start + 1,
                     "records_merged": _merged_record_count(sl),

@@ -89,6 +89,11 @@ def save_audit(audit_dir: Path, trail: AuditTrail) -> None:
     p.write_text(json.dumps(asdict(trail), indent=2, default=_default))
 
 
+def _seed_provenance(data: dict) -> SeedProvenance:
+    # snapshot_commit was dropped; older ledgers still carry it
+    return SeedProvenance(**{k: v for k, v in data.items() if k != "snapshot_commit"})
+
+
 def load_pipeline_provenance(path: Path) -> PipelineProvenance:
     """Load the corpus-level provenance ledger, or a blank one if absent."""
     if not path.exists():
@@ -96,7 +101,7 @@ def load_pipeline_provenance(path: Path) -> PipelineProvenance:
     data = json.loads(path.read_text())
     return PipelineProvenance(
         project_version=data.get("project_version"),
-        seed=SeedProvenance(**data["seed"]) if data.get("seed") else None,
+        seed=_seed_provenance(data["seed"]) if data.get("seed") else None,
         uxlc=UxlcProvenance(**data["uxlc"]) if data.get("uxlc") else None,
         word_stream=WordStreamProvenance(**data["word_stream"])
         if data.get("word_stream")

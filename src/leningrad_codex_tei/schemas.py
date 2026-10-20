@@ -153,10 +153,10 @@ class AuditTrail:
 class SeedProvenance:
     url: str
     commit: str
-    snapshot_commit: str | None
     sha256: str
     records: int
     path: str
+    ref: str | None = None
 
 
 @dataclass
