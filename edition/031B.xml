@@ -38,14 +38,6 @@
         </msDesc>
       </sourceDesc>
     </fileDesc>
-    <encodingDesc>
-      <appInfo>
-        <application ident="leningrad-codex-tei" version="0.1.0" when="2026-10-05T01:29:05.626563+00:00">
-          <label>Leningrad Codex TEI</label>
-          <ptr target="https://github.com/charlesLoder/leningrad-codex-tei/commit/93a6680f280034c16aef4ce3bbc62f8f50fc471b" type="repo-hash"/>
-        </application>
-      </appInfo>
-    </encodingDesc>
     <revisionDesc>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.

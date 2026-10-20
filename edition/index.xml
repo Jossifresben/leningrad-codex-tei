@@ -1,4 +1,10 @@
 <index>
+  <appInfo>
+    <application ident="leningrad-codex-tei" version="0.5.0">
+      <label>Leningrad Codex TEI</label>
+      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.5.0"/>
+    </application>
+  </appInfo>
   <entry folio="001B" href="001B.xml" when="2026-09-18T04:37:24.668483+00:00" contributor="Charles W. Loder">
     <title>Leningrad Codex — 001B (Genesis 1:1 – Genesis 1:26)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>

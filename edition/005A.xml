@@ -38,14 +38,6 @@
         </msDesc>
       </sourceDesc>
     </fileDesc>
-    <encodingDesc>
-      <appInfo>
-        <application ident="leningrad-codex-tei" version="0.1.0" when="2026-09-18T04:37:30.515224+00:00">
-          <label>Leningrad Codex TEI</label>
-          <ptr target="https://github.com/charlesLoder/leningrad-codex-tei/commit/b8c29949827d364087b2e8803c46a529b92864b0" type="repo-hash"/>
-        </application>
-      </appInfo>
-    </encodingDesc>
     <revisionDesc>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
       Remove the space left in the word before each paseq.
