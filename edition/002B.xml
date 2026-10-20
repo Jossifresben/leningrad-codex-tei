@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -119,7 +122,7 @@
             <w xml:id="f002B-w-702">וַיַּפֵּל֩</w>
           <lb xml:id="f002B-lb-1-7" n="7"/>
             <w xml:id="f002B-w-703">יְהוָ֨ה</w>
-            <w xml:id="f002B-w-704">אֱלֹהִ֧ים </w>
+            <w xml:id="f002B-w-704">אֱלֹהִ֧ים</w>
             <pc type="paseq" xml:id="f002B-pc-704">׀</pc>
             <w xml:id="f002B-w-705">תַּרְדֵּמָ֛ה</w>
             <w xml:id="f002B-w-706">עַל־</w>
@@ -138,7 +141,7 @@
             <milestone unit="verse" n="Genesis-2-22" xml:id="f002B-v-Genesis-2-22"/>
             <w xml:id="f002B-w-715">וַיִּבֶן֩</w>
             <w xml:id="f002B-w-716">יְהוָ֨ה</w>
-            <w xml:id="f002B-w-717">אֱלֹהִ֧ים </w>
+            <w xml:id="f002B-w-717">אֱלֹהִ֧ים</w>
             <pc type="paseq" xml:id="f002B-pc-717">׀</pc>
           <lb xml:id="f002B-lb-1-11" n="11"/>
             <w xml:id="f002B-w-718">אֶֽת־</w>
@@ -451,7 +454,7 @@
             <milestone unit="verse" n="Genesis-3-14" xml:id="f002B-v-Genesis-3-14"/>
             <w xml:id="f002B-w-938">וַיֹּאמֶר֩</w>
             <w xml:id="f002B-w-939">יְהֹוָ֨ה</w>
-            <w xml:id="f002B-w-940">אֱלֹהִ֥ים </w>
+            <w xml:id="f002B-w-940">אֱלֹהִ֥ים</w>
             <pc type="paseq" xml:id="f002B-pc-940">׀</pc>
             <w xml:id="f002B-w-941">אֶֽל־</w>
             <w xml:id="f002B-w-942">הַנָּחָשׁ֮</w>
@@ -479,7 +482,7 @@
             <w xml:id="f002B-w-960">חַיֶּֽיךָ</w>
             <pc type="sof-pasuq" xml:id="f002B-pc-960">׃</pc>
             <milestone unit="verse" n="Genesis-3-15" xml:id="f002B-v-Genesis-3-15"/>
-            <w xml:id="f002B-w-961">וְאֵיבָ֣ה </w>
+            <w xml:id="f002B-w-961">וְאֵיבָ֣ה</w>
             <pc type="paseq" xml:id="f002B-pc-961">׀</pc>
             <w xml:id="f002B-w-962">אָשִׁ֗ית</w>
           <lb xml:id="f002B-lb-3-14" n="14"/>

@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -98,7 +101,7 @@
             <milestone unit="verse" n="Genesis-1-27" xml:id="f002A-v-Genesis-1-27"/>
             <w xml:id="f002A-w-337">וַיִּבְרָ֨א</w>
           <lb xml:id="f002A-lb-1-4" n="4"/>
-            <w xml:id="f002A-w-338">אֱלֹהִ֤ים </w>
+            <w xml:id="f002A-w-338">אֱלֹהִ֤ים</w>
             <pc type="paseq" xml:id="f002A-pc-338">׀</pc>
             <w xml:id="f002A-w-339">אֶת־</w>
             <w xml:id="f002A-w-340">הֽ͏ָאָדָם֙</w>
@@ -153,7 +156,7 @@
           <lb xml:id="f002A-lb-1-13" n="13"/>
             <w xml:id="f002A-w-377">אֶת־</w>
             <w xml:id="f002A-w-378">כָּל־</w>
-            <w xml:id="f002A-w-379">עֵ֣שֶׂב </w>
+            <w xml:id="f002A-w-379">עֵ֣שֶׂב</w>
             <pc type="paseq" xml:id="f002A-pc-379">׀</pc>
             <w xml:id="f002A-w-380">זֹרֵ֣עַ</w>
             <w xml:id="f002A-w-381">זֶ֗רַע</w>
@@ -187,7 +190,7 @@
             <w xml:id="f002A-w-403">ע֨וֹף</w>
           <lb xml:id="f002A-lb-1-18" n="18"/>
             <w xml:id="f002A-w-404">הַשָּׁמַ֜יִם</w>
-            <w xml:id="f002A-w-405">וּלְכֹ֣ל </w>
+            <w xml:id="f002A-w-405">וּלְכֹ֣ל</w>
             <pc type="paseq" xml:id="f002A-pc-405">׀</pc>
             <w xml:id="f002A-w-406">רוֹמֵ֣שׂ</w>
             <w xml:id="f002A-w-407">עַל־</w>
@@ -298,7 +301,7 @@
             <w xml:id="f002A-w-480">וְשָׁמָֽיִם</w>
             <pc type="sof-pasuq" xml:id="f002A-pc-480">׃</pc>
             <milestone unit="verse" n="Genesis-2-5" xml:id="f002A-v-Genesis-2-5"/>
-            <w xml:id="f002A-w-481">וְכֹ֣ל </w>
+            <w xml:id="f002A-w-481">וְכֹ֣ל</w>
             <pc type="paseq" xml:id="f002A-pc-481">׀</pc>
           <lb xml:id="f002A-lb-2-11" n="11"/>
             <w xml:id="f002A-w-482">שִׂ֣יחַ</w>

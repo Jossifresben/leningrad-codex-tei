@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-19" who="#contrib-charles-w-loder">
       Fix incorrect pe and samekh milestone placement
       </change>
@@ -146,7 +149,7 @@
             <w xml:id="f040B-w-26520">יָדֶֽיךָ</w>
             <pc type="sof-pasuq" xml:id="f040B-pc-26520">׃</pc>
             <milestone unit="verse" n="Exodus-15-18" xml:id="f040B-v-Exodus-15-18"/>
-            <w xml:id="f040B-w-26521">יְהוָ֥ה </w>
+            <w xml:id="f040B-w-26521">יְהוָ֥ה</w>
             <pc type="paseq" xml:id="f040B-pc-26521">׀</pc>
             <w xml:id="f040B-w-26522">יִמְלֹ֖ךְ</w>
             <w xml:id="f040B-w-26523">לְעֹלָ֥ם</w>
@@ -286,7 +289,7 @@
             <w xml:id="f040B-w-26629">שָׁמ֨וֹעַ</w>
           <lb xml:id="f040B-lb-1-19" n="19"/>
             <w xml:id="f040B-w-26630">תִּשְׁמַ֜ע</w>
-            <w xml:id="f040B-w-26631">לְק֣וֹל </w>
+            <w xml:id="f040B-w-26631">לְק֣וֹל</w>
             <pc type="paseq" xml:id="f040B-pc-26631">׀</pc>
             <w xml:id="f040B-w-26632">יְהוָ֣ה</w>
             <w xml:id="f040B-w-26633">אֱלֹהֶ֗יךָ</w>

@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
       Add missing blank lines.
       </change>
@@ -127,7 +130,7 @@
             <pc type="sof-pasuq" xml:id="f053A-pc-34752">׃</pc>
           <lb xml:id="f053A-lb-1-9" n="9"/>
             <milestone unit="verse" n="Exodus-35-16" xml:id="f053A-v-Exodus-35-16"/>
-            <w xml:id="f053A-w-34753">אֵ֣ת </w>
+            <w xml:id="f053A-w-34753">אֵ֣ת</w>
             <pc type="paseq" xml:id="f053A-pc-34753">׀</pc>
             <w xml:id="f053A-w-34754">מִזְבַּ֣ח</w>
             <w xml:id="f053A-w-34755">הָעֹלָ֗ה</w>
@@ -241,7 +244,7 @@
             <w xml:id="f053A-w-34834">עַל־</w>
             <w xml:id="f053A-w-34835">הַנָּשִׁ֑ים</w>
           <lb xml:id="f053A-lb-1-27" n="27"/>
-            <w xml:id="f053A-w-34836">כֹּ֣ל </w>
+            <w xml:id="f053A-w-34836">כֹּ֣ל</w>
             <pc type="paseq" xml:id="f053A-pc-34836">׀</pc>
             <w xml:id="f053A-w-34837">נְדִ֣יב</w>
             <w xml:id="f053A-w-34838">לֵ֗ב</w>
@@ -489,7 +492,7 @@
             <w xml:id="f053A-w-35011">כָּל־</w>
           <lb xml:id="f053A-lb-3-14" n="14"/>
             <w xml:id="f053A-w-35012">מְלֶ֣אכֶת</w>
-            <w xml:id="f053A-w-35013">חָרָ֣שׁ </w>
+            <w xml:id="f053A-w-35013">חָרָ֣שׁ</w>
             <pc type="paseq" xml:id="f053A-pc-35013">׀</pc>
             <w xml:id="f053A-w-35014">וְחֹשֵׁב֒</w>
             <w xml:id="f053A-w-35015">וְרֹקֵ֞ם</w>
@@ -514,7 +517,7 @@
             <w xml:id="f053A-w-35028">בְצַלְאֵ֨ל</w>
             <w xml:id="f053A-w-35029">וְאָהֳלִיאָ֜ב</w>
           <lb xml:id="f053A-lb-3-19" n="19"/>
-            <w xml:id="f053A-w-35030">וְכֹ֣ל </w>
+            <w xml:id="f053A-w-35030">וְכֹ֣ל</w>
             <pc type="paseq" xml:id="f053A-pc-35030">׀</pc>
             <w xml:id="f053A-w-35031">אִ֣ישׁ</w>
             <w xml:id="f053A-w-35032">חֲכַם־</w>

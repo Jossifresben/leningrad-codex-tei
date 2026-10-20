@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -493,7 +496,7 @@
             <w xml:id="f042B-w-28034">נְכֹנִ֖ים</w>
             <w xml:id="f042B-w-28035">לַיּ֣וֹם</w>
             <w xml:id="f042B-w-28036">הַשְּׁלִישִׁ֑י</w>
-            <w xml:id="f042B-w-28037">כִּ֣י </w>
+            <w xml:id="f042B-w-28037">כִּ֣י</w>
             <pc type="paseq" xml:id="f042B-pc-28037">׀</pc>
           <lb xml:id="f042B-lb-3-20" n="20"/>
             <w xml:id="f042B-w-28038">בַּיּ֣וֹם</w>

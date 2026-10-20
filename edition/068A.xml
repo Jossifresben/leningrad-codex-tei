@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
       Add missing blank lines.
       </change>
@@ -482,7 +485,7 @@
           <lb xml:id="f068A-lb-3-10" n="10"/>
             <w xml:id="f068A-w-45433">יִהְיֶ֨ה</w>
             <w xml:id="f068A-w-45434">לָכֶ֜ם</w>
-            <w xml:id="f068A-w-45435">הַגֵּ֣ר </w>
+            <w xml:id="f068A-w-45435">הַגֵּ֣ר</w>
             <pc type="paseq" xml:id="f068A-pc-45435">׀</pc>
             <w xml:id="f068A-w-45436">הַגָּ֣ר</w>
             <w xml:id="f068A-w-45437">אִתְּכֶ֗ם</w>
@@ -573,7 +576,7 @@
             <w xml:id="f068A-w-45496">מִבְּנֵ֨י</w>
             <w xml:id="f068A-w-45497">יִשְׂרָאֵ֜ל</w>
             <w xml:id="f068A-w-45498">וּמִן־</w>
-            <w xml:id="f068A-w-45499">הַגֵּ֣ר </w>
+            <w xml:id="f068A-w-45499">הַגֵּ֣ר</w>
             <pc type="paseq" xml:id="f068A-pc-45499">׀</pc>
           <lb xml:id="f068A-lb-3-26" n="26"/>
             <w xml:id="f068A-w-45500">הַגָּ֣ר</w>

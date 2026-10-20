@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -124,9 +127,9 @@
             <w xml:id="f062A-w-40800">יַ֣יִן</w>
             <w xml:id="f062A-w-40801">וְשֵׁכָ֞ר</w>
             <w xml:id="f062A-w-40802">אַל־</w>
-            <w xml:id="f062A-w-40803">תֵּ֣שְׁתְּ </w>
+            <w xml:id="f062A-w-40803">תֵּ֣שְׁתְּ</w>
             <pc type="paseq" xml:id="f062A-pc-40803">׀</pc>
-            <w xml:id="f062A-w-40804">אַתָּ֣ה </w>
+            <w xml:id="f062A-w-40804">אַתָּ֣ה</w>
             <pc type="paseq" xml:id="f062A-pc-40804">׀</pc>
             <w xml:id="f062A-w-40805">וּבָנֶ֣יךָ</w>
           <lb xml:id="f062A-lb-1-8" n="8"/>
@@ -185,7 +188,7 @@
           <lb xml:id="f062A-lb-1-17" n="17"/>
             <w xml:id="f062A-w-40843">אֶ֠לְעָזָר</w>
             <w xml:id="f062A-w-40844">וְאֶל־</w>
-            <w xml:id="f062A-w-40845">אִ֨יתָמָ֥ר </w>
+            <w xml:id="f062A-w-40845">אִ֨יתָמָ֥ר</w>
             <pc type="paseq" xml:id="f062A-pc-40845">׀</pc>
             <w xml:id="f062A-w-40846">בָּנָיו֮</w>
           <lb xml:id="f062A-lb-1-18" n="18"/>
@@ -231,7 +234,7 @@
             <w xml:id="f062A-w-40876">וְאֵת֩</w>
             <w xml:id="f062A-w-40877">חֲזֵ֨ה</w>
             <w xml:id="f062A-w-40878">הַתְּנוּפָ֜ה</w>
-            <w xml:id="f062A-w-40879">וְאֵ֣ת </w>
+            <w xml:id="f062A-w-40879">וְאֵ֣ת</w>
             <pc type="paseq" xml:id="f062A-pc-40879">׀</pc>
           <lb xml:id="f062A-lb-1-25" n="25"/>
             <w xml:id="f062A-w-40880">שׁ֣וֹק</w>
@@ -286,7 +289,7 @@
             <w xml:id="f062A-w-40918">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f062A-pc-40918">׃</pc>
             <milestone unit="verse" n="Leviticus-10-16" xml:id="f062A-v-Leviticus-10-16"/>
-            <w xml:id="f062A-w-40919">וְאֵ֣ת </w>
+            <w xml:id="f062A-w-40919">וְאֵ֣ת</w>
             <pc type="paseq" xml:id="f062A-pc-40919">׀</pc>
             <w xml:id="f062A-w-40920">שְׂעִ֣יר</w>
           <lb xml:id="f062A-lb-2-7" n="7"/>
@@ -323,7 +326,7 @@
             <w xml:id="f062A-w-40944">קֹ֥דֶשׁ</w>
             <w xml:id="f062A-w-40945">קָֽדָשִׁ֖ים</w>
             <w xml:id="f062A-w-40946">הִ֑וא</w>
-            <w xml:id="f062A-w-40947">וְאֹתָ֣הּ </w>
+            <w xml:id="f062A-w-40947">וְאֹתָ֣הּ</w>
             <pc type="paseq" xml:id="f062A-pc-40947">׀</pc>
           <lb xml:id="f062A-lb-2-13" n="13"/>
             <w xml:id="f062A-w-40948">נָתַ֣ן</w>
@@ -428,7 +431,7 @@
             <w xml:id="f062A-w-41019">הָאָֽרֶץ</w>
             <pc type="sof-pasuq" xml:id="f062A-pc-41019">׃</pc>
             <milestone unit="verse" n="Leviticus-11-3" xml:id="f062A-v-Leviticus-11-3"/>
-            <w xml:id="f062A-w-41020">כֹּ֣ל </w>
+            <w xml:id="f062A-w-41020">כֹּ֣ל</w>
             <pc type="paseq" xml:id="f062A-pc-41020">׀</pc>
             <w xml:id="f062A-w-41021">מַפְרֶ֣סֶת</w>
             <w xml:id="f062A-w-41022">פַּרְסָ֗ה</w>

@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
       Add missing blank lines.
       </change>
@@ -434,7 +437,7 @@
             <w xml:id="f050A-w-32865">קַח־</w>
             <w xml:id="f050A-w-32866">לְךָ֣</w>
             <w xml:id="f050A-w-32867">סַמִּ֗ים</w>
-            <w xml:id="f050A-w-32868">נָטָ֤ף </w>
+            <w xml:id="f050A-w-32868">נָטָ֤ף</w>
             <pc type="paseq" xml:id="f050A-pc-32868">׀</pc>
           <lb xml:id="f050A-lb-3-8" n="8"/>
             <w xml:id="f050A-w-32869">וּשְׁחֵ֙לֶת֙</w>

@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -163,7 +166,7 @@
             <w xml:id="f041B-w-27110">לֶ֣חֶם</w>
           <lb xml:id="f041B-lb-1-14" n="14"/>
             <w xml:id="f041B-w-27111">יוֹמָ֑יִם</w>
-            <w xml:id="f041B-w-27112">שְׁב֣וּ </w>
+            <w xml:id="f041B-w-27112">שְׁב֣וּ</w>
             <pc type="paseq" xml:id="f041B-pc-27112">׀</pc>
             <w xml:id="f041B-w-27113">אִ֣ישׁ</w>
             <w xml:id="f041B-w-27114">תַּחְתָּ֗יו</w>
@@ -218,7 +221,7 @@
             <w xml:id="f041B-w-27148">לְמִשְׁמֶ֖רֶת</w>
             <w xml:id="f041B-w-27149">לְדֹרֹתֵיכֶ֑ם</w>
           <lb xml:id="f041B-lb-1-24" n="24"/>
-            <w xml:id="f041B-w-27150">לְמַ֣עַן </w>
+            <w xml:id="f041B-w-27150">לְמַ֣עַן</w>
             <pc type="paseq" xml:id="f041B-pc-27150">׀</pc>
             <w xml:id="f041B-w-27151">יִרְא֣וּ</w>
             <w xml:id="f041B-w-27152">אֶת־</w>
@@ -436,7 +439,7 @@
             <w xml:id="f041B-w-27304">עֹמֵד֩</w>
             <w xml:id="f041B-w-27305">לְפָנֶ֨יךָ</w>
           <lb xml:id="f041B-lb-3-8" n="8"/>
-            <w xml:id="f041B-w-27306">שָּׁ֥ם </w>
+            <w xml:id="f041B-w-27306">שָּׁ֥ם</w>
             <pc type="paseq" xml:id="f041B-pc-27306">׀</pc>
             <w xml:id="f041B-w-27307">עַֽל־</w>
             <w xml:id="f041B-w-27308">הַצּוּר֮</w>
@@ -467,7 +470,7 @@
             <w xml:id="f041B-w-27327">וּמְרִיבָ֑ה</w>
           <lb xml:id="f041B-lb-3-13" n="13"/>
             <w xml:id="f041B-w-27328">עַל־</w>
-            <w xml:id="f041B-w-27329">רִ֣יב </w>
+            <w xml:id="f041B-w-27329">רִ֣יב</w>
             <pc type="paseq" xml:id="f041B-pc-27329">׀</pc>
             <w xml:id="f041B-w-27330">בְּנֵ֣י</w>
             <w xml:id="f041B-w-27331">יִשְׂרָאֵ֗ל</w>

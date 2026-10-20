@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -108,7 +111,7 @@
             <w xml:id="f079B-w-53001">שֶׁ֖קֶל</w>
             <w xml:id="f079B-w-53002">בְּשֶׁ֣קֶל</w>
             <w xml:id="f079B-w-53003">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f079B-w-53004">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f079B-w-53004">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f079B-pc-53004">׀</pc>
           <lb xml:id="f079B-lb-1-6" n="6"/>
             <w xml:id="f079B-w-53005">מְלֵאִ֗ים</w>
@@ -205,7 +208,7 @@
             <w xml:id="f079B-w-53067">שֶׁ֖קֶל</w>
             <w xml:id="f079B-w-53068">בְּשֶׁ֣קֶל</w>
             <w xml:id="f079B-w-53069">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f079B-w-53070">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f079B-w-53070">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f079B-pc-53070">׀</pc>
           <lb xml:id="f079B-lb-1-23" n="23"/>
             <w xml:id="f079B-w-53071">מְלֵאִ֗ים</w>
@@ -304,7 +307,7 @@
             <w xml:id="f079B-w-53135">שֶׁ֖קֶל</w>
             <w xml:id="f079B-w-53136">בְּשֶׁ֣קֶל</w>
             <w xml:id="f079B-w-53137">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f079B-w-53138">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f079B-w-53138">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f079B-pc-53138">׀</pc>
           <lb xml:id="f079B-lb-2-13" n="13"/>
             <w xml:id="f079B-w-53139">מְלֵאִ֗ים</w>
@@ -406,7 +409,7 @@
             <w xml:id="f079B-w-53204">בְּשֶׁ֣קֶל</w>
           <lb xml:id="f079B-lb-3-3" n="3"/>
             <w xml:id="f079B-w-53205">הַקֹּ֑דֶשׁ</w>
-            <w xml:id="f079B-w-53206">שְׁנֵיהֶ֣ם </w>
+            <w xml:id="f079B-w-53206">שְׁנֵיהֶ֣ם</w>
             <pc type="paseq" xml:id="f079B-pc-53206">׀</pc>
             <w xml:id="f079B-w-53207">מְלֵאִ֗ים</w>
           <lb xml:id="f079B-lb-3-4" n="4"/>
@@ -474,7 +477,7 @@
           <lb xml:id="f079B-lb-3-14" n="14"/>
           <lb xml:id="f079B-lb-3-15" n="15"/>
             <milestone unit="verse" n="Numbers-7-84" xml:id="f079B-v-Numbers-7-84"/>
-            <w xml:id="f079B-w-53250">זֹ֣את </w>
+            <w xml:id="f079B-w-53250">זֹ֣את</w>
             <pc type="paseq" xml:id="f079B-pc-53250">׀</pc>
             <w xml:id="f079B-w-53251">חֲנֻכַּ֣ת</w>
             <w xml:id="f079B-w-53252">הַמִּזְבֵּ֗חַ</w>

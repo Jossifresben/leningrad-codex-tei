@@ -47,6 +47,9 @@
       </appInfo>
     </encodingDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Remove the space left in the word before each paseq.
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -334,7 +337,7 @@
             <w xml:id="f026A-w-16875">שְׁנֵ֣ים</w>
             <w xml:id="f026A-w-16876">עָשָׂר֩</w>
             <w xml:id="f026A-w-16877">עֲבָדֶ֨יךָ</w>
-            <w xml:id="f026A-w-16878">אַחִ֧ים </w>
+            <w xml:id="f026A-w-16878">אַחִ֧ים</w>
             <pc type="paseq" xml:id="f026A-pc-16878">׀</pc>
           <lb xml:id="f026A-lb-2-16" n="16"/>
             <w xml:id="f026A-w-16879">אֲנַ֛חְנוּ</w>
@@ -480,7 +483,7 @@
             <w xml:id="f026A-w-16979">אֶל־</w>
             <w xml:id="f026A-w-16980">אָחִ֗יו</w>
             <w xml:id="f026A-w-16981">אֲבָל֮</w>
-            <w xml:id="f026A-w-16982">אֲשֵׁמִ֣ים </w>
+            <w xml:id="f026A-w-16982">אֲשֵׁמִ֣ים</w>
             <pc type="paseq" xml:id="f026A-pc-16982">׀</pc>
           <lb xml:id="f026A-lb-3-13" n="13"/>
             <w xml:id="f026A-w-16983">אֲנַחְנוּ֮</w>
@@ -513,7 +516,7 @@
           <lb xml:id="f026A-lb-3-18" n="18"/>
             <w xml:id="f026A-w-17004">הֲלוֹא֩</w>
             <w xml:id="f026A-w-17005">אָמַ֨רְתִּי</w>
-            <w xml:id="f026A-w-17006">אֲלֵיכֶ֧ם </w>
+            <w xml:id="f026A-w-17006">אֲלֵיכֶ֧ם</w>
             <pc type="paseq" xml:id="f026A-pc-17006">׀</pc>
           <lb xml:id="f026A-lb-3-19" n="19"/>
             <w xml:id="f026A-w-17007">לֵאמֹ֛ר</w>
