@@ -17,13 +17,6 @@ REPO_URL = "https://github.com/charlesLoder/leningrad-codex-tei"
 PROMPT_REPO_PATH = "src/leningrad_codex_tei/stages/align.py"
 
 
-def repo_snapshot_url(repo_hash: str) -> str | None:
-    """GitHub snapshot URL for a repo hash, or None when unknown."""
-    if not repo_hash or repo_hash == "unknown":
-        return None
-    return f"{REPO_URL}/commit/{repo_hash.removesuffix('-dirty')}"
-
-
 def prompt_snapshot_url(repo_hash: str | None) -> str | None:
     """GitHub blob URL for the align prompt at a repo hash, or None."""
     if not repo_hash or repo_hash == "unknown":
@@ -113,9 +106,6 @@ def render_folio_tei(
     record: AlignmentRecord,
     page_milestones: list[dict],
     changes: list[dict],
-    pipeline_version: str,
-    repo_hash: str = "unknown",
-    generated_when: str | None = None,
     source_image: dict | None = None,
     contributors: list[dict] | None = None,
     uxlc_edition: dict | None = None,
@@ -128,11 +118,7 @@ def render_folio_tei(
         columns=_annotate_columns(record),
         page_milestones=page_milestones,
         changes=changes,
-        pipeline_version=pipeline_version,
-        repo_hash=repo_hash,
         repo_url=REPO_URL,
-        repo_snapshot_url=repo_snapshot_url(repo_hash),
-        generated_when=generated_when,
         source_image=source_image,
         contributors=contributors or [],
         uxlc_edition=uxlc_edition,

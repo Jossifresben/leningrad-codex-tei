@@ -253,7 +253,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert surface is not None
     assert surface.get("{http://www.w3.org/XML/1998/namespace}id") == "surf-001B"
     assert root.find(".//t:sourceDesc/t:msDesc", ns) is not None
-    assert root.find(".//t:application", ns).get("version") == PYPROJECT_VERSION
+    assert root.find(".//t:encodingDesc", ns) is None
     source_uxlc = [
         s
         for s in root.findall(".//t:titleStmt/t:respStmt", ns)
@@ -267,6 +267,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert len(entries) == 1
     assert entries[0].get("folio") == "001B"
     assert entries[0].get("href") == "001B.xml"
+    assert index_root.find("appInfo/application").get("version") == PYPROJECT_VERSION
 
 
 def test_validate_failure_does_not_mark_aligned(tmp_path: Path) -> None:

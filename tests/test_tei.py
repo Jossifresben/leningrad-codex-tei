@@ -13,7 +13,6 @@ from leningrad_codex_tei.stages.tei import (
     changes_from_audit,
     contributors_from_audit,
     render_folio_tei,
-    repo_snapshot_url,
     source_image_from_audit,
     split_trailing_punct,
 )
@@ -75,7 +74,6 @@ def test_rendered_xml_is_well_formed_and_structured(
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="0.1.0-dev",
     )
     root = etree.fromstring(xml.encode())
     assert root.tag == _q("TEI")
@@ -124,7 +122,6 @@ def test_ids_are_folio_prefixed_and_unique(alignment, changes) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="0.1.0-dev",
     )
     root = etree.fromstring(xml.encode())
     ids = [_id(el) for el in root.iter() if _id(el) is not None]
@@ -149,7 +146,6 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="0.1.0-dev",
     )
     root = etree.fromstring(xml.encode())
 
@@ -210,7 +206,6 @@ def test_repeat_section_ids_in_one_verse_are_suffixed(
         record=rec,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="0.1.0-dev",
     )
     root = etree.fromstring(xml.encode())
     section_ms = root.findall(f".//{_q('milestone')}[@unit='section']")
@@ -230,7 +225,6 @@ def test_inverted_nun_follows_sof_pasuq_and_precedes_section(
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="0.1.0-dev",
     )
     root = etree.fromstring(xml.encode())
     seen: list[str] = []
@@ -260,7 +254,6 @@ def test_verse_milestone_mid_line(seed_slice, word_stream, changes) -> None:
         record=rec,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="0.1.0-dev",
     )
     root = etree.fromstring(xml.encode())
     seen: list[str] = []
@@ -281,44 +274,17 @@ def test_verse_milestone_mid_line(seed_slice, word_stream, changes) -> None:
     ]
 
 
-def test_application_element_carries_pipeline_version(alignment, changes) -> None:
+def test_header_has_no_app_info(alignment, changes) -> None:
     xml = render_folio_tei(
         folio="001B",
         verse_range="Genesis 1:1 – 2:2",
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
-        generated_when="2026-08-27T00:00:03",
     )
     root = etree.fromstring(xml.encode())
-    apps = root.findall(f".//{_q('application')}")
-    assert len(apps) == 1
-    app = apps[0]
-    assert app.get("ident") == "leningrad-codex-tei"
-    assert app.get("version") == "9.9.9"
-    assert app.get("when") == "2026-08-27T00:00:03"
-    assert app.find(_q("ab")) is None
-    assert app.find(_q("fs")) is None
-
-
-def test_repo_ptr_points_at_snapshot(alignment, changes) -> None:
-    xml = render_folio_tei(
-        folio="001B",
-        verse_range="Genesis 1:1 – 2:2",
-        record=alignment,
-        page_milestones=[{"folio": "001B"}],
-        changes=changes,
-        pipeline_version="9.9.9",
-        repo_hash="37961352d8841b661861f5fbd1eeb0a34bdab142-dirty",
-    )
-    root = etree.fromstring(xml.encode())
-    ptr = root.find(f".//{_q('application')}/{_q('ptr')}")
-    assert ptr.get("target") == (
-        "https://github.com/charlesLoder/leningrad-codex-tei"
-        "/commit/37961352d8841b661861f5fbd1eeb0a34bdab142"
-    )
-    assert repo_snapshot_url("unknown") is None
+    assert root.find(f".//{_q('encodingDesc')}") is None
+    assert root.find(f".//{_q('application')}") is None
 
 
 def test_changes_from_audit_keeps_only_align_folio() -> None:
@@ -479,7 +445,6 @@ def test_ai_params_render_as_fs_inside_change(alignment) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
     )
     root = etree.fromstring(xml.encode())
     fs = root.find(f".//{_q('revisionDesc')}/{_q('change')}/{_q('fs')}")
@@ -524,7 +489,6 @@ def test_source_image_renders_graphic_in_facsimile(alignment, changes) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
         source_image={"url": "https://example.org/001B.jpg", "sha256": "abc123"},
     )
     root = etree.fromstring(xml.encode())
@@ -546,7 +510,6 @@ def test_facsimile_omits_graphic_without_image(alignment, changes) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
     )
     root = etree.fromstring(xml.encode())
     surface = root.find(f".//{_q('facsimile')}/{_q('surface')}")
@@ -581,7 +544,6 @@ def test_pc_follows_its_word_in_document_order(alignment, changes) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
     )
     root = etree.fromstring(xml.encode())
     ab = root.find(f".//{_q('div')}[@type='edition']/{_q('ab')}")
@@ -601,7 +563,6 @@ def test_publication_stmt_has_mit_availability(alignment, changes) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
     )
     root = etree.fromstring(xml.encode())
     availability = root.find(f".//{_q('publicationStmt')}/{_q('availability')}")
@@ -645,7 +606,6 @@ def test_contributor_respStmt_and_change(alignment) -> None:
         page_milestones=[{"folio": "001B"}],
         changes=changes_from_audit(runs),
         contributors=contributors,
-        pipeline_version="9.9.9",
     )
     root = etree.fromstring(xml.encode())
     stmts = root.findall(f".//{_q('titleStmt')}/{_q('respStmt')}")
@@ -687,7 +647,6 @@ def test_blank_lines_preserved(seed_slice, word_stream, changes) -> None:
         record=rec,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
     )
     root = etree.fromstring(xml.encode())
     lbs = root.findall(f".//{_q('lb')}")
@@ -718,7 +677,6 @@ def test_source_uxlc_carries_edition_version(alignment, changes) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
         uxlc_edition={
             "version": "UXLC 2.5",
             "date": "1 Apr 2026",
@@ -739,7 +697,6 @@ def test_source_uxlc_omits_version_without_edition(alignment, changes) -> None:
         record=alignment,
         page_milestones=[{"folio": "001B"}],
         changes=changes,
-        pipeline_version="9.9.9",
     )
     resp_text = _source_uxlc_resp(etree.fromstring(xml.encode()))
     assert "version" not in resp_text

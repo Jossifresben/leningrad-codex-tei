@@ -23,31 +23,30 @@ Do not bump `site/package.json`; that viewer app version is separate.
    (`edition/NNN{A|B}.xml`); with no folio change, stop and report
    an empty release instead of bumping.
 
-2. **Check the index is current, rebuild when stale.**
-   When step 1 shows folio changes but no `edition/index.xml` change,
-   run `uv run leningrad build-index`.
-   Then `git status --short -- edition/index.xml`.
-   When the index changed, commit it alone:
-   `git add edition/index.xml && git commit -m "update index"`
-   Completion: `edition/index.xml` holds all folio sides from step 1,
-   and the working tree is clean for `edition/`.
-
-3. **Bump the version.**
+2. **Bump the version.**
    When the user already named `major`, `minor`, or `patch`, use it.
    Else ask the user which part to bump and wait for the answer.
    Run `uv version --bump <part>`.
    Read the new bare version with `uv version --short`.
    Completion: `pyproject.toml` holds the new bare version.
 
+3. **Rebuild the index.**
+   Always run `uv run leningrad build-index` after the bump.
+   The index holds the edition version in `appInfo/application/@version`,
+   so it changes on every bump.
+   Then `grep -m1 '<application ' edition/index.xml`.
+   Completion: the index `version` equals the new bare version, and
+   `edition/index.xml` holds all folio sides from step 1.
+
 4. **Commit the bump.**
-   `git add pyproject.toml uv.lock`
+   `git add pyproject.toml uv.lock edition/index.xml`
    `git commit -m "version bump v<X.Y.Z>"`
    (always with the `v` prefix, e.g. `version bump v0.2.5`).
-   Completion: `git show HEAD --stat` lists only `pyproject.toml`
-   and `uv.lock`.
+   Completion: `git show HEAD --stat` lists only `pyproject.toml`,
+   `uv.lock`, and `edition/index.xml`.
 
 5. **Tag the release.**
-   `git tag v<X.Y.Z>` with the same bare version as step 3.
+   `git tag v<X.Y.Z>` with the same bare version as step 2.
    Then check the tag matches the file:
    `git tag --list "v*" | tail -5` plus
    `grep -m1 '^version = ' pyproject.toml`.
