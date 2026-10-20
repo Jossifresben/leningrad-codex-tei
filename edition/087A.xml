@@ -65,7 +65,9 @@
   </teiHeader>
   <facsimile>
     <surface xml:id="surf-087A">
-      <graphic url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F087A.jpg"/>
+      <graphic url="https://manuscripts.sefaria.org/leningrad-color/BIB_LENCDX_F087A.jpg">
+        <desc type="sha256">65ccc2380061cd50b7d64a055d816d7e3acd61a0557d0b786f236e8580406a2b</desc>
+      </graphic>
     </surface>
   </facsimile>
 
