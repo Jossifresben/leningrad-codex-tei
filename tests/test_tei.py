@@ -345,6 +345,74 @@ def test_changes_keep_only_last_align_folio() -> None:
     ]
 
 
+def _batch_runs(*events: tuple) -> list[PipelineRun]:
+    """Audit runs from (stage, job, raw_sha256) events, one minute apart."""
+    runs = []
+    for minute, (stage, job, raw_sha) in enumerate(events):
+        summary: dict = {}
+        if job:
+            summary["batch_job"] = job
+        if raw_sha:
+            summary["raw_sha256"] = raw_sha
+        runs.append(
+            PipelineRun(
+                stage=stage,
+                result_summary=summary,
+                timestamp=datetime(2026, 8, 27, 1, minute),
+            )
+        )
+    return runs
+
+
+A, D, P = RunStage.ALIGN_FOLIO, RunStage.DOWNLOAD_BATCH, RunStage.PARSE_RAW
+
+
+def test_changes_keep_align_of_parsed_reply_not_later_batch() -> None:
+    # Job b is submitted and downloaded, but parse-raw still used job a's reply.
+    runs = _batch_runs(
+        (A, "a", None),
+        (D, "a", "sha-a"),
+        (A, "b", None),
+        (D, "b", "sha-b"),
+        (P, None, "sha-a"),
+    )
+    assert [c["when"] for c in changes_from_audit(runs)] == ["2026-08-27T01:00:00"]
+
+
+def test_changes_follow_redownload_of_earlier_job() -> None:
+    runs = _batch_runs(
+        (A, "a", None),
+        (D, "a", "sha-a"),
+        (A, "b", None),
+        (D, "b", "sha-b"),
+        (D, "a", "sha-a"),
+        (P, None, "sha-a"),
+    )
+    assert [c["when"] for c in changes_from_audit(runs)] == ["2026-08-27T01:00:00"]
+
+
+def test_changes_use_last_download_for_hand_edited_raw() -> None:
+    runs = _batch_runs(
+        (A, "a", None),
+        (D, "a", "sha-a"),
+        (A, "b", None),
+        (D, "b", "sha-b"),
+        (A, "c", None),
+        (P, None, "sha-edited"),
+    )
+    assert [c["when"] for c in changes_from_audit(runs)] == ["2026-08-27T01:02:00"]
+
+
+def test_changes_keep_later_non_batch_align() -> None:
+    runs = _batch_runs(
+        (A, "a", None),
+        (D, "a", "sha-a"),
+        (P, None, "sha-a"),
+        (A, None, None),
+    )
+    assert [c["when"] for c in changes_from_audit(runs)] == ["2026-08-27T01:03:00"]
+
+
 def test_changes_dedupe_repeat_generate_tei_by_same_contributor() -> None:
     runs = [
         PipelineRun(

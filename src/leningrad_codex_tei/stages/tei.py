@@ -233,8 +233,8 @@ def changes_from_audit(
 ) -> list[dict]:
     """Production events as revisionDesc changes, most recent first.
 
-    Only the last align-folio run is emitted, since it represents the
-    data used; earlier alignments are superseded. Download-batch runs
+    Only the align-folio run that produced the data used is emitted
+    (see ``_used_align_index``); other alignments are superseded. Download-batch runs
     record the machine fetch event and stay in the audit trail, never
     in the TEI. Generate-tei runs with a contributor record the human
     encoder, one entry per contributor (latest run wins), so re-running
@@ -246,10 +246,7 @@ def changes_from_audit(
     The align change points at it, unless the align run recorded a
     different image sha256 (older runs record none).
     """
-    last_align = max(
-        (i for i, run in enumerate(runs) if run.stage == RunStage.ALIGN_FOLIO),
-        default=None,
-    )
+    last_align = _used_align_index(runs)
     last_generate_by_who: dict[str, int] = {}
     for i, run in enumerate(runs):
         if run.stage != RunStage.GENERATE_TEI:
@@ -293,6 +290,54 @@ def changes_from_audit(
             )
     changes.reverse()
     return changes
+
+
+def _summary(run: PipelineRun) -> dict:
+    return run.result_summary if isinstance(run.result_summary, dict) else {}
+
+
+def _used_align_index(runs: list[PipelineRun]) -> int | None:
+    """Index of the align-folio run whose reply the folio's alignment holds.
+
+    The alignment is written by the latest parse-raw run or the latest
+    non-batch align-folio run. A parse-raw run is traced back by its raw
+    sha256 to the download-batch run that saved that reply, and from that
+    run's batch job to the align-folio run that submitted it. This keeps
+    the right run when a later batch was submitted but its reply not kept,
+    or when an earlier job's reply was downloaded again. When no download
+    matches the sha256 (a hand-edited raw reply), the last download before
+    the parse is used. Falls back to the last align-folio run when the
+    chain breaks (e.g. older audits).
+    """
+    aligns = [i for i, run in enumerate(runs) if run.stage == RunStage.ALIGN_FOLIO]
+    if not aligns:
+        return None
+    writers = [
+        i
+        for i, run in enumerate(runs)
+        if run.stage == RunStage.PARSE_RAW
+        or (run.stage == RunStage.ALIGN_FOLIO and not _summary(run).get("batch_job"))
+    ]
+    if not writers:
+        return aligns[-1]
+    writer = writers[-1]
+    if runs[writer].stage == RunStage.ALIGN_FOLIO:
+        return writer
+    raw_sha = _summary(runs[writer]).get("raw_sha256")
+    downloads = [i for i in range(writer) if runs[i].stage == RunStage.DOWNLOAD_BATCH]
+    matching = [
+        i
+        for i in downloads
+        if raw_sha and _summary(runs[i]).get("raw_sha256") == raw_sha
+    ]
+    download = (matching or downloads or [None])[-1]
+    if download is None:
+        return aligns[-1]
+    job = _summary(runs[download]).get("batch_job")
+    submitted = [
+        i for i in aligns if i < download and _summary(runs[i]).get("batch_job") == job
+    ]
+    return submitted[-1] if submitted else aligns[-1]
 
 
 def _change_text(run: PipelineRun) -> str:
