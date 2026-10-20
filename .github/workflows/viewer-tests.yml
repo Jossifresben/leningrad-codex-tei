@@ -1,0 +1,31 @@
+name: viewer-tests
+
+"on":
+  pull_request:
+    paths:
+      - "site/**"
+      - "edition/**"
+      - ".github/workflows/viewer-tests.yml"
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          # matches netlify.toml; tests import .ts via native type stripping
+          node-version: "26"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
