@@ -56,11 +56,14 @@ def split_trailing_punct(text: str) -> tuple[str, list[tuple[str, str]]]:
     """
     marks: list[tuple[str, str]] = []
     cut = len(text)
-    while cut > 0 and text[cut - 1] in _PUNCT_TYPES:
+    while cut > 0 and (text[cut - 1] in _PUNCT_TYPES or text[cut - 1].isspace()):
         char = text[cut - 1]
-        marks.append((char, _PUNCT_TYPES[char]))
+        if char in _PUNCT_TYPES:
+            marks.append((char, _PUNCT_TYPES[char]))
         cut -= 1
     marks.reverse()
+    if not marks:
+        return text, marks
     return text[:cut], marks
 
 
