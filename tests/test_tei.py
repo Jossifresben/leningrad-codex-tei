@@ -102,7 +102,8 @@ def test_rendered_xml_is_well_formed_and_structured(
 
     pcs = root.findall(f".//{_q('pc')}")
     assert [(p.get("type"), _id(p), p.text) for p in pcs] == [
-        ("sof-pasuq", "f001B-pc-6", "׃"),
+        ("sof-pasuq", "f001B-pc-6-1", "׃"),
+        ("inverted-nun", "f001B-pc-6-2", "׆"),
     ]
     assert all("׃" not in (w.text or "") and "׀" not in (w.text or "") for w in words)
 
@@ -218,6 +219,35 @@ def test_repeat_section_ids_in_one_verse_are_suffixed(
         "f001B-s-Genesis-2-1",
         "f001B-s-Genesis-2-1-2",
     ]
+
+
+def test_inverted_nun_follows_sof_pasuq_and_precedes_section(
+    alignment, changes
+) -> None:
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=alignment,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+        pipeline_version="0.1.0-dev",
+    )
+    root = etree.fromstring(xml.encode())
+    seen: list[str] = []
+    for el in root.iter(_q("w"), _q("pc"), _q("milestone")):
+        if etree.QName(el).localname == "milestone":
+            seen.append(f"{el.get('unit')}:{el.get('subtype') or el.get('n')}")
+        else:
+            seen.append(f"{_id(el)}:{el.text}")
+    i = seen.index("f001B-w-6:אֽוֹר")
+    assert seen[i : i + 4] == [
+        "f001B-w-6:אֽוֹר",
+        "f001B-pc-6-1:׃",
+        "f001B-pc-6-2:׆",
+        "section:pe",
+    ]
+    nun = root.find(f".//{_q('pc')}[@type='inverted-nun']")
+    assert nun is not None and nun.text == "\u05c6"
 
 
 def test_verse_milestone_mid_line(seed_slice, word_stream, changes) -> None:
@@ -554,8 +584,8 @@ def test_pc_follows_its_word_in_document_order(alignment, changes) -> None:
     words = [i for t, i in tags if t == "w"]
     pcs = [i for t, i in tags if t == "pc"]
     assert words == [f"f001B-w-{i}" for i in range(1, 11)]
-    assert pcs == ["f001B-pc-6"]
-    assert tags.index(("pc", "f001B-pc-6")) == tags.index(("w", "f001B-w-6")) + 1
+    assert pcs == ["f001B-pc-6-1", "f001B-pc-6-2"]
+    assert tags.index(("pc", "f001B-pc-6-1")) == tags.index(("w", "f001B-w-6")) + 1
 
 
 def test_publication_stmt_has_mit_availability(alignment, changes) -> None:
