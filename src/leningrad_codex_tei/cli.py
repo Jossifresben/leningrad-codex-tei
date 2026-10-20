@@ -44,6 +44,12 @@ def _file_sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _image_sha(config: Config, folio: str) -> str | None:
+    """sha256 of the folio image sent to the model, if it is on disk."""
+    path = config.paths.images / config.images.naming.format(folio=folio)
+    return _file_sha(path) if path.exists() else None
+
+
 def _seed_folios(config: Config) -> list[str]:
     """Distinct folio sides in seed order (one entry per side).
 
@@ -426,6 +432,7 @@ def align_folio(
                     temperature=config.ai.temperature,
                     prompt_version=align_stage.PROMPT_VERSION,
                     repo_hash=_repo_hash(),
+                    input_image_sha256=_image_sha(config, page),
                     contributor_name=(contributor or {}).get("name"),
                     contributor_email=(contributor or {}).get("email"),
                     result_summary={
@@ -461,6 +468,7 @@ def align_folio(
                 temperature=config.ai.temperature,
                 prompt_version=align_stage.PROMPT_VERSION,
                 repo_hash=_repo_hash(),
+                input_image_sha256=_image_sha(config, page),
                 contributor_name=(contributor or {}).get("name"),
                 contributor_email=(contributor or {}).get("email"),
                 result_summary={
@@ -859,14 +867,17 @@ def generate_tei(config: Config, folio: str | None, start_folio: str | None) -> 
             ),
         )
         edition = _stream.uxlc_edition
+        image = tei_stage.source_image_from_audit(trail.runs)
+        if image is not None:
+            image["xml_id"] = tei_stage.image_xml_id(page, config.images.source)
         xml = tei_stage.render_folio_tei(
             folio=page,
             verse_range=f"{sl.start_ref} – {sl.stop_ref}",
             record=record,
             page_milestones=[{"folio": page}],
-            changes=tei_stage.changes_from_audit(trail.runs),
+            changes=tei_stage.changes_from_audit(trail.runs, image),
             contributors=tei_stage.contributors_from_audit(trail.runs),
-            source_image=tei_stage.source_image_from_audit(trail.runs),
+            source_image=image,
             uxlc_edition=asdict(edition) if edition else None,
         )
         dest = config.paths.output / f"{page}.xml"

@@ -11,6 +11,7 @@ from leningrad_codex_tei.schemas import PipelineRun, RunStage
 from leningrad_codex_tei.stages.align import build_alignment_record
 from leningrad_codex_tei.stages.tei import (
     changes_from_audit,
+    image_xml_id,
     contributors_from_audit,
     render_folio_tei,
     source_image_from_audit,
@@ -411,6 +412,43 @@ def test_changes_carry_thinking_level() -> None:
     assert feats["thinking_level"] == "high"
 
 
+def test_align_change_points_at_image() -> None:
+    runs = [
+        PipelineRun(stage=RunStage.ALIGN_FOLIO, timestamp=datetime(2026, 8, 27)),
+        PipelineRun(
+            stage=RunStage.GENERATE_TEI,
+            contributor_name="Test Scribe",
+            timestamp=datetime(2026, 8, 28),
+        ),
+    ]
+    image = {"xml_id": "f001B-img-sefaria", "sha256": "abc"}
+    changes = changes_from_audit(runs, image)
+    refs = {c["text"]: c.get("image_ref") for c in changes}
+    assert refs == {
+        "Aligned folio.": "#f001B-img-sefaria",
+        "Encoded by Test Scribe.": None,
+    }
+
+
+def test_align_change_skips_image_with_other_sha256() -> None:
+    runs = [
+        PipelineRun(
+            stage=RunStage.ALIGN_FOLIO,
+            input_image_sha256="old",
+            timestamp=datetime(2026, 8, 27),
+        ),
+    ]
+    image = {"xml_id": "f001B-img-sefaria", "sha256": "new"}
+    assert changes_from_audit(runs, image)[0]["image_ref"] is None
+    image["sha256"] = "old"
+    assert changes_from_audit(runs, image)[0]["image_ref"] == "#f001B-img-sefaria"
+
+
+def test_image_xml_id() -> None:
+    assert image_xml_id("001B", "sefaria") == "f001B-img-sefaria"
+    assert image_xml_id("001B", None) == "f001B-img"
+
+
 def test_change_text_falls_back_without_summary() -> None:
     runs = [
         PipelineRun(
@@ -488,8 +526,19 @@ def test_source_image_renders_graphic_in_facsimile(alignment, changes) -> None:
         verse_range="Genesis 1:1 – 2:2",
         record=alignment,
         page_milestones=[{"folio": "001B"}],
-        changes=changes,
-        source_image={"url": "https://example.org/001B.jpg", "sha256": "abc123"},
+        changes=[
+            {
+                "when": "2026-08-27",
+                "who": "#leningrad-codex-tei",
+                "text": "Aligned folio.",
+                "image_ref": "#f001B-img-sefaria",
+            }
+        ],
+        source_image={
+            "url": "https://example.org/001B.jpg",
+            "sha256": "abc123",
+            "xml_id": "f001B-img-sefaria",
+        },
     )
     root = etree.fromstring(xml.encode())
     surface = root.find(f".//{_q('facsimile')}/{_q('surface')}")
@@ -502,6 +551,9 @@ def test_source_image_renders_graphic_in_facsimile(alignment, changes) -> None:
     assert sha is not None
     assert sha.get("type") == "sha256"
     assert sha.text == "abc123"
+    assert _id(graphic) == "f001B-img-sefaria"
+    ptr = root.find(f".//{_q('change')}/{_q('ptr')}[@type='image']")
+    assert ptr.get("target") == "#f001B-img-sefaria"
     ms_desc = root.find(f".//{_q('sourceDesc')}/{_q('msDesc')}")
     assert ms_desc is not None
     assert root.find(f".//{_q('sourceDesc')}/{_q('p')}") is None

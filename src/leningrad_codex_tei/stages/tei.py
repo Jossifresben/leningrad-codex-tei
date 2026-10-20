@@ -228,7 +228,9 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
     return result
 
 
-def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
+def changes_from_audit(
+    runs: list[PipelineRun], image: dict | None = None
+) -> list[dict]:
     """Production events as revisionDesc changes, most recent first.
 
     Only the last align-folio run is emitted, since it represents the
@@ -239,6 +241,10 @@ def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
     generate-tei does not repeat the same "Encoded by" change.
     Downloads, checks, and other mechanics stay in the audit
     trail.
+
+    ``image`` is the folio's facsimile graphic (``xml_id``, ``sha256``).
+    The align change points at it, unless the align run recorded a
+    different image sha256 (older runs record none).
     """
     last_align = max(
         (i for i, run in enumerate(runs) if run.stage == RunStage.ALIGN_FOLIO),
@@ -267,6 +273,7 @@ def changes_from_audit(runs: list[PipelineRun]) -> list[dict]:
                     "text": _change_text(run),
                     "features": _ai_features(run),
                     "prompt_url": prompt_snapshot_url(run.repo_hash),
+                    "image_ref": _image_ref(run, image),
                 }
             )
         elif run.stage == RunStage.GENERATE_TEI:
@@ -296,6 +303,19 @@ def _change_text(run: PipelineRun) -> str:
             text += f", {summary['method']}"
         return text + ")."
     return "Aligned folio."
+
+
+def image_xml_id(folio: str, source: str | None) -> str:
+    """xml:id of a folio's facsimile graphic, e.g. ``f001B-img-sefaria``."""
+    return f"f{folio}-img-{source}" if source else f"f{folio}-img"
+
+
+def _image_ref(run: PipelineRun, image: dict | None) -> str | None:
+    if not image or not image.get("xml_id"):
+        return None
+    if run.input_image_sha256 and run.input_image_sha256 != image.get("sha256"):
+        return None
+    return f"#{image['xml_id']}"
 
 
 def source_image_from_audit(runs: list[PipelineRun]) -> dict | None:
