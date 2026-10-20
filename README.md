@@ -83,6 +83,22 @@ uv run leningrad build-index          # compile index.xml
 
 Pass `--help` to any command to see more information.
 
+### Agents
+
+Project instructions for AI coding agents live in [AGENTS.md](./AGENTS.md).
+
+Agent skills live in `.agents/skills/`. For tools that read skills from `.claude/skills/` (e.g. Claude Code), that path is a symlink to `.agents/skills/`, so both share the same skills.
+
+> [!IMPORTANT]
+> Windows users: Git checks out symlinks as plain text files unless symlink support is enabled.
+> Enable Developer Mode (or run as administrator), then clone with symlinks turned on:
+>
+> ```bash
+> git clone -c core.symlinks=true https://github.com/charlesLoder/leningrad-codex-tei
+> ```
+>
+> For an existing clone, run `git config core.symlinks true`, delete the `.claude/skills` file, and then run `git checkout -- .claude/skills`.
+
 ## About
 
 The [Leningrad Codex](https://en.wikipedia.org/wiki/Leningrad_Codex) is oldest, complete manuscript of the Hebrew Bible.
