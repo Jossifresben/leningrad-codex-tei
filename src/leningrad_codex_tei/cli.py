@@ -540,6 +540,9 @@ def download_batch(config: Config, batch: str | None) -> None:
     job_name = record["job_name"]
     prompts: dict[str, str] = (record or {}).get("prompts", {})
     stored_prompt_version = (record or {}).get("prompt_version")
+    # Record the settings the job was submitted with, not the current config.
+    stored_ai: dict = record.get("ai") or align_stage.ai_snapshot(config)
+    stored_model = record.get("model") or stored_ai.get("model") or config.ai.model
 
     client = align_stage._model_client(config)
     job = client.batches.get(name=job_name)
@@ -585,11 +588,11 @@ def download_batch(config: Config, batch: str | None) -> None:
                 folio=key,
                 prompt=prompt,
                 image_uri=str(image_path),
-                model=config.ai.model,
+                model=stored_model,
                 prompt_version=stored_prompt_version or align_stage.PROMPT_VERSION,
-                inference=config.ai.inference,
+                inference=stored_ai.get("inference", config.ai.inference),
                 response_text=response_text,
-                ai={**align_stage.ai_snapshot(config), "batch_job": job_name},
+                ai={**stored_ai, "batch_job": job_name},
             )
             conv_path = align_stage.save_conversation(
                 conversation, config.paths.alignments, key
@@ -601,8 +604,8 @@ def download_batch(config: Config, batch: str | None) -> None:
             key,
             PipelineRun(
                 stage=RunStage.DOWNLOAD_BATCH,
-                model=config.ai.model,
-                temperature=config.ai.temperature,
+                model=stored_model,
+                temperature=stored_ai.get("temperature", config.ai.temperature),
                 prompt_version=stored_prompt_version or align_stage.PROMPT_VERSION,
                 repo_hash=_repo_hash(),
                 contributor_name=(contributor or {}).get("name"),
@@ -612,7 +615,7 @@ def download_batch(config: Config, batch: str | None) -> None:
                     "raw": str(raw_path),
                     "raw_sha256": raw_sha,
                     "conversation": str(conv_path) if conv_path else None,
-                    "ai": align_stage.ai_snapshot(config),
+                    "ai": stored_ai,
                 },
             ),
         )
