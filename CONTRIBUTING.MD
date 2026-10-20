@@ -36,6 +36,17 @@ uv run leningrad download-images
 uv run leningrad build-word-stream
 ```
 
+#### UXLC version
+
+The edition is made from UXLC 2.5 (build 27.6).
+[tanach.us](https://www.tanach.us) serves only the current UXLC release, so `download-uxlc` gets UXLC 2.5 from a mirror on this repo's [`uxlc-mirror`](https://github.com/charlesLoder/leningrad-codex-tei/tree/uxlc-mirror) branch.
+Do not change `uxlc.download_url` in `config.yaml`.
+
+`download-uxlc` and `build-word-stream` compare the UXLC version with the version in the folio headers in `/edition`.
+If the versions are different, the command stops and does not write files.
+If you see this error, you may have UXLC from tanach.us in `data/uxlc/` (e.g. from an earlier download).
+Run `download-uxlc` with the default config, then run `build-word-stream` again.
+
 ### Running inference
 
 Obtain a [Gemini API Key](https://ai.google.dev/gemini-api/docs/api-key) and add it to your environment

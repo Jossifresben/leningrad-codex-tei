@@ -315,6 +315,23 @@ def test_validate_failure_does_not_mark_aligned(tmp_path: Path) -> None:
     assert audit["status"] == "aligned"  # unchanged: failure does not downgrade
 
 
+def test_build_word_stream_rejects_other_uxlc_version(tmp_path: Path) -> None:
+    """A UXLC version unlike the edition's stops build-word-stream before it writes."""
+    conf = _write_config(tmp_path)
+    _run_pipeline(CliRunner(), conf)
+
+    genesis = tmp_path / "uxlc" / "Genesis.xml"
+    genesis.write_text(genesis.read_text().replace("UXLC 9.9-test", "UXLC 10.0"))
+    stream_path = tmp_path / "word_stream.json"
+    before = stream_path.read_bytes()
+
+    result = CliRunner().invoke(cli, ["--config", str(conf), "build-word-stream"])
+    assert result.exit_code != 0
+    assert "UXLC 10.0" in result.output
+    assert "UXLC 9.9-test" in result.output
+    assert stream_path.read_bytes() == before
+
+
 def test_pipeline_records_git_contributor(tmp_path: Path) -> None:
     """git user.name/user.email surface as respStmt + change + index entry."""
     conf = _write_config(tmp_path)

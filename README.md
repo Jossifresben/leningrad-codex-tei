@@ -118,6 +118,9 @@ The text used is the Unicode/XML Leningrad Codex (UXLC) maintained by Christophe
 For this reason, the text in the edition may differ from the images in the manuscript.
 That is an intentional choice.
 
+The edition uses UXLC 2.5 (build 27.6).
+Because tanach.us serves only the current release, the pipeline gets UXLC 2.5 from a mirror on the [`uxlc-mirror`](https://github.com/charlesLoder/leningrad-codex-tei/tree/uxlc-mirror) branch.
+
 The text determined to be on each folio was derived from Ben Denckla's index of the [Leningrad Codex](https://github.com/bdenckla/MAM-basics).
 
 ### Goals

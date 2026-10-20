@@ -82,6 +82,14 @@ def _edition_from_root(root: etree._Element) -> UxlcEdition | None:
     return None
 
 
+def edition_from_xml(data: bytes) -> UxlcEdition | None:
+    """UXLC edition identity from one book's XML bytes, or None when absent or unparsable."""
+    try:
+        return _edition_from_root(etree.fromstring(data))
+    except etree.LxmlError:
+        return None
+
+
 def read_uxlc_edition(
     uxlc_dir: Path, book_order: list[str] | None = None
 ) -> UxlcEdition | None:

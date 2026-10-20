@@ -22,7 +22,9 @@ seed:
   file: "in/lci_recs.json"
 
 uxlc:
-  download_url: "https://www.tanach.us/Books/Tanach.xml.zip"
+  # UXLC 2.5 (build 27.6); tanach.us now serves only the current release.
+  # The mirror and its README are on the uxlc-mirror branch.
+  download_url: "https://raw.githubusercontent.com/charlesLoder/leningrad-codex-tei/499fdcc207174396f6d371d412eb18f72d98a508/Tanach-2.5.xml.zip"
 
 ai:
   model: "gemini-3.8-flash"

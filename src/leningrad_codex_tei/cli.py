@@ -137,7 +137,10 @@ def vendor_seed(config: Config) -> None:
 @click.pass_obj
 def download_uxlc(config: Config) -> None:
     """Fetch and extract the UXLC book XMLs from the archive URL, then clean up."""
-    info = uxlc_stage.download_uxlc(config)
+    try:
+        info = uxlc_stage.download_uxlc(config)
+    except ValueError as exc:
+        raise click.ClickException(str(exc)) from exc
     update_pipeline_provenance(
         config.paths.provenance,
         config.project_version,
@@ -149,7 +152,7 @@ def download_uxlc(config: Config) -> None:
         ),
     )
     click.echo(
-        f"download-uxlc: {config.paths.uxlc} ({info['files']} XML files, zip sha256 {info['zip_sha256'][:12]}…)"
+        f"download-uxlc: {config.paths.uxlc} ({info['version']}, {info['files']} XML files, zip sha256 {info['zip_sha256'][:12]}…)"
     )
 
 
@@ -180,9 +183,13 @@ def download_images(config: Config, folio: str | None) -> None:
 def build_word_stream(config: Config) -> None:
     """Parse UXLC XML files into a flat word stream with atom IDs."""
     stream = stream_stage.build_word_stream(config.paths.uxlc)
+    edition = stream.uxlc_edition
+    try:
+        uxlc_stage.check_uxlc_edition(edition, config.paths.output)
+    except ValueError as exc:
+        raise click.ClickException(str(exc)) from exc
     stream_stage.save_word_stream(stream, config.paths.word_stream)
     sha = _file_sha(config.paths.word_stream)
-    edition = stream.uxlc_edition
     update_pipeline_provenance(
         config.paths.provenance,
         config.project_version,
