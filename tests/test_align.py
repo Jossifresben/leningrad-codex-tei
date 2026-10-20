@@ -1189,29 +1189,17 @@ def test_parse_raw_scans_raw_dir(seed_fixture, seed_slice, word_stream, config) 
     assert summary["failed_folios"] == ["999B"]
 
 
-def test_download_batch_writes_raw_conversation_and_audit(
-    seed_fixture, word_stream, config, monkeypatch
-) -> None:
-    """download-batch owns exchange records: raw + conversation from ground truth."""
-    import hashlib
-
+def _run_download_batch(config, conf, monkeypatch, submit: dict):
+    """Run download-batch on a fake succeeded job with one reply for 001B."""
     from click.testing import CliRunner
 
     import leningrad_codex_tei.stages.align as align_mod
     from leningrad_codex_tei.cli import cli
 
-    conf = _parse_raw_config(config, seed_fixture, word_stream)
     job_dir = config.paths.alignments / "batch" / "ts1"
     job_dir.mkdir(parents=True)
     (job_dir / "submit.json").write_text(
-        json.dumps(
-            {
-                "job_name": "batches/123",
-                "folios": ["001B"],
-                "prompts": {"001B": "the prompt actually sent"},
-                "prompt_version": "pv1",
-            }
-        )
+        json.dumps({"job_name": "batches/123", "folios": ["001B"], **submit})
     )
     result_lines = [
         json.dumps(
@@ -1247,6 +1235,22 @@ def test_download_batch_writes_raw_conversation_and_audit(
 
     result = CliRunner().invoke(cli, ["--config", str(conf), "download-batch"])
     assert result.exit_code == 0, f"{result.output}\n{result.exception}"
+    return job_dir
+
+
+def test_download_batch_writes_raw_conversation_and_audit(
+    seed_fixture, word_stream, config, monkeypatch
+) -> None:
+    """download-batch owns exchange records: raw + conversation from ground truth."""
+    import hashlib
+
+    conf = _parse_raw_config(config, seed_fixture, word_stream)
+    job_dir = _run_download_batch(
+        config,
+        conf,
+        monkeypatch,
+        {"prompts": {"001B": "the prompt actually sent"}, "prompt_version": "pv1"},
+    )
 
     assert (config.paths.alignments / "raw" / "001B.xml").read_text() == "hello raw"
     conv = json.loads(
@@ -1268,3 +1272,40 @@ def test_download_batch_writes_raw_conversation_and_audit(
     assert (
         run["result_summary"]["raw_sha256"] == hashlib.sha256(b"hello raw").hexdigest()
     )
+
+
+def test_download_batch_records_submitted_settings(
+    seed_fixture, word_stream, config, monkeypatch
+) -> None:
+    """Conversation and audit carry the job's settings, not the current config."""
+    conf = _parse_raw_config(config, seed_fixture, word_stream)
+    submitted_ai = {
+        "model": "submitted-model",
+        "temperature": 0.4,
+        "inference": "batch",
+        "thinking_level": "high",
+    }
+    assert config.ai.temperature != 0.4
+    _run_download_batch(
+        config,
+        conf,
+        monkeypatch,
+        {
+            "prompts": {"001B": "p"},
+            "prompt_version": "pv1",
+            "model": "submitted-model",
+            "ai": submitted_ai,
+        },
+    )
+
+    conv = json.loads(
+        (config.paths.alignments / "conversations" / "001B.json").read_text()
+    )
+    assert conv["model"] == "submitted-model"
+    assert conv["ai"] == {**submitted_ai, "batch_job": "batches/123"}
+
+    audit = json.loads((config.paths.audit / "001B.json").read_text())
+    run = [r for r in audit["runs"] if r["stage"] == "download-batch"][-1]
+    assert run["model"] == "submitted-model"
+    assert run["temperature"] == 0.4
+    assert run["result_summary"]["ai"] == submitted_ai
