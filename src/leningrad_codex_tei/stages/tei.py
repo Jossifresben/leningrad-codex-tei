@@ -16,12 +16,21 @@ REPO_URL = "https://github.com/charlesLoder/leningrad-codex-tei"
 
 PROMPT_REPO_PATH = "src/leningrad_codex_tei/stages/align.py"
 
+SKILL_REPO_PATH = ".agents/skills/align-folio"
+
 
 def prompt_snapshot_url(repo_hash: str | None) -> str | None:
     """GitHub blob URL for the align prompt at a repo hash, or None."""
     if not repo_hash or repo_hash == "unknown":
         return None
     return f"{REPO_URL}/blob/{repo_hash.removesuffix('-dirty')}/{PROMPT_REPO_PATH}"
+
+
+def skill_snapshot_url(repo_hash: str | None) -> str | None:
+    """GitHub tree URL for the agent-harness skill at a repo hash, or None."""
+    if not repo_hash or repo_hash == "unknown":
+        return None
+    return f"{REPO_URL}/tree/{repo_hash.removesuffix('-dirty')}/{SKILL_REPO_PATH}"
 
 
 _env = Environment(
@@ -257,9 +266,9 @@ def changes_from_audit(
         last_generate_by_who[contrib["xml_id"]] = i
     changes: list[dict] = []
     for i, run in enumerate(runs):
-        if run.stage == RunStage.ALIGN_FOLIO and i != last_align:
+        if run.stage in _ALIGN_STAGES and i != last_align:
             continue
-        if run.stage == RunStage.ALIGN_FOLIO:
+        if run.stage in _ALIGN_STAGES:
             contrib = _run_contributor(run)
             changes.append(
                 {
@@ -270,6 +279,9 @@ def changes_from_audit(
                     "text": _change_text(run),
                     "features": _ai_features(run),
                     "prompt_url": prompt_snapshot_url(run.repo_hash),
+                    "skill_url": skill_snapshot_url(run.repo_hash)
+                    if run.stage == RunStage.INGEST_FOLIO
+                    else None,
                     "image_ref": _image_ref(run, image),
                 }
             )
@@ -292,6 +304,10 @@ def changes_from_audit(
     return changes
 
 
+# Runs that produce an alignment reply: a Gemini call, or a harness reply.
+_ALIGN_STAGES = (RunStage.ALIGN_FOLIO, RunStage.INGEST_FOLIO)
+
+
 def _summary(run: PipelineRun) -> dict:
     return run.result_summary if isinstance(run.result_summary, dict) else {}
 
@@ -304,12 +320,14 @@ def _used_align_index(runs: list[PipelineRun]) -> int | None:
     sha256 to the download-batch run that saved that reply, and from that
     run's batch job to the align-folio run that submitted it. This keeps
     the right run when a later batch was submitted but its reply not kept,
-    or when an earlier job's reply was downloaded again. When no download
+    or when an earlier job's reply was downloaded again. A reply from an
+    agent harness traces to its ingest-folio run, which stands in for
+    both the submit and the download. When no download
     matches the sha256 (a hand-edited raw reply), the last download before
     the parse is used. Falls back to the last align-folio run when the
     chain breaks (e.g. older audits).
     """
-    aligns = [i for i, run in enumerate(runs) if run.stage == RunStage.ALIGN_FOLIO]
+    aligns = [i for i, run in enumerate(runs) if run.stage in _ALIGN_STAGES]
     if not aligns:
         return None
     writers = [
@@ -324,7 +342,11 @@ def _used_align_index(runs: list[PipelineRun]) -> int | None:
     if runs[writer].stage == RunStage.ALIGN_FOLIO:
         return writer
     raw_sha = _summary(runs[writer]).get("raw_sha256")
-    downloads = [i for i in range(writer) if runs[i].stage == RunStage.DOWNLOAD_BATCH]
+    downloads = [
+        i
+        for i in range(writer)
+        if runs[i].stage in (RunStage.DOWNLOAD_BATCH, RunStage.INGEST_FOLIO)
+    ]
     matching = [
         i
         for i in downloads
@@ -333,9 +355,15 @@ def _used_align_index(runs: list[PipelineRun]) -> int | None:
     download = (matching or downloads or [None])[-1]
     if download is None:
         return aligns[-1]
+    if runs[download].stage == RunStage.INGEST_FOLIO:
+        return download
     job = _summary(runs[download]).get("batch_job")
     submitted = [
-        i for i in aligns if i < download and _summary(runs[i]).get("batch_job") == job
+        i
+        for i in aligns
+        if i < download
+        and runs[i].stage == RunStage.ALIGN_FOLIO
+        and _summary(runs[i]).get("batch_job") == job
     ]
     return submitted[-1] if submitted else aligns[-1]
 
@@ -387,6 +415,11 @@ _AI_PARAM_ORDER = (
     "max_retries",
     "image_transport",
     "thinking_level",
+    "harness",
+    "harness_version",
+    "effort",
+    "skill_sha256",
+    "attempts",
 )
 
 
@@ -412,6 +445,11 @@ def _ai_features(run: PipelineRun) -> list[dict]:
             "max_retries",
             "image_transport",
             "thinking_level",
+            "harness",
+            "harness_version",
+            "effort",
+            "skill_sha256",
+            "attempts",
         ):
             if key in ai:
                 entry[key] = ai[key]

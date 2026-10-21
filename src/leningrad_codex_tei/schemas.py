@@ -105,6 +105,8 @@ class RunStage(str, Enum):
     DOWNLOAD_IMAGES = "download-images"
     BUILD_WORD_STREAM = "build-word-stream"
     ALIGN_FOLIO = "align-folio"
+    PREPARE_FOLIO = "prepare-folio"
+    INGEST_FOLIO = "ingest-folio"
     DOWNLOAD_BATCH = "download-batch"
     PARSE_RAW = "parse-raw"
     VALIDATE = "validate"

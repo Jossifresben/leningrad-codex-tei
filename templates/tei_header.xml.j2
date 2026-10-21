@@ -48,6 +48,9 @@
         {% if change.prompt_url %}
         <ptr type="prompt" target="{{ change.prompt_url }}"/>
         {% endif %}
+        {% if change.skill_url %}
+        <ptr type="skill" target="{{ change.skill_url }}"/>
+        {% endif %}
         {% if change.image_ref %}
         <ptr type="image" target="{{ change.image_ref }}"/>
         {% endif %}

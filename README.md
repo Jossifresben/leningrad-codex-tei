@@ -83,6 +83,20 @@ uv run leningrad build-index          # compile index.xml
 
 Pass `--help` to any command to see more information.
 
+#### Aligning with an agent harness instead of Gemini
+
+Contributors can do the alignment step with their own agent harness (e.g. Claude Code) in place of `align-folio` and `download-batch`.
+The agent gets the same prompt and image, and its reply goes through the same parser and checks:
+
+```bash
+uv run leningrad prepare-folio --folio 001B   # write a task packet (no model call)
+# the agent runs the align-folio skill: writes reply.xml + run.json, self-checks with check-reply
+uv run leningrad ingest-folio --folio 001B    # verify the run against the packet, save the raw reply
+uv run leningrad parse-raw --folio 001B       # then continue as usual
+```
+
+See [`.agents/skills/align-folio/SKILL.md`](.agents/skills/align-folio/SKILL.md).
+
 ### Agents
 
 Project instructions for AI coding agents live in [AGENTS.md](./AGENTS.md).

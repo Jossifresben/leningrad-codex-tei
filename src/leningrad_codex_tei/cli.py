@@ -26,6 +26,7 @@ from leningrad_codex_tei.schemas import (
 )
 from leningrad_codex_tei.stages import align as align_stage
 from leningrad_codex_tei.stages import download as download_stage
+from leningrad_codex_tei.stages import harness as harness_stage
 from leningrad_codex_tei.stages import index as index_stage
 from leningrad_codex_tei.stages import tei as tei_stage
 from leningrad_codex_tei.stages import uxlc as uxlc_stage
@@ -91,6 +92,30 @@ def _merged_record_count(sl) -> int:
     if recs:
         return len(recs)
     return 1
+
+
+def _select_folios(
+    config: Config, folio: str | None, limit: int | None, all_: bool
+) -> list[str]:
+    """Resolve --folio/--limit/--all to distinct sides in seed order."""
+    if all_:
+        if folio is not None or limit is not None:
+            raise click.ClickException("--all cannot be used with --folio or --limit")
+        return _seed_folios(config)
+    if folio is None:
+        if limit is not None:
+            raise click.ClickException("--limit requires --folio")
+        raise click.ClickException(
+            "Missing selection: pass --folio FOLIO [--limit N] or --all"
+        )
+    if limit is None:
+        limit = 1
+    if limit < 1:
+        raise click.ClickException("--limit must be >= 1")
+    ordered = _seed_folios(config)
+    if folio not in ordered:
+        raise click.ClickException(f"unknown folio {folio!r}")
+    return ordered[ordered.index(folio) : ordered.index(folio) + limit]
 
 
 def _alignment_folios(config: Config) -> list[str]:
@@ -406,25 +431,7 @@ def align_folio(
     )
     seed = json.loads(config.paths.seed.read_text())
     stream = stream_stage.load_word_stream(config.paths.word_stream)
-    if all_:
-        if folio is not None or limit is not None:
-            raise click.ClickException("--all cannot be used with --folio or --limit")
-        folios = _seed_folios(config)
-    else:
-        if folio is None:
-            if limit is not None:
-                raise click.ClickException("--limit requires --folio")
-            raise click.ClickException(
-                "Missing selection: pass --folio FOLIO [--limit N] or --all"
-            )
-        if limit is None:
-            limit = 1
-        if limit < 1:
-            raise click.ClickException("--limit must be >= 1")
-        ordered = _seed_folios(config)
-        if folio not in ordered:
-            raise click.ClickException(f"unknown folio {folio!r}")
-        folios = ordered[ordered.index(folio) : ordered.index(folio) + limit]
+    folios = _select_folios(config, folio, limit, all_)
     if show_prompt and not dry_run:
         raise click.ClickException("--show-prompt requires --dry-run")
     if dry_run:
@@ -648,6 +655,188 @@ def download_batch(config: Config, batch: str | None) -> None:
     click.echo("download-batch: next run parse-raw to parse raw responses")
 
 
+@cli.command(name="prepare-folio")
+@click.option(
+    "--folio",
+    default=None,
+    help="Start folio (e.g. 001B). Prepares --limit distinct sides from here.",
+)
+@click.option(
+    "--limit",
+    type=int,
+    default=None,
+    help="Distinct sides to prepare from --folio. Default 1.",
+)
+@click.option("--all", "all_", is_flag=True, help="Prepare all folios in seed order.")
+@click.pass_obj
+def prepare_folio(
+    config: Config, folio: str | None, limit: int | None, all_: bool
+) -> None:
+    """Write task packets for an agent harness (no model call).
+
+    Each packet holds the same prompt align-folio sends to Gemini, plus
+    the image path and the hashes ingest-folio checks. An agent (e.g.
+    Claude Code with the align-folio skill) writes reply.xml and run.json
+    next to it; then run ingest-folio.
+    """
+    try:
+        align_stage.ensure_align_prompt_clean()
+        harness_stage.ensure_skill_clean()
+    except RuntimeError as exc:
+        raise click.ClickException(str(exc)) from exc
+    seed = json.loads(config.paths.seed.read_text())
+    stream = stream_stage.load_word_stream(config.paths.word_stream)
+    folios = _select_folios(config, folio, limit, all_)
+    seed_sha = _file_sha(config.paths.seed)
+    repo = _repo_hash()
+    created = align_stage.batch_timestamp()
+    contributor = _current_contributor()
+    for page in folios:
+        sl = align_stage.compute_seed_slice(seed, page, stream)
+        try:
+            packet = harness_stage.build_packet(
+                sl,
+                stream,
+                config,
+                seed_sha256=seed_sha,
+                repo_hash=repo,
+                created=created,
+            )
+        except FileNotFoundError as exc:
+            raise click.ClickException(str(exc)) from exc
+        dest = harness_stage.write_packet(config, packet)
+        append_run(
+            config.paths.audit,
+            page,
+            PipelineRun(
+                stage=RunStage.PREPARE_FOLIO,
+                prompt_version=packet["prompt_version"],
+                repo_hash=repo,
+                input_image_sha256=packet["image_sha256"],
+                contributor_name=(contributor or {}).get("name"),
+                contributor_email=(contributor or {}).get("email"),
+                result_summary={
+                    "seed_sha256": seed_sha,
+                    "skill_sha256": packet["skill_sha256"],
+                    "packet": str(dest),
+                    "packet_sha256": _file_sha(dest),
+                    "range": packet["range"],
+                    "atoms": packet["atoms"],
+                },
+            ),
+        )
+        click.echo(f"prepare-folio: {page} = {packet['range']} -> {dest}")
+
+
+@cli.command(name="check-reply")
+@click.option("--folio", required=True, help="Folio side to check (e.g. 001B).")
+@click.pass_obj
+def check_reply(config: Config, folio: str) -> None:
+    """Parse and validate a harness reply without writing anything.
+
+    Reads tasks/{folio}/reply.xml and runs the same parser and checks as
+    parse-raw + validate. Exits non-zero when the reply would fail.
+    """
+    reply_path = harness_stage.task_dir(config, folio) / harness_stage.REPLY_FILE
+    if not reply_path.exists():
+        raise click.ClickException(f"no reply for {folio}: {reply_path}")
+    seed = json.loads(config.paths.seed.read_text())
+    stream = stream_stage.load_word_stream(config.paths.word_stream)
+    sl = align_stage.compute_seed_slice(seed, folio, stream)
+    try:
+        _record, result = harness_stage.check_reply(
+            sl, stream, reply_path.read_text(encoding="utf-8")
+        )
+    except Exception as exc:
+        raise click.ClickException(
+            f"{folio} parse failed: {type(exc).__name__}: {exc}"
+        ) from exc
+    click.echo(f"check-reply: {folio} {result.status} {result.checks}")
+    if not result.passed:
+        raise click.exceptions.Exit(1)
+
+
+@cli.command(name="ingest-folio")
+@click.option("--folio", required=True, help="Folio side to ingest (e.g. 001B).")
+@click.pass_obj
+def ingest_folio(config: Config, folio: str) -> None:
+    """Verify a harness run against its packet and save it as a raw reply.
+
+    Checks the run's packet hash, and that the prompt, image, seed and
+    skill still match the packet. Then writes raw/{folio}.xml and
+    conversations/{folio}.json, as download-batch does. Run parse-raw next.
+    """
+    try:
+        align_stage.ensure_align_prompt_clean()
+        harness_stage.ensure_skill_clean()
+    except RuntimeError as exc:
+        raise click.ClickException(str(exc)) from exc
+    try:
+        task = harness_stage.load_task(config, folio)
+    except FileNotFoundError as exc:
+        raise click.ClickException(str(exc)) from exc
+    seed = json.loads(config.paths.seed.read_text())
+    stream = stream_stage.load_word_stream(config.paths.word_stream)
+    sl = align_stage.compute_seed_slice(seed, folio, stream)
+    seed_info = _seed_info(config)
+    problems = harness_stage.verify_task(
+        task, sl, stream, config, seed_sha256=seed_info["seed_sha256"]
+    )
+    if problems:
+        raise click.ClickException(f"{folio} rejected: " + "; ".join(problems))
+    raw_path = align_stage.save_raw_model_response(
+        config.paths.alignments, folio, task.reply
+    )
+    raw_sha = hashlib.sha256(task.reply.encode("utf-8")).hexdigest()
+    conv_path = align_stage.save_conversation(
+        harness_stage.build_harness_conversation(task), config.paths.alignments, folio
+    )
+    contributor = _current_contributor()
+    append_run(
+        config.paths.audit,
+        folio,
+        PipelineRun(
+            stage=RunStage.INGEST_FOLIO,
+            model=task.run["model"],
+            prompt_version=task.packet["prompt_version"],
+            repo_hash=_repo_hash(),
+            input_image_sha256=task.packet["image_sha256"],
+            contributor_name=(contributor or {}).get("name"),
+            contributor_email=(contributor or {}).get("email"),
+            result_summary={
+                **seed_info,
+                "atoms": task.packet["atoms"],
+                "records_merged": _merged_record_count(sl),
+                "range": task.packet["range"],
+                "packet_sha256": task.packet_sha256,
+                "raw": str(raw_path),
+                "raw_sha256": raw_sha,
+                "conversation": str(conv_path),
+                "ai": harness_stage.harness_snapshot(task),
+            },
+        ),
+    )
+    click.echo(f"ingest-folio: {folio} raw -> {raw_path}")
+    click.echo("ingest-folio: next run parse-raw to parse the raw response")
+
+
+def _parse_run_ai(config: Config, conv_path: Path) -> tuple[str, float | None, dict]:
+    """Model, temperature and ai settings to record for one parse-raw run.
+
+    A harness reply records what its conversation says, not the Gemini
+    settings in config.
+    """
+    if conv_path.exists():
+        try:
+            conv = json.loads(conv_path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            conv = {}
+        ai = conv.get("ai") or {}
+        if ai.get("harness"):
+            return conv.get("model") or ai.get("model"), None, ai
+    return config.ai.model, config.ai.temperature, align_stage.ai_snapshot(config)
+
+
 @cli.command(name="parse-raw")
 @click.option(
     "--folio",
@@ -765,13 +954,14 @@ def parse_raw(config: Config, folio: str | None, start_folio: str | None) -> Non
             )
             continue
         contributor = _current_contributor()
+        run_model, run_temperature, run_ai = _parse_run_ai(config, conv_path)
         append_run(
             config.paths.audit,
             key,
             PipelineRun(
                 stage=RunStage.PARSE_RAW,
-                model=config.ai.model,
-                temperature=config.ai.temperature,
+                model=run_model,
+                temperature=run_temperature,
                 prompt_version=align_stage.PROMPT_VERSION,
                 repo_hash=_repo_hash(),
                 contributor_name=(contributor or {}).get("name"),
@@ -783,7 +973,7 @@ def parse_raw(config: Config, folio: str | None, start_folio: str | None) -> Non
                     "range": f"{sl.start_ref} – {sl.stop_ref}",
                     "raw": str(raw_path),
                     "raw_sha256": raw_sha,
-                    "ai": align_stage.ai_snapshot(config),
+                    "ai": run_ai,
                 },
             ),
         )

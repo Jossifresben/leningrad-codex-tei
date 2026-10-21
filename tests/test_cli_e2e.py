@@ -10,6 +10,7 @@ import zipfile
 from pathlib import Path
 from unittest.mock import patch
 
+import pytest
 import yaml
 from click.testing import CliRunner
 from lxml import etree
@@ -19,6 +20,8 @@ from leningrad_codex_tei.cli import cli
 from leningrad_codex_tei.config import Config
 from leningrad_codex_tei.schemas import WordStream
 from leningrad_codex_tei.stages import align as align_stage
+from leningrad_codex_tei.stages import harness as harness_stage
+from leningrad_codex_tei.stages import word_stream as stream_stage
 from leningrad_codex_tei.stages.align import SeedSlice
 from leningrad_codex_tei.util import net
 
@@ -374,3 +377,192 @@ def test_pipeline_records_git_contributor(tmp_path: Path) -> None:
     assert entries[0].get("when") == encoded_when
     assert entries[0].findtext("persName") == "Test Scribe"
     assert entries[0].find("date").get("when") == entries[0].get("when")
+
+
+# --- agent harness path: prepare-folio -> agent -> ingest-folio -> parse-raw ---
+
+HARNESS_PLACEMENTS = [
+    (1, 1, 1),
+    (2, 1, 1),
+    (3, 1, 1),
+    (4, 1, 2),
+    (5, 1, 2),
+    (6, 2, 1),
+    (7, 2, 2),
+    (8, 2, 2),
+    (9, 3, 1),
+    (10, 3, 1),
+]
+
+
+def _invoke(runner: CliRunner, conf: Path, *args: str):
+    return runner.invoke(cli, ["--config", str(conf), *args])
+
+
+def _prepare_harness(tmp_path: Path):
+    """Run the corpus stages, then prepare-folio for 001B; return (runner, conf)."""
+
+    def fake(url: str) -> bytes:
+        if url.startswith("https://api.github.com/"):
+            return json.dumps({"sha": SEED_SHA}).encode()
+        if "lci_recs.json" in url:
+            return (FIXTURES / "seed" / "lci_recs.json").read_bytes()
+        if "Tanach.xml.zip" in url:
+            return _uxlc_zip_bytes()
+        return JPEG_BYTES
+
+    conf = _write_config(tmp_path)
+    runner = CliRunner()
+    with patch.object(net, "fetch_url", fake):
+        for args in (
+            ["vendor-seed"],
+            ["download-uxlc"],
+            ["download-images", "--folio", "001B"],
+            ["build-word-stream"],
+            ["prepare-folio", "--folio", "001B"],
+        ):
+            result = _invoke(runner, conf, *args)
+            assert result.exit_code == 0, f"{args}\n{result.output}"
+    return runner, conf
+
+
+def _write_agent_output(tmp_path: Path, placements, **run_overrides) -> Path:
+    """Act as the agent: write reply.xml and run.json into the task folder."""
+    tdir = tmp_path / "alignments" / "tasks" / "001B"
+    stream = stream_stage.load_word_stream(tmp_path / "word_stream.json")
+    (tdir / "reply.xml").write_text(_placements_to_xml(placements, stream))
+    run = {
+        "harness": "claude-code",
+        "harness_version": "9.9.9 (test)",
+        "model": "claude-test",
+        "packet_sha256": hashlib.sha256(
+            (tdir / "packet.json").read_bytes()
+        ).hexdigest(),
+        "attempts": 1,
+        "effort": "high",
+        "scripts": ["crop.py --columns 3 --rows 2"],
+        "notes": "",
+        **run_overrides,
+    }
+    (tdir / "run.json").write_text(json.dumps(run))
+    return tdir
+
+
+@pytest.fixture
+def _harness_patches():
+    patches = [
+        patch.object(align_stage, "ensure_align_prompt_clean", lambda: None),
+        patch.object(harness_stage, "ensure_skill_clean", lambda: None),
+        patch.object(cli_module, "_current_contributor", lambda: None),
+    ]
+    for p in patches:
+        p.start()
+    yield
+    for p in patches:
+        p.stop()
+
+
+def test_harness_path_end_to_end(tmp_path: Path, _harness_patches) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    packet = json.loads(
+        (tmp_path / "alignments" / "tasks" / "001B" / "packet.json").read_text()
+    )
+    assert packet["prompt_version"] == align_stage.PROMPT_VERSION
+    assert packet["image_sha256"] == hashlib.sha256(JPEG_BYTES).hexdigest()
+    assert packet["skill_sha256"] == harness_stage.skill_sha256()
+    assert "<TEXT>" in packet["prompt"]
+
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS)
+    result = _invoke(runner, conf, "check-reply", "--folio", "001B")
+    assert result.exit_code == 0, result.output
+    assert "aligned" in result.output
+    # check-reply writes nothing
+    assert not (tmp_path / "alignments" / "raw" / "001B.xml").exists()
+
+    for args in (
+        ["ingest-folio", "--folio", "001B"],
+        ["parse-raw", "--folio", "001B"],
+        ["validate", "--folio", "001B"],
+        ["generate-tei", "--folio", "001B"],
+    ):
+        result = _invoke(runner, conf, *args)
+        assert result.exit_code == 0, f"{args}\n{result.output}\n{result.exception}"
+
+    conv = json.loads(
+        (tmp_path / "alignments" / "conversations" / "001B.json").read_text()
+    )
+    assert conv["model"] == "claude-test"
+    assert conv["inference"] == "harness"
+    assert conv["ai"]["harness"] == "claude-code"
+    assert conv["harness_run"]["scripts"] == ["crop.py --columns 3 --rows 2"]
+
+    audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    assert [r["stage"] for r in audit["runs"]] == [
+        "download-images",
+        "prepare-folio",
+        "ingest-folio",
+        "parse-raw",
+        "validate",
+        "generate-tei",
+    ]
+    assert audit["status"] == "aligned"
+    parse_run = next(r for r in audit["runs"] if r["stage"] == "parse-raw")
+    assert parse_run["model"] == "claude-test"
+    assert parse_run["result_summary"]["ai"]["harness"] == "claude-code"
+
+    ns = {"t": "http://www.tei-c.org/ns/1.0"}
+    root = etree.fromstring((tmp_path / "out" / "001B.xml").read_text().encode())
+    changes = root.findall(".//t:revisionDesc/t:change", ns)
+    assert len(changes) == 1
+    assert "Aligned Genesis 1:1" in (changes[0].text or "")
+    feats = {
+        f.get("name"): f.findtext("t:string", namespaces=ns)
+        for f in changes[0].findall("t:fs[@type='ai-params']/t:f", ns)
+    }
+    assert feats["stage"] == "ingest-folio"
+    assert feats["model"] == "claude-test"
+    assert "provider" not in feats
+    assert feats["effort"] == "high"
+    assert feats["harness"] == "claude-code"
+    assert feats["harness_version"] == "9.9.9 (test)"
+    assert feats["skill_sha256"] == packet["skill_sha256"]
+    assert feats["attempts"] == "1"
+    assert "code_execution" not in feats
+    skill_ptr = changes[0].find("t:ptr[@type='skill']", ns)
+    if changes[0].find("t:ptr[@type='prompt']", ns) is not None:
+        assert skill_ptr is not None
+        assert skill_ptr.get("target").endswith("/.agents/skills/align-folio")
+
+
+def test_check_reply_fails_on_missing_word(tmp_path: Path, _harness_patches) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS[:-1])
+    result = _invoke(runner, conf, "check-reply", "--folio", "001B")
+    assert result.exit_code != 0
+
+
+def test_ingest_rejects_changed_image(tmp_path: Path, _harness_patches) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS)
+    (tmp_path / "images" / "BIB_LENCDX_F001B.jpg").write_bytes(JPEG_BYTES + b"x")
+    result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
+    assert result.exit_code != 0
+    assert "image_sha256" in result.output
+    assert not (tmp_path / "alignments" / "raw" / "001B.xml").exists()
+
+
+def test_ingest_rejects_stale_packet_hash(tmp_path: Path, _harness_patches) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS, packet_sha256="0" * 64)
+    result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
+    assert result.exit_code != 0
+    assert "packet_sha256" in result.output
+
+
+def test_ingest_rejects_incomplete_run(tmp_path: Path, _harness_patches) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS, model="", attempts=0)
+    result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
+    assert result.exit_code != 0
+    assert "model" in result.output
+    assert "attempts" in result.output
