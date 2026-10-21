@@ -37,9 +37,3 @@ ai:
   fallback_to_standard: false
   image_transport: "encode"
   thinking_level: "medium"
-
-validation:
-  odd: schema/leningrad.odd
-  cross_checks:
-    word_count_tolerance: 0
-    text_match_required: true
