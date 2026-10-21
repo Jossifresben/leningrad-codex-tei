@@ -40,6 +40,9 @@
     </fileDesc>
     <revisionDesc>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix line breaks in columns 1 and 2 to match the page image (issue #552).
+      </change>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
       Remove the space left in the word before each paseq.
       </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
@@ -174,13 +177,13 @@
             <w xml:id="f082A-w-54709">וְשַׂמְתִּ֣י</w>
             <w xml:id="f082A-w-54710">עֲלֵיהֶ֑ם</w>
             <w xml:id="f082A-w-54711">וְנָשְׂא֤וּ</w>
-            <w xml:id="f082A-w-54712">אִתְּךָ֙</w>
           <lb xml:id="f082A-lb-1-17" n="17"/>
+            <w xml:id="f082A-w-54712">אִתְּךָ֙</w>
             <w xml:id="f082A-w-54713">בְּמַשָּׂ֣א</w>
             <w xml:id="f082A-w-54714">הָעָ֔ם</w>
             <w xml:id="f082A-w-54715">וְלֹא־</w>
-            <w xml:id="f082A-w-54716">תִשָּׂ֥א</w>
           <lb xml:id="f082A-lb-1-18" n="18"/>
+            <w xml:id="f082A-w-54716">תִשָּׂ֥א</w>
             <w xml:id="f082A-w-54717">אַתָּ֖ה</w>
             <w xml:id="f082A-w-54718">לְבַדֶּֽךָ</w>
             <pc type="sof-pasuq" xml:id="f082A-pc-54718">׃</pc>
@@ -224,9 +227,9 @@
             <w xml:id="f082A-w-54746">תֹּאכְל֖וּן</w>
             <w xml:id="f082A-w-54747">וְלֹ֣א</w>
             <w xml:id="f082A-w-54748">יוֹמָ֑יִם</w>
-          <lb xml:id="f082A-lb-1-26" n="26"/>
             <w xml:id="f082A-w-54749">וְלֹ֣א</w>
             <pc type="paseq" xml:id="f082A-pc-54749">׀</pc>
+          <lb xml:id="f082A-lb-1-26" n="26"/>
             <w xml:id="f082A-w-54750">חֲמִשָּׁ֣ה</w>
             <w xml:id="f082A-w-54751">יָמִ֗ים</w>
             <w xml:id="f082A-w-54752">וְלֹא֙</w>
@@ -237,11 +240,11 @@
             <w xml:id="f082A-w-54756">עֶשְׂרִ֥ים</w>
             <w xml:id="f082A-w-54757">יֽוֹם</w>
             <pc type="sof-pasuq" xml:id="f082A-pc-54757">׃</pc>
-        <cb xml:id="f082A-cb-2" n="2"/>
-          <lb xml:id="f082A-lb-2-1" n="1"/>
             <milestone unit="verse" n="Numbers-11-20" xml:id="f082A-v-Numbers-11-20"/>
             <w xml:id="f082A-w-54758">עַ֣ד</w>
             <pc type="paseq" xml:id="f082A-pc-54758">׀</pc>
+        <cb xml:id="f082A-cb-2" n="2"/>
+          <lb xml:id="f082A-lb-2-1" n="1"/>
             <w xml:id="f082A-w-54759">חֹ֣דֶשׁ</w>
             <w xml:id="f082A-w-54760">יָמִ֗ים</w>
             <w xml:id="f082A-w-54761">עַ֤ד</w>
@@ -262,8 +265,8 @@
             <w xml:id="f082A-w-54773">אֲשֶׁ֣ר</w>
             <w xml:id="f082A-w-54774">בְּקִרְבְּכֶ֔ם</w>
             <w xml:id="f082A-w-54775">וַתִּבְכּ֤וּ</w>
-            <w xml:id="f082A-w-54776">לְפָנָיו֙</w>
           <lb xml:id="f082A-lb-2-5" n="5"/>
+            <w xml:id="f082A-w-54776">לְפָנָיו֙</w>
             <w xml:id="f082A-w-54777">לֵאמֹ֔ר</w>
             <w xml:id="f082A-w-54778">לָ֥מָּה</w>
             <w xml:id="f082A-w-54779">זֶּ֖ה</w>
@@ -323,19 +326,19 @@
             <w xml:id="f082A-w-54816">יְהוָה֙</w>
             <w xml:id="f082A-w-54817">אֶל־</w>
             <w xml:id="f082A-w-54818">מֹשֶׁ֔ה</w>
-            <w xml:id="f082A-w-54819">הֲיַ֥ד</w>
           <lb xml:id="f082A-lb-2-16" n="16"/>
+            <w xml:id="f082A-w-54819">הֲיַ֥ד</w>
             <w xml:id="f082A-w-54820">יְהוָ֖ה</w>
             <w xml:id="f082A-w-54821">תִּקְצָ֑ר</w>
             <w xml:id="f082A-w-54822">עַתָּ֥ה</w>
-            <w xml:id="f082A-w-54823">תִרְאֶ֛ה</w>
           <lb xml:id="f082A-lb-2-17" n="17"/>
+            <w xml:id="f082A-w-54823">תִרְאֶ֛ה</w>
             <w xml:id="f082A-w-54824">הֲיִקְרְךָ֥</w>
             <w xml:id="f082A-w-54825">דְבָרִ֖י</w>
             <w xml:id="f082A-w-54826">אִם־</w>
+          <lb xml:id="f082A-lb-2-18" n="18"/>
             <w xml:id="f082A-w-54827">לֹֽא</w>
             <pc type="sof-pasuq" xml:id="f082A-pc-54827">׃</pc>
-          <lb xml:id="f082A-lb-2-18" n="18"/>
             <milestone unit="verse" n="Numbers-11-24" xml:id="f082A-v-Numbers-11-24"/>
             <w xml:id="f082A-w-54828">וַיֵּצֵ֣א</w>
             <w xml:id="f082A-w-54829">מֹשֶׁ֔ה</w>
@@ -373,8 +376,8 @@
             <w xml:id="f082A-w-54852">הָר֙וּחַ֙</w>
             <w xml:id="f082A-w-54853">אֲשֶׁ֣ר</w>
             <w xml:id="f082A-w-54854">עָלָ֔יו</w>
-          <lb xml:id="f082A-lb-2-25" n="25"/>
             <w xml:id="f082A-w-54855">וַיִּתֵּ֕ן</w>
+          <lb xml:id="f082A-lb-2-25" n="25"/>
             <w xml:id="f082A-w-54856">עַל־</w>
             <w xml:id="f082A-w-54857">שִׁבְעִ֥ים</w>
             <w xml:id="f082A-w-54858">אִ֖ישׁ</w>

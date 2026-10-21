@@ -39,6 +39,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix line breaks in column 2 to match the page image: move the word הן from line 26 to the end of line 25 (issue #552).
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -366,8 +369,8 @@
             <w xml:id="f034B-w-22753">מֹשֶׁ֖ה</w>
             <w xml:id="f034B-w-22754">לִפְנֵ֣י</w>
             <w xml:id="f034B-w-22755">יְהוָ֑ה</w>
-          <lb xml:id="f034B-lb-2-26" n="26"/>
             <w xml:id="f034B-w-22756">הֵ֤ן</w>
+          <lb xml:id="f034B-lb-2-26" n="26"/>
             <w xml:id="f034B-w-22757">אֲנִי֙</w>
             <w xml:id="f034B-w-22758">עֲרַ֣ל</w>
             <w xml:id="f034B-w-22759">שְׂפָתַ֔יִם</w>

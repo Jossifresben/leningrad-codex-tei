@@ -40,6 +40,9 @@
     </fileDesc>
     <revisionDesc>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix line breaks in column 3 to match the page image (issue #552).
+      </change>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
       Remove the space left in the word before each paseq.
       </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
@@ -562,9 +565,9 @@
             <w xml:id="f062B-w-41492">שֶׁ֥קֶץ</w>
             <w xml:id="f062B-w-41493">ה֖וּא</w>
             <w xml:id="f062B-w-41494">לֹ֥א</w>
+          <lb xml:id="f062B-lb-3-20" n="20"/>
             <w xml:id="f062B-w-41495">יֵאָכֵֽל</w>
             <pc type="sof-pasuq" xml:id="f062B-pc-41495">׃</pc>
-          <lb xml:id="f062B-lb-3-20" n="20"/>
             <milestone unit="verse" n="Leviticus-11-42" xml:id="f062B-v-Leviticus-11-42"/>
             <w xml:id="f062B-w-41496">כֹּל֩</w>
             <w xml:id="f062B-w-41497">הוֹלֵ֨ךְ</w>
@@ -572,22 +575,23 @@
             <w xml:id="f062B-w-41499">גָּח֜וֹן</w>
             <w xml:id="f062B-w-41500">וְכֹ֣ל</w>
             <pc type="paseq" xml:id="f062B-pc-41500">׀</pc>
-            <w xml:id="f062B-w-41501">הוֹלֵ֣ךְ</w>
           <lb xml:id="f062B-lb-3-21" n="21"/>
+            <w xml:id="f062B-w-41501">הוֹלֵ֣ךְ</w>
             <w xml:id="f062B-w-41502">עַל־</w>
             <w xml:id="f062B-w-41503">אַרְבַּ֗ע</w>
             <w xml:id="f062B-w-41504">עַ֚ד</w>
             <w xml:id="f062B-w-41505">כָּל־</w>
+          <lb xml:id="f062B-lb-3-22" n="22"/>
             <w xml:id="f062B-w-41506">מַרְבֵּ֣ה</w>
             <w xml:id="f062B-w-41507">רַגְלַ֔יִם</w>
-          <lb xml:id="f062B-lb-3-22" n="22"/>
             <w xml:id="f062B-w-41508">לְכָל־</w>
             <w xml:id="f062B-w-41509">הַשֶּׁ֖רֶץ</w>
+          <lb xml:id="f062B-lb-3-23" n="23"/>
             <w xml:id="f062B-w-41510">הַשֹּׁרֵ֣ץ</w>
             <w xml:id="f062B-w-41511">עַל־</w>
             <w xml:id="f062B-w-41512">הָאָ֑רֶץ</w>
-          <lb xml:id="f062B-lb-3-23" n="23"/>
             <w xml:id="f062B-w-41513">לֹ֥א</w>
+          <lb xml:id="f062B-lb-3-24" n="24"/>
             <w xml:id="f062B-w-41514">תֹאכְל֖וּם</w>
             <w xml:id="f062B-w-41515">כִּי־</w>
             <w xml:id="f062B-w-41516">שֶׁ֥קֶץ</w>
@@ -595,17 +599,17 @@
             <pc type="sof-pasuq" xml:id="f062B-pc-41517">׃</pc>
             <milestone unit="verse" n="Leviticus-11-43" xml:id="f062B-v-Leviticus-11-43"/>
             <w xml:id="f062B-w-41518">אַל־</w>
-          <lb xml:id="f062B-lb-3-24" n="24"/>
+          <lb xml:id="f062B-lb-3-25" n="25"/>
             <w xml:id="f062B-w-41519">תְּשַׁקְּצוּ֙</w>
             <w xml:id="f062B-w-41520">אֶת־</w>
             <w xml:id="f062B-w-41521">נַפְשֹׁ֣תֵיכֶ֔ם</w>
             <w xml:id="f062B-w-41522">בְּכָל־</w>
-          <lb xml:id="f062B-lb-3-25" n="25"/>
+          <lb xml:id="f062B-lb-3-26" n="26"/>
             <w xml:id="f062B-w-41523">הַשֶּׁ֖רֶץ</w>
             <w xml:id="f062B-w-41524">הַשֹּׁרֵ֑ץ</w>
             <w xml:id="f062B-w-41525">וְלֹ֤א</w>
             <w xml:id="f062B-w-41526">תִֽטַּמְּאוּ֙</w>
-          <lb xml:id="f062B-lb-3-26" n="26"/>
+          <lb xml:id="f062B-lb-3-27" n="27"/>
             <w xml:id="f062B-w-41527">בָּהֶ֔ם</w>
             <w xml:id="f062B-w-41528">וְנִטְמֵתֶ֖ם</w>
             <w xml:id="f062B-w-41529">בָּֽם</w>

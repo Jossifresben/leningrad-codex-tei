@@ -40,6 +40,9 @@
     </fileDesc>
     <revisionDesc>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix line break in column 2 to match the page image (issue #552).
+      </change>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
       Remove the space left in the word before each paseq.
       </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
@@ -359,8 +362,8 @@
             <w xml:id="f091A-w-60990">עֶשְׂרִ֥ים</w>
             <w xml:id="f091A-w-60991">שָׁנָ֛ה</w>
             <w xml:id="f091A-w-60992">וָמַ֖עְלָה</w>
-            <w xml:id="f091A-w-60993">לְבֵ֣ית</w>
           <lb xml:id="f091A-lb-2-21" n="21"/>
+            <w xml:id="f091A-w-60993">לְבֵ֣ית</w>
             <w xml:id="f091A-w-60994">אֲבֹתָ֑ם</w>
             <w xml:id="f091A-w-60995">כָּל־</w>
             <w xml:id="f091A-w-60996">יֹצֵ֥א</w>

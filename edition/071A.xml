@@ -39,6 +39,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix line breaks in column 3 to match the page image (issue #552).
+      </change>
       <change when="2026-10-18" who="#contrib-charles-w-loder">
       Revert holam then vav encoding for holam male. Keeping the text inline with UXLC.
       </change>
@@ -450,8 +453,8 @@
             <w xml:id="f071A-w-47512">הַֽמְקַלֵּ֗ל</w>
             <w xml:id="f071A-w-47513">אֶל־</w>
             <w xml:id="f071A-w-47514">מִחוּץ֙</w>
-            <w xml:id="f071A-w-47515">לַֽמַּחֲנֶ֔ה</w>
           <lb xml:id="f071A-lb-3-7" n="7"/>
+            <w xml:id="f071A-w-47515">לַֽמַּחֲנֶ֔ה</w>
             <w xml:id="f071A-w-47516">וַיִּרְגְּמ֥וּ</w>
             <w xml:id="f071A-w-47517">אֹת֖וֹ</w>
             <w xml:id="f071A-w-47518">אָ֑בֶן</w>
@@ -461,8 +464,8 @@
             <w xml:id="f071A-w-47521">עָשׂ֔וּ</w>
             <w xml:id="f071A-w-47522">כּֽ͏ַאֲשֶׁ֛ר</w>
             <w xml:id="f071A-w-47523">צִוָּ֥ה</w>
-            <w xml:id="f071A-w-47524">יְהוָ֖ה</w>
           <lb xml:id="f071A-lb-3-9" n="9"/>
+            <w xml:id="f071A-w-47524">יְהוָ֖ה</w>
             <w xml:id="f071A-w-47525">אֶת־</w>
             <w xml:id="f071A-w-47526">מֹשֶֽׁה</w>
             <pc type="sof-pasuq" xml:id="f071A-pc-47526">׃</pc>
