@@ -4,7 +4,11 @@ from __future__ import annotations
 
 import pytest
 
-from leningrad_codex_tei.stages.harness import Task, harness_snapshot
+from leningrad_codex_tei.stages.harness import (
+    Task,
+    column_line_counts,
+    harness_snapshot,
+)
 
 
 def _task(**run_extra) -> Task:
@@ -26,3 +30,9 @@ def test_snapshot_keeps_stated_effort() -> None:
 def test_snapshot_omits_unknown_effort(effort) -> None:
     extra = {} if effort is None else {"effort": effort}
     assert "effort" not in harness_snapshot(_task(**extra))
+
+
+def test_column_line_counts() -> None:
+    reply = '<cb n="1" /><lb n="1" />a b<lb n="2" />c<cb n="2" /><lb n="1" />d'
+    assert column_line_counts(reply) == [2, 1]
+    assert column_line_counts("no columns here") == []

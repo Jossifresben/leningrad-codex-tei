@@ -752,6 +752,31 @@ def check_reply(config: Config, folio: str) -> None:
             f"{folio} parse failed: {type(exc).__name__}: {exc}"
         ) from exc
     click.echo(f"check-reply: {folio} {result.status} {result.checks}")
+    reply = reply_path.read_text(encoding="utf-8")
+    counts = harness_stage.column_line_counts(reply)
+    if len(set(counts)) > 1:
+        shown = ", ".join(f"c{n}={c}" for n, c in enumerate(counts, start=1))
+        click.echo(
+            f"check-reply: warning: the columns have different line counts "
+            f"({shown}). Check the line ends again; a short column is "
+            f"only right if the page really has one.",
+            err=True,
+        )
+    packet_path = harness_stage.task_dir(config, folio) / harness_stage.PACKET_FILE
+    if packet_path.exists():
+        packet = json.loads(packet_path.read_text(encoding="utf-8"))
+        crops = harness_stage.check_crops(config, packet, reply)
+        for problem in crops.problems:
+            click.echo(
+                f"check-reply: warning: ingest-folio will reject this run: {problem}",
+                err=True,
+            )
+        if crops.warnings:
+            click.echo(
+                f"check-reply: warning: crop.py gave {crops.warnings} warning(s) "
+                f"(see {harness_stage.CROPS_MANIFEST}); are the crops complete?",
+                err=True,
+            )
     if not result.passed:
         raise click.exceptions.Exit(1)
 
@@ -784,12 +809,15 @@ def ingest_folio(config: Config, folio: str) -> None:
     )
     if problems:
         raise click.ClickException(f"{folio} rejected: " + "; ".join(problems))
+    crops = harness_stage.check_crops(config, task.packet, task.reply)
     raw_path = align_stage.save_raw_model_response(
         config.paths.alignments, folio, task.reply
     )
     raw_sha = hashlib.sha256(task.reply.encode("utf-8")).hexdigest()
     conv_path = align_stage.save_conversation(
-        harness_stage.build_harness_conversation(task), config.paths.alignments, folio
+        harness_stage.build_harness_conversation(task, crops.manifest),
+        config.paths.alignments,
+        folio,
     )
     contributor = _current_contributor()
     append_run(
@@ -809,6 +837,8 @@ def ingest_folio(config: Config, folio: str) -> None:
                 "records_merged": _merged_record_count(sl),
                 "range": task.packet["range"],
                 "packet_sha256": task.packet_sha256,
+                "crop_manifest_sha256": crops.manifest_sha256,
+                "crop_warnings": crops.warnings,
                 "raw": str(raw_path),
                 "raw_sha256": raw_sha,
                 "conversation": str(conv_path),

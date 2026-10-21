@@ -426,9 +426,49 @@ def _prepare_harness(tmp_path: Path):
     return runner, conf
 
 
-def _write_agent_output(tmp_path: Path, placements, **run_overrides) -> Path:
-    """Act as the agent: write reply.xml and run.json into the task folder."""
+def _write_crops(
+    tmp_path: Path, *, columns: int = 3, image_sha: str | None = None, warnings=()
+) -> Path:
+    """Act as crop.py: write crop files and work/crops.json for task 001B."""
     tdir = tmp_path / "alignments" / "tasks" / "001B"
+    work = tdir / "work"
+    work.mkdir(parents=True, exist_ok=True)
+    packet = json.loads((tdir / "packet.json").read_text())
+    cols = []
+    for n in range(1, columns + 1):
+        crop = work / f"crop-c{n}-r1.jpg"
+        crop.write_bytes(b"crop-%d" % n)
+        cols.append(
+            {
+                "column": n,
+                "box": [0, 0, 1, 1],
+                "crops": [
+                    {
+                        "file": crop.name,
+                        "box": [0, 0, 1, 1],
+                        "sha256": hashlib.sha256(crop.read_bytes()).hexdigest(),
+                    }
+                ],
+            }
+        )
+    manifest = {
+        "tool": "crop.py",
+        "version": 1,
+        "image_sha256": image_sha or packet["image_sha256"],
+        "columns": cols,
+        "warnings": list(warnings),
+    }
+    (work / "crops.json").write_text(json.dumps(manifest))
+    return work
+
+
+def _write_agent_output(
+    tmp_path: Path, placements, *, crops: bool = True, **run_overrides
+) -> Path:
+    """Act as the agent: write crops, reply.xml and run.json into the task folder."""
+    tdir = tmp_path / "alignments" / "tasks" / "001B"
+    if crops:
+        _write_crops(tmp_path)
     stream = stream_stage.load_word_stream(tmp_path / "word_stream.json")
     (tdir / "reply.xml").write_text(_placements_to_xml(placements, stream))
     run = {
@@ -476,6 +516,9 @@ def test_harness_path_end_to_end(tmp_path: Path, _harness_patches) -> None:
     result = _invoke(runner, conf, "check-reply", "--folio", "001B")
     assert result.exit_code == 0, result.output
     assert "aligned" in result.output
+    # the placements give columns of 2, 2 and 1 lines: check-reply says so
+    assert "different line counts" in result.output
+    assert "c1=2, c2=2, c3=1" in result.output
     # check-reply writes nothing
     assert not (tmp_path / "alignments" / "raw" / "001B.xml").exists()
 
@@ -496,7 +539,11 @@ def test_harness_path_end_to_end(tmp_path: Path, _harness_patches) -> None:
     assert conv["ai"]["harness"] == "claude-code"
     assert conv["harness_run"]["scripts"] == ["crop.py --columns 3 --rows 2"]
 
+    assert conv["crop_manifest"]["tool"] == "crop.py"
     audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    ingest_run = next(r for r in audit["runs"] if r["stage"] == "ingest-folio")
+    assert len(ingest_run["result_summary"]["crop_manifest_sha256"]) == 64
+    assert ingest_run["result_summary"]["crop_warnings"] == 0
     assert [r["stage"] for r in audit["runs"]] == [
         "download-images",
         "prepare-folio",
@@ -566,3 +613,67 @@ def test_ingest_rejects_incomplete_run(tmp_path: Path, _harness_patches) -> None
     assert result.exit_code != 0
     assert "model" in result.output
     assert "attempts" in result.output
+
+
+def test_ingest_rejects_run_without_crops(tmp_path: Path, _harness_patches) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS, crops=False)
+    result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
+    assert result.exit_code != 0
+    assert "no crop manifest" in result.output
+    assert not (tmp_path / "alignments" / "raw" / "001B.xml").exists()
+
+
+def test_check_reply_warns_when_crops_are_missing(
+    tmp_path: Path, _harness_patches
+) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS, crops=False)
+    result = _invoke(runner, conf, "check-reply", "--folio", "001B")
+    assert result.exit_code == 0  # a warning, not a failure
+    assert "ingest-folio will reject this run" in result.output
+    assert "no crop manifest" in result.output
+
+
+def test_ingest_rejects_crops_of_another_image(
+    tmp_path: Path, _harness_patches
+) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS)
+    _write_crops(tmp_path, image_sha="0" * 64)
+    result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
+    assert result.exit_code != 0
+    assert "different image" in result.output
+
+
+def test_ingest_rejects_crops_that_miss_a_column(
+    tmp_path: Path, _harness_patches
+) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS)
+    _write_crops(tmp_path, columns=2)  # the reply has 3 columns
+    result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
+    assert result.exit_code != 0
+    assert "2 column(s) but the reply has 3" in result.output
+
+
+def test_ingest_rejects_changed_crop_file(tmp_path: Path, _harness_patches) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    tdir = _write_agent_output(tmp_path, HARNESS_PLACEMENTS)
+    (tdir / "work" / "crop-c2-r1.jpg").write_bytes(b"not the crop")
+    result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
+    assert result.exit_code != 0
+    assert "crop file missing or changed: crop-c2-r1.jpg" in result.output
+
+
+def test_ingest_records_crop_warnings_in_audit(
+    tmp_path: Path, _harness_patches
+) -> None:
+    runner, conf = _prepare_harness(tmp_path)
+    _write_agent_output(tmp_path, HARNESS_PLACEMENTS)
+    _write_crops(tmp_path, warnings=[{"kind": "edge_ink", "message": "x"}])
+    result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
+    assert result.exit_code == 0, result.output
+    audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    run = next(r for r in audit["runs"] if r["stage"] == "ingest-folio")
+    assert run["result_summary"]["crop_warnings"] == 1

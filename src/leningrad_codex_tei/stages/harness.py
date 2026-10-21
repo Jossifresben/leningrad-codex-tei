@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -34,6 +35,9 @@ PACKET_FILE = "packet.json"
 PROMPT_FILE = "prompt.md"
 REPLY_FILE = "reply.xml"
 RUN_FILE = "run.json"
+# Written by scripts/crop.py into the task's work folder.
+CROPS_MANIFEST = "work/crops.json"
+CROPS_MANIFEST_VERSION = 1
 
 # Fields the agent must write to run.json.
 RUN_REQUIRED = ("harness", "harness_version", "model", "packet_sha256", "attempts")
@@ -58,6 +62,13 @@ def skill_sha256(skill_dir: Path = SKILL_DIR) -> str:
 def ensure_skill_clean() -> None:
     """Refuse to run when the skill has uncommitted changes."""
     require_file_clean(SKILL_DIR)
+
+
+def column_line_counts(reply: str) -> list[int]:
+    """Number of <lb> in each <cb> of a reply, in document order."""
+    return [
+        len(re.findall(r"<lb\b", part)) for part in re.split(r"<cb\b[^>]*>", reply)[1:]
+    ]
 
 
 def task_dir(config: Config, folio: str) -> Path:
@@ -119,6 +130,67 @@ def write_packet(config: Config, packet: dict) -> Path:
         json.dumps(packet, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     return dest
+
+
+@dataclass
+class CropCheck:
+    problems: list[str]
+    manifest_sha256: str | None = None
+    manifest: dict | None = None
+
+    @property
+    def warnings(self) -> int:
+        return len((self.manifest or {}).get("warnings") or [])
+
+
+def check_crops(config: Config, packet: dict, reply: str) -> CropCheck:
+    """Check that the crop step was done for this image and covers the reply.
+
+    The manifest is written by scripts/crop.py. This proves the crops were
+    made for this image and cover every column in the reply. It cannot
+    prove that the agent looked at them.
+    """
+    path = task_dir(config, packet["folio"]) / CROPS_MANIFEST
+    if not path.exists():
+        return CropCheck(
+            [
+                f"no crop manifest {CROPS_MANIFEST}: crop the image with "
+                "scripts/crop.py (--out-dir work) before you place the words"
+            ]
+        )
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+        columns = manifest["columns"]
+        if not isinstance(columns, list) or not columns:
+            raise ValueError("no columns")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        return CropCheck([f"{CROPS_MANIFEST} is not a crop manifest ({exc})"])
+    problems: list[str] = []
+    if (
+        manifest.get("tool") != "crop.py"
+        or manifest.get("version") != CROPS_MANIFEST_VERSION
+    ):
+        problems.append(f"{CROPS_MANIFEST} is not from this version of crop.py")
+    if manifest.get("image_sha256") != packet.get("image_sha256"):
+        problems.append(f"{CROPS_MANIFEST} is for a different image than the packet")
+    wanted = len(column_line_counts(reply))
+    if len(columns) != wanted:
+        problems.append(
+            f"the crops have {len(columns)} column(s) but the reply has {wanted}"
+        )
+    bad_files: list[str] = []
+    for column in columns:
+        crops = column.get("crops") if isinstance(column, dict) else None
+        if not crops:
+            problems.append("a column in the crop manifest has no crops")
+            continue
+        for crop in crops:
+            crop_path = path.parent / str(crop.get("file", ""))
+            if not crop_path.is_file() or _file_sha(crop_path) != crop.get("sha256"):
+                bad_files.append(str(crop.get("file")))
+    if bad_files:
+        problems.append("crop file missing or changed: " + ", ".join(bad_files[:3]))
+    return CropCheck(problems, _file_sha(path), manifest)
 
 
 def check_reply(
@@ -188,6 +260,7 @@ def verify_task(
         problems.append("packet seed_sha256 does not match the seed file")
     if packet.get("skill_sha256") != skill_sha256():
         problems.append("packet skill_sha256 does not match the current skill")
+    problems.extend(check_crops(config, packet, task.reply).problems)
     return problems
 
 
@@ -209,7 +282,7 @@ def harness_snapshot(task: Task) -> dict:
     return snapshot
 
 
-def build_harness_conversation(task: Task) -> dict:
+def build_harness_conversation(task: Task, crops: dict | None = None) -> dict:
     """Conversation file in the same shape as the Gemini path."""
     packet = task.packet
     conversation = align_stage.build_conversation(
@@ -225,4 +298,6 @@ def build_harness_conversation(task: Task) -> dict:
     )
     conversation["packet_sha256"] = task.packet_sha256
     conversation["harness_run"] = task.run
+    if crops is not None:
+        conversation["crop_manifest"] = crops
     return conversation

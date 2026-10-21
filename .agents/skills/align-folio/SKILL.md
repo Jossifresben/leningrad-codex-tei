@@ -24,11 +24,15 @@ Paths below use `{alignments}` for `config.paths.alignments`
 ## Rules
 
 - Write only these files: `reply.xml`, `run.json`, and files under
-  `work/` in the task folder.
+  `work/` in the task folder (`crop.py` writes `work/crops.json`;
+  do not edit it).
 - Do not change `packet.json`, `prompt.md`, the image, the seed, the
   word stream, source code, or this skill. `ingest-folio` checks the
   hashes and rejects the run if they change.
 - Do not use replies, alignments or TEI from other folio sides.
+- Do not place words from the full image alone. Use the crops.
+  If you cannot run `crop.py` (for example, the shell command is
+  refused), stop and tell the user. Do not go on without crops.
 - Do not run `generate-tei` unless the user asks. If they ask, use
   `--folio <FOLIO>` only.
 
@@ -41,6 +45,9 @@ was written for Gemini's code execution tool. Read it like this:
   Use `scripts/crop.py` (below) or short scripts of your own.
 - One run of a script counts as one code-execution call. Opening a
   crop to look at it does not count.
+- The prompt says to use extra image work only when the text is
+  hard to read. That does not apply here: the crop step is always
+  required.
 - Keep to the prompt's limits when you can. If you must go past a
   limit (for example, a bad column crop), write the reason in
   `run.json` `notes`.
@@ -59,28 +66,41 @@ was written for Gemini's code execution tool. Read it like this:
    `shasum -a 256 {alignments}/tasks/<FOLIO>/packet.json`.
    Completion: you have the prompt, the image path, and the hash.
 
-2. **Crop the image.**
+2. **Crop the image. This step is required.**
+   Do not place any word before you crop. `ingest-folio` rejects a
+   run that has no crops made by `scripts/crop.py` for this image.
    The full image is about 3700 × 4200 pixels. You see a smaller
-   copy if you open it whole, so look at the whole image once only,
-   to find the columns. Then crop:
+   copy if you open it whole, and line ends are not clear in it.
+   Look at the whole image once only, to count the columns. Then
+   let `crop.py` find them:
 
    ```bash
    uv run --no-project --with pillow python \
      .agents/skills/align-folio/scripts/crop.py <image_path> \
      --out-dir {alignments}/tasks/<FOLIO>/work \
-     --box x0,y0,x1,y1 --columns 3 --rows 2
+     --auto --columns <N> --rows 2
    ```
 
-   `--box` is the text area as fractions of the image (0-1).
-   For a 3-column prose page, start with
-   `--box 0.11,0.17,0.87,0.78` (this fitted folio 099A). Page
-   margins differ, so check the first crop and change the box if
-   text is cut off. A page with a wide top or bottom margin note
-   (for example the masorah) may need a different top or bottom.
-   `--columns` is the number of columns on the page (3 for prose,
-   2 for poetry, 1 for a song). `c1` is the rightmost column.
-   Use `--rows 2` or `3` so the line ends are large enough to read.
-   Completion: each column is in crops that you can read.
+   Use `work` as the output folder. `<N>` is the number of columns
+   you see (3 for prose, 2 for poetry, 1 for a song). `c1` is the
+   rightmost column. `crop.py` finds the columns from the ink on
+   the page, so you do not give it any box. It writes the crops and
+   `work/crops.json`.
+   Read the output of `crop.py`:
+   - A `WARNING ... text may be cut off` means ink touches the edge
+     of a crop. Open the crop and look. If text is cut, run
+     `crop.py` again with the box that the warning suggests
+     (`--column-box N=x0,y0,x1,y1`), or set the column yourself.
+     Keep `--out-dir work`: the last run is the one that counts.
+   - A `WARNING ... expected N columns` means `crop.py` could not
+     find the columns by itself. Give each column with
+     `--column-box N=x0,y0,x1,y1` (fractions of the image, 0-1).
+   - No warning does not prove that the crops are complete. Check
+     that each crop shows the whole width of every line, and that
+     the first and last line of each column are in the crops.
+   Use `--rows 3` if the line ends are still too small to read.
+   Completion: every column is in crops that you can read, and you
+   have seen the first and last line of each column.
 
 3. **Place the words.**
    Count the lines in each column. Find the last word of each line.
