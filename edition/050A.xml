@@ -40,6 +40,9 @@
     </fileDesc>
     <revisionDesc>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix line break in column 1 to match the page image (issue #552).
+      </change>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
       Fix duplicate xml:id's for blank lines
       </change>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
@@ -215,9 +218,9 @@
             <w xml:id="f050A-w-32716">לְשָׁרֵ֔ת</w>
             <w xml:id="f050A-w-32717">לְהַקְטִ֥יר</w>
             <w xml:id="f050A-w-32718">אִשֶּׁ֖ה</w>
+          <lb xml:id="f050A-lb-1-23" n="23"/>
             <w xml:id="f050A-w-32719">לַֽיהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f050A-pc-32719">׃</pc>
-          <lb xml:id="f050A-lb-1-23" n="23"/>
             <milestone unit="verse" n="Exodus-30-21" xml:id="f050A-v-Exodus-30-21"/>
             <w xml:id="f050A-w-32720">וְרָחֲצ֛וּ</w>
             <w xml:id="f050A-w-32721">יְדֵיהֶ֥ם</w>

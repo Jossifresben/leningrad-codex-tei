@@ -39,6 +39,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix line breaks in columns 2 and 3 to match the page image (issue #552).
+      </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
       Add missing blank lines.
       </change>
@@ -298,8 +301,8 @@
             <pc type="sof-pasuq" xml:id="f074B-pc-49736">׃</pc>
             <milestone unit="verse" n="Numbers-1-45" xml:id="f074B-v-Numbers-1-45"/>
             <w xml:id="f074B-w-49737">וַיִּֽהְי֛וּ</w>
-          <lb xml:id="f074B-lb-2-16" n="16"/>
             <w xml:id="f074B-w-49738">כָּל־</w>
+          <lb xml:id="f074B-lb-2-16" n="16"/>
             <w xml:id="f074B-w-49739">פְּקוּדֵ֥י</w>
             <w xml:id="f074B-w-49740">בְנֵֽי־</w>
             <w xml:id="f074B-w-49741">יִשְׂרָאֵ֖ל</w>
@@ -384,8 +387,8 @@
             <w xml:id="f074B-w-49795">כָּל־</w>
             <w xml:id="f074B-w-49796">כֵּלָיו֮</w>
             <w xml:id="f074B-w-49797">וְעַ֣ל</w>
-          <lb xml:id="f074B-lb-3-3" n="3"/>
             <w xml:id="f074B-w-49798">כָּל־</w>
+          <lb xml:id="f074B-lb-3-3" n="3"/>
             <w xml:id="f074B-w-49799">אֲשֶׁר־</w>
             <w xml:id="f074B-w-49800">לוֹ֒</w>
             <w xml:id="f074B-w-49801">הֵ֜מָּה</w>

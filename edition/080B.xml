@@ -40,6 +40,9 @@
     </fileDesc>
     <revisionDesc>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
+      Fix line breaks in columns 1 and 3 to match the page image (issue #552).
+      </change>
+      <change when="2026-10-20" who="#contrib-charles-w-loder">
       Remove the space left in the word before each paseq.
       </change>
       <change when="2026-09-19" who="#contrib-charles-w-loder">
@@ -157,13 +160,13 @@
             <w xml:id="f080B-w-53695">חָמֵ֨שׁ</w>
             <w xml:id="f080B-w-53696">וְעֶשְׂרִ֤ים</w>
             <w xml:id="f080B-w-53697">שָׁנָה֙</w>
-            <w xml:id="f080B-w-53698">וָמַ֔עְלָה</w>
           <lb xml:id="f080B-lb-1-13" n="13"/>
+            <w xml:id="f080B-w-53698">וָמַ֔עְלָה</w>
             <w xml:id="f080B-w-53699">יָבוֹא֙</w>
             <w xml:id="f080B-w-53700">לִצְבֹ֣א</w>
             <w xml:id="f080B-w-53701">צָבָ֔א</w>
-            <w xml:id="f080B-w-53702">בַּעֲבֹדַ֖ת</w>
           <lb xml:id="f080B-lb-1-14" n="14"/>
+            <w xml:id="f080B-w-53702">בַּעֲבֹדַ֖ת</w>
             <w xml:id="f080B-w-53703">אֹ֥הֶל</w>
             <w xml:id="f080B-w-53704">מוֹעֵֽד</w>
             <pc type="sof-pasuq" xml:id="f080B-pc-53704">׃</pc>
@@ -186,18 +189,18 @@
             <w xml:id="f080B-w-53715">אֶת־</w>
             <w xml:id="f080B-w-53716">אֶחָ֜יו</w>
             <w xml:id="f080B-w-53717">בְּאֹ֤הֶל</w>
-            <w xml:id="f080B-w-53718">מוֹעֵד֙</w>
           <lb xml:id="f080B-lb-1-18" n="18"/>
+            <w xml:id="f080B-w-53718">מוֹעֵד֙</w>
             <w xml:id="f080B-w-53719">לִשְׁמֹ֣ר</w>
             <w xml:id="f080B-w-53720">מִשְׁמֶ֔רֶת</w>
+          <lb xml:id="f080B-lb-1-19" n="19"/>
             <w xml:id="f080B-w-53721">וַעֲבֹדָ֖ה</w>
             <w xml:id="f080B-w-53722">לֹ֣א</w>
-          <lb xml:id="f080B-lb-1-19" n="19"/>
             <w xml:id="f080B-w-53723">יַעֲבֹ֑ד</w>
             <w xml:id="f080B-w-53724">כָּ֛כָה</w>
+          <lb xml:id="f080B-lb-1-20" n="20"/>
             <w xml:id="f080B-w-53725">תַּעֲשֶׂ֥ה</w>
             <w xml:id="f080B-w-53726">לַלְוִיִּ֖ם</w>
-          <lb xml:id="f080B-lb-1-20" n="20"/>
             <w xml:id="f080B-w-53727">בְּמִשְׁמְרֹתָֽם</w>
             <pc type="sof-pasuq" xml:id="f080B-pc-53727">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f080B-s-Numbers-8-26"/>
@@ -547,6 +550,7 @@
             <w xml:id="f080B-w-53972">וּבִמְק֗וֹם</w>
             <w xml:id="f080B-w-53973">אֲשֶׁ֤ר</w>
             <w xml:id="f080B-w-53974">יִשְׁכָּן־</w>
+          <lb xml:id="f080B-lb-3-27" n="27"/>
             <w xml:id="f080B-w-53975">שָׁם֙</w>
             <w xml:id="f080B-w-53976">הֶֽעָנָ֔ן</w>
             <w xml:id="f080B-w-53977">שָׁ֥ם</w>
