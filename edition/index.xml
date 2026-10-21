@@ -1,8 +1,8 @@
 <index>
   <appInfo>
-    <application ident="leningrad-codex-tei" version="0.6.0">
+    <application ident="leningrad-codex-tei" version="0.6.1">
       <label>Leningrad Codex TEI</label>
-      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.6.0"/>
+      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.6.1"/>
     </application>
   </appInfo>
   <entry folio="001B" href="001B.xml" when="2026-10-20" contributor="Charles W. Loder">
@@ -335,10 +335,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-20"/>
   </entry>
-  <entry folio="034B" href="034B.xml" when="2026-10-18" contributor="Charles W. Loder">
+  <entry folio="034B" href="034B.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 034B (Exodus 6:14 – Exodus 7:9)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-18"/>
+    <date when="2026-10-20"/>
   </entry>
   <entry folio="035A" href="035A.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 035A (Exodus 7:9 – Exodus 8:3)</title>
@@ -700,10 +700,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-18"/>
   </entry>
-  <entry folio="071A" href="071A.xml" when="2026-10-18" contributor="Charles W. Loder">
+  <entry folio="071A" href="071A.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 071A (Leviticus 24:1 – Leviticus 25:6)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-18"/>
+    <date when="2026-10-20"/>
   </entry>
   <entry folio="071B" href="071B.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 071B (Leviticus 25:6 – Leviticus 25:33)</title>
@@ -735,10 +735,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-18"/>
   </entry>
-  <entry folio="074B" href="074B.xml" when="2026-10-18" contributor="Charles W. Loder">
+  <entry folio="074B" href="074B.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 074B (Numbers 1:32 – Numbers 2:4)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-18"/>
+    <date when="2026-10-20"/>
   </entry>
   <entry folio="075A" href="075A.xml" when="2026-10-18" contributor="Charles W. Loder">
     <title>Leningrad Codex — 075A (Numbers 2:4 – Numbers 3:1)</title>
