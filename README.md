@@ -2,116 +2,9 @@
 
 The Leningrad Codex encoded as a TEI document.
 
-To get started with setting up the project locally, see the [Getting Started](#getting-started) section.
-
 To learn more about this project and its goals, see the [About](#about) section.
 
-## Getting Started
-
-### Download
-
-The entire document is available in the [/edition](./edition/) directory.
-
-Every release also ships a zip of the complete document:
-
-<https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip>
-
-### Installation
-
-Prerequisites:
-
-- Python 3.11 or later
-- [uv](https://docs.astral.sh/uv/)
-
-Clone the project:
-
-```bash
-git clone https://github.com/charlesLoder/leningrad-codex-tei
-cd leningrad-codex-tei
-```
-
-From the project root:
-
-```bash
-uv sync
-```
-
-This will create the virtual environment in `.venv/`
-
-The `leningrad` command-line tool becomes available via `uv run`:
-
-```bash
-uv run leningrad --help
-```
-
-> [!NOTE]
-> For setting up the site, see the [README there](site/README.md)
-
-### Configuration
-
-All pipeline settings live in `config.yaml` at the project root.
-
-To make local overrides without touching the committed defaults:
-
-```bash
-cp config.yaml config.local.yaml
-uv run leningrad --config config.local.yaml <command>
-```
-
-Export your Gemini API key:
-
-```bash
-export GEMINI_API_KEY=<API_KEY>
-```
-
-### Pipeline
-
-Commands run in dependency order. Each one consumes the previous command's output:
-
-```bash
-uv run leningrad vendor-seed          # download and pin the seed mapping
-uv run leningrad download-uxlc        # fetch and extract the UXLC book XMLs
-uv run leningrad download-images      # fetch folio images from the source
-uv run leningrad build-word-stream    # flatten the UXLC XML into a word stream
-uv run leningrad align-folio          # align the text to the page layout
-uv run leningrad download-batch       # poll and download a batch job's raw responses
-uv run leningrad parse-raw            # parse downloaded raw responses (re-runnable after hand edits)
-uv run leningrad validate             # cross-check the alignment records
-uv run leningrad generate-tei         # emit per-folio TEI XML
-uv run leningrad build-index          # compile index.xml
-```
-
-Pass `--help` to any command to see more information.
-
-#### Aligning with an agent harness instead of Gemini
-
-Contributors can do the alignment step with their own agent harness (e.g. Claude Code) in place of `align-folio` and `download-batch`.
-The agent gets the same prompt and image, and its reply goes through the same parser and checks:
-
-```bash
-uv run leningrad prepare-folio --folio 001B   # write a task packet (no model call)
-# the agent runs the align-folio skill: writes reply.xml + run.json, self-checks with check-reply
-uv run leningrad ingest-folio --folio 001B    # verify the run against the packet, save the raw reply
-uv run leningrad parse-raw --folio 001B       # then continue as usual
-```
-
-See [`.agents/skills/align-folio/SKILL.md`](.agents/skills/align-folio/SKILL.md).
-
-### Agents
-
-Project instructions for AI coding agents live in [AGENTS.md](./AGENTS.md).
-
-Agent skills live in `.agents/skills/`. For tools that read skills from `.claude/skills/` (e.g. Claude Code), that path is a symlink to `.agents/skills/`, so both share the same skills.
-
-> [!IMPORTANT]
-> Windows users: Git checks out symlinks as plain text files unless symlink support is enabled.
-> Enable Developer Mode (or run as administrator), then clone with symlinks turned on:
->
-> ```bash
-> git clone -c core.symlinks=true https://github.com/charlesLoder/leningrad-codex-tei
-> ```
->
-> For an existing clone, run `git config core.symlinks true`, delete the `.claude/skills` file, and then run `git checkout -- .claude/skills`.
+To get started with setting up the project locally, see the [Contributing](./CONTRIBUTING.MD) guide.
 
 ## About
 
@@ -157,8 +50,14 @@ This is accomplished through:
 
 Additional measures are taken to make this project accessible to scholars who may not be familiar or comfortable with the above:
 
-- A quick [download link](#download) of the XML files
+- A quick download link of the XML files (see below)
 - An online viewer is available at https://leningrad-codex-tei.netlify.app
+
+The entire document is available in the [/edition](./edition/) directory.
+
+Every release also ships a zip of the complete document:
+
+<https://github.com/charlesLoder/leningrad-codex-tei/releases/latest/download/leningrad-codex.zip>
 
 The code for the viewer is stored in `/site`.
 
