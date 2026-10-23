@@ -179,6 +179,10 @@ was written for Gemini's code execution tool. Read it like this:
    not edit the packet to make it pass.
    Completion: `validate` shows the folio as aligned.
 
+8. **Hand off.**
+   Tell the user the folio is aligned. Do not run `generate-tei`.
+   Offer the `commit-folios` skill, which makes the TEI document and the commit. If other folios of the same set are still open, say that `commit-folios` can take all of them at once.
+
 ## Many folio sides
 
 Run one session per folio side, for example:
@@ -189,6 +193,8 @@ for f in 001B 002A 002B; do
   claude -p "/align-folio $f"
 done
 ```
+
+When all sides are aligned, run `commit-folios` once for the whole set, then `folio-pr`.
 
 ## Notes
 

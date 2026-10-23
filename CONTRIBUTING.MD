@@ -292,11 +292,23 @@ Ensure everything looks correct and commit.
 
 For version 1 of this project, AI should do the bulk of the work for alignment. 
 
+Agents can use the `/commit-folios` skill. It makes a working branch if you are on `main`, runs `validate`, generates the TEI files one folio at a time with `--folio`, builds the index, formats, and commits.
+
 ### Creating a Pull Request
 
 Create a pull request and link to the issues that need to be closed using a [keyword](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests).
 
-Agents can use the `/folio-pr` skill.
+Agents can use the `/folio-pr` skill. If you do not have write access to this repo, it pushes to your fork and opens the pull request from there. It asks before it pushes and before it creates the pull request.
+
+### Skill workflow
+
+The agent skills hand off to each other in this order:
+
+1. `/getting-started`: set up the clone.
+2. `/find-folios` or `/my-folios`: get folios assigned, or see the ones you have.
+3. `/align-folio`: align one folio side (`/my-folios` runs one subagent per folio).
+4. `/commit-folios`: generate the TEI files and commit them.
+5. `/folio-pr`: open the pull request that closes the folio issues.
 
 ## Editing committed folio files
 

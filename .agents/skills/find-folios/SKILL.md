@@ -41,3 +41,4 @@ Use the repo glossary in `AGENTS.md`.
 
 5. **Report.**
    Tell the user which issues got a comment. Say that the owner must assign the issues, and that they should wait for the assignment before they start.
+   When the issues are assigned, the `my-folios` skill shows them and offers to align them.

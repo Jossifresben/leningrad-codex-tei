@@ -19,15 +19,21 @@ This skill only reads. It does not change any issue.
    Completion: `gh` works, or the user has the URL.
 
 2. **List the issues.**
-   Run `.agents/skills/my-folios/scripts/my_folios.sh`.
+   Run `git fetch origin main`, then `.agents/skills/my-folios/scripts/my_folios.sh`.
    The script lists open issues with the `folio` label that are assigned to the current `gh` user, oldest first.
-   A line ends with `[TEI exists in edition/]` when the folio file is already in `edition/`.
+   A line can end with a status:
+   - `[on main]`: the TEI file is already merged. The issue is probably stale.
+   - `[committed on branch]`: committed, but not yet in a pull request that is merged.
+   - `[generated, not committed]`: the file is in `edition/` but not in a commit.
+   - No status: the folio is not aligned yet.
    Completion: you have the list.
 
 3. **Report.**
-   Show the list to the user.
-   - Empty list: say that no folios are assigned. Offer `/find-folios` to ask for some.
-   - Folios with a TEI file but an open issue: tell the user that the issue closes when the pull request merges. Offer `/folio-pr`.
-   - Folios without a TEI file: these are the work left. Offer to align them, and ask which method the user wants:
-     - **Harness (recommended if the user chose it in `/getting-started`):** use the `align-folio` skill with one subagent for each folio side. The `align-folio` skill says to do one folio side per session, because context from one folio can change the work on the next. A fresh subagent for each folio keeps the context apart. Give each subagent only its folio side (for example `001B`) and tell it to use the `align-folio` skill. Ask the user if the subagents may run in parallel or one at a time. When all subagents finish, report the `validate` result of each folio.
-     - **Gemini:** `uv run --env-file .env leningrad align-folio --folio <FOLIO> --limit <LIMIT>`.
+   Show the list to the user. Then offer the next step for the first group that applies, in this order:
+   - Empty list: say that no folios are assigned. Offer the `find-folios` skill to ask for some.
+   - `[on main]`: tell the user the issue is open but the file is merged. Ask them to check the issue. Do not do more for these folios.
+   - `[committed on branch]`: offer the `folio-pr` skill to open the pull request. The issue closes when the pull request merges.
+   - `[generated, not committed]`: offer the `commit-folios` skill.
+   - No status (not aligned): these are the work left. Offer to align them, and ask which method the user wants:
+     - **Harness (recommended if the user chose it in `getting-started`):** use the `align-folio` skill with one subagent for each folio side. The `align-folio` skill says to do one folio side per session, because context from one folio can change the work on the next. A fresh subagent for each folio keeps the context apart. Give each subagent only its folio side (for example `001B`) and tell it to use the `align-folio` skill. Ask the user if the subagents may run in parallel or one at a time. When all subagents finish, report the `validate` result of each folio, then offer the `commit-folios` skill with the folios that passed.
+     - **Gemini:** `uv run --env-file .env leningrad align-folio --folio <FOLIO> --limit <LIMIT>`. After `parse-raw` and `validate` pass, offer the `commit-folios` skill.

@@ -96,5 +96,6 @@ Use the repo glossary in `AGENTS.md`.
    - See assigned folios: if the user already has folios, use the `my-folios` skill to list them.
    - Gemini: `uv run --env-file .env leningrad align-folio --folio <FOLIO> --limit <LIMIT>`.
    - Harness: `/align-folio <FOLIO>`.
-   - When the work is committed, `/folio-pr` opens the pull request.
+   - The work flows in this order: `find-folios` or `my-folios`, then `align-folio`, then `commit-folios` (makes a working branch, generates the TEI files and commits), then `folio-pr` (opens the pull request). Each skill offers the next one.
+   - A user without write access to the repo needs a fork. `folio-pr` handles this and asks before it creates one.
    - Never run `generate-tei` without `--folio` or `--start-folio`. It drops hand edits.
