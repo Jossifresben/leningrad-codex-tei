@@ -44,11 +44,18 @@
         <moduleRef key="analysis" include="w pc"/>
         <moduleRef key="link" include="ab"/>
 
-        <!-- Custom constraint: Make sure 'n' and 'unit' are required on milestones -->
+        <!-- Custom constraint: 'unit' is required on milestones; 'n' is required
+             on verse milestones only (section milestones are identified by xml:id) -->
         <elementSpec ident="milestone" mode="change">
+          <constraintSpec ident="milestone-verse-n" scheme="schematron" mode="add">
+            <constraint>
+              <sch:rule xmlns:sch="http://purl.oclc.org/dsdl/schematron" context="tei:milestone[@unit='verse']">
+                <sch:assert test="@n">A verse milestone must have an @n.</sch:assert>
+              </sch:rule>
+            </constraint>
+          </constraintSpec>
           <attList>
             <attDef ident="unit" mode="change" usage="req"/>
-            <attDef ident="n" mode="change" usage="req"/>
           </attList>
         </elementSpec>
 
@@ -58,6 +65,7 @@
               <valList type="closed">
                 <valItem ident="sof-pasuq"/>
                 <valItem ident="paseq"/>
+                <valItem ident="inverted-nun"/>
               </valList>
             </attDef>
           </attList>
