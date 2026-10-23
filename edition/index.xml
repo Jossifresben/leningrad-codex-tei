@@ -1,8 +1,8 @@
 <index>
   <appInfo>
-    <application ident="leningrad-codex-tei" version="0.6.1">
+    <application ident="leningrad-codex-tei" version="0.6.2">
       <label>Leningrad Codex TEI</label>
-      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.6.1"/>
+      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.6.2"/>
     </application>
   </appInfo>
   <entry folio="001B" href="001B.xml" when="2026-10-20" contributor="Charles W. Loder">
@@ -495,10 +495,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-20"/>
   </entry>
-  <entry folio="050B" href="050B.xml" when="2026-10-20" contributor="Charles W. Loder">
+  <entry folio="050B" href="050B.xml" when="2026-10-22" contributor="Charles W. Loder">
     <title>Leningrad Codex — 050B (Exodus 31:3 – Exodus 32:8)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-20"/>
+    <date when="2026-10-22"/>
   </entry>
   <entry folio="051A" href="051A.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 051A (Exodus 32:8 – Exodus 32:32)</title>
@@ -545,10 +545,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-20"/>
   </entry>
-  <entry folio="055B" href="055B.xml" when="2026-10-19" contributor="Charles W. Loder">
+  <entry folio="055B" href="055B.xml" when="2026-10-22" contributor="Charles W. Loder">
     <title>Leningrad Codex — 055B (Exodus 39:3 – Exodus 39:29)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-19"/>
+    <date when="2026-10-22"/>
   </entry>
   <entry folio="056A" href="056A.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 056A (Exodus 39:29 – Exodus 40:15)</title>
@@ -565,10 +565,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-18"/>
   </entry>
-  <entry folio="057B" href="057B.xml" when="2026-10-18" contributor="Charles W. Loder">
+  <entry folio="057B" href="057B.xml" when="2026-10-22" contributor="Charles W. Loder">
     <title>Leningrad Codex — 057B (Leviticus 2:9 – Leviticus 3:17)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-18"/>
+    <date when="2026-10-22"/>
   </entry>
   <entry folio="058A" href="058A.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 058A (Leviticus 4:1 – Leviticus 4:24)</title>
@@ -610,10 +610,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-20"/>
   </entry>
-  <entry folio="062A" href="062A.xml" when="2026-10-20" contributor="Charles W. Loder">
+  <entry folio="062A" href="062A.xml" when="2026-10-22" contributor="Charles W. Loder">
     <title>Leningrad Codex — 062A (Leviticus 10:6 – Leviticus 11:12)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-20"/>
+    <date when="2026-10-22"/>
   </entry>
   <entry folio="062B" href="062B.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 062B (Leviticus 11:12 – Leviticus 11:44)</title>
@@ -715,10 +715,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-18"/>
   </entry>
-  <entry folio="072B" href="072B.xml" when="2026-10-18" contributor="Charles W. Loder">
+  <entry folio="072B" href="072B.xml" when="2026-10-22" contributor="Charles W. Loder">
     <title>Leningrad Codex — 072B (Leviticus 26:8 – Leviticus 26:34)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-18"/>
+    <date when="2026-10-22"/>
   </entry>
   <entry folio="073A" href="073A.xml" when="2026-10-18" contributor="Charles W. Loder">
     <title>Leningrad Codex — 073A (Leviticus 26:34 – Leviticus 27:11)</title>
@@ -770,10 +770,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-20"/>
   </entry>
-  <entry folio="078A" href="078A.xml" when="2026-10-20" contributor="Charles W. Loder">
+  <entry folio="078A" href="078A.xml" when="2026-10-22" contributor="Charles W. Loder">
     <title>Leningrad Codex — 078A (Numbers 6:2 – Numbers 7:3)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-20"/>
+    <date when="2026-10-22"/>
   </entry>
   <entry folio="078B" href="078B.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 078B (Numbers 7:3 – Numbers 7:31)</title>
@@ -785,10 +785,10 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-20"/>
   </entry>
-  <entry folio="079B" href="079B.xml" when="2026-10-20" contributor="Charles W. Loder">
+  <entry folio="079B" href="079B.xml" when="2026-10-22" contributor="Charles W. Loder">
     <title>Leningrad Codex — 079B (Numbers 7:60 – Numbers 7:86)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
-    <date when="2026-10-20"/>
+    <date when="2026-10-22"/>
   </entry>
   <entry folio="080A" href="080A.xml" when="2026-10-20" contributor="Charles W. Loder">
     <title>Leningrad Codex — 080A (Numbers 7:86 – Numbers 8:20)</title>
@@ -979,5 +979,10 @@
     <title>Leningrad Codex — 098B (Numbers 36:13 – Deuteronomy 1:21)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-21T01:29:52.343601+00:00"/>
+  </entry>
+  <entry folio="099A" href="099A.xml" when="2026-10-21T14:03:16.535582+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 099A (Deuteronomy 1:21 – Deuteronomy 1:44)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-21T14:03:16.535582+00:00"/>
   </entry>
 </index>
