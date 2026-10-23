@@ -15,6 +15,11 @@ The `gh` cli is not required but is extremely helpful and recommended, especiall
 
 ## Getting Started
 
+> [!TIP]
+> After you clone the project, an agent (e.g. Claude Code) can do the setup with you.
+> Open the agent in the project root and run the `/getting-started` skill.
+> The steps below do the same work by hand.
+
 ### Installation
 
 Clone the project:
@@ -121,6 +126,11 @@ Folio issue titles all follow the same format: `Folio <FOLIO>: create TEI docume
 Tag @charlesLoder in which folios you would like to align, and I will assign the issue to you.
 
 Agents can do this programmatically using the `gh` cli.
+
+Two skills help with this:
+
+- `/find-folios` asks how many folios you want. It lists that many open, unassigned folio issues, and (after you agree) comments on each to ask the repo owner (i.e. @charlesLoder) to assign it to you.
+- `/my-folios` lists the open folio issues assigned to you, and offers to align them.
 
 It will be simplest to run inference on a contiguous set of folios.
 
