@@ -17,6 +17,8 @@ Always respond to the user in plain language using asd-ste100 simplified technic
 
 See [CONTRIBUTING.MD](./CONTRIBUTING.MD) to assist with contributing.
 
+If making updates to the Python code, check if the README, AGENTS, or CONTRIBUTING files need to be udpated.
+
 ## Versioning
 
 - Single source of truth: root `pyproject.toml` `[project].version` (bare semver, e.g. `0.2.1`). Bump with `uv version --bump minor|patch|major` or `uv version X.Y.Z`. Note `uv version` only edits the file; the owner commits it and creates the release tag by hand.
