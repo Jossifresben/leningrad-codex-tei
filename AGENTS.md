@@ -13,6 +13,10 @@ Always respond to the user in plain language using asd-ste100 simplified technic
 - use the `gh` cli if it is available
 - run `uv run ruff format` before committing/pushing
 
+## Contributing
+
+See [CONTRIBUTING.MD](./CONTRIBUTING.MD) to assist with contributing.
+
 ## Versioning
 
 - Single source of truth: root `pyproject.toml` `[project].version` (bare semver, e.g. `0.2.1`). Bump with `uv version --bump minor|patch|major` or `uv version X.Y.Z`. Note `uv version` only edits the file; the owner commits it and creates the release tag by hand.
@@ -62,6 +66,11 @@ The committed config maps these under `data/` (e.g. `{alignments}` is `data/alig
         - `polls/{poll_ts}.json`: append-only status snapshots; output of the `download-batch` step.
         - `result.jsonl`: raw Batch API result lines; output of the `download-batch` step when job completes.
         - `download.json`: per-folio download summary; output of the `download-batch` step when job completes.
+    - `{alignments}/tasks/{folio}/`: agent-harness task for one folio side (the alternative to Gemini; see the `align-folio` skill)
+        - `packet.json` + `prompt.md`: inputs; output of the `prepare-folio` step. Holds the same prompt as `align-folio`, plus image, seed, and skill hashes.
+        - `reply.xml` + `run.json`: written by the agent; `check-reply` parses and validates `reply.xml` without writing anything.
+        - `work/`: crops and `work/crops.json`, written by the skill's `crop.py`. `ingest-folio` rejects a run without a manifest that matches the image and covers every column in the reply.
+        - `ingest-folio` verifies `run.json` against the packet, then writes `raw/{folio}.xml` + `conversations/{folio}.json` as `download-batch` does.
 - `{audit}`: per-folio `{folio}.json` audit runs.
 - `{provenance}`: pins seed/UXLC/word-stream versions, hashes, and counts.
 - `{output}`: generated per-folio TEI + `index.xml`; unlike the above, the contents of this path are intended to be committed.

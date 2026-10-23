@@ -25,6 +25,7 @@ packages = ["src/leningrad_codex_tei"]
 dev = [
     "lxml-stubs>=0.5.1",
     "mypy>=2.3.1",
+    "pillow>=10.0",
     "pytest>=9.1.1",
     "ruff>=0.16.10",
     "types-pyyaml>=6.0.12.20260815",

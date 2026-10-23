@@ -1260,6 +1260,16 @@ def save_raw_model_response(base_dir: Path, folio: str, text: str) -> Path:
     return dest
 
 
+def record_from_reply(
+    sl: SeedSlice, word_stream: WordStream, text: str
+) -> AlignmentRecord:
+    """Parse one raw reply into an alignment record. Pure; writes nothing."""
+    slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
+    line_counts = _parse_epilog_xml(text, [w.text for w in slice_words])
+    placements = _place_words(line_counts, sl.atom_start)
+    return build_alignment_record(sl, slice_words, placements, model_response=text)
+
+
 def parse_raw_result(
     folio: str,
     text: str,
@@ -1280,12 +1290,7 @@ def parse_raw_result(
     version = prompt_version or PROMPT_VERSION
     try:
         sl = slices[folio]
-        slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
-        line_counts = _parse_epilog_xml(text, [w.text for w in slice_words])
-        placements = _place_words(line_counts, sl.atom_start)
-        record = build_alignment_record(
-            sl, slice_words, placements, model_response=text
-        )
+        record = record_from_reply(sl, word_stream, text)
         save_alignment(record, config.paths.alignments / f"{folio}.json")
     except Exception:
         try:

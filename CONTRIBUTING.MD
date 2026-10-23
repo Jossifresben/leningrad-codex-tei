@@ -2,39 +2,131 @@
 
 Because this project is not affiliated with any institution or organization, it relies on community involvement.
 
+The most needed way to contribute is aligning folios. Contributions to the code and checks against folios that have been aligned are welcome as well.
+
+## Prereqs
+
+Prerequisites:
+
+- Python 3.11 or later
+- [uv](https://docs.astral.sh/uv/)
+
+The `gh` cli is not required but is extremely helpful and recommended, especially for agentic work.
+
+## Getting Started
+
+### Installation
+
+Clone the project:
+
+```bash
+git clone https://github.com/charlesLoder/leningrad-codex-tei
+cd leningrad-codex-tei
+```
+
+From the project root:
+
+```bash
+uv sync
+```
+
+This will create the virtual environment in `.venv/`
+
+The `leningrad` command-line tool becomes available via `uv run`:
+
+```bash
+uv run leningrad --help
+```
+
+> [!NOTE]
+> For setting up the site, see the [README there](site/README.md)
+
+### Configuration
+
+All pipeline settings live in `config.yaml` at the project root.
+
+To make local overrides without touching the committed defaults:
+
+```bash
+cp config.yaml config.local.yaml
+uv run leningrad --config config.local.yaml <command>
+```
+
+### Pipeline
+
+Each group builds on the one before it. Use either 2a or 2b.
+
+**Group 1:** Commands used for pulling data:
+
+```bash
+uv run leningrad vendor-seed          # download and pin the seed mapping
+uv run leningrad download-uxlc        # fetch and extract the UXLC book XMLs
+uv run leningrad download-images      # fetch folio images from the source
+uv run leningrad build-word-stream    # flatten the UXLC XML into a word stream
+```
+
+**Group 2a:** Commands used for aligning folios with Gemini:
+
+```bash
+uv run leningrad align-folio          # align the text to the page layout
+uv run leningrad download-batch       # poll and download a batch job's raw responses
+```
+
+**Group 2b:** Commands used for aligning folios with a harness:
+
+```bash
+uv run leningrad prepare-folio        # write task packets for an agent harness (no model call)
+uv run leningrad check-reply          # parse and validate a harness reply without writing anything
+uv run leningrad ingest-folio         # verify a harness run against its packet and save it as a raw reply
+```
+
+These commands are run by the agent via the `/align-folio` skill.
+
+**Group 3:** Commands used for parsing output:
+
+```bash
+uv run leningrad parse-raw            # parse downloaded raw responses (re-runnable after hand edits)
+```
+
+Used after either the Gemini or harness path. The `/align-folio` skill runs `parse-raw`.
+
+**Group 4:** Commands used for validating output:
+
+```bash
+uv run leningrad validate             # cross-check the alignment records
+```
+
+The `/align-folio` skill runs `validate`
+
+**Group 5:** Commands used for generating XML artifacts:
+
+```bash
+uv run leningrad generate-tei         # emit per-folio TEI XML
+uv run leningrad build-index          # compile index.xml
+```
+
+Pass `--help` to any command to see more information.
+
 ## Aligning folios
 
 The greatest bottleneck to this project is the cost of inference for aligning folios via AI.
 This project seeks to mitigate that by asking contributors run inference for folios that are not completed.
 
-### Installation
-
-To get started, follow the installation steps in the [README](./README.md#installation).
-
 ### Incomplete folios
 
-To see which folios are incomplete, view open issues on the issue board tagged with `folio`.
+To see which folios are incomplete, view [open issues tagged with `folio`](https://github.com/charlesLoder/leningrad-codex-tei/issues?q=is%3Aissue+state%3Aopen+label%3Afolio+sort%3Acreated-asc).
 
-TODO: add link
+Folio issue titles all follow the same format: `Folio <FOLIO>: create TEI document`.
 
-Tag me in which folios you would like to do, and I will assign the issue to you.
+Tag @charlesLoder in which folios you would like to align, and I will assign the issue to you.
+
+Agents can do this programmatically using the `gh` cli.
 
 It will be simplest to run inference on a contiguous set of folios.
 
-### Configuration
-
-Though much of the project can be configured, for the initial version, it will be best to use the defaults.
-
 ### Initial step
 
-Run the following parts of the pipeline before running inference:
-
-```bash
-uv run leningrad vendor-seed
-uv run leningrad download-uxlc
-uv run leningrad download-images
-uv run leningrad build-word-stream
-```
+Run the pulling-data commands from [pipeline](#pipeline).
 
 #### UXLC version
 
@@ -48,6 +140,8 @@ If you see this error, you may have UXLC from tanach.us in `data/uxlc/` (e.g. fr
 Run `download-uxlc` with the default config, then run `build-word-stream` again.
 
 ### Running inference
+
+#### Gemini
 
 Obtain a [Gemini API Key](https://ai.google.dev/gemini-api/docs/api-key) and add it to your environment
 
@@ -78,7 +172,7 @@ uv run leningrad download-batch
 Then parse the downloaded raw responses with:
 
 ```bash
-uv run leningrad parse-raw
+uv run leningrad parse-raw --start-folio <FOLIO>
 ```
 
 If a folio fails to parse, fix `data/alignments/raw/<FOLIO>.xml` by hand and re-run `parse-raw --folio <FOLIO>`.
@@ -86,7 +180,23 @@ If a folio fails to parse, fix `data/alignments/raw/<FOLIO>.xml` by hand and re-
 And then validate the output with:
 
 ```bash
-uv run leningrad validate
+uv run leningrad validate --start-folio <FOLIO>
+```
+
+Agents can use `/view-batch-result` to analyze batch results.
+
+#### Agent Harness
+
+Though this pipeline was created with Gemini in mind, any agent (e.g. Claude Code) can be used.
+
+Ensure everything in [the initial step](#initial-step) has been done first.
+
+Agents have access to the `/align-folio` skill.
+
+Example:
+
+```bash
+claude -p "/align-folio <FOLIO>"
 ```
 
 ### Handling errors with inference output
@@ -157,7 +267,7 @@ The next step is to generate the TEI documents in `/edition`.
 Run the following to generate the XML files:
 
 ```bash
-uv run leningrad generate-tei
+uv run leningrad generate-tei --start-folio <FOLIO>
 ```
 
 And then update the index with:
@@ -172,8 +282,37 @@ Ensure everything looks correct and commit.
 
 For version 1 of this project, AI should do the bulk of the work for alignment. 
 
-## Creating a Pull Request
+### Creating a Pull Request
 
 Create a pull request and link to the issues that need to be closed using a [keyword](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests).
 
-Agents can use the `folio-pr` skill in `.agents/skills`
+Agents can use the `/folio-pr` skill.
+
+## Editing committed folio files
+
+Once a folio is in `/edition`, the file there is the source of truth, not the pipeline.
+Hand edits (by a person or an agent) are made directly to those files.
+
+> [!WARNING]
+> `generate-tei` rewrites a file from the alignment data and drops any hand edits, including entries in the `revisionDesc`.
+> Only run it for new folios, using `--folio` or `--start-folio`. Never run it without either.
+
+Record each hand edit in the folio's `revisionDesc`.
+
+Agents can use the `/update-revisiondesc` skill.
+
+## Code Contributions
+
+Project instructions for AI coding agents live in [AGENTS.md](./AGENTS.md).
+
+Agent skills live in `.agents/skills/`. For tools that read skills from `.claude/skills/` (e.g. Claude Code), that path is a symlink to `.agents/skills/`, so both share the same skills.
+
+> [!IMPORTANT]
+> Windows users: Git checks out symlinks as plain text files unless symlink support is enabled.
+> Enable Developer Mode (or run as administrator), then clone with symlinks turned on:
+>
+> ```bash
+> git clone -c core.symlinks=true https://github.com/charlesLoder/leningrad-codex-tei
+> ```
+>
+> For an existing clone, run `git config core.symlinks true`, delete the `.claude/skills` file, and then run `git checkout -- .claude/skills`.

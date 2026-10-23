@@ -81,5 +81,5 @@ def file_is_dirty(path: Path | str, cwd: Path | None = None) -> bool:
 def require_file_clean(path: Path | str, cwd: Path | None = None) -> None:
     if file_is_dirty(path, cwd):
         raise RuntimeError(
-            f"uncommitted changes to {path}: commit or revert before running align-folio"
+            f"uncommitted changes to {path}: commit or revert before running the pipeline"
         )
