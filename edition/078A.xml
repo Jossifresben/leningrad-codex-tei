@@ -39,6 +39,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-22" who="#contrib-charles-w-loder">
+      Restore revised lineation lost when the edition was regenerated.
+      </change>
       <change when="2026-10-20" who="#contrib-charles-w-loder">
       Remove the space left in the word before each paseq.
       </change>
@@ -546,69 +549,68 @@
             <w xml:id="f078A-w-52288">אֶת־</w>
             <w xml:id="f078A-w-52289">שְׁמִ֖י</w>
             <w xml:id="f078A-w-52290">עַל־</w>
-          <lb xml:id="f078A-lb-3-17" n="17"/>
             <w xml:id="f078A-w-52291">בְּנֵ֣י</w>
-          <lb xml:id="f078A-lb-3-18" n="18"/>
+          <lb xml:id="f078A-lb-3-18" n="17"/>
             <w xml:id="f078A-w-52292">יִשְׂרָאֵ֑ל</w>
             <w xml:id="f078A-w-52293">וַאֲנִ֖י</w>
             <w xml:id="f078A-w-52294">אֲבָרֲכֵֽם</w>
             <pc type="sof-pasuq" xml:id="f078A-pc-52294">׃</pc>
             <milestone unit="section" subtype="pe" xml:id="f078A-s-Numbers-6-27"/>
-          <lb xml:id="f078A-lb-3-19" n="19"/>
+          <lb xml:id="f078A-lb-3-19" n="18"/>
             <milestone unit="verse" n="Numbers-7-1" xml:id="f078A-v-Numbers-7-1"/>
             <w xml:id="f078A-w-52295">וַיְהִ֡י</w>
             <w xml:id="f078A-w-52296">בְּיוֹם֩</w>
             <w xml:id="f078A-w-52297">כַּלּ֨וֹת</w>
             <w xml:id="f078A-w-52298">מֹשֶׁ֜ה</w>
             <w xml:id="f078A-w-52299">לְהָקִ֣ים</w>
-          <lb xml:id="f078A-lb-3-20" n="20"/>
+          <lb xml:id="f078A-lb-3-20" n="19"/>
             <w xml:id="f078A-w-52300">אֶת־</w>
             <w xml:id="f078A-w-52301">הַמִּשְׁכָּ֗ן</w>
             <w xml:id="f078A-w-52302">וַיִּמְשַׁ֨ח</w>
             <w xml:id="f078A-w-52303">אֹת֜וֹ</w>
-          <lb xml:id="f078A-lb-3-21" n="21"/>
+          <lb xml:id="f078A-lb-3-21" n="20"/>
             <w xml:id="f078A-w-52304">וַיְקַדֵּ֤שׁ</w>
             <w xml:id="f078A-w-52305">אֹתוֹ֙</w>
             <w xml:id="f078A-w-52306">וְאֶת־</w>
             <w xml:id="f078A-w-52307">כָּל־</w>
             <w xml:id="f078A-w-52308">כֵּלָ֔יו</w>
-          <lb xml:id="f078A-lb-3-22" n="22"/>
+          <lb xml:id="f078A-lb-3-22" n="21"/>
             <w xml:id="f078A-w-52309">וְאֶת־</w>
             <w xml:id="f078A-w-52310">הַמִּזְבֵּ֖חַ</w>
             <w xml:id="f078A-w-52311">וְאֶת־</w>
             <w xml:id="f078A-w-52312">כָּל־</w>
             <w xml:id="f078A-w-52313">כֵּלָ֑יו</w>
-          <lb xml:id="f078A-lb-3-23" n="23"/>
+          <lb xml:id="f078A-lb-3-23" n="22"/>
             <w xml:id="f078A-w-52314">וַיִּמְשָׁחֵ֖ם</w>
             <w xml:id="f078A-w-52315">וַיְקַדֵּ֥שׁ</w>
             <w xml:id="f078A-w-52316">אֹתָֽם</w>
             <pc type="sof-pasuq" xml:id="f078A-pc-52316">׃</pc>
-          <lb xml:id="f078A-lb-3-24" n="24"/>
+          <lb xml:id="f078A-lb-3-24" n="23"/>
             <milestone unit="verse" n="Numbers-7-2" xml:id="f078A-v-Numbers-7-2"/>
             <w xml:id="f078A-w-52317">וַיַּקְרִ֙יבוּ֙</w>
             <w xml:id="f078A-w-52318">נְשִׂיאֵ֣י</w>
             <w xml:id="f078A-w-52319">יִשְׂרָאֵ֔ל</w>
             <w xml:id="f078A-w-52320">רָאשֵׁ֖י</w>
-          <lb xml:id="f078A-lb-3-25" n="25"/>
+          <lb xml:id="f078A-lb-3-25" n="24"/>
             <w xml:id="f078A-w-52321">בֵּ֣ית</w>
             <w xml:id="f078A-w-52322">אֲבֹתָ֑ם</w>
             <w xml:id="f078A-w-52323">הֵ֚ם</w>
             <w xml:id="f078A-w-52324">נְשִׂיאֵ֣י</w>
             <w xml:id="f078A-w-52325">הַמַּטֹּ֔ת</w>
-          <lb xml:id="f078A-lb-3-26" n="26"/>
+          <lb xml:id="f078A-lb-3-26" n="25"/>
             <w xml:id="f078A-w-52326">הֵ֥ם</w>
             <w xml:id="f078A-w-52327">הָעֹמְדִ֖ים</w>
             <w xml:id="f078A-w-52328">עַל־</w>
             <w xml:id="f078A-w-52329">הַפְּקֻדִֽים</w>
             <pc type="sof-pasuq" xml:id="f078A-pc-52329">׃</pc>
-          <lb xml:id="f078A-lb-3-27" n="27"/>
+          <lb xml:id="f078A-lb-3-27" n="26"/>
             <milestone unit="verse" n="Numbers-7-3" xml:id="f078A-v-Numbers-7-3"/>
             <w xml:id="f078A-w-52330">וַיָּבִ֨יאוּ</w>
             <w xml:id="f078A-w-52331">אֶת־</w>
             <w xml:id="f078A-w-52332">קָרְבָּנָ֜ם</w>
             <w xml:id="f078A-w-52333">לִפְנֵ֣י</w>
             <w xml:id="f078A-w-52334">יְהוָ֗ה</w>
-          <lb xml:id="f078A-lb-3-28" n="28"/>
+          <lb xml:id="f078A-lb-3-28" n="27"/>
             <w xml:id="f078A-w-52335">שֵׁשׁ־</w>
             <w xml:id="f078A-w-52336">עֶגְלֹ֥ת</w>
             <w xml:id="f078A-w-52337">צָב֙</w>
