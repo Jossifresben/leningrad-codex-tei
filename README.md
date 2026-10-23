@@ -5,6 +5,7 @@ The Leningrad Codex encoded as a TEI document.
 To learn more about this project and its goals, see the [About](#about) section.
 
 To get started with setting up the project locally, see the [Contributing](./CONTRIBUTING.MD) guide.
+If you use an agent such as Claude Code, run its `/getting-started` skill in the cloned repo for a guided setup.
 
 ## About
 

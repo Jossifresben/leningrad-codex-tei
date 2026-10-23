@@ -15,6 +15,11 @@ The `gh` cli is not required but is extremely helpful and recommended, especiall
 
 ## Getting Started
 
+> [!TIP]
+> After you clone the project, an agent (e.g. Claude Code) can do the setup with you.
+> Open the agent in the project root and run the `/getting-started` skill.
+> The steps below do the same work by hand.
+
 ### Installation
 
 Clone the project:
@@ -121,6 +126,11 @@ Folio issue titles all follow the same format: `Folio <FOLIO>: create TEI docume
 Tag @charlesLoder in which folios you would like to align, and I will assign the issue to you.
 
 Agents can do this programmatically using the `gh` cli.
+
+Two skills help with this:
+
+- `/find-folios` asks how many folios you want. It lists that many open, unassigned folio issues, and (after you agree) comments on each to ask the repo owner (i.e. @charlesLoder) to assign it to you.
+- `/my-folios` lists the open folio issues assigned to you, and offers to align them.
 
 It will be simplest to run inference on a contiguous set of folios.
 
@@ -282,11 +292,23 @@ Ensure everything looks correct and commit.
 
 For version 1 of this project, AI should do the bulk of the work for alignment. 
 
+Agents can use the `/commit-folios` skill. It makes a working branch if you are on `main`, runs `validate`, generates the TEI files one folio at a time with `--folio`, builds the index, formats, and commits.
+
 ### Creating a Pull Request
 
 Create a pull request and link to the issues that need to be closed using a [keyword](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests).
 
-Agents can use the `/folio-pr` skill.
+Agents can use the `/folio-pr` skill. If you do not have write access to this repo, it pushes to your fork and opens the pull request from there. It asks before it pushes and before it creates the pull request.
+
+### Skill workflow
+
+The agent skills hand off to each other in this order:
+
+1. `/getting-started`: set up the clone.
+2. `/find-folios` or `/my-folios`: get folios assigned, or see the ones you have.
+3. `/align-folio`: align one folio side (`/my-folios` runs one subagent per folio).
+4. `/commit-folios`: generate the TEI files and commit them.
+5. `/folio-pr`: open the pull request that closes the folio issues.
 
 ## Editing committed folio files
 
