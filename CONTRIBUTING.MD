@@ -288,6 +288,19 @@ Create a pull request and link to the issues that need to be closed using a [key
 
 Agents can use the `/folio-pr` skill.
 
+## Editing committed folio files
+
+Once a folio is in `/edition`, the file there is the source of truth, not the pipeline.
+Hand edits (by a person or an agent) are made directly to those files.
+
+> [!WARNING]
+> `generate-tei` rewrites a file from the alignment data and drops any hand edits, including entries in the `revisionDesc`.
+> Only run it for new folios, using `--folio` or `--start-folio`. Never run it without either.
+
+Record each hand edit in the folio's `revisionDesc`.
+
+Agents can use the `/update-revisiondesc` skill.
+
 ## Code Contributions
 
 Project instructions for AI coding agents live in [AGENTS.md](./AGENTS.md).
