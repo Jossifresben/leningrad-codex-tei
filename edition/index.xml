@@ -1000,6 +1000,11 @@
     <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
     <date when="2026-10-24T02:17:20.484216+00:00"/>
   </entry>
+  <entry folio="101A" href="101A.xml" when="2026-10-24T15:31:37.336389+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 101A (Deuteronomy 3:27 – Deuteronomy 4:17)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T15:31:37.336389+00:00"/>
+  </entry>
   <entry folio="101B" href="101B.xml" when="2026-10-24T04:16:56.360585+00:00" contributor="Charles W. Loder">
     <title>Leningrad Codex — 101B (Deuteronomy 4:17 – Deuteronomy 4:35)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
