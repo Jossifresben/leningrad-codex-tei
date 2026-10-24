@@ -27,7 +27,8 @@ A comment of `/unclaim` removes the commenter from the issue.
    Completion: `gh` works, or the user has the URL.
 
 2. **Ask how many folios.**
-   Ask the user how many folios they want to align. Call the answer `<N>`. It must be a whole number from 1 to 10.
+   Ask the user how many folios they want to align. Call the answer `<N>`.
+   It must be a whole number. Generally, 10 is a good number in case model outputs need to be reviewed
    Tell them that a contiguous set is easiest.
    Completion: you have `<N>`.
 
