@@ -48,7 +48,7 @@ _TEI_PLACEMENTS = [
 
 @pytest.fixture
 def alignment(seed_slice, word_stream):
-    slice_words = word_stream.words[seed_slice.atom_start - 1 : seed_slice.atom_end]
+    slice_words = seed_slice.words(word_stream)
     return build_alignment_record(seed_slice, slice_words, _TEI_PLACEMENTS)
 
 
@@ -198,7 +198,7 @@ def test_verse_and_section_milestones(alignment, changes) -> None:
 def test_repeat_section_ids_in_one_verse_are_suffixed(
     seed_slice, word_stream, changes
 ) -> None:
-    slice_words = word_stream.words[seed_slice.atom_start - 1 : seed_slice.atom_end]
+    slice_words = seed_slice.words(word_stream)
     slice_words[7].section = "samekh"  # a second marker in Gen 2:1
     rec = build_alignment_record(seed_slice, slice_words, _TEI_PLACEMENTS)
     xml = render_folio_tei(

@@ -92,7 +92,7 @@ Use the repo glossary in `AGENTS.md`.
 
 9. **Summarize and point to the next step.**
    Give a short list of what is set up. Then say:
-   - Find open folios: ask the user if they want to do this now. If yes, use the `find-folios` skill. It lists open issues and asks the owner to assign them.
+   - Find open folios: ask the user if they want to do this now. If yes, use the `find-folios` skill. It lists open issues and claims them with a `/claim` comment.
    - See assigned folios: if the user already has folios, use the `my-folios` skill to list them.
    - Gemini: `uv run --env-file .env leningrad align-folio --folio <FOLIO> --limit <LIMIT>`.
    - Harness: `/align-folio <FOLIO>`.

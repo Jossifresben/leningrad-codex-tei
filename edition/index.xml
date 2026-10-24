@@ -1000,6 +1000,11 @@
     <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
     <date when="2026-10-24T02:17:20.484216+00:00"/>
   </entry>
+  <entry folio="101A" href="101A.xml" when="2026-10-24T15:31:37.336389+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 101A (Deuteronomy 3:27 – Deuteronomy 4:17)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T15:31:37.336389+00:00"/>
+  </entry>
   <entry folio="101B" href="101B.xml" when="2026-10-24T04:16:56.360585+00:00" contributor="Charles W. Loder">
     <title>Leningrad Codex — 101B (Deuteronomy 4:17 – Deuteronomy 4:35)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
@@ -1049,6 +1054,106 @@
     <title>Leningrad Codex — 106A (Deuteronomy 11:2 – Deuteronomy 11:22)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-24T04:17:05.495299+00:00"/>
+  </entry>
+  <entry folio="106B" href="106B.xml" when="2026-10-24T16:39:45.217475+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 106B (Deuteronomy 11:22 – Deuteronomy 12:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:45.217475+00:00"/>
+  </entry>
+  <entry folio="107A" href="107A.xml" when="2026-10-24T16:39:46.262941+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 107A (Deuteronomy 12:10 – Deuteronomy 12:29)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:46.262941+00:00"/>
+  </entry>
+  <entry folio="107B" href="107B.xml" when="2026-10-24T16:39:47.442103+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 107B (Deuteronomy 12:29 – Deuteronomy 13:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:47.442103+00:00"/>
+  </entry>
+  <entry folio="108A" href="108A.xml" when="2026-10-24T16:39:48.675614+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 108A (Deuteronomy 13:17 – Deuteronomy 14:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:48.675614+00:00"/>
+  </entry>
+  <entry folio="108B" href="108B.xml" when="2026-10-24T16:39:49.685002+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 108B (Deuteronomy 14:25 – Deuteronomy 15:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:49.685002+00:00"/>
+  </entry>
+  <entry folio="109A" href="109A.xml" when="2026-10-24T16:39:50.691278+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 109A (Deuteronomy 15:17 – Deuteronomy 16:15)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:50.691278+00:00"/>
+  </entry>
+  <entry folio="109B" href="109B.xml" when="2026-10-24T16:39:51.698085+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 109B (Deuteronomy 16:15 – Deuteronomy 17:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:51.698085+00:00"/>
+  </entry>
+  <entry folio="110A" href="110A.xml" when="2026-10-24T16:39:52.669288+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 110A (Deuteronomy 17:13 – Deuteronomy 18:16)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:52.669288+00:00"/>
+  </entry>
+  <entry folio="110B" href="110B.xml" when="2026-10-24T16:39:53.638735+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 110B (Deuteronomy 18:16 – Deuteronomy 19:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:53.638735+00:00"/>
+  </entry>
+  <entry folio="111A" href="111A.xml" when="2026-10-24T16:39:54.628532+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 111A (Deuteronomy 19:14 – Deuteronomy 20:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:54.628532+00:00"/>
+  </entry>
+  <entry folio="111B" href="111B.xml" when="2026-10-24T16:39:55.585705+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 111B (Deuteronomy 20:17 – Deuteronomy 21:19)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:55.585705+00:00"/>
+  </entry>
+  <entry folio="112A" href="112A.xml" when="2026-10-24T16:39:56.688559+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 112A (Deuteronomy 21:19 – Deuteronomy 22:19)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:56.688559+00:00"/>
+  </entry>
+  <entry folio="112B" href="112B.xml" when="2026-10-24T16:39:57.687836+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 112B (Deuteronomy 22:19 – Deuteronomy 23:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:57.687836+00:00"/>
+  </entry>
+  <entry folio="113A" href="113A.xml" when="2026-10-24T16:39:58.650572+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 113A (Deuteronomy 23:13 – Deuteronomy 24:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:58.650572+00:00"/>
+  </entry>
+  <entry folio="113B" href="113B.xml" when="2026-10-24T16:39:59.624377+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 113B (Deuteronomy 24:10 – Deuteronomy 25:12)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:39:59.624377+00:00"/>
+  </entry>
+  <entry folio="114A" href="114A.xml" when="2026-10-24T16:40:00.665691+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 114A (Deuteronomy 25:13 – Deuteronomy 26:15)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:40:00.665691+00:00"/>
+  </entry>
+  <entry folio="114B" href="114B.xml" when="2026-10-24T16:40:01.676480+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 114B (Deuteronomy 26:15 – Deuteronomy 27:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:40:01.676480+00:00"/>
+  </entry>
+  <entry folio="115A" href="115A.xml" when="2026-10-24T16:40:02.679886+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 115A (Deuteronomy 27:17 – Deuteronomy 28:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:40:02.679886+00:00"/>
+  </entry>
+  <entry folio="115B" href="115B.xml" when="2026-10-24T16:40:03.651809+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 115B (Deuteronomy 28:18 – Deuteronomy 28:45)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:40:03.651809+00:00"/>
+  </entry>
+  <entry folio="116A" href="116A.xml" when="2026-10-24T16:40:04.609264+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 116A (Deuteronomy 28:45 – Deuteronomy 28:66)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T16:40:04.609264+00:00"/>
   </entry>
   <entry folio="116B" href="116B.xml" when="2026-10-24T13:56:56.815940+00:00" contributor="Ken Penner">
     <title>Leningrad Codex — 116B (Deuteronomy 28:66 – Deuteronomy 29:19)</title>
