@@ -985,4 +985,9 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-21T14:03:16.535582+00:00"/>
   </entry>
+  <entry folio="099B" href="099B.xml" when="2026-10-24T01:07:05.184426+00:00" contributor="Ken Penner">
+    <title>Leningrad Codex — 099B (Deuteronomy 1:44 – Deuteronomy 2:23)</title>
+    <persName ref="mailto:kmpenner@gmail.com">Ken Penner</persName>
+    <date when="2026-10-24T01:07:05.184426+00:00"/>
+  </entry>
 </index>
