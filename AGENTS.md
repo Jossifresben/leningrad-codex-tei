@@ -38,6 +38,7 @@ If making updates to the Python code, check if the README, AGENTS, or CONTRIBUTI
 - **samekh / pe**: Paragraph-division markers in the codex. Pe = open (petucha); samekh = closed (setuma). Encoded as milestones with subtype.
 - **Atom number**: Position index in the UXLC word stream. The seed mapping uses these to tie page boundaries to the textual base.
 - **Seed mapping**: A pre-existing verse→location mapping used as the starting point for alignment, verified and corrected rather than derived from scratch.
+- **Segment**: One contiguous atom range of a folio side's slice. Seed records that touch in the word stream merge into one segment. A side gets more than one segment only where the codex book order differs from the word stream (e.g. `409B` runs Job then Proverbs). Segments stay in page order.
 - **Alignment**: Determining where a verse appears in the manuscript (column + line span) and encoding it.
 - **Layout class**: The codex's column scheme for a page — 3-column prose (most sides), 2-column poetry (Ps/Prov/Job), or 1-column embedded song. Knowable from book metadata and the seed; drives column detection and prompt selection.
 - **Locate-known-text**: The alignment method where the model is given the folio image plus the expected seeded words and maps the *known* atoms onto columns/lines, rather than transcribing the page cold.
