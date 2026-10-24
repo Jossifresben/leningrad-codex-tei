@@ -188,20 +188,45 @@ RETRYABLE_CODES = {408, 429, 500, 502, 503, 504}
 
 
 @dataclass
+class Segment:
+    """One contiguous atom range of a slice (inclusive at both ends)."""
+
+    atom_start: int
+    atom_end: int
+    start_ref: str
+    stop_ref: str
+
+
+@dataclass
 class SeedSlice:
     folio: str
     book: str
-    start_ref: str
-    stop_ref: str
     record: dict
-    atom_start: int
-    atom_end: int
+    # Atom ranges in page order. The codex orders some books differently from
+    # the word stream (e.g. 409B runs Job then Proverbs), so one side can hold
+    # ranges that are far apart in the stream (#517). Records that touch in
+    # the stream merge into one segment, so most sides have exactly one.
+    segments: list[Segment]
     # All seed records merged into this slice (seed order). ``record`` stays
     # the first one for backward compat with persisted AlignmentRecord.
-    # NOTE (#517): this is a min-max union. Sides whose records sit apart in
-    # the word stream (e.g. 409B, 421A, 432B) pull gap words into the prompt.
-    # Segment lists fix that later.
     records: list[dict] | None = None
+
+    @property
+    def range(self) -> str:
+        return "; ".join(f"{s.start_ref} – {s.stop_ref}" for s in self.segments)
+
+    @property
+    def atoms(self) -> list[int]:
+        """Slice atoms in page order."""
+        return [a for s in self.segments for a in range(s.atom_start, s.atom_end + 1)]
+
+    def words(self, word_stream: WordStream) -> list[Word]:
+        """Slice words in page order."""
+        return [
+            w
+            for s in self.segments
+            for w in word_stream.words[s.atom_start - 1 : s.atom_end]
+        ]
 
 
 def folio_side_for(folio: str) -> str:
@@ -239,17 +264,21 @@ def _resolve(
 
 
 def compute_seed_slice(seed: dict, folio: str, word_stream: WordStream) -> SeedSlice:
-    """Translate seed records for a side into one merged atom range.
+    """Translate seed records for a side into atom segments, in page order.
 
-    Sides with more than one record (e.g. 040A x2, 043A x3) merge to a
-    min-max union: earliest start atom to latest stop atom. Each record is
-    resolved in its own book so mixed-book sides still resolve; gap words
-    between records stay in the slice (see #517 for segment design).
+    Each record is resolved in its own book, so mixed-book sides resolve.
+    A record that starts on the atom after the previous record's stop
+    extends that segment (e.g. 043A x3 is one segment); otherwise it opens
+    a new one (e.g. 409B is Job 42, then Proverbs 1). Seed order is page
+    order, so segments are never sorted by atom.
     """
     recs = _find_records(seed, folio)
 
-    starts: list = []
-    stops: list = []
+    def _ref(w) -> str:
+        return f"{w.book} {w.chapter}:{w.verse}"
+
+    segments: list[Segment] = []
+    seen: set[int] = set()
     for rec in recs:
         book = rec.get("bkid")
         if not book:
@@ -283,24 +312,22 @@ def compute_seed_slice(seed: dict, folio: str, word_stream: WordStream) -> SeedS
         )
         if stop.atom < start.atom:
             raise ValueError(f"seed range for {folio} is inverted")
-        starts.append(start)
-        stops.append(stop)
-
-    start = min(starts, key=lambda w: w.atom)
-    stop = max(stops, key=lambda w: w.atom)
-
-    def _ref(w) -> str:
-        return f"{w.book} {w.chapter}:{w.verse}"
+        span = set(range(start.atom, stop.atom + 1))
+        if span & seen:
+            raise ValueError(f"seed records for {folio} overlap")
+        seen |= span
+        if segments and segments[-1].atom_end + 1 == start.atom:
+            segments[-1].atom_end = stop.atom
+            segments[-1].stop_ref = _ref(stop)
+        else:
+            segments.append(Segment(start.atom, stop.atom, _ref(start), _ref(stop)))
 
     first = recs[0]
     return SeedSlice(
         folio=folio,
         book=stream_book_for(first.get("bkid")),
-        start_ref=_ref(start),
-        stop_ref=_ref(stop),
         record=first,
-        atom_start=start.atom,
-        atom_end=stop.atom,
+        segments=segments,
         records=recs,
     )
 
@@ -340,13 +367,12 @@ def _notes_section(sl: SeedSlice) -> str:
 
 
 def _build_prompt(sl: SeedSlice, word_stream: WordStream) -> str:
-    slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
     return ALIGN_PROMPT.format(
         folio=sl.folio,
         side=folio_side_for(sl.folio),
-        range=f"{sl.start_ref} – {sl.stop_ref}",
+        range=sl.range,
         notes_section=_notes_section(sl),
-        text=_text_block(slice_words),
+        text=_text_block(sl.words(word_stream)),
     )
 
 
@@ -521,15 +547,20 @@ def _parse_epilog_xml(
 
 
 def _place_words(
-    line_counts: list[tuple[int, int, int]], atom_start: int
+    line_counts: list[tuple[int, int, int]], atoms: list[int]
 ) -> list[tuple[int, int, int]]:
-    """Assign source atoms to (column, line) from per-line word counts."""
+    """Assign the slice's atoms, in page order, to (column, line).
+
+    Words past the end of ``atoms`` get the atoms that follow the last one,
+    so the record build reports them as extra.
+    """
     placements: list[tuple[int, int, int]] = []
-    atom = atom_start
+    i = 0
     for col_no, line_no, count in line_counts:
         for _ in range(count):
+            atom = atoms[i] if i < len(atoms) else atoms[-1] + 1 + i - len(atoms)
             placements.append((atom, col_no, line_no))
-            atom += 1
+            i += 1
     return placements
 
 
@@ -797,7 +828,7 @@ def align_folio_ai(
     and assemble the alignment record.
     """
     request = request or _request_alignment
-    slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
+    slice_words = sl.words(word_stream)
     prompt = _build_prompt(sl, word_stream)
 
     record: AlignmentRecord | None = None
@@ -824,7 +855,7 @@ def align_folio_ai(
             else:
                 text = result
             line_counts = _parse_epilog_xml(text, [w.text for w in slice_words])
-            placement = _place_words(line_counts, sl.atom_start)
+            placement = _place_words(line_counts, sl.atoms)
             record = build_alignment_record(
                 sl,
                 slice_words,
@@ -871,7 +902,7 @@ def build_alignment_record(
     if missing or extra:
         summary = (
             f"folio {sl.folio}: model placed {len(placed)} words "
-            f"but slice needs {len(expected)} (atoms {sl.atom_start}-{sl.atom_end})"
+            f"but slice needs {len(expected)} ({sl.range})"
         )
         detail: list[str] = [summary]
         if missing:
@@ -919,14 +950,14 @@ def build_alignment_record(
 
     verse_milestones: list[VerseMilestone] = []
     section_milestones: list[SectionMilestone] = []
-    prev_vkey: tuple[int, int] | None = None
+    prev_vkey: tuple[str, int, int] | None = None
     for w in slice_words:
-        vkey = (w.chapter, w.verse)
+        vkey = (w.book, w.chapter, w.verse)
         if vkey != prev_vkey:
             col_no, line_no = location[w.atom]
             verse_milestones.append(
                 VerseMilestone(
-                    verse=f"{w.book} {vkey[0]}:{vkey[1]}",
+                    verse=f"{w.book} {w.chapter}:{w.verse}",
                     column=col_no,
                     line=line_no,
                     atom=w.atom,
@@ -1282,9 +1313,9 @@ def record_from_reply(
     sl: SeedSlice, word_stream: WordStream, text: str
 ) -> AlignmentRecord:
     """Parse one raw reply into an alignment record. Pure; writes nothing."""
-    slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
+    slice_words = sl.words(word_stream)
     line_counts = _parse_epilog_xml(text, [w.text for w in slice_words])
-    placements = _place_words(line_counts, sl.atom_start)
+    placements = _place_words(line_counts, sl.atoms)
     return build_alignment_record(
         sl, slice_words, placements, model_response=text, line_counts=line_counts
     )

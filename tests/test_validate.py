@@ -7,15 +7,13 @@ from leningrad_codex_tei.stages.align import build_alignment_record
 from leningrad_codex_tei.stages.validate import ValidationResult, validate_folio
 
 
-def _document_order_placements(
-    atom_start: int, atom_end: int
-) -> list[tuple[int, int, int]]:
+def _document_order_placements(atoms: list[int]) -> list[tuple[int, int, int]]:
     col = 1
     line = 1
     placements: list[tuple[int, int, int]] = []
-    for i in range(atom_start, atom_end + 1):
+    for n, i in enumerate(atoms):
         placements.append((i, col, line))
-        if (i - atom_start) % 3 == 2:
+        if n % 3 == 2:
             line += 1
             if line > 9:
                 line = 1
@@ -24,8 +22,8 @@ def _document_order_placements(
 
 
 def _valid_alignment(seed_slice, word_stream) -> AlignmentRecord:
-    slice_words = word_stream.words[seed_slice.atom_start - 1 : seed_slice.atom_end]
-    placements = _document_order_placements(seed_slice.atom_start, seed_slice.atom_end)
+    slice_words = seed_slice.words(word_stream)
+    placements = _document_order_placements(seed_slice.atoms)
     return build_alignment_record(seed_slice, slice_words, placements)
 
 

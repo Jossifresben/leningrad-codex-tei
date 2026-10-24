@@ -438,9 +438,9 @@ def align_folio(
         slices = [align_stage.compute_seed_slice(seed, page, stream) for page in folios]
         prompts = align_stage.build_batch_prompts(slices, stream) if show_prompt else {}
         for sl in slices:
-            atoms = sl.atom_end - sl.atom_start + 1
+            atoms = len(sl.atoms)
             click.echo(
-                f"align-folio (dry-run): {sl.folio} = {sl.start_ref} – {sl.stop_ref} "
+                f"align-folio (dry-run): {sl.folio} = {sl.range} "
                 f"({atoms} atoms, inference {config.ai.inference}, "
                 f"model {config.ai.model})"
             )
@@ -508,9 +508,9 @@ def align_folio(
                 result_summary={
                     **seed_info,
                     "method": record.alignment_method.value,
-                    "atoms": sl.atom_end - sl.atom_start + 1,
+                    "atoms": len(sl.atoms),
                     "records_merged": _merged_record_count(sl),
-                    "range": f"{sl.start_ref} – {sl.stop_ref}",
+                    "range": sl.range,
                     "path": str(dest),
                     "conversation": str(
                         config.paths.alignments / "conversations" / f"{page}.json"
@@ -520,7 +520,7 @@ def align_folio(
             ),
         )
         click.echo(
-            f"align-folio: {page} = {sl.start_ref} – {sl.stop_ref} ({record.alignment_method.value}) -> {dest}"
+            f"align-folio: {page} = {sl.range} ({record.alignment_method.value}) -> {dest}"
         )
 
 
@@ -998,9 +998,9 @@ def parse_raw(config: Config, folio: str | None, start_folio: str | None) -> Non
                 contributor_email=(contributor or {}).get("email"),
                 result_summary={
                     "method": result.alignment_method.value,
-                    "atoms": sl.atom_end - sl.atom_start + 1,
+                    "atoms": len(sl.atoms),
                     "records_merged": _merged_record_count(sl),
-                    "range": f"{sl.start_ref} – {sl.stop_ref}",
+                    "range": sl.range,
                     "raw": str(raw_path),
                     "raw_sha256": raw_sha,
                     "ai": run_ai,
@@ -1113,7 +1113,7 @@ def generate_tei(config: Config, folio: str | None, start_folio: str | None) -> 
                 contributor_email=(contributor or {}).get("email"),
                 result_summary={
                     "folio": page,
-                    "range": f"{sl.start_ref} – {sl.stop_ref}",
+                    "range": sl.range,
                 },
             ),
         )
@@ -1123,7 +1123,7 @@ def generate_tei(config: Config, folio: str | None, start_folio: str | None) -> 
             image["xml_id"] = tei_stage.image_xml_id(page, config.images.source)
         xml = tei_stage.render_folio_tei(
             folio=page,
-            verse_range=f"{sl.start_ref} – {sl.stop_ref}",
+            verse_range=sl.range,
             record=record,
             page_milestones=[{"folio": page}],
             changes=tei_stage.changes_from_audit(trail.runs, image),
