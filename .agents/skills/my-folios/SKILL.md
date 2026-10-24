@@ -30,7 +30,7 @@ This skill only reads. It does not change any issue.
 
 3. **Report.**
    Show the list to the user. Then offer the next step for the first group that applies, in this order:
-   - Empty list: say that no folios are assigned. Offer the `find-folios` skill to ask for some.
+   - Empty list: say that no folios are assigned. Offer the `find-folios` skill to claim some.
    - `[on main]`: tell the user the issue is open but the file is merged. Ask them to check the issue. Do not do more for these folios.
    - `[committed on branch]`: offer the `folio-pr` skill to open the pull request. The issue closes when the pull request merges.
    - `[generated, not committed]`: offer the `commit-folios` skill.
