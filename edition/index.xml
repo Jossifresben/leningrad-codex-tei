@@ -1050,4 +1050,9 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-24T04:17:05.495299+00:00"/>
   </entry>
+  <entry folio="117A" href="117A.xml" when="2026-10-24T14:04:53.742965+00:00" contributor="Ken Penner">
+    <title>Leningrad Codex — 117A (Deuteronomy 29:19 – Deuteronomy 30:10)</title>
+    <persName ref="mailto:kmpenner@gmail.com">Ken Penner</persName>
+    <date when="2026-10-24T14:04:53.742965+00:00"/>
+  </entry>
 </index>
