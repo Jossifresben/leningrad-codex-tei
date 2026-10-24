@@ -320,6 +320,10 @@ Agents can use the `/commit-folios` skill. It makes a working branch if you are 
 
 Create a pull request and link to the issues that need to be closed using a [keyword](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/using-keywords-in-issues-and-pull-requests).
 
+**Prefer one pull request for a contiguous range of folio sides** (for example, `101B` to `106A`) over one pull request per folio side.
+Use one `Closes #N` line for each folio side in the pull request.
+If you already have several open single-folio pull requests, combine them into a range pull request.
+
 Agents can use the `/folio-pr` skill. If you do not have write access to this repo, it pushes to your fork and opens the pull request from there. It asks before it pushes and before it creates the pull request.
 
 ### Skill workflow

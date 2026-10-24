@@ -14,6 +14,7 @@ Use the repo glossary in `AGENTS.md`: a **folio side** is `Fxxx{A|B}`, one TEI d
 
 ## Rules
 
+- Prefer one batch PR for a contiguous range of folio sides over one PR per side. 
 - Ask the user before you push and before you create the pull request. Both are public.
 - Do not push to `main`.
 
