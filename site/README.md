@@ -21,7 +21,10 @@ The dev server reads TEI directly from `../edition/`.
   `../edition/*.xml` into `public/edition/` and regenerates
   `src/data/folios.json` from `../edition/index.xml`.
   Generated files are gitignored; Netlify rebuilds them.
-- `/` lists every folio side with a client-side filter.
+- `/` lists every folio side, paginated, with a client-side filter.
+  The build embeds the folio list as JSON and server-renders only the
+  first page; the browser filters the full list, then renders one page
+  at a time. The query and page are kept in the URL (`?q=…&page=…`).
 - `/folio/Fxxx[A|B]/` renders columns and lines as encoded in TEI,
   with verse milestones, samekh/pe divisions, sof-pasuq and paseq inline.
 - Raw TEI per folio is served at `/edition/Fxxx[A|B].xml`.

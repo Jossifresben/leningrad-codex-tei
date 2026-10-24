@@ -1,0 +1,36 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  label?: string;
+  page?: number;
+  pages?: number;
+}
+
+const { label = 'Folio pages', page = 1, pages = 1 } = Astro.props;
+---
+
+<nav class="list-pager" data-list-pager aria-label={label} hidden={pages <= 1}>
+  <Button data-page-step="-1" disabled={page <= 1}>← Previous</Button>
+  <span class="status" data-page-status>Page {page} of {pages}</span>
+  <Button data-page-step="1" disabled={page >= pages}>Next →</Button>
+</nav>
+
+<style>
+  .list-pager {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+  }
+
+  .list-pager[hidden] {
+    display: none;
+  }
+
+  .status {
+    color: var(--muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+</style>

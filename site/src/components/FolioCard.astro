@@ -2,19 +2,12 @@
 interface Props {
   folio: string;
   range: string;
-  search?: string;
-  start?: number | string | null;
-  end?: number | string | null;
 }
 
-const { folio, range, search, start, end } = Astro.props;
+const { folio, range } = Astro.props;
 ---
 
-<li
-  data-search={search}
-  data-start={start ?? ''}
-  data-end={end ?? ''}
->
+<li>
   <a class="folio-card" href={`/folio/${folio}/`}>
     <h2>{folio}</h2>
     <p class="range">{range}</p>
