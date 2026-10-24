@@ -1050,4 +1050,9 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-24T04:17:05.495299+00:00"/>
   </entry>
+  <entry folio="117B" href="117B.xml" when="2026-10-24T14:25:29.894366+00:00" contributor="Ken Penner">
+    <title>Leningrad Codex — 117B (Deuteronomy 30:10 – Deuteronomy 31:11)</title>
+    <persName ref="mailto:kmpenner@gmail.com">Ken Penner</persName>
+    <date when="2026-10-24T14:25:29.894366+00:00"/>
+  </entry>
 </index>
