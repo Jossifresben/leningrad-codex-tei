@@ -1,0 +1,88 @@
+name: claim-folio
+
+# A comment of `/claim` on an open `folio` issue assigns the issue to the
+# commenter. `/unclaim` removes the commenter from the issue.
+# GitHub lets the workflow token assign anyone who has commented on the issue,
+# so contributors do not need any access to the repo.
+
+"on":
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+
+# One run at a time per issue, so two users cannot claim the same issue.
+concurrency:
+  group: claim-folio-${{ github.event.issue.number }}
+
+jobs:
+  claim:
+    if: >-
+      !github.event.issue.pull_request &&
+      github.event.issue.state == 'open' &&
+      contains(github.event.issue.labels.*.name, 'folio') &&
+      (startsWith(github.event.comment.body, '/claim') ||
+       startsWith(github.event.comment.body, '/unclaim'))
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      ISSUE: ${{ github.event.issue.number }}
+      USER: ${{ github.event.comment.user.login }}
+      COMMENT_ID: ${{ github.event.comment.id }}
+      BODY: ${{ github.event.comment.body }}
+      # Most open folio issues one user can hold at once.
+      MAX_CLAIMS: "10"
+    steps:
+      - name: Claim or unclaim
+        run: |
+          set -euo pipefail
+
+          # Only a first line of exactly `/claim` or `/unclaim` counts.
+          cmd="${BODY%%$'\n'*}"
+          cmd=$(printf '%s' "${cmd%$'\r'}" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
+
+          react() {
+            gh api -X POST "repos/$REPO/issues/comments/$COMMENT_ID/reactions" \
+              -f content="$1" >/dev/null
+          }
+          reply() {
+            gh issue comment "$ISSUE" -R "$REPO" --body "@$USER $1" >/dev/null
+          }
+
+          assignees=$(gh issue view "$ISSUE" -R "$REPO" --json assignees \
+            --jq '[.assignees[].login] | join(" ")')
+
+          case "$cmd" in
+            /claim)
+              if [[ " $assignees " == *" $USER "* ]]; then
+                react "+1"
+                exit 0
+              fi
+              if [[ -n "$assignees" ]]; then
+                reply "this issue is already claimed by @${assignees// /, @}."
+                exit 0
+              fi
+              held=$(gh issue list -R "$REPO" --label folio --state open \
+                --assignee "$USER" --limit 200 --json number --jq 'length')
+              if (( held >= MAX_CLAIMS )); then
+                reply "you already hold $held open folio issues (the limit is $MAX_CLAIMS). Finish or \`/unclaim\` some first."
+                exit 0
+              fi
+              gh issue edit "$ISSUE" -R "$REPO" --add-assignee "$USER" >/dev/null
+              react "+1"
+              ;;
+            /unclaim)
+              if [[ " $assignees " == *" $USER "* ]]; then
+                gh issue edit "$ISSUE" -R "$REPO" --remove-assignee "$USER" >/dev/null
+                react "+1"
+              else
+                reply "this issue is not assigned to you."
+              fi
+              ;;
+            *)
+              # e.g. `/claimed` or `/claim please`: not a command.
+              exit 0
+              ;;
+          esac

@@ -12,6 +12,7 @@ from leningrad_codex_tei.schemas import AlignmentMethod
 from leningrad_codex_tei.stages.align import (
     ChatResult,
     ModelResponse,
+    _build_prompt,
     _generate_with_flex,
     _image_part_from_bytes,
     _image_part_from_upload,
@@ -34,6 +35,7 @@ from leningrad_codex_tei.stages.align import (
     job_state_name,
     load_alignment,
     parse_raw_result,
+    record_from_reply,
     resolve_batch_job_dir,
     save_alignment,
     save_conversation,
@@ -44,16 +46,14 @@ from leningrad_codex_tei.stages.align import (
 )
 
 
-def _document_order_placements(
-    atom_start: int, atom_end: int
-) -> list[tuple[int, int, int]]:
+def _document_order_placements(atoms: list[int]) -> list[tuple[int, int, int]]:
     """Deterministic placements: sequence atoms across 3 columns, ~3/line."""
     col = 1
     line = 1
     placements: list[tuple[int, int, int]] = []
-    for i in range(atom_start, atom_end + 1):
+    for n, i in enumerate(atoms):
         placements.append((i, col, line))
-        if (i - atom_start) % 3 == 2:
+        if n % 3 == 2:
             line += 1
             if line > 9:
                 line = 1
@@ -62,8 +62,8 @@ def _document_order_placements(
 
 
 def _alignment(seed_slice, word_stream):
-    slice_words = word_stream.words[seed_slice.atom_start - 1 : seed_slice.atom_end]
-    placements = _document_order_placements(seed_slice.atom_start, seed_slice.atom_end)
+    slice_words = seed_slice.words(word_stream)
+    placements = _document_order_placements(seed_slice.atoms)
     return build_alignment_record(seed_slice, slice_words, placements)
 
 
@@ -71,10 +71,8 @@ def test_seed_slice_resolves_atom_range(seed_fixture: dict, word_stream) -> None
     sl = compute_seed_slice(seed_fixture, "001B", word_stream)
     assert sl.folio == "001B"
     assert sl.book == "Genesis"
-    assert sl.start_ref == "Genesis 1:1"
-    assert sl.stop_ref == "Genesis 2:2"
-    assert sl.atom_start == 1
-    assert sl.atom_end == 10
+    assert sl.range == "Genesis 1:1 – Genesis 2:2"
+    assert sl.atoms == list(range(1, 11))
 
 
 def test_seed_slice_unknown_folio_raises(seed_fixture: dict, word_stream) -> None:
@@ -154,7 +152,88 @@ def test_seed_slice_resolves_mapped_book_name() -> None:
     }
     sl = compute_seed_slice(seed, "056B", stream)
     assert sl.book == "Leviticus"
-    assert (sl.atom_start, sl.atom_end) == (1, 2)
+    assert sl.atoms == [1, 2]
+
+
+def _two_book_stream():
+    """Stream order Proverbs then Job, two verses of two words each."""
+    from datetime import UTC, datetime
+
+    from leningrad_codex_tei.schemas import Word, WordStream
+
+    words = [
+        Word(atom=n, text=f"w{n}", book=book, chapter=1, verse=v, word_index=i)
+        for n, (book, v, i) in enumerate(
+            [(b, v, i) for b in ("Proverbs", "Job") for v in (1, 2) for i in (1, 2)],
+            start=1,
+        )
+    ]
+    return WordStream(source="test", generated_at=datetime.now(UTC), words=words)
+
+
+def _rec(page: str, book: str, startv: int, stopv: int) -> dict:
+    return {
+        "page": page,
+        "bkid": book,
+        "startc": 1,
+        "startv": startv,
+        "startp": None,
+        "stopc": 1,
+        "stopv": stopv,
+        "stopp": None,
+    }
+
+
+def test_seed_slice_merges_touching_records() -> None:
+    stream = _two_book_stream()
+    seed = {"body": [_rec("043A", "Proverbs", 1, 1), _rec("043A", "Proverbs", 2, 2)]}
+    sl = compute_seed_slice(seed, "043A", stream)
+    assert len(sl.segments) == 1
+    assert sl.range == "Proverbs 1:1 – Proverbs 1:2"
+    assert sl.atoms == [1, 2, 3, 4]
+
+
+def test_seed_slice_keeps_page_order_across_stream_gap() -> None:
+    # 409B: the page runs Job then Proverbs; the stream runs Proverbs then Job.
+    stream = _two_book_stream()
+    seed = {"body": [_rec("409B", "Job", 2, 2), _rec("409B", "Proverbs", 1, 1)]}
+    sl = compute_seed_slice(seed, "409B", stream)
+    assert sl.range == "Job 1:2 – Job 1:2; Proverbs 1:1 – Proverbs 1:1"
+    assert sl.atoms == [7, 8, 1, 2]
+    assert [w.text for w in sl.words(stream)] == ["w7", "w8", "w1", "w2"]
+    prompt = _build_prompt(sl, stream)
+    assert "w7 w8 w1 w2" in prompt
+    # gap words (Proverbs 1:2, Job 1:1) stay out of the prompt
+    assert all(f"w{n}" not in prompt for n in (3, 4, 5, 6))
+
+
+def test_seed_slice_overlapping_records_raise() -> None:
+    stream = _two_book_stream()
+    seed = {"body": [_rec("001A", "Job", 1, 2), _rec("001A", "Job", 2, 2)]}
+    with pytest.raises(ValueError, match="overlap"):
+        compute_seed_slice(seed, "001A", stream)
+
+
+def test_reply_across_stream_gap_validates() -> None:
+    from leningrad_codex_tei.stages.validate import validate_folio
+
+    stream = _two_book_stream()
+    seed = {"body": [_rec("409B", "Job", 2, 2), _rec("409B", "Proverbs", 1, 1)]}
+    sl = compute_seed_slice(seed, "409B", stream)
+    reply = '<cb n="1" /><lb n="1" />w7 w8<lb n="2" />w1 w2'
+    rec = record_from_reply(sl, stream, reply)
+    flat = [a.atom for col in rec.columns for line in col.lines for a in line.atoms]
+    assert flat == [7, 8, 1, 2]
+    assert [m.verse for m in rec.verse_milestones] == ["Job 1:2", "Proverbs 1:1"]
+    assert validate_folio(sl, rec, stream).passed
+
+
+def test_reply_with_extra_words_across_gap_fails() -> None:
+    stream = _two_book_stream()
+    seed = {"body": [_rec("409B", "Job", 2, 2), _rec("409B", "Proverbs", 1, 1)]}
+    sl = compute_seed_slice(seed, "409B", stream)
+    with pytest.raises(ValueError, match="extra 1 atoms"):
+        record_from_reply(sl, stream, '<cb n="1" /><lb n="1" />w7 w8 w1 w2 w3')
 
 
 def test_seed_slice_missing_bkid_raises(word_stream) -> None:
@@ -302,22 +381,22 @@ def _placements_to_xml(placements: list[tuple[int, int, int]]) -> str:
     return "\n".join(parts)
 
 
-def _xml_response(atom_start: int, atom_end: int) -> str:
-    return _placements_to_xml(_document_order_placements(atom_start, atom_end))
+def _xml_response(atoms: list[int]) -> str:
+    return _placements_to_xml(_document_order_placements(atoms))
 
 
 def test_align_folio_ai_with_clean_response(seed_slice, word_stream, config) -> None:
-    atom_start, atom_end = seed_slice.atom_start, seed_slice.atom_end
+    atoms = seed_slice.atoms
 
     def fake_request(_sl, _ws, _cfg, _prompt):
-        return _xml_response(atom_start, atom_end)
+        return _xml_response(atoms)
 
     rec = align_folio_ai(seed_slice, word_stream, config, request=fake_request)
     assert rec.alignment_method == AlignmentMethod.AI_VISION
     assert rec.folio == "001B"
     flat = [a for col in rec.columns for line in col.lines for a in line.atoms]
-    assert [a.atom for a in flat] == list(range(atom_start, atom_end + 1))
-    assert rec.model_response == _xml_response(atom_start, atom_end)
+    assert [a.atom for a in flat] == atoms
+    assert rec.model_response == _xml_response(atoms)
 
 
 def test_align_folio_ai_retries_on_bad_xml(seed_slice, word_stream, config) -> None:
@@ -327,7 +406,7 @@ def test_align_folio_ai_retries_on_bad_xml(seed_slice, word_stream, config) -> N
         calls.append(prompt)
         if len(calls) == 1:
             return "not xml at all"
-        return _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+        return _xml_response(seed_slice.atoms)
 
     rec = align_folio_ai(seed_slice, word_stream, config, request=flaky)
     assert len(calls) == 2
@@ -344,7 +423,7 @@ def test_align_folio_ai_retries_on_word_count_mismatch(
         calls += 1
         if calls == 1:
             return _placements_to_xml([(1, 1, 1), (2, 1, 1), (3, 1, 1)])
-        return _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+        return _xml_response(seed_slice.atoms)
 
     rec = align_folio_ai(seed_slice, word_stream, config, request=half_words)
     assert calls == 2
@@ -441,7 +520,7 @@ def test_parse_epilog_rejects_text_outside_lines() -> None:
 
 def test_place_words_assigns_atoms_sequentially() -> None:
     line_counts = [(1, 1, 2), (2, 1, 1), (2, 2, 3)]
-    assert _place_words(line_counts, atom_start=7) == [
+    assert _place_words(line_counts, list(range(7, 13))) == [
         (7, 1, 1),
         (8, 1, 1),
         (9, 2, 1),
@@ -492,8 +571,7 @@ def test_load_alignment_backfills_raw_from_file(
 
 
 def test_align_folio_ai_writes_conversation(seed_slice, word_stream, config) -> None:
-    atom_start, atom_end = seed_slice.atom_start, seed_slice.atom_end
-    xml = _xml_response(atom_start, atom_end)
+    xml = _xml_response(seed_slice.atoms)
 
     def fake_request(_sl, _ws, _cfg, _prompt):
         return ModelResponse(
@@ -954,7 +1032,7 @@ def test_write_poll_record_and_state(tmp_path) -> None:
 
 
 def test_parse_raw_result_saves_alignment(seed_slice, word_stream, config) -> None:
-    xml = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+    xml = _xml_response(seed_slice.atoms)
     config.ai.inference = "batch"
     rec = parse_raw_result(
         "001B",
@@ -1004,7 +1082,7 @@ def test_parse_raw_result_skips_conversation_when_asked(
     seed_slice, word_stream, config
 ) -> None:
     config.ai.inference = "batch"
-    xml = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+    xml = _xml_response(seed_slice.atoms)
     rec = parse_raw_result(
         "001B",
         xml,
@@ -1059,7 +1137,7 @@ def test_ensure_align_prompt_clean_blocks_when_dirty(monkeypatch) -> None:
 def test_parse_raw_result_uses_stored_prompt_version(
     seed_slice, word_stream, config
 ) -> None:
-    xml = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+    xml = _xml_response(seed_slice.atoms)
     config.ai.inference = "batch"
     rec = parse_raw_result(
         "001B",
@@ -1159,7 +1237,7 @@ def test_parse_raw_parses_edited_raw(
     raw = config.paths.alignments / "raw" / "001B.xml"
     raw.parent.mkdir(parents=True, exist_ok=True)
     # hand-edited raw: valid layout reply written after a failed attempt
-    raw_text = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+    raw_text = _xml_response(seed_slice.atoms)
     raw.write_text(raw_text, encoding="utf-8")
     conv_dir = config.paths.alignments / "conversations"
     conv_dir.mkdir(parents=True, exist_ok=True)
@@ -1197,9 +1275,7 @@ def test_parse_raw_scans_raw_dir(seed_fixture, seed_slice, word_stream, config) 
     conf = _parse_raw_config(config, seed_fixture, word_stream)
     raw_dir = config.paths.alignments / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
-    (raw_dir / "001B.xml").write_text(
-        _xml_response(seed_slice.atom_start, seed_slice.atom_end), encoding="utf-8"
-    )
+    (raw_dir / "001B.xml").write_text(_xml_response(seed_slice.atoms), encoding="utf-8")
     (raw_dir / "999B.xml").write_text("not xml at all", encoding="utf-8")
 
     result = CliRunner().invoke(cli, ["--config", str(conf), "parse-raw"])
