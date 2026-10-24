@@ -1155,4 +1155,9 @@
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-24T16:40:04.609264+00:00"/>
   </entry>
+  <entry folio="116B" href="116B.xml" when="2026-10-24T13:56:56.815940+00:00" contributor="Ken Penner">
+    <title>Leningrad Codex — 116B (Deuteronomy 28:66 – Deuteronomy 29:19)</title>
+    <persName ref="mailto:kmpenner@gmail.com">Ken Penner</persName>
+    <date when="2026-10-24T13:56:56.815940+00:00"/>
+  </entry>
 </index>
