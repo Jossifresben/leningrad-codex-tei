@@ -245,6 +245,23 @@ def test_inverted_nun_follows_sof_pasuq_and_precedes_section(
     assert nun is not None and nun.text == "\u05c6"
 
 
+def test_trailing_blank_line_emitted(seed_slice, word_stream, changes) -> None:
+    placements = [(1, 1, 1), (2, 1, 2)]
+    line_counts = [(1, 1, 1), (1, 2, 1), (1, 3, 0)]
+    rec = build_alignment_record(
+        seed_slice, word_stream.words[:2], placements, line_counts=line_counts
+    )
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 1:2",
+        record=rec,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+    )
+    root = etree.fromstring(xml.encode())
+    assert [el.get("n") for el in root.iter(_q("lb"))] == ["1", "2", "3"]
+
+
 def test_verse_milestone_mid_line(seed_slice, word_stream, changes) -> None:
     placements = [(1, 1, 1), (2, 1, 1), (3, 1, 1), (4, 1, 1), (5, 1, 2)]
     slice_words = word_stream.words[:5]

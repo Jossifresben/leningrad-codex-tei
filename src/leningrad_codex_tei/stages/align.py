@@ -826,7 +826,11 @@ def align_folio_ai(
             line_counts = _parse_epilog_xml(text, [w.text for w in slice_words])
             placement = _place_words(line_counts, sl.atom_start)
             record = build_alignment_record(
-                sl, slice_words, placement, model_response=text
+                sl,
+                slice_words,
+                placement,
+                model_response=text,
+                line_counts=line_counts,
             )
             break
         except Exception as exc:  # noqa: BLE001 - retry on any model failure
@@ -857,6 +861,7 @@ def build_alignment_record(
     slice_words: list[Word],
     placements,
     model_response: str | None = None,
+    line_counts: list[tuple[int, int, int]] | None = None,
 ) -> AlignmentRecord:
     by_pos = {p[0]: (p[1], p[2]) for p in placements}
     expected = {w.atom for w in slice_words}
@@ -881,12 +886,21 @@ def build_alignment_record(
     for w in slice_words:
         lines.setdefault(by_pos[w.atom], []).append(w)
 
+    # blank lines carry no atoms, so a blank last line is only known here
+    last_line: dict[int, int] = {}
+    for col_no, line_no, _count in line_counts or []:
+        last_line[col_no] = max(last_line.get(col_no, 0), line_no)
+
     columns: list[ColumnRecord] = []
     for (col_no, line_no), atoms in sorted(
         lines.items(), key=lambda kv: (kv[0][0], kv[0][1])
     ):
         if not columns or columns[-1].column_number != col_no:
-            columns.append(ColumnRecord(column_number=col_no, lines=[]))
+            columns.append(
+                ColumnRecord(
+                    column_number=col_no, lines=[], line_count=last_line.get(col_no)
+                )
+            )
         columns[-1].lines.append(
             LineRecord(
                 line_number=line_no,
@@ -965,6 +979,7 @@ def load_alignment(path: Path) -> AlignmentRecord:
     columns = [
         ColumnRecord(
             column_number=c["column_number"],
+            line_count=c.get("line_count"),
             lines=[
                 LineRecord(
                     line_number=l["line_number"],
@@ -1270,7 +1285,9 @@ def record_from_reply(
     slice_words = word_stream.words[sl.atom_start - 1 : sl.atom_end]
     line_counts = _parse_epilog_xml(text, [w.text for w in slice_words])
     placements = _place_words(line_counts, sl.atom_start)
-    return build_alignment_record(sl, slice_words, placements, model_response=text)
+    return build_alignment_record(
+        sl, slice_words, placements, model_response=text, line_counts=line_counts
+    )
 
 
 def parse_raw_result(

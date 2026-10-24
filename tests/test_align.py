@@ -266,6 +266,17 @@ def test_build_groups_by_column_and_line(seed_slice, word_stream) -> None:
     assert [a.atom for a in rec.columns[1].lines[0].atoms] == [3, 4]
 
 
+def test_build_records_trailing_blank_line(seed_slice, word_stream) -> None:
+    placements = [(1, 1, 1), (2, 1, 2), (3, 2, 1), (4, 2, 1)]
+    line_counts = [(1, 1, 1), (1, 2, 1), (2, 1, 2), (2, 2, 0)]
+    slice_words = word_stream.words[:4]
+    rec = build_alignment_record(
+        seed_slice, slice_words, placements, line_counts=line_counts
+    )
+    assert [c.line_count for c in rec.columns] == [2, 2]
+    assert [l.line_number for l in rec.columns[1].lines] == [1]
+
+
 def test_folio_side_derived_from_folio() -> None:
     assert folio_side_for("001B") == "verso"
     assert folio_side_for("001A") == "recto"

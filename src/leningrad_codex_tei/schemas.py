@@ -58,6 +58,8 @@ class LineRecord:
 class ColumnRecord:
     column_number: int
     lines: list[LineRecord] = field(default_factory=list)
+    # written lines in the column, blank ones included; None when not recorded
+    line_count: int | None = None
 
 
 @dataclass

@@ -232,6 +232,12 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
             for missing in range(first, entry["line_number"]):
                 filled.append({"line_number": missing, "atoms": [], "tokens": []})
             filled.append(entry)
+        # blank lines after the last text line
+        for missing in range(
+            filled[-1]["line_number"] + 1 if filled else 1,
+            (record.columns[k].line_count or 0) + 1,
+        ):
+            filled.append({"line_number": missing, "atoms": [], "tokens": []})
         col["lines"] = filled
         result.append(col)
     return result
