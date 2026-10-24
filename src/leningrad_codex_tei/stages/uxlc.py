@@ -85,29 +85,29 @@ def download_uxlc(config: Config, fetcher=None, out_dir: Path | None = None) -> 
         zip_path.unlink(missing_ok=True)
         raise ValueError(f"downloaded UXLC payload at {url} is not a zip archive")
 
-    with zipfile.ZipFile(zip_path) as archive:
-        books = [
-            m
-            for m in archive.infolist()
-            if not m.is_dir() and Path(m.filename).name.endswith(".xml")
-        ]
-        edition = next(
-            (
-                e
-                for e in (edition_from_xml(archive.read(m)) for m in books)
-                if e is not None
-            ),
-            None,
-        )
-        try:
+    # unlink only after the archive is closed: Windows cannot delete an open file
+    try:
+        with zipfile.ZipFile(zip_path) as archive:
+            books = [
+                m
+                for m in archive.infolist()
+                if not m.is_dir() and Path(m.filename).name.endswith(".xml")
+            ]
+            edition = next(
+                (
+                    e
+                    for e in (edition_from_xml(archive.read(m)) for m in books)
+                    if e is not None
+                ),
+                None,
+            )
             check_uxlc_edition(edition, config.paths.output)
-        except ValueError:
-            zip_path.unlink(missing_ok=True)
-            raise
-        for member in books:
-            (dest_dir / Path(member.filename).name).write_bytes(archive.read(member))
-
-    zip_path.unlink(missing_ok=True)
+            for member in books:
+                (dest_dir / Path(member.filename).name).write_bytes(
+                    archive.read(member)
+                )
+    finally:
+        zip_path.unlink(missing_ok=True)
 
     return {
         "url": url,
