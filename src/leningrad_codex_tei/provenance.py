@@ -37,7 +37,7 @@ def load_audit(audit_dir: Path, folio: str) -> AuditTrail | None:
     p = audit_path(audit_dir, folio)
     if not p.exists():
         return None
-    data = json.loads(p.read_text())
+    data = json.loads(p.read_text(encoding="utf-8"))
     return AuditTrail(
         folio=data["folio"],
         runs=[_pipeline_run(r) for r in data.get("runs", [])],
@@ -86,7 +86,9 @@ def append_run(
 def save_audit(audit_dir: Path, trail: AuditTrail) -> None:
     audit_dir.mkdir(parents=True, exist_ok=True)
     p = audit_path(audit_dir, trail.folio)
-    p.write_text(json.dumps(asdict(trail), indent=2, default=_default))
+    p.write_text(
+        json.dumps(asdict(trail), indent=2, default=_default), encoding="utf-8"
+    )
 
 
 def _seed_provenance(data: dict) -> SeedProvenance:
@@ -98,7 +100,7 @@ def load_pipeline_provenance(path: Path) -> PipelineProvenance:
     """Load the corpus-level provenance ledger, or a blank one if absent."""
     if not path.exists():
         return PipelineProvenance()
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     return PipelineProvenance(
         project_version=data.get("project_version"),
         seed=_seed_provenance(data["seed"]) if data.get("seed") else None,
@@ -114,7 +116,9 @@ def load_pipeline_provenance(path: Path) -> PipelineProvenance:
 def save_pipeline_provenance(path: Path, prov: PipelineProvenance) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     prov.updated_at = datetime.now(timezone.utc)
-    path.write_text(json.dumps(asdict(prov), indent=2, default=_default))
+    path.write_text(
+        json.dumps(asdict(prov), indent=2, default=_default), encoding="utf-8"
+    )
 
 
 def update_pipeline_provenance(

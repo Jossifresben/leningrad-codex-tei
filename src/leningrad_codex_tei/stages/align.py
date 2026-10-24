@@ -949,19 +949,19 @@ def build_alignment_record(
 
 def save_alignment(record: AlignmentRecord, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(asdict(record), indent=2, default=str))
+    path.write_text(json.dumps(asdict(record), indent=2, default=str), encoding="utf-8")
     if record.model_response:
         raw = path.parent / "raw" / f"{path.stem}.xml"
         raw.parent.mkdir(parents=True, exist_ok=True)
-        raw.write_text(record.model_response)
+        raw.write_text(record.model_response, encoding="utf-8")
 
 
 def load_alignment(path: Path) -> AlignmentRecord:
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     if "model_response" not in data:
         raw = path.parent / "raw" / f"{path.stem}.xml"
         if raw.exists():
-            data["model_response"] = raw.read_text()
+            data["model_response"] = raw.read_text(encoding="utf-8")
     columns = [
         ColumnRecord(
             column_number=c["column_number"],
@@ -1052,7 +1052,9 @@ def save_conversation(conversation: dict, base_dir: Path, folio: str) -> Path:
     """Persist a conversation as JSON under conversations/{folio}.json."""
     dest = base_dir / "conversations" / f"{folio}.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_text(json.dumps(conversation, indent=2, ensure_ascii=False))
+    dest.write_text(
+        json.dumps(conversation, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
     return dest
 
 
@@ -1157,7 +1159,7 @@ def submit_batch(
     }
     dest = job_dir / "submit.json"
     dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_text(json.dumps(record, indent=2, ensure_ascii=False))
+    dest.write_text(json.dumps(record, indent=2, ensure_ascii=False), encoding="utf-8")
     return record
 
 
@@ -1179,22 +1181,22 @@ def resolve_batch_job_dir(
     """Resolve a download-batch selector to its job directory and record."""
     if selector is None:
         record_path = find_latest_batch_record(base_dir)
-        return record_path.parent, json.loads(record_path.read_text())
+        return record_path.parent, json.loads(record_path.read_text(encoding="utf-8"))
     sel_path = Path(selector)
     if selector.endswith(".json"):
         record_path = sel_path if sel_path.is_absolute() else base_dir / selector
         if not record_path.exists() and sel_path.exists():
             record_path = sel_path
-        return record_path.parent, json.loads(record_path.read_text())
+        return record_path.parent, json.loads(record_path.read_text(encoding="utf-8"))
     candidate = base_dir / selector
     if candidate.is_dir() and (candidate / "submit.json").exists():
         record_path = candidate / "submit.json"
-        return candidate, json.loads(record_path.read_text())
+        return candidate, json.loads(record_path.read_text(encoding="utf-8"))
     if candidate.exists() and candidate.is_file():
-        return candidate.parent, json.loads(candidate.read_text())
+        return candidate.parent, json.loads(candidate.read_text(encoding="utf-8"))
     for record_path in sorted(base_dir.glob("*/submit.json")):
         try:
-            rec = json.loads(record_path.read_text())
+            rec = json.loads(record_path.read_text(encoding="utf-8"))
         except Exception:  # noqa: BLE001 - skip unreadable records
             continue
         if rec.get("job_name") == selector:
@@ -1236,7 +1238,8 @@ def write_poll_record(
             indent=2,
             ensure_ascii=False,
             default=str,
-        )
+        ),
+        encoding="utf-8",
     )
     return dest
 

@@ -37,7 +37,7 @@ def test_vendor_seed_writes_pinned_seed(config, seed_fixture: dict) -> None:
     info = vendor_seed(config, fetcher=fetcher)
 
     assert config.paths.seed.exists()
-    assert json.loads(config.paths.seed.read_text()) == seed_fixture
+    assert json.loads(config.paths.seed.read_text(encoding="utf-8")) == seed_fixture
     expected = hashlib.sha256(json.dumps(seed_fixture).encode()).hexdigest()
     assert info["sha256"] == expected
     assert info["records"] == 1

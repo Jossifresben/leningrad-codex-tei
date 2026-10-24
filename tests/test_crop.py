@@ -52,7 +52,7 @@ def run(capsys, *argv: str) -> tuple[dict, str]:
     assert crop.main([str(a) for a in argv]) == 0
     err = capsys.readouterr().err
     out_dir = Path(argv[argv.index("--out-dir") + 1])
-    return json.loads((out_dir / "crops.json").read_text()), err
+    return json.loads((out_dir / "crops.json").read_text(encoding="utf-8")), err
 
 
 def test_auto_finds_the_columns(page: Path, tmp_path: Path, capsys) -> None:

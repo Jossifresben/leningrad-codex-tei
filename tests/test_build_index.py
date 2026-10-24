@@ -24,8 +24,8 @@ def _tei(folio: str, verse_range: str) -> str:
 def test_build_index_lists_each_folio(tmp_path: Path) -> None:
     out = tmp_path / "out"
     out.mkdir()
-    (out / "001B.xml").write_text(_tei("001B", "Genesis 1:1 – 2:2"))
-    (out / "002A.xml").write_text(_tei("002A", "Genesis 1:26 – 2:19"))
+    (out / "001B.xml").write_text(_tei("001B", "Genesis 1:1 – 2:2"), encoding="utf-8")
+    (out / "002A.xml").write_text(_tei("002A", "Genesis 1:26 – 2:19"), encoding="utf-8")
 
     index_xml = build_index(out)
     root = etree.fromstring(index_xml.encode())
@@ -52,7 +52,7 @@ def test_build_index_empty_dir(tmp_path: Path) -> None:
 def test_build_index_records_edition_version(tmp_path: Path) -> None:
     out = tmp_path / "out"
     out.mkdir()
-    (out / "001B.xml").write_text(_tei("001B", "Genesis 1:1 – 2:2"))
+    (out / "001B.xml").write_text(_tei("001B", "Genesis 1:1 – 2:2"), encoding="utf-8")
 
     root = etree.fromstring(build_index(out, "1.2.3").encode())
     app = root.find("appInfo/application")
@@ -94,8 +94,10 @@ def _tei_with_contributor(folio: str, verse_range: str) -> str:
 def test_build_index_includes_contributor_and_date(tmp_path: Path) -> None:
     out = tmp_path / "out"
     out.mkdir()
-    (out / "001B.xml").write_text(_tei_with_contributor("001B", "Genesis 1:1 – 2:2"))
-    (out / "002A.xml").write_text(_tei("002A", "Genesis 1:26 – 2:19"))
+    (out / "001B.xml").write_text(
+        _tei_with_contributor("001B", "Genesis 1:1 – 2:2"), encoding="utf-8"
+    )
+    (out / "002A.xml").write_text(_tei("002A", "Genesis 1:26 – 2:19"), encoding="utf-8")
 
     entries = etree.fromstring(build_index(out).encode()).findall("entry")
     assert entries[0].get("contributor") == "Test Scribe"

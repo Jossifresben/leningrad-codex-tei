@@ -27,7 +27,7 @@ from leningrad_codex_tei.util import net
 
 FIXTURES = Path(__file__).parent / "fixtures"
 PYPROJECT_VERSION = tomllib.loads(
-    (Path(__file__).parents[1] / "pyproject.toml").read_text()
+    (Path(__file__).parents[1] / "pyproject.toml").read_text(encoding="utf-8")
 )["project"]["version"]
 SEED_SHA = "0123456789abcdef0123456789abcdef01234567"
 JPEG_BYTES = b"\xff\xd8\xff\xe0fake-jpeg\xff\xd9"
@@ -76,7 +76,8 @@ def _write_config(tmp_path: Path) -> Path:
                 },
                 "ai": {"model": "test-model", "max_retries": 1},
             }
-        )
+        ),
+        encoding="utf-8",
     )
     return conf
 
@@ -177,18 +178,22 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     # contract artifacts exist
     assert (tmp_path / "seed" / "lci_recs.json").exists()
     assert (tmp_path / "images" / "BIB_LENCDX_F001B.jpg").read_bytes() == JPEG_BYTES
-    word_stream = json.loads((tmp_path / "word_stream.json").read_text())
+    word_stream = json.loads(
+        (tmp_path / "word_stream.json").read_text(encoding="utf-8")
+    )
     assert (tmp_path / "alignments" / "001B.json").exists()
-    alignment_json = json.loads((tmp_path / "alignments" / "001B.json").read_text())
+    alignment_json = json.loads(
+        (tmp_path / "alignments" / "001B.json").read_text(encoding="utf-8")
+    )
     assert "<cb" in alignment_json["model_response"]
     assert alignment_json["section_milestones"]
     raw_path = tmp_path / "alignments" / "raw" / "001B.xml"
     assert raw_path.exists()
-    assert raw_path.read_text() == alignment_json["model_response"]
+    assert raw_path.read_text(encoding="utf-8") == alignment_json["model_response"]
 
     conv_path = tmp_path / "alignments" / "conversations" / "001B.json"
     assert conv_path.exists()
-    conv = json.loads(conv_path.read_text())
+    conv = json.loads(conv_path.read_text(encoding="utf-8"))
     assert conv["folio"] == "001B"
     assert conv["model"] == "test-model"
     assert conv["response"] == alignment_json["model_response"]
@@ -201,7 +206,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     # audit trail: one run per per-folio stage, in pipeline order, status moved out of pending.
     # global corpus stages (vendor-seed, download-uxlc, build-word-stream, build-index)
     # are recorded once in provenance.json, not inside every folio's trail.
-    audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    audit = json.loads((tmp_path / "audit" / "001B.json").read_text(encoding="utf-8"))
     assert [r["stage"] for r in audit["runs"]] == [
         "download-images",
         "align-folio",
@@ -226,7 +231,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert all("seed_source" not in r for r in audit["runs"])
 
     # pipeline provenance: each corpus-level input recorded exactly once
-    prov = json.loads((tmp_path / "provenance.json").read_text())
+    prov = json.loads((tmp_path / "provenance.json").read_text(encoding="utf-8"))
     assert prov["project_version"] == PYPROJECT_VERSION
     assert prov["seed"]["records"] == 1
     assert prov["seed"]["commit"] == SEED_SHA
@@ -243,7 +248,7 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
 
     # TEI: well-formed, 10 words + ADR 0002 verse/section milestones, one <change>
     # for the align-folio production event (checks and mechanics stay in audit)
-    tei_xml = (tmp_path / "out" / "001B.xml").read_text()
+    tei_xml = (tmp_path / "out" / "001B.xml").read_text(encoding="utf-8")
     root = etree.fromstring(tei_xml.encode())
     ns = {"t": "http://www.tei-c.org/ns/1.0"}
     assert len(root.findall(".//t:w", ns)) == 10
@@ -287,7 +292,9 @@ def test_pipeline_runs_end_to_end(tmp_path: Path) -> None:
     assert "UXLC 9.9-test" in "".join(source_uxlc.itertext())
 
     # index over the single folio
-    index_root = etree.fromstring((tmp_path / "out" / "index.xml").read_text().encode())
+    index_root = etree.fromstring(
+        (tmp_path / "out" / "index.xml").read_text(encoding="utf-8").encode()
+    )
     entries = index_root.findall("entry")
     assert len(entries) == 1
     assert entries[0].get("folio") == "001B"
@@ -302,9 +309,9 @@ def test_validate_failure_does_not_mark_aligned(tmp_path: Path) -> None:
 
     # corrupt the alignment artifact after the fact, then force a re-validate
     align_path = tmp_path / "alignments" / "001B.json"
-    record = json.loads(align_path.read_text())
+    record = json.loads(align_path.read_text(encoding="utf-8"))
     record["columns"][0]["lines"][0]["atoms"] = []
-    align_path.write_text(json.dumps(record))
+    align_path.write_text(json.dumps(record), encoding="utf-8")
 
     result = CliRunner().invoke(
         cli, ["--config", str(conf), "validate", "--folio", "001B"]
@@ -312,7 +319,7 @@ def test_validate_failure_does_not_mark_aligned(tmp_path: Path) -> None:
     assert result.exit_code == 0
     assert "failed" in result.output
 
-    audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    audit = json.loads((tmp_path / "audit" / "001B.json").read_text(encoding="utf-8"))
     last_validate = [r for r in audit["runs"] if r["stage"] == "validate"][-1]
     assert last_validate["result_summary"]["passed"] is False
     assert audit["status"] == "aligned"  # unchanged: failure does not downgrade
@@ -324,7 +331,10 @@ def test_build_word_stream_rejects_other_uxlc_version(tmp_path: Path) -> None:
     _run_pipeline(CliRunner(), conf)
 
     genesis = tmp_path / "uxlc" / "Genesis.xml"
-    genesis.write_text(genesis.read_text().replace("UXLC 9.9-test", "UXLC 10.0"))
+    genesis.write_text(
+        genesis.read_text(encoding="utf-8").replace("UXLC 9.9-test", "UXLC 10.0"),
+        encoding="utf-8",
+    )
     stream_path = tmp_path / "word_stream.json"
     before = stream_path.read_bytes()
 
@@ -344,7 +354,9 @@ def test_pipeline_records_git_contributor(tmp_path: Path) -> None:
         contributor={"name": "Test Scribe", "email": "scribe@example.org"},
     )
     ns = {"t": "http://www.tei-c.org/ns/1.0"}
-    root = etree.fromstring((tmp_path / "out" / "001B.xml").read_text().encode())
+    root = etree.fromstring(
+        (tmp_path / "out" / "001B.xml").read_text(encoding="utf-8").encode()
+    )
 
     stmts = root.findall(".//t:titleStmt/t:respStmt", ns)
     assert [s.get("{http://www.w3.org/XML/1998/namespace}id") for s in stmts] == [
@@ -365,12 +377,14 @@ def test_pipeline_records_git_contributor(tmp_path: Path) -> None:
     encoded_when = encoded[0].get("when")
     assert encoded_when
 
-    audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    audit = json.loads((tmp_path / "audit" / "001B.json").read_text(encoding="utf-8"))
     gen = [r for r in audit["runs"] if r["stage"] == "generate-tei"][-1]
     assert gen["contributor_name"] == "Test Scribe"
     assert gen["contributor_email"] == "scribe@example.org"
 
-    index_root = etree.fromstring((tmp_path / "out" / "index.xml").read_text().encode())
+    index_root = etree.fromstring(
+        (tmp_path / "out" / "index.xml").read_text(encoding="utf-8").encode()
+    )
     entries = index_root.findall("entry")
     assert len(entries) == 1
     assert entries[0].get("contributor") == "Test Scribe"
@@ -433,7 +447,7 @@ def _write_crops(
     tdir = tmp_path / "alignments" / "tasks" / "001B"
     work = tdir / "work"
     work.mkdir(parents=True, exist_ok=True)
-    packet = json.loads((tdir / "packet.json").read_text())
+    packet = json.loads((tdir / "packet.json").read_text(encoding="utf-8"))
     cols = []
     for n in range(1, columns + 1):
         crop = work / f"crop-c{n}-r1.jpg"
@@ -458,7 +472,7 @@ def _write_crops(
         "columns": cols,
         "warnings": list(warnings),
     }
-    (work / "crops.json").write_text(json.dumps(manifest))
+    (work / "crops.json").write_text(json.dumps(manifest), encoding="utf-8")
     return work
 
 
@@ -470,7 +484,9 @@ def _write_agent_output(
     if crops:
         _write_crops(tmp_path)
     stream = stream_stage.load_word_stream(tmp_path / "word_stream.json")
-    (tdir / "reply.xml").write_text(_placements_to_xml(placements, stream))
+    (tdir / "reply.xml").write_text(
+        _placements_to_xml(placements, stream), encoding="utf-8"
+    )
     run = {
         "harness": "claude-code",
         "harness_version": "9.9.9 (test)",
@@ -484,7 +500,7 @@ def _write_agent_output(
         "notes": "",
         **run_overrides,
     }
-    (tdir / "run.json").write_text(json.dumps(run))
+    (tdir / "run.json").write_text(json.dumps(run), encoding="utf-8")
     return tdir
 
 
@@ -505,7 +521,9 @@ def _harness_patches():
 def test_harness_path_end_to_end(tmp_path: Path, _harness_patches) -> None:
     runner, conf = _prepare_harness(tmp_path)
     packet = json.loads(
-        (tmp_path / "alignments" / "tasks" / "001B" / "packet.json").read_text()
+        (tmp_path / "alignments" / "tasks" / "001B" / "packet.json").read_text(
+            encoding="utf-8"
+        )
     )
     assert packet["prompt_version"] == align_stage.PROMPT_VERSION
     assert packet["image_sha256"] == hashlib.sha256(JPEG_BYTES).hexdigest()
@@ -532,7 +550,9 @@ def test_harness_path_end_to_end(tmp_path: Path, _harness_patches) -> None:
         assert result.exit_code == 0, f"{args}\n{result.output}\n{result.exception}"
 
     conv = json.loads(
-        (tmp_path / "alignments" / "conversations" / "001B.json").read_text()
+        (tmp_path / "alignments" / "conversations" / "001B.json").read_text(
+            encoding="utf-8"
+        )
     )
     assert conv["model"] == "claude-test"
     assert conv["inference"] == "harness"
@@ -540,7 +560,7 @@ def test_harness_path_end_to_end(tmp_path: Path, _harness_patches) -> None:
     assert conv["harness_run"]["scripts"] == ["crop.py --columns 3 --rows 2"]
 
     assert conv["crop_manifest"]["tool"] == "crop.py"
-    audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    audit = json.loads((tmp_path / "audit" / "001B.json").read_text(encoding="utf-8"))
     ingest_run = next(r for r in audit["runs"] if r["stage"] == "ingest-folio")
     assert len(ingest_run["result_summary"]["crop_manifest_sha256"]) == 64
     assert ingest_run["result_summary"]["crop_warnings"] == 0
@@ -558,7 +578,9 @@ def test_harness_path_end_to_end(tmp_path: Path, _harness_patches) -> None:
     assert parse_run["result_summary"]["ai"]["harness"] == "claude-code"
 
     ns = {"t": "http://www.tei-c.org/ns/1.0"}
-    root = etree.fromstring((tmp_path / "out" / "001B.xml").read_text().encode())
+    root = etree.fromstring(
+        (tmp_path / "out" / "001B.xml").read_text(encoding="utf-8").encode()
+    )
     changes = root.findall(".//t:revisionDesc/t:change", ns)
     assert len(changes) == 1
     assert "Aligned Genesis 1:1" in (changes[0].text or "")
@@ -674,6 +696,6 @@ def test_ingest_records_crop_warnings_in_audit(
     _write_crops(tmp_path, warnings=[{"kind": "edge_ink", "message": "x"}])
     result = _invoke(runner, conf, "ingest-folio", "--folio", "001B")
     assert result.exit_code == 0, result.output
-    audit = json.loads((tmp_path / "audit" / "001B.json").read_text())
+    audit = json.loads((tmp_path / "audit" / "001B.json").read_text(encoding="utf-8"))
     run = next(r for r in audit["runs"] if r["stage"] == "ingest-folio")
     assert run["result_summary"]["crop_warnings"] == 1

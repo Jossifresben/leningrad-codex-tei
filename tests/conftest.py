@@ -30,7 +30,7 @@ def uxlc_fixture_dir(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def seed_fixture() -> dict:
-    return json.loads((FIXTURES / "seed" / "lci_recs.json").read_text())
+    return json.loads((FIXTURES / "seed" / "lci_recs.json").read_text(encoding="utf-8"))
 
 
 @pytest.fixture

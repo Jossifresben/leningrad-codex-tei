@@ -177,8 +177,8 @@ def test_load_ignores_dropped_seed_snapshot_commit(tmp_path) -> None:
         path=str(tmp_path / "seed.json"),
     )
     update_pipeline_provenance(path, "0.1.0-dev", seed=seed)
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     data["seed"]["snapshot_commit"] = "deadbee"
-    path.write_text(json.dumps(data))
+    path.write_text(json.dumps(data), encoding="utf-8")
 
     assert load_pipeline_provenance(path).seed == seed
