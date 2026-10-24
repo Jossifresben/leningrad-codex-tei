@@ -995,4 +995,9 @@
     <persName ref="mailto:kmpenner@gmail.com">Ken Penner</persName>
     <date when="2026-10-24T01:33:50.118759+00:00"/>
   </entry>
+  <entry folio="100B" href="100B.xml" when="2026-10-24T02:17:20.484216+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 100B (Deuteronomy 3:8 – Deuteronomy 3:27)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T02:17:20.484216+00:00"/>
+  </entry>
 </index>
