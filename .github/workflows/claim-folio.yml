@@ -33,7 +33,7 @@ jobs:
       COMMENT_ID: ${{ github.event.comment.id }}
       BODY: ${{ github.event.comment.body }}
       # Most open folio issues one user can hold at once.
-      MAX_CLAIMS: "10"
+      MAX_CLAIMS: "50"
     steps:
       - name: Claim or unclaim
         run: |
