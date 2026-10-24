@@ -1,29 +1,31 @@
 #!/usr/bin/env bash
-# List open, unassigned `folio` issues (oldest first) and optionally comment
-# on each to ask the repo owner for assignment.
+# List open, unassigned `folio` issues (oldest first) and optionally claim
+# each one with a `/claim` comment. The `claim-folio` workflow assigns the
+# issue to the commenter; this script then waits and reports the result.
 #
 # Usage:
-#   claim_folios.sh <N>             # list only; changes nothing
-#   claim_folios.sh <N> --comment   # list, then comment on each issue
+#   claim_folios.sh <N>           # list only; changes nothing
+#   claim_folios.sh <N> --claim   # list, then comment `/claim` on each issue
 #
 # Set REPO=owner/name to use a different repo (default below).
+# Set WAIT=<seconds> to change how long to wait for the workflow (default 120).
 set -euo pipefail
 
 REPO="${REPO:-charlesLoder/leningrad-codex-tei}"
-OWNER="${REPO%%/*}"
+WAIT="${WAIT:-120}"
 
 usage() {
-  echo "Usage: $0 <N> [--comment]" >&2
+  echo "Usage: $0 <N> [--claim]" >&2
   exit 2
 }
 
 [[ $# -ge 1 && $# -le 2 ]] || usage
 N="$1"
 [[ "$N" =~ ^[1-9][0-9]*$ ]] || usage
-COMMENT=false
+CLAIM=false
 if [[ $# -eq 2 ]]; then
-  [[ "$2" == "--comment" ]] || usage
-  COMMENT=true
+  [[ "$2" == "--claim" ]] || usage
+  CLAIM=true
 fi
 
 command -v gh >/dev/null || { echo "gh is not installed" >&2; exit 1; }
@@ -43,11 +45,41 @@ echo "$issues" | while IFS=$'\t' read -r number title; do
   echo "#$number  $title"
 done
 
-$COMMENT || exit 0
+$CLAIM || exit 0
+
+me=$(gh api user --jq .login)
 
 echo
 echo "$issues" | while IFS=$'\t' read -r number title; do
-  gh issue comment "$number" -R "$REPO" \
-    --body "@$OWNER I would like to be assigned this issue. Thank you!" >/dev/null
-  echo "Commented on #$number"
+  gh issue comment "$number" -R "$REPO" --body "/claim" >/dev/null
+  echo "Commented /claim on #$number"
+done
+
+# Wait for the workflow to assign each issue, then report.
+echo
+echo "Waiting up to ${WAIT}s for the claim-folio workflow..."
+pending=$(echo "$issues" | cut -f1)
+deadline=$((SECONDS + WAIT))
+while [[ -n "$pending" ]]; do
+  still=""
+  for number in $pending; do
+    assignees=$(gh issue view "$number" -R "$REPO" --json assignees \
+      --jq '[.assignees[].login] | join(" ")')
+    if [[ " $assignees " == *" $me "* ]]; then
+      echo "ASSIGNED  #$number"
+    elif [[ -n "$assignees" ]]; then
+      echo "TAKEN     #$number  (claimed by $assignees)"
+    else
+      still+="$number "
+    fi
+  done
+  pending="$still"
+  [[ -z "$pending" ]] && break
+  if (( SECONDS >= deadline )); then
+    for number in $pending; do
+      echo "NO CHANGE #$number  (not assigned yet; check the issue for a reply)"
+    done
+    break
+  fi
+  sleep 10
 done
