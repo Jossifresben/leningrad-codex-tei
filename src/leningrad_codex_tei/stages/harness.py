@@ -99,10 +99,9 @@ def build_packet(
     tdir = task_dir(config, sl.folio)
     return {
         "folio": sl.folio,
-        "range": f"{sl.start_ref} – {sl.stop_ref}",
-        "atom_start": sl.atom_start,
-        "atom_end": sl.atom_end,
-        "atoms": sl.atom_end - sl.atom_start + 1,
+        "range": sl.range,
+        "segments": [[s.atom_start, s.atom_end] for s in sl.segments],
+        "atoms": len(sl.atoms),
         "prompt_version": align_stage.PROMPT_VERSION,
         "prompt": align_stage._build_prompt(sl, word_stream),
         "image_path": str(image),
