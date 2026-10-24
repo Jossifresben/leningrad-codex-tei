@@ -76,7 +76,7 @@ def _seed_folios(config: Config) -> list[str]:
     Records for one side merge into a single slice, so selection counts
     distinct sides, not records. This sends one request per side.
     """
-    doc = json.loads(config.paths.seed.read_text())
+    doc = json.loads(config.paths.seed.read_text(encoding="utf-8"))
     seen: set[str] = set()
     folios: list[str] = []
     for rec in doc["body"]:
@@ -123,7 +123,7 @@ def _alignment_folios(config: Config) -> list[str]:
 
 
 def _load_pipeline(config: Config, folio: str):
-    seed = json.loads(config.paths.seed.read_text())
+    seed = json.loads(config.paths.seed.read_text(encoding="utf-8"))
     stream = stream_stage.load_word_stream(config.paths.word_stream)
     sl = align_stage.compute_seed_slice(seed, folio, stream)
     record = align_stage.load_alignment(config.paths.alignments / f"{folio}.json")
@@ -429,7 +429,7 @@ def align_folio(
         image_transport=image_transport,
         thinking_level=thinking_level,
     )
-    seed = json.loads(config.paths.seed.read_text())
+    seed = json.loads(config.paths.seed.read_text(encoding="utf-8"))
     stream = stream_stage.load_word_stream(config.paths.word_stream)
     folios = _select_folios(config, folio, limit, all_)
     if show_prompt and not dry_run:
@@ -684,7 +684,7 @@ def prepare_folio(
         harness_stage.ensure_skill_clean()
     except RuntimeError as exc:
         raise click.ClickException(str(exc)) from exc
-    seed = json.loads(config.paths.seed.read_text())
+    seed = json.loads(config.paths.seed.read_text(encoding="utf-8"))
     stream = stream_stage.load_word_stream(config.paths.word_stream)
     folios = _select_folios(config, folio, limit, all_)
     seed_sha = _file_sha(config.paths.seed)
@@ -740,7 +740,7 @@ def check_reply(config: Config, folio: str) -> None:
     reply_path = harness_stage.task_dir(config, folio) / harness_stage.REPLY_FILE
     if not reply_path.exists():
         raise click.ClickException(f"no reply for {folio}: {reply_path}")
-    seed = json.loads(config.paths.seed.read_text())
+    seed = json.loads(config.paths.seed.read_text(encoding="utf-8"))
     stream = stream_stage.load_word_stream(config.paths.word_stream)
     sl = align_stage.compute_seed_slice(seed, folio, stream)
     try:
@@ -800,7 +800,7 @@ def ingest_folio(config: Config, folio: str) -> None:
         task = harness_stage.load_task(config, folio)
     except FileNotFoundError as exc:
         raise click.ClickException(str(exc)) from exc
-    seed = json.loads(config.paths.seed.read_text())
+    seed = json.loads(config.paths.seed.read_text(encoding="utf-8"))
     stream = stream_stage.load_word_stream(config.paths.word_stream)
     sl = align_stage.compute_seed_slice(seed, folio, stream)
     seed_info = _seed_info(config)
@@ -918,7 +918,7 @@ def parse_raw(config: Config, folio: str | None, start_folio: str | None) -> Non
             )
         raise click.ClickException(f"no raw responses in {raw_dir}")
 
-    seed = json.loads(config.paths.seed.read_text())
+    seed = json.loads(config.paths.seed.read_text(encoding="utf-8"))
     stream = stream_stage.load_word_stream(config.paths.word_stream)
     done = 0
     failed = 0
@@ -1133,7 +1133,7 @@ def generate_tei(config: Config, folio: str | None, start_folio: str | None) -> 
         )
         dest = config.paths.output / f"{page}.xml"
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(xml)
+        dest.write_text(xml, encoding="utf-8")
         click.echo(f"generate-tei: {page} -> {dest}")
 
 
@@ -1145,7 +1145,8 @@ def build_index(config: Config) -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
     generated = [p for p in config.paths.output.glob("*.xml") if p.stem != "index"]
     dest.write_text(
-        index_stage.build_index(config.paths.output, config.project_version)
+        index_stage.build_index(config.paths.output, config.project_version),
+        encoding="utf-8",
     )
     update_pipeline_provenance(
         config.paths.provenance,

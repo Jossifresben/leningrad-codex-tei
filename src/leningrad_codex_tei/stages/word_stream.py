@@ -180,11 +180,11 @@ def dump_word_stream(stream: WordStream) -> dict:
 
 def save_word_stream(stream: WordStream, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(dump_word_stream(stream), indent=2))
+    path.write_text(json.dumps(dump_word_stream(stream), indent=2), encoding="utf-8")
 
 
 def load_word_stream(path: Path) -> WordStream:
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     edition = data.get("uxlc_edition")
     return WordStream(
         source=data["source"],

@@ -11,7 +11,7 @@ ROOT = Path(__file__).parents[1]
 
 
 def test_project_version_comes_from_pyproject():
-    expected = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"][
-        "version"
-    ]
+    expected = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))[
+        "project"
+    ]["version"]
     assert load_config(ROOT / "config.yaml").project_version == expected

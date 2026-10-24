@@ -101,7 +101,8 @@ def _write_folio(out_dir: Path, name: str, stamp: str) -> None:
         '<respStmt xml:id="source-uxlc"><resp>Base biblical text from the '
         f"Unicode/XML Leningrad Codex (UXLC) ({stamp}) "
         '<ptr target="https://example.invalid/"/></resp></respStmt>'
-        "</titleStmt></fileDesc></teiHeader></TEI>"
+        "</titleStmt></fileDesc></teiHeader></TEI>",
+        encoding="utf-8",
     )
 
 
@@ -109,7 +110,7 @@ def test_edition_uxlc_stamps_reads_folio_headers(config: Config) -> None:
     out = config.paths.output
     _write_folio(out, "001B", "version UXLC 2.5, build 27.6, 1 Apr 2026")
     _write_folio(out, "002A", "version UXLC 2.5")
-    (out / "index.xml").write_text("<index/>")
+    (out / "index.xml").write_text("<index/>", encoding="utf-8")
 
     assert edition_uxlc_stamps(out) == {("UXLC 2.5", "27.6"), ("UXLC 2.5", None)}
 

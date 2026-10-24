@@ -94,11 +94,11 @@ class Config:
 def _pyproject_version() -> str:
     """Edition version: the single source of truth is ``pyproject.toml``."""
     pyproject = Path(__file__).resolve().parents[2] / "pyproject.toml"
-    return tomllib.loads(pyproject.read_text())["project"]["version"]
+    return tomllib.loads(pyproject.read_text(encoding="utf-8"))["project"]["version"]
 
 
 def load_config(config_path: Path = Path("config.yaml")) -> Config:
-    raw = yaml.safe_load(config_path.read_text())
+    raw = yaml.safe_load(config_path.read_text(encoding="utf-8"))
     p = raw["paths"]
     ai_raw = dict(raw["ai"])
     if "service_tier" in ai_raw and "inference" not in ai_raw:

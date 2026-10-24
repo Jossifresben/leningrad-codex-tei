@@ -98,7 +98,8 @@ def test_read_uxlc_edition_returns_none_without_metadata(tmp_path: Path) -> None
         "<Tanach><teiHeader><fileDesc><editionStmt>"
         "<edition>Bare edition, no version children</edition>"
         "</editionStmt></fileDesc></teiHeader>"
-        "<tanach><book><c n='1'><v n='1'><w>x</w></v></c></book></tanach></Tanach>"
+        "<tanach><book><c n='1'><v n='1'><w>x</w></v></c></book></tanach></Tanach>",
+        encoding="utf-8",
     )
     assert read_uxlc_edition(d) is None
 

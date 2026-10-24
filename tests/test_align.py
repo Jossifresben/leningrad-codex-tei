@@ -450,7 +450,9 @@ def test_save_load_alignment_persists_raw_response(
     dest = tmp_path / "alignments" / "001B.json"
     save_alignment(rec, dest)
 
-    assert (tmp_path / "alignments" / "raw" / "001B.xml").read_text() == raw_xml
+    assert (tmp_path / "alignments" / "raw" / "001B.xml").read_text(
+        encoding="utf-8"
+    ) == raw_xml
 
     loaded = load_alignment(dest)
     assert loaded.model_response == raw_xml
@@ -468,11 +470,11 @@ def test_load_alignment_backfills_raw_from_file(
 
     raw_path = tmp_path / "alignments" / "raw" / "001B.xml"
     raw_xml = '<cb n="1" /><lb n="1" />a b'
-    raw_path.write_text(raw_xml)
+    raw_path.write_text(raw_xml, encoding="utf-8")
 
-    data = json.loads(dest.read_text())
+    data = json.loads(dest.read_text(encoding="utf-8"))
     del data["model_response"]
-    dest.write_text(json.dumps(data))
+    dest.write_text(json.dumps(data), encoding="utf-8")
 
     loaded = load_alignment(dest)
     assert loaded.model_response == raw_xml
@@ -501,7 +503,7 @@ def test_align_folio_ai_writes_conversation(seed_slice, word_stream, config) -> 
 
     conv_path = config.paths.alignments / "conversations" / "001B.json"
     assert conv_path.exists()
-    conv = json.loads(conv_path.read_text())
+    conv = json.loads(conv_path.read_text(encoding="utf-8"))
     assert conv["folio"] == "001B"
     assert conv["model"] == config.ai.model
     from leningrad_codex_tei.stages.align import PROMPT_VERSION
@@ -558,7 +560,7 @@ def test_build_and_save_conversation(tmp_path) -> None:
     )
     dest = save_conversation(conv, tmp_path / "alignments", "001B")
     assert dest == tmp_path / "alignments" / "conversations" / "001B.json"
-    saved = json.loads(dest.read_text())
+    saved = json.loads(dest.read_text(encoding="utf-8"))
     assert saved["response"] == '<cb n="1" />'
     assert saved["usage_metadata"]["total_token_count"] == 10
     assert saved["messages"][0]["parts"][0]["image"].endswith("001B.jpg")
@@ -895,7 +897,9 @@ def test_submit_batch_writes_jsonl_and_record(seed_slice, word_stream, config) -
     job_dir = config.paths.alignments / "batch" / "20260102T030405"
     upload = job_dir / "upload.jsonl"
     assert upload.exists()
-    assert json.loads(upload.read_text().splitlines()[0])["key"] == "001B"
+    assert (
+        json.loads(upload.read_text(encoding="utf-8").splitlines()[0])["key"] == "001B"
+    )
     dest = job_dir / "submit.json"
     assert dest.exists()
     assert find_latest_batch_record(config.paths.alignments / "batch") == dest
@@ -930,7 +934,7 @@ def test_write_poll_record_and_state(tmp_path) -> None:
     second = write_poll_record(job_dir, job, now=datetime(2026, 5, 1, 10, 5, 0))
     assert first == job_dir / "polls" / "20260501T100000.json"
     assert second == job_dir / "polls" / "20260501T100500.json"
-    saved = json.loads(second.read_text())
+    saved = json.loads(second.read_text(encoding="utf-8"))
     assert saved["status"] == "JOB_STATE_SUCCEEDED"
     assert saved["polled_at"].startswith("2026-05-01")
     assert saved["batch_timestamp"] == "20260102T030405"
@@ -953,7 +957,9 @@ def test_parse_raw_result_saves_alignment(seed_slice, word_stream, config) -> No
     assert rec.folio == "001B"
     assert (config.paths.alignments / "001B.json").exists()
     conv = json.loads(
-        (config.paths.alignments / "conversations" / "001B.json").read_text()
+        (config.paths.alignments / "conversations" / "001B.json").read_text(
+            encoding="utf-8"
+        )
     )
     assert conv["inference"] == "batch"
     assert conv["ai"]["batch_job"] == "batches/123"
@@ -971,11 +977,13 @@ def test_parse_raw_result_saves_raw_on_failure(seed_slice, word_stream, config) 
             prompt="map it",
             job_name="batches/123",
         )
-    assert (
-        config.paths.alignments / "raw" / "001B.xml"
-    ).read_text() == "not xml at all"
+    assert (config.paths.alignments / "raw" / "001B.xml").read_text(
+        encoding="utf-8"
+    ) == "not xml at all"
     conv = json.loads(
-        (config.paths.alignments / "conversations" / "001B.json").read_text()
+        (config.paths.alignments / "conversations" / "001B.json").read_text(
+            encoding="utf-8"
+        )
     )
     assert conv["response"] == "not xml at all"
     assert not (config.paths.alignments / "001B.json").exists()
@@ -1011,9 +1019,9 @@ def test_parse_raw_result_skips_conversation_when_asked(
             job_name="batches/123",
             write_conversation=False,
         )
-    assert (
-        config.paths.alignments / "raw" / "001B.xml"
-    ).read_text() == "not xml at all"
+    assert (config.paths.alignments / "raw" / "001B.xml").read_text(
+        encoding="utf-8"
+    ) == "not xml at all"
     assert not (config.paths.alignments / "conversations" / "001B.json").exists()
 
 
@@ -1054,7 +1062,9 @@ def test_parse_raw_result_uses_stored_prompt_version(
     )
     assert rec.folio == "001B"
     conv = json.loads(
-        (config.paths.alignments / "conversations" / "001B.json").read_text()
+        (config.paths.alignments / "conversations" / "001B.json").read_text(
+            encoding="utf-8"
+        )
     )
     assert conv["prompt_version"] == "stored-hash"
 
@@ -1090,7 +1100,7 @@ def _parse_raw_config(config, seed_fixture, word_stream):
     from leningrad_codex_tei.stages import word_stream as stream_stage
 
     config.paths.seed.parent.mkdir(parents=True, exist_ok=True)
-    config.paths.seed.write_text(json.dumps(seed_fixture))
+    config.paths.seed.write_text(json.dumps(seed_fixture), encoding="utf-8")
     stream_stage.save_word_stream(word_stream, config.paths.word_stream)
     conf = config.paths.alignments.parent / "config.yaml"
     conf.write_text(
@@ -1114,7 +1124,8 @@ def _parse_raw_config(config, seed_fixture, word_stream):
                     "image_transport": "encode",
                 },
             }
-        )
+        ),
+        encoding="utf-8",
     )
     return conf
 
@@ -1138,25 +1149,27 @@ def test_parse_raw_parses_edited_raw(
     raw.parent.mkdir(parents=True, exist_ok=True)
     # hand-edited raw: valid layout reply written after a failed attempt
     raw_text = _xml_response(seed_slice.atom_start, seed_slice.atom_end)
-    raw.write_text(raw_text)
+    raw.write_text(raw_text, encoding="utf-8")
     conv_dir = config.paths.alignments / "conversations"
     conv_dir.mkdir(parents=True, exist_ok=True)
-    (conv_dir / "001B.json").write_text(json.dumps({"marker": "download-wrote-me"}))
+    (conv_dir / "001B.json").write_text(
+        json.dumps({"marker": "download-wrote-me"}), encoding="utf-8"
+    )
 
     result = CliRunner().invoke(
         cli, ["--config", str(conf), "parse-raw", "--folio", "001B"]
     )
     assert result.exit_code == 0, f"{result.output}\n{result.exception}"
     assert (config.paths.alignments / "001B.json").exists()
-    assert json.loads((conv_dir / "001B.json").read_text()) == {
+    assert json.loads((conv_dir / "001B.json").read_text(encoding="utf-8")) == {
         "marker": "download-wrote-me"
     }
     summaries = list((config.paths.alignments / "parse-raw").glob("*.json"))
     assert len(summaries) == 1
-    summary = json.loads(summaries[0].read_text())
+    summary = json.loads(summaries[0].read_text(encoding="utf-8"))
     assert summary["succeeded"] == ["001B"]
     assert summary["failures"] == {}
-    audit = json.loads((config.paths.audit / "001B.json").read_text())
+    audit = json.loads((config.paths.audit / "001B.json").read_text(encoding="utf-8"))
     run = [r for r in audit["runs"] if r["stage"] == "parse-raw"][-1]
     assert (
         run["result_summary"]["raw_sha256"]
@@ -1174,9 +1187,9 @@ def test_parse_raw_scans_raw_dir(seed_fixture, seed_slice, word_stream, config) 
     raw_dir = config.paths.alignments / "raw"
     raw_dir.mkdir(parents=True, exist_ok=True)
     (raw_dir / "001B.xml").write_text(
-        _xml_response(seed_slice.atom_start, seed_slice.atom_end)
+        _xml_response(seed_slice.atom_start, seed_slice.atom_end), encoding="utf-8"
     )
-    (raw_dir / "999B.xml").write_text("not xml at all")
+    (raw_dir / "999B.xml").write_text("not xml at all", encoding="utf-8")
 
     result = CliRunner().invoke(cli, ["--config", str(conf), "parse-raw"])
     assert result.exit_code == 0, f"{result.output}\n{result.exception}"
@@ -1184,7 +1197,7 @@ def test_parse_raw_scans_raw_dir(seed_fixture, seed_slice, word_stream, config) 
     assert not (config.paths.alignments / "999B.json").exists()
     summaries = list((config.paths.alignments / "parse-raw").glob("*.json"))
     assert len(summaries) == 1
-    summary = json.loads(summaries[0].read_text())
+    summary = json.loads(summaries[0].read_text(encoding="utf-8"))
     assert summary["succeeded"] == ["001B"]
     assert summary["failed_folios"] == ["999B"]
 
@@ -1199,7 +1212,8 @@ def _run_download_batch(config, conf, monkeypatch, submit: dict):
     job_dir = config.paths.alignments / "batch" / "ts1"
     job_dir.mkdir(parents=True)
     (job_dir / "submit.json").write_text(
-        json.dumps({"job_name": "batches/123", "folios": ["001B"], **submit})
+        json.dumps({"job_name": "batches/123", "folios": ["001B"], **submit}),
+        encoding="utf-8",
     )
     result_lines = [
         json.dumps(
@@ -1252,9 +1266,13 @@ def test_download_batch_writes_raw_conversation_and_audit(
         {"prompts": {"001B": "the prompt actually sent"}, "prompt_version": "pv1"},
     )
 
-    assert (config.paths.alignments / "raw" / "001B.xml").read_text() == "hello raw"
+    assert (config.paths.alignments / "raw" / "001B.xml").read_text(
+        encoding="utf-8"
+    ) == "hello raw"
     conv = json.loads(
-        (config.paths.alignments / "conversations" / "001B.json").read_text()
+        (config.paths.alignments / "conversations" / "001B.json").read_text(
+            encoding="utf-8"
+        )
     )
     user_text = conv["messages"][0]["parts"][1]["text"]
     assert user_text == "the prompt actually sent"
@@ -1262,11 +1280,11 @@ def test_download_batch_writes_raw_conversation_and_audit(
     assert conv["prompt_version"] == "pv1"
     assert conv["ai"]["batch_job"] == "batches/123"
 
-    summary = json.loads((job_dir / "download.json").read_text())
+    summary = json.loads((job_dir / "download.json").read_text(encoding="utf-8"))
     assert summary["saved"] == ["001B"]
     assert summary["failed"] == ["002A"]
 
-    audit = json.loads((config.paths.audit / "001B.json").read_text())
+    audit = json.loads((config.paths.audit / "001B.json").read_text(encoding="utf-8"))
     run = [r for r in audit["runs"] if r["stage"] == "download-batch"][-1]
     assert run["result_summary"]["batch_job"] == "batches/123"
     assert (
@@ -1299,12 +1317,14 @@ def test_download_batch_records_submitted_settings(
     )
 
     conv = json.loads(
-        (config.paths.alignments / "conversations" / "001B.json").read_text()
+        (config.paths.alignments / "conversations" / "001B.json").read_text(
+            encoding="utf-8"
+        )
     )
     assert conv["model"] == "submitted-model"
     assert conv["ai"] == {**submitted_ai, "batch_job": "batches/123"}
 
-    audit = json.loads((config.paths.audit / "001B.json").read_text())
+    audit = json.loads((config.paths.audit / "001B.json").read_text(encoding="utf-8"))
     run = [r for r in audit["runs"] if r["stage"] == "download-batch"][-1]
     assert run["model"] == "submitted-model"
     assert run["temperature"] == 0.4
