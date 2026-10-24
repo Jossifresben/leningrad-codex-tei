@@ -4,16 +4,29 @@ import ContributeCta from '../components/ContributeCta.astro';
 import FolioCard from '../components/FolioCard.astro';
 import FolioGrid from '../components/FolioGrid.astro';
 import Hero from '../components/Hero.astro';
+import ListPager from '../components/ListPager.astro';
 import ResultCount from '../components/ResultCount.astro';
 import SearchField from '../components/SearchField.astro';
 import folios from '../data/folios.json';
+import { countLabel, paginate, type FolioRow } from '../lib/folio-list';
 import { abbreviateRange } from '../lib/tei';
 import { folioRangeKeys } from '../lib/verses';
 
-const cards = folios.map((f) => {
+const PAGE_SIZE = 60;
+
+const rows: FolioRow[] = folios.map((f) => {
   const { start, end } = folioRangeKeys(f.range);
-  return { ...f, start, end };
+  return {
+    folio: f.folio,
+    range: abbreviateRange(f.range),
+    search: `${f.folio} ${f.title} ${f.range}`.toLowerCase(),
+    start,
+    end,
+  };
 });
+
+// Only the first page is server-rendered; the client script renders the rest from #folio-data.
+const first = paginate(rows.length, 1, PAGE_SIZE);
 ---
 <Base
   title="Leningrad Codex TEI — the oldest complete Hebrew Bible, folio by folio"
@@ -21,7 +34,7 @@ const cards = folios.map((f) => {
 >
   <Hero>
     <h1>Leningrad Codex TEI</h1>
-    <ContributeCta published={cards.length} />
+    <ContributeCta published={rows.length} />
   </Hero>
 
   <div>
@@ -31,47 +44,117 @@ const cards = folios.map((f) => {
     <SearchField />
   </div>
 
-  <ResultCount />
-  <FolioGrid>
-    {cards.map((f) => (
-      <FolioCard
-        folio={f.folio}
-        range={abbreviateRange(f.range)}
-        search={`${f.folio} ${f.title} ${f.range}`.toLowerCase()}
-        start={f.start}
-        end={f.end}
-      />
-    ))}
-  </FolioGrid>
+  <div class="folio-list">
+    <div class="list-bar" id="list-top">
+      <ResultCount>{countLabel(first, rows.length, '')}</ResultCount>
+      <ListPager label="Folio pages (top)" page={first.page} pages={first.pages} />
+    </div>
+    <FolioGrid>
+      {rows.slice(first.from, first.to).map((f) => (
+        <FolioCard folio={f.folio} range={f.range} />
+      ))}
+    </FolioGrid>
+    <div class="list-bar">
+      <ListPager label="Folio pages (bottom)" page={first.page} pages={first.pages} />
+    </div>
+  </div>
+
+  <template id="card-template">
+    <FolioCard folio="" range="" />
+  </template>
+  <script type="application/json" id="folio-data" set:html={JSON.stringify({ size: PAGE_SIZE, rows })} />
 
   <script>
-    import { parseVerseQuery } from '../lib/verses';
+    import { countLabel, filterFolios, paginate, type FolioRow } from '../lib/folio-list';
+    const data = JSON.parse(document.querySelector('#folio-data')?.textContent ?? '{}') as { size: number; rows: FolioRow[] };
     const q = document.querySelector('#q') as HTMLInputElement | null;
     const grid = document.querySelector('#grid');
     const count = document.querySelector('#count');
-    const rows = [...(grid?.querySelectorAll('li') ?? [])].map((li) => ({
-      el: li as HTMLElement,
-      search: (li as HTMLElement).dataset.search ?? '',
-      start: (li as HTMLElement).dataset.start ? Number((li as HTMLElement).dataset.start) : null,
-      end: (li as HTMLElement).dataset.end ? Number((li as HTMLElement).dataset.end) : null,
-    }));
-    const apply = () => {
-      const raw = (q?.value ?? '').trim();
-      const needle = raw.toLowerCase();
-      const span = parseVerseQuery(raw);
-      let visible = 0;
-      for (const row of rows) {
-        let show: boolean;
-        if (!raw) show = true;
-        else if (span && row.start !== null && row.end !== null) show = span.start <= row.end && row.start <= span.end;
-        else if (span) show = false;
-        else show = row.search.includes(needle);
-        row.el.style.display = show ? '' : 'none';
-        if (show) visible += 1;
-      }
-      if (count) count.textContent = !raw ? `${rows.length} folios` : visible === 0 ? `No published folio matches “${raw}”.` : `${visible} of ${rows.length} folios`;
+    const top = document.querySelector('#list-top');
+    const pagers = [...document.querySelectorAll<HTMLElement>('[data-list-pager]')];
+    const template = document.querySelector('#card-template') as HTMLTemplateElement | null;
+
+    const params = new URLSearchParams(location.search);
+    if (q && params.has('q')) q.value = params.get('q') ?? '';
+    let page = Number(params.get('page')) || 1;
+
+    const card = (row: FolioRow) => {
+      const node = template!.content.firstElementChild!.cloneNode(true) as HTMLElement;
+      node.querySelector('a')!.setAttribute('href', `/folio/${row.folio}/`);
+      node.querySelector('h2')!.textContent = row.folio;
+      node.querySelector('.range')!.textContent = row.range;
+      return node;
     };
-    q?.addEventListener('input', apply);
-    apply();
+
+    const syncUrl = (raw: string, current: number) => {
+      const next = new URLSearchParams();
+      if (raw) next.set('q', raw);
+      if (current > 1) next.set('page', String(current));
+      const search = next.toString();
+      history.replaceState(null, '', search ? `?${search}` : location.pathname);
+    };
+
+    const render = () => {
+      const raw = (q?.value ?? '').trim();
+      const matches = filterFolios(data.rows, raw);
+      const slice = paginate(matches.length, page, data.size);
+      page = slice.page;
+      grid?.replaceChildren(...matches.slice(slice.from, slice.to).map(card));
+      if (count) count.textContent = countLabel(slice, matches.length, raw);
+      for (const pager of pagers) {
+        pager.hidden = slice.pages <= 1;
+        pager.querySelector('[data-page-status]')!.textContent = `Page ${slice.page} of ${slice.pages}`;
+        pager.querySelector<HTMLButtonElement>('[data-page-step="-1"]')!.disabled = slice.page <= 1;
+        pager.querySelector<HTMLButtonElement>('[data-page-step="1"]')!.disabled = slice.page >= slice.pages;
+      }
+      syncUrl(raw, slice.page);
+    };
+
+    q?.addEventListener('input', () => {
+      page = 1;
+      render();
+    });
+    for (const pager of pagers) {
+      pager.addEventListener('click', (event) => {
+        const step = (event.target as HTMLElement).closest<HTMLElement>('[data-page-step]')?.dataset.pageStep;
+        if (!step) return;
+        page += Number(step);
+        render();
+        // From the bottom pager, bring the new page's first cards into view.
+        if (top && top.getBoundingClientRect().top < 0) top.scrollIntoView({ block: 'start' });
+      });
+    }
+    render();
   </script>
 </Base>
+
+<style>
+  .folio-list {
+    display: grid;
+    gap: 1rem;
+    padding-block-end: 3rem;
+  }
+
+  /* Count on the left, pager centered on the page. */
+  .list-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.5rem 1rem;
+  }
+
+  .list-bar :global(.list-pager) {
+    grid-column: 2;
+  }
+
+  @media (max-width: 40rem) {
+    .list-bar {
+      grid-template-columns: 1fr;
+    }
+
+    .list-bar :global(.list-pager) {
+      grid-column: 1;
+      justify-self: center;
+    }
+  }
+</style>

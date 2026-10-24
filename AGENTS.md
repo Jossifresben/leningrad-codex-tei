@@ -19,6 +19,11 @@ See [CONTRIBUTING.MD](./CONTRIBUTING.MD) to assist with contributing.
 
 If making updates to the Python code, check if the README, AGENTS, or CONTRIBUTING files need to be udpated.
 
+## Site CSS
+
+- Lay out elements with flex or grid and `gap`; do not use margin to place elements.
+- Margin is fine for text spacing (e.g. between paragraphs or headings).
+
 ## Versioning
 
 - Single source of truth: root `pyproject.toml` `[project].version` (bare semver, e.g. `0.2.1`). Bump with `uv version --bump minor|patch|major` or `uv version X.Y.Z`. Note `uv version` only edits the file; the owner commits it and creates the release tag by hand.
