@@ -314,7 +314,7 @@ Ensure everything looks correct and commit.
 
 For version 1 of this project, AI should do the bulk of the work for alignment. 
 
-Agents can use the `/commit-folios` skill. It makes a working branch if you are on `main`, runs `validate`, generates the TEI files one folio at a time with `--folio`, builds the index, formats, and commits.
+Agents can use the `/commit-folios` skill. It makes a working branch if you are on `main`, runs `validate`, generates the TEI files one folio at a time with `--folio`, formats, and commits.
 
 ### Creating a Pull Request
 
