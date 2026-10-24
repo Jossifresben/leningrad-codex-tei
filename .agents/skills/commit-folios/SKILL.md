@@ -1,6 +1,6 @@
 ---
 name: commit-folios
-description: Turn aligned folio sides into committed TEI documents on a working branch. Runs validate, generate-tei, build-index and ruff format, then commits. Run it after align-folio and before folio-pr.
+description: Turn aligned folio sides into committed TEI documents on a working branch. Runs validate, generate-tei, and ruff format, then commits. Run it after align-folio and before folio-pr.
 ---
 
 # Commit Folios
@@ -18,6 +18,20 @@ The argument is one or more folio sides, for example `001B 002A 002B`. If none i
 - Ask the user before you commit.
 
 ## Steps
+
+0. **Check for changes on `main`.**
+   Find the remote that points to `charlesLoder/leningrad-codex-tei` (`git remote -v`; usually `origin`, or `upstream` in a fork). Then run:
+   ```sh
+   git fetch <remote> main
+   git log --oneline HEAD..<remote>/main
+   ```
+   - No output: continue to step 1.
+   - Commits listed: show them and ask the user if they want to pull them in.
+     - Yes, on `main`: `git pull --ff-only <remote> main`
+     - Yes, on another branch: `git merge <remote>/main`. If a merge conflict occurs, stop and tell the user. Do not resolve it here.
+     - No: continue to step 1.
+   - If the commits change this skill, check with `git diff --name-only HEAD..<remote>/main -- .agents/skills/commit-folios`. If it lists a path, tell the user that they may need to restart their harness (agent session) to make the updated skill discoverable. The steps below may be out of date until they do. Ask if they want to stop here.
+   Completion: the user chose to pull or not, and you told them about any skill change.
 
 1. **Check the branch.**
    Run `git branch --show-current`.
@@ -38,9 +52,7 @@ The argument is one or more folio sides, for example `001B 002A 002B`. If none i
 4. **Generate the TEI documents.**
    For each side, one at a time:
    `uv run leningrad generate-tei --folio <FOLIO>`
-   Then build the index once:
-   `uv run leningrad build-index`
-   Completion: `edition/<FOLIO>.xml` exists for every side, and `edition/index.xml` is updated.
+   Completion: `edition/<FOLIO>.xml` exists for every side.
 
 5. **Format.**
    Run `uv run ruff format`.
@@ -48,7 +60,7 @@ The argument is one or more folio sides, for example `001B 002A 002B`. If none i
 
 6. **Review the change.**
    Run `git status --short` and `git diff --stat`.
-   Only these paths may change: the new `edition/<FOLIO>.xml` files and `edition/index.xml`. If any other path changed (for example an older folio file), stop and tell the user. Do not commit.
+   Only the new `edition/<FOLIO>.xml` files may change. If any other path changed (for example an older folio file), stop and tell the user. Do not commit.
    Completion: the changes match the list of sides.
 
 7. **Commit.**
