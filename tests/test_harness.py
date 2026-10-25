@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import pytest
 
 from leningrad_codex_tei.stages.harness import (
     Task,
@@ -22,14 +21,8 @@ def _task(**run_extra) -> Task:
     return Task(packet={"skill_sha256": "abc"}, packet_sha256="def", reply="", run=run)
 
 
-def test_snapshot_keeps_stated_effort() -> None:
-    assert harness_snapshot(_task(effort=" high "))["effort"] == "high"
-
-
-@pytest.mark.parametrize("effort", [None, "", "  ", "unknown", "Unknown", 3])
-def test_snapshot_omits_unknown_effort(effort) -> None:
-    extra = {} if effort is None else {"effort": effort}
-    assert "effort" not in harness_snapshot(_task(**extra))
+def test_snapshot_has_no_effort() -> None:
+    assert "effort" not in harness_snapshot(_task(effort="low"))
 
 
 def test_column_line_counts() -> None:

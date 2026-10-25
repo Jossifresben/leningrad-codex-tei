@@ -148,20 +148,13 @@ was written for Gemini's code execution tool. Read it like this:
      "model": "<your exact model ID>",
      "packet_sha256": "<hash from step 1>",
      "attempts": 1,
-     "effort": "<effort level, only if you know it>",
      "scripts": ["<each script command you ran, in order>"],
      "notes": "<anything a reviewer should know, or empty>"
    }
    ```
 
    `attempts` is the number of `check-reply` runs. All fields
-   except `effort`, `scripts` and `notes` are required.
-   `effort` is the reasoning effort level of this session (for
-   example `low`, `medium`, `high`). Write it only if the user, the
-   command that started you, or your harness settings state it.
-   Do not guess. If you do not know it, leave the field out. It is
-   not a sampling setting such as temperature, which you cannot
-   read.
+   except `scripts` and `notes` are required.
    If `claude --version` is not found, get the version from your
    harness in another way (for example, an environment variable
    such as `AI_AGENT`, or the `--version` output of your harness
