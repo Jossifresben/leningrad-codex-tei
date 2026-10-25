@@ -137,6 +137,15 @@ Pass `--help` to any command to see more information.
 The greatest bottleneck to this project is the cost of inference for aligning folios via AI.
 This project seeks to mitigate that by asking contributors run inference for folios that are not completed.
 
+### Goals
+
+The main goal of aligning the folios for v1.0.0 (issues pulled from the `/find-folios` skill will have this label) is to encode the columnar layout of the biblical text.
+
+It does not have to be perfect nor exhaustive, but it should be complete.
+
+For that reason, some parts of a folio are not encoded, such as deletions or erasures.
+Where the codex has these, they may be encoded in a low-fidelity way (for example, as a blank line).
+
 ### Incomplete folios
 
 To see which folios are incomplete, view [open issues tagged with `folio`](https://github.com/charlesLoder/leningrad-codex-tei/issues?q=is%3Aissue+state%3Aopen+label%3Afolio+sort%3Acreated-asc).
@@ -230,6 +239,23 @@ Example:
 ```bash
 claude -p "/align-folio <FOLIO>"
 ```
+
+### Validating model outputs
+
+The pipeline attempts to provide some level of determinism and validation, but it is unable to determine if the model's output is correct.
+
+Generally, models handle the task well.
+
+Agents should report and summarize model output in two levels:
+
+- **Needs human review**: items the model could not decide with high confidence (for example, a column with more or fewer lines than the others, or badly damaged text).
+- **Review notes**: decisions the model made that do not need a check (for example, a blank line that stands for an erasure).
+
+`/folio-pr` puts both levels in the pull request body.
+
+You do not need to resolve every item that needs human review yourself.
+If you cannot check an item (for example, you do not read Hebrew), leave it in the pull request body for the maintainer.
+The maintainer checks these items before the pull request is merged.
 
 ### Handling errors with inference output
 
@@ -332,9 +358,9 @@ The agent skills hand off to each other in this order:
 
 1. `/getting-started`: set up the clone.
 2. `/find-folios` or `/my-folios`: claim folios, or see the ones you have.
-3. `/align-folio`: align one folio side (`/my-folios` runs one subagent per folio).
+3. `/align-folio`: align one folio side (`/my-folios` runs one subagent per folio). It reports the review notes.
 4. `/commit-folios`: generate the TEI files and commit them.
-5. `/folio-pr`: open the pull request that closes the folio issues.
+5. `/folio-pr`: open the pull request that closes the folio issues. It includes the review notes in the pull request body.
 
 ## Editing committed folio files
 

@@ -194,6 +194,26 @@ done
 
 When all sides are aligned, run `commit-folios` once for the whole set, then `folio-pr`.
 
+## Reporting model output
+
+The pipeline commands attempt to provide some level of determinism and validation, but they are unable to determine if the model's output is correct.
+
+Report to users two levels of notes:
+
+- Items requiring human review
+- Review notes about decisions made
+
+Some parts of a folio are not encoded, such as deletions or erasures, and sometimes those may be encoded in low-fidelity ways, such as a blank line.
+That does not require a human review, but it is ok to report.
+
+Items that need human review are when the model was unable to determine its choice with high confidence.
+Issues may include, but are not limited to:
+
+- when there is an unexpected number of lines in a column (e.g. 1 column has more or fewer lines than the others)
+- when the text is badly damaged and needs additional review
+
+Keep the notes per folio side, so `folio-pr` can copy them into the pull request body.
+
 ## Notes
 
 - The skill folder is hashed into each packet. Commit changes to
