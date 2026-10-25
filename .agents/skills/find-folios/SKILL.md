@@ -9,7 +9,7 @@ Find folio sides that still need to be aligned, and claim them for the user.
 Use the repo glossary in `AGENTS.md`.
 
 A comment of `/claim` on an open folio issue assigns the issue to the commenter.
-The `claim-folio` workflow does this. It refuses an issue that has an assignee, and it refuses a user who already holds 10 open folio issues.
+The `claim-folio` workflow does this. It refuses an issue that has an assignee, and it refuses a user who already holds 50 open folio issues (per `.github/workflows/claim-folio.yml`).
 A comment of `/unclaim` removes the commenter from the issue.
 
 ## Rules

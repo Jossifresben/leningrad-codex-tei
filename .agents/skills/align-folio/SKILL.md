@@ -107,6 +107,11 @@ was written for Gemini's code execution tool. Read it like this:
    Copy the words from `<TEXT>` in the prompt onto the lines, in
    order, with no changes. Follow the prompt's notes and lineation
    rules (blank lines get their own `<lb>`).
+   The words are in the block where `<TEXT>` is alone on its line,
+   near the end of `prompt.md`, up to `</TEXT>`. The string `<TEXT>`
+   also occurs in the instructions above it. If a script gets the
+   words, it must match the line that holds only `<TEXT>`, not the
+   first match.
    Line breaks are the part that `check-reply` cannot check. Look
    at each line end in the crops:
    - A whole word that does not fit goes on the next line. Check
