@@ -54,7 +54,11 @@ Use the repo glossary in `AGENTS.md`: a **folio side** is `Fxxx{A|B}`, one TEI d
 6. **Build the PR body.**
    First line names the range, then one `Closes #N` line per issue in folio order, e.g.:
    `Adds TEI documents for folios 001B through 038A.`
-   Completion: the body holds one `Closes` line per side, in the same order as step 2.
+   Then add the notes from `align-folio` ("Reporting model output") under two headings, per folio side:
+   - `## Needs human review`: items the model could not decide with high confidence (e.g. a column with an unexpected line count) that still need checking. Write that the maintainer should check them. Omit the heading if there are none.
+   - `## Review notes`: decisions the model made that need no check (e.g. a blank line for an erasure).
+   If the notes are not in the conversation, ask the user for them. Do not invent notes.
+   Completion: the body holds one `Closes` line per side, in the same order as step 2, plus the notes (or a line saying there are none).
 
 7. **Create the PR and verify.**
    Show the title and body to the user and ask to confirm. Then run:
