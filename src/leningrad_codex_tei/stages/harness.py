@@ -273,11 +273,6 @@ def harness_snapshot(task: Task) -> dict:
         "skill_sha256": task.packet["skill_sha256"],
         "attempts": run["attempts"],
     }
-    # Optional: only what the agent can state. An absent or "unknown"
-    # effort is left out, never filled in.
-    effort = run.get("effort")
-    if isinstance(effort, str) and effort.strip().lower() not in ("", "unknown"):
-        snapshot["effort"] = effort.strip()
     return snapshot
 
 

@@ -423,7 +423,6 @@ _AI_PARAM_ORDER = (
     "thinking_level",
     "harness",
     "harness_version",
-    "effort",
     "skill_sha256",
     "attempts",
 )
@@ -453,7 +452,6 @@ def _ai_features(run: PipelineRun) -> list[dict]:
             "thinking_level",
             "harness",
             "harness_version",
-            "effort",
             "skill_sha256",
             "attempts",
         ):

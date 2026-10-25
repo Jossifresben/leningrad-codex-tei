@@ -495,7 +495,6 @@ def _write_agent_output(
             (tdir / "packet.json").read_bytes()
         ).hexdigest(),
         "attempts": 1,
-        "effort": "high",
         "scripts": ["crop.py --columns 3 --rows 2"],
         "notes": "",
         **run_overrides,
@@ -591,7 +590,7 @@ def test_harness_path_end_to_end(tmp_path: Path, _harness_patches) -> None:
     assert feats["stage"] == "ingest-folio"
     assert feats["model"] == "claude-test"
     assert "provider" not in feats
-    assert feats["effort"] == "high"
+    assert "effort" not in feats
     assert feats["harness"] == "claude-code"
     assert feats["harness_version"] == "9.9.9 (test)"
     assert feats["skill_sha256"] == packet["skill_sha256"]
