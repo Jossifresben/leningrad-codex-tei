@@ -1,8 +1,8 @@
 <index>
   <appInfo>
-    <application ident="leningrad-codex-tei" version="0.7.0">
+    <application ident="leningrad-codex-tei" version="0.8.0">
       <label>Leningrad Codex TEI</label>
-      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.7.0"/>
+      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.8.0"/>
     </application>
   </appInfo>
   <entry folio="001B" href="001B.xml" when="2026-10-20" contributor="Charles W. Loder">
@@ -1299,5 +1299,1130 @@
     <title>Leningrad Codex — 131B (Joshua 18:6 – Joshua 19:6)</title>
     <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
     <date when="2026-10-24T16:57:03.461711+00:00"/>
+  </entry>
+  <entry folio="132A" href="132A.xml" when="2026-10-25T01:37:10.712707+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 132A (Joshua 19:6 – Joshua 19:42)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:37:10.712707+00:00"/>
+  </entry>
+  <entry folio="132B" href="132B.xml" when="2026-10-25T01:37:17.912861+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 132B (Joshua 19:42 – Joshua 21:5)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:37:17.912861+00:00"/>
+  </entry>
+  <entry folio="133A" href="133A.xml" when="2026-10-25T01:37:25.260010+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 133A (Joshua 21:5 – Joshua 21:32)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:37:25.260010+00:00"/>
+  </entry>
+  <entry folio="133B" href="133B.xml" when="2026-10-25T01:37:32.474507+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 133B (Joshua 21:32 – Joshua 21:35; Joshua 21:38 – Joshua 22:10)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:37:32.474507+00:00"/>
+  </entry>
+  <entry folio="134A" href="134A.xml" when="2026-10-25T01:37:39.581756+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 134A (Joshua 22:10 – Joshua 22:29)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:37:39.581756+00:00"/>
+  </entry>
+  <entry folio="134B" href="134B.xml" when="2026-10-25T01:37:46.513025+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 134B (Joshua 22:29 – Joshua 23:14)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:37:46.513025+00:00"/>
+  </entry>
+  <entry folio="135A" href="135A.xml" when="2026-10-24T19:03:48.081034+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 135A (Joshua 23:14 – Joshua 24:15)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:48.081034+00:00"/>
+  </entry>
+  <entry folio="135B" href="135B.xml" when="2026-10-24T19:03:49.058669+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 135B (Joshua 24:15 – Joshua 24:33)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:49.058669+00:00"/>
+  </entry>
+  <entry folio="136A" href="136A.xml" when="2026-10-24T19:03:50.068157+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 136A (Judges 1:1 – Judges 1:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:50.068157+00:00"/>
+  </entry>
+  <entry folio="136B" href="136B.xml" when="2026-10-24T19:03:51.074052+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 136B (Judges 1:25 – Judges 2:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:51.074052+00:00"/>
+  </entry>
+  <entry folio="137A" href="137A.xml" when="2026-10-24T19:03:52.030764+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 137A (Judges 2:11 – Judges 3:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:52.030764+00:00"/>
+  </entry>
+  <entry folio="137B" href="137B.xml" when="2026-10-24T19:03:53.012830+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 137B (Judges 3:10 – Judges 4:2)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:53.012830+00:00"/>
+  </entry>
+  <entry folio="138A" href="138A.xml" when="2026-10-24T19:03:53.996889+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 138A (Judges 4:2 – Judges 4:22)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:53.996889+00:00"/>
+  </entry>
+  <entry folio="138B" href="138B.xml" when="2026-10-24T19:03:54.986200+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 138B (Judges 4:22 – Judges 5:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:54.986200+00:00"/>
+  </entry>
+  <entry folio="139A" href="139A.xml" when="2026-10-24T19:03:56.106275+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 139A (Judges 5:13 – Judges 5:28)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:56.106275+00:00"/>
+  </entry>
+  <entry folio="139B" href="139B.xml" when="2026-10-24T19:03:57.139204+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 139B (Judges 5:28 – Judges 6:20)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T19:03:57.139204+00:00"/>
+  </entry>
+  <entry folio="140A" href="140A.xml" when="2026-10-24T20:16:49.396994+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 140A (Judges 6:20 – Judges 7:1)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:49.396994+00:00"/>
+  </entry>
+  <entry folio="140B" href="140B.xml" when="2026-10-24T20:16:50.405274+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 140B (Judges 7:1 – Judges 7:18)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:50.405274+00:00"/>
+  </entry>
+  <entry folio="141A" href="141A.xml" when="2026-10-24T20:16:51.359415+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 141A (Judges 7:18 – Judges 8:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:51.359415+00:00"/>
+  </entry>
+  <entry folio="141B" href="141B.xml" when="2026-10-24T20:16:52.325962+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 141B (Judges 8:13 – Judges 9:2)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:52.325962+00:00"/>
+  </entry>
+  <entry folio="142A" href="142A.xml" when="2026-10-24T20:16:53.274946+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 142A (Judges 9:2 – Judges 9:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:53.274946+00:00"/>
+  </entry>
+  <entry folio="142B" href="142B.xml" when="2026-10-24T20:16:54.236988+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 142B (Judges 9:26 – Judges 9:49)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:54.236988+00:00"/>
+  </entry>
+  <entry folio="143A" href="143A.xml" when="2026-10-24T20:16:55.205226+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 143A (Judges 9:49 – Judges 10:15)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:55.205226+00:00"/>
+  </entry>
+  <entry folio="143B" href="143B.xml" when="2026-10-24T20:16:56.168744+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 143B (Judges 10:15 – Judges 11:19)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:56.168744+00:00"/>
+  </entry>
+  <entry folio="144A" href="144A.xml" when="2026-10-24T20:16:57.128833+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 144A (Judges 11:19 – Judges 11:40)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:57.128833+00:00"/>
+  </entry>
+  <entry folio="144B" href="144B.xml" when="2026-10-24T20:16:58.091657+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 144B (Judges 12:1 – Judges 13:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:58.091657+00:00"/>
+  </entry>
+  <entry folio="145A" href="145A.xml" when="2026-10-24T20:16:59.100344+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 145A (Judges 13:7 – Judges 14:6)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:16:59.100344+00:00"/>
+  </entry>
+  <entry folio="145B" href="145B.xml" when="2026-10-24T20:17:00.074693+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 145B (Judges 14:6 – Judges 15:8)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:17:00.074693+00:00"/>
+  </entry>
+  <entry folio="146A" href="146A.xml" when="2026-10-24T20:17:01.039678+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 146A (Judges 15:8 – Judges 16:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:17:01.039678+00:00"/>
+  </entry>
+  <entry folio="146B" href="146B.xml" when="2026-10-24T20:17:02.000561+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 146B (Judges 16:10 – Judges 16:30)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T20:17:02.000561+00:00"/>
+  </entry>
+  <entry folio="147A" href="147A.xml" when="2026-10-24T21:56:54.981284+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 147A (Judges 16:30 – Judges 18:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:56:54.981284+00:00"/>
+  </entry>
+  <entry folio="147B" href="147B.xml" when="2026-10-24T21:56:55.948149+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 147B (Judges 18:7 – Judges 18:29)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:56:55.948149+00:00"/>
+  </entry>
+  <entry folio="148A" href="148A.xml" when="2026-10-24T21:56:56.924912+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 148A (Judges 18:29 – Judges 19:20)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:56:56.924912+00:00"/>
+  </entry>
+  <entry folio="148B" href="148B.xml" when="2026-10-24T21:56:57.894375+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 148B (Judges 19:20 – Judges 20:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:56:57.894375+00:00"/>
+  </entry>
+  <entry folio="149A" href="149A.xml" when="2026-10-24T21:56:58.900830+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 149A (Judges 20:11 – Judges 20:34)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:56:58.900830+00:00"/>
+  </entry>
+  <entry folio="149B" href="149B.xml" when="2026-10-24T21:56:59.871080+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 149B (Judges 20:34 – Judges 21:9)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:56:59.871080+00:00"/>
+  </entry>
+  <entry folio="150A" href="150A.xml" when="2026-10-24T20:59:07.293119+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 150A (Judges 21:9 – Samuel_1 1:7)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:07.293119+00:00"/>
+  </entry>
+  <entry folio="150B" href="150B.xml" when="2026-10-24T20:59:13.260072+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 150B (Samuel_1 1:7 – Samuel_1 2:5)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:13.260072+00:00"/>
+  </entry>
+  <entry folio="151A" href="151A.xml" when="2026-10-24T20:59:19.246590+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 151A (Samuel_1 2:5 – Samuel_1 2:30)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:19.246590+00:00"/>
+  </entry>
+  <entry folio="151B" href="151B.xml" when="2026-10-24T20:59:25.178640+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 151B (Samuel_1 2:30 – Samuel_1 3:19)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:25.178640+00:00"/>
+  </entry>
+  <entry folio="152A" href="152A.xml" when="2026-10-24T20:59:31.145465+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 152A (Samuel_1 3:19 – Samuel_1 4:20)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:31.145465+00:00"/>
+  </entry>
+  <entry folio="152B" href="152B.xml" when="2026-10-24T20:59:37.109817+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 152B (Samuel_1 4:20 – Samuel_1 6:7)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:37.109817+00:00"/>
+  </entry>
+  <entry folio="153A" href="153A.xml" when="2026-10-24T20:59:43.049802+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 153A (Samuel_1 6:7 – Samuel_1 7:4)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:43.049802+00:00"/>
+  </entry>
+  <entry folio="153B" href="153B.xml" when="2026-10-24T20:59:48.967435+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 153B (Samuel_1 7:4 – Samuel_1 8:11)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:48.967435+00:00"/>
+  </entry>
+  <entry folio="154A" href="154A.xml" when="2026-10-24T20:59:55.000108+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 154A (Samuel_1 8:11 – Samuel_1 9:13)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T20:59:55.000108+00:00"/>
+  </entry>
+  <entry folio="154B" href="154B.xml" when="2026-10-24T21:09:11.722193+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 154B (Samuel_1 9:13 – Samuel_1 10:6)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:11.722193+00:00"/>
+  </entry>
+  <entry folio="155A" href="155A.xml" when="2026-10-24T21:09:17.680786+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 155A (Samuel_1 10:6 – Samuel_1 11:3)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:17.680786+00:00"/>
+  </entry>
+  <entry folio="155B" href="155B.xml" when="2026-10-24T21:09:23.620623+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 155B (Samuel_1 11:3 – Samuel_1 12:9)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:23.620623+00:00"/>
+  </entry>
+  <entry folio="156A" href="156A.xml" when="2026-10-24T21:09:29.606588+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 156A (Samuel_1 12:9 – Samuel_1 13:5)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:29.606588+00:00"/>
+  </entry>
+  <entry folio="156B" href="156B.xml" when="2026-10-24T21:09:35.769230+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 156B (Samuel_1 13:5 – Samuel_1 14:5)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:35.769230+00:00"/>
+  </entry>
+  <entry folio="157A" href="157A.xml" when="2026-10-24T21:09:41.746097+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 157A (Samuel_1 14:5 – Samuel_1 14:28)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:41.746097+00:00"/>
+  </entry>
+  <entry folio="157B" href="157B.xml" when="2026-10-24T21:09:47.759296+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 157B (Samuel_1 14:28 – Samuel_1 14:51)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:47.759296+00:00"/>
+  </entry>
+  <entry folio="158A" href="158A.xml" when="2026-10-24T21:09:53.700742+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 158A (Samuel_1 14:51 – Samuel_1 15:23)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:53.700742+00:00"/>
+  </entry>
+  <entry folio="158B" href="158B.xml" when="2026-10-24T21:09:59.746332+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 158B (Samuel_1 15:23 – Samuel_1 16:11)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-24T21:09:59.746332+00:00"/>
+  </entry>
+  <entry folio="159A" href="159A.xml" when="2026-10-25T01:38:00.706922+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 159A (Samuel_1 16:11 – Samuel_1 17:11)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:00.706922+00:00"/>
+  </entry>
+  <entry folio="159B" href="159B.xml" when="2026-10-25T01:38:07.819122+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 159B (Samuel_1 17:11 – Samuel_1 17:34)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:07.819122+00:00"/>
+  </entry>
+  <entry folio="160A" href="160A.xml" when="2026-10-25T01:38:15.584586+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 160A (Samuel_1 17:34 – Samuel_1 17:55)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:15.584586+00:00"/>
+  </entry>
+  <entry folio="160B" href="160B.xml" when="2026-10-25T01:38:22.906876+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 160B (Samuel_1 17:56 – Samuel_1 18:23)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:22.906876+00:00"/>
+  </entry>
+  <entry folio="161A" href="161A.xml" when="2026-10-25T01:38:30.349840+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 161A (Samuel_1 18:23 – Samuel_1 19:14)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:30.349840+00:00"/>
+  </entry>
+  <entry folio="161B" href="161B.xml" when="2026-10-25T01:38:37.772399+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 161B (Samuel_1 19:14 – Samuel_1 20:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:37.772399+00:00"/>
+  </entry>
+  <entry folio="162A" href="162A.xml" when="2026-10-25T01:38:44.822184+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 162A (Samuel_1 20:12 – Samuel_1 20:35)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:44.822184+00:00"/>
+  </entry>
+  <entry folio="162B" href="162B.xml" when="2026-10-25T01:38:51.992061+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 162B (Samuel_1 20:35 – Samuel_1 21:14)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:51.992061+00:00"/>
+  </entry>
+  <entry folio="163A" href="163A.xml" when="2026-10-25T01:38:59.044279+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 163A (Samuel_1 21:14 – Samuel_1 22:19)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:38:59.044279+00:00"/>
+  </entry>
+  <entry folio="163B" href="163B.xml" when="2026-10-24T21:57:00.853931+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 163B (Samuel_1 22:19 – Samuel_1 23:18)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:00.853931+00:00"/>
+  </entry>
+  <entry folio="164A" href="164A.xml" when="2026-10-24T21:57:01.823743+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 164A (Samuel_1 23:18 – Samuel_1 24:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:01.823743+00:00"/>
+  </entry>
+  <entry folio="164B" href="164B.xml" when="2026-10-24T21:57:02.781509+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 164B (Samuel_1 24:11 – Samuel_1 25:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:02.781509+00:00"/>
+  </entry>
+  <entry folio="165A" href="165A.xml" when="2026-10-24T21:57:03.741945+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 165A (Samuel_1 25:11 – Samuel_1 25:32)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:03.741945+00:00"/>
+  </entry>
+  <entry folio="165B" href="165B.xml" when="2026-10-24T21:57:04.706143+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 165B (Samuel_1 25:32 – Samuel_1 26:9)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:04.706143+00:00"/>
+  </entry>
+  <entry folio="166A" href="166A.xml" when="2026-10-24T21:57:05.670515+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 166A (Samuel_1 26:9 – Samuel_1 27:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:05.670515+00:00"/>
+  </entry>
+  <entry folio="166B" href="166B.xml" when="2026-10-24T21:57:06.642829+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 166B (Samuel_1 27:4 – Samuel_1 28:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:06.642829+00:00"/>
+  </entry>
+  <entry folio="167A" href="167A.xml" when="2026-10-24T21:57:07.706775+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 167A (Samuel_1 28:13 – Samuel_1 29:6)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:07.706775+00:00"/>
+  </entry>
+  <entry folio="167B" href="167B.xml" when="2026-10-24T21:57:08.681148+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 167B (Samuel_1 29:6 – Samuel_1 30:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-24T21:57:08.681148+00:00"/>
+  </entry>
+  <entry folio="168A" href="168A.xml" when="2026-10-25T01:43:57.324581+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 168A (Samuel_1 30:17 – Samuel_1 31:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:43:57.324581+00:00"/>
+  </entry>
+  <entry folio="168B" href="168B.xml" when="2026-10-25T01:43:58.355222+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 168B (Samuel_1 31:7 – Samuel_2 1:20)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:43:58.355222+00:00"/>
+  </entry>
+  <entry folio="169A" href="169A.xml" when="2026-10-25T01:43:59.423567+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 169A (Samuel_2 1:20 – Samuel_2 2:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:43:59.423567+00:00"/>
+  </entry>
+  <entry folio="169B" href="169B.xml" when="2026-10-25T01:44:00.794491+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 169B (Samuel_2 2:17 – Samuel_2 3:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:44:00.794491+00:00"/>
+  </entry>
+  <entry folio="170A" href="170A.xml" when="2026-10-25T01:44:02.053264+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 170A (Samuel_2 3:7 – Samuel_2 3:28)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:44:02.053264+00:00"/>
+  </entry>
+  <entry folio="170B" href="170B.xml" when="2026-10-25T01:44:03.081820+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 170B (Samuel_2 3:28 – Samuel_2 4:9)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:44:03.081820+00:00"/>
+  </entry>
+  <entry folio="171A" href="171A.xml" when="2026-10-25T01:44:04.086232+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 171A (Samuel_2 4:9 – Samuel_2 5:21)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:44:04.086232+00:00"/>
+  </entry>
+  <entry folio="171B" href="171B.xml" when="2026-10-25T01:44:05.121521+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 171B (Samuel_2 5:21 – Samuel_2 6:19)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:44:05.121521+00:00"/>
+  </entry>
+  <entry folio="172A" href="172A.xml" when="2026-10-25T01:44:06.129218+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 172A (Samuel_2 6:19 – Samuel_2 7:20)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:44:06.129218+00:00"/>
+  </entry>
+  <entry folio="172B" href="172B.xml" when="2026-10-25T01:44:07.134720+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 172B (Samuel_2 7:20 – Samuel_2 8:14)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T01:44:07.134720+00:00"/>
+  </entry>
+  <entry folio="173A" href="173A.xml" when="2026-10-25T01:48:25.458525+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 173A (Samuel_2 8:14 – Samuel_2 10:6)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:48:25.458525+00:00"/>
+  </entry>
+  <entry folio="173B" href="173B.xml" when="2026-10-25T01:48:32.429742+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 173B (Samuel_2 10:6 – Samuel_2 11:10)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:48:32.429742+00:00"/>
+  </entry>
+  <entry folio="174A" href="174A.xml" when="2026-10-25T01:48:39.664017+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 174A (Samuel_2 11:10 – Samuel_2 12:4)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:48:39.664017+00:00"/>
+  </entry>
+  <entry folio="174B" href="174B.xml" when="2026-10-25T01:48:46.714634+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 174B (Samuel_2 12:5 – Samuel_2 12:27)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:48:46.714634+00:00"/>
+  </entry>
+  <entry folio="175A" href="175A.xml" when="2026-10-25T01:48:53.830612+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 175A (Samuel_2 12:27 – Samuel_2 13:18)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:48:53.830612+00:00"/>
+  </entry>
+  <entry folio="175B" href="175B.xml" when="2026-10-25T01:49:00.797373+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 175B (Samuel_2 13:18 – Samuel_2 14:1)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:49:00.797373+00:00"/>
+  </entry>
+  <entry folio="176A" href="176A.xml" when="2026-10-25T01:49:07.700688+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 176A (Samuel_2 14:2 – Samuel_2 14:20)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:49:07.700688+00:00"/>
+  </entry>
+  <entry folio="176B" href="176B.xml" when="2026-10-25T01:49:14.378579+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 176B (Samuel_2 14:21 – Samuel_2 15:7)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:49:14.378579+00:00"/>
+  </entry>
+  <entry folio="177A" href="177A.xml" when="2026-10-25T01:49:21.307253+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 177A (Samuel_2 15:7 – Samuel_2 15:30)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:49:21.307253+00:00"/>
+  </entry>
+  <entry folio="177B" href="177B.xml" when="2026-10-25T01:59:45.974372+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 177B (Samuel_2 15:30 – Samuel_2 16:14)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:59:45.974372+00:00"/>
+  </entry>
+  <entry folio="178A" href="178A.xml" when="2026-10-25T01:59:52.826840+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 178A (Samuel_2 16:14 – Samuel_2 17:13)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:59:52.826840+00:00"/>
+  </entry>
+  <entry folio="178B" href="178B.xml" when="2026-10-25T01:59:59.907304+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 178B (Samuel_2 17:14 – Samuel_2 18:3)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T01:59:59.907304+00:00"/>
+  </entry>
+  <entry folio="179A" href="179A.xml" when="2026-10-25T02:00:06.885979+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 179A (Samuel_2 18:3 – Samuel_2 18:25)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T02:00:06.885979+00:00"/>
+  </entry>
+  <entry folio="179B" href="179B.xml" when="2026-10-25T02:00:13.989021+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 179B (Samuel_2 18:26 – Samuel_2 19:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T02:00:13.989021+00:00"/>
+  </entry>
+  <entry folio="180A" href="180A.xml" when="2026-10-25T02:00:21.033314+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 180A (Samuel_2 19:12 – Samuel_2 19:35)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T02:00:21.033314+00:00"/>
+  </entry>
+  <entry folio="180B" href="180B.xml" when="2026-10-25T02:00:28.294320+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 180B (Samuel_2 19:35 – Samuel_2 20:9)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T02:00:28.294320+00:00"/>
+  </entry>
+  <entry folio="181A" href="181A.xml" when="2026-10-25T02:00:35.340449+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 181A (Samuel_2 20:10 – Samuel_2 21:4)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T02:00:35.340449+00:00"/>
+  </entry>
+  <entry folio="181B" href="181B.xml" when="2026-10-25T02:00:42.381023+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 181B (Samuel_2 21:4 – Samuel_2 21:22)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T02:00:42.381023+00:00"/>
+  </entry>
+  <entry folio="182A" href="182A.xml" when="2026-10-25T10:28:17.793903+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 182A (Samuel_2 22:1 – Samuel_2 22:24)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:28:17.793903+00:00"/>
+  </entry>
+  <entry folio="182B" href="182B.xml" when="2026-10-25T10:28:24.747124+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 182B (Samuel_2 22:25 – Samuel_2 23:3)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:28:24.747124+00:00"/>
+  </entry>
+  <entry folio="183A" href="183A.xml" when="2026-10-25T10:28:31.733191+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 183A (Samuel_2 23:3 – Samuel_2 23:29)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:28:31.733191+00:00"/>
+  </entry>
+  <entry folio="183B" href="183B.xml" when="2026-10-25T10:28:39.743107+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 183B (Samuel_2 23:29 – Samuel_2 24:16)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:28:39.743107+00:00"/>
+  </entry>
+  <entry folio="184A" href="184A.xml" when="2026-10-25T10:28:48.065220+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 184A (Samuel_2 24:16 – Kings_1 1:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:28:48.065220+00:00"/>
+  </entry>
+  <entry folio="184B" href="184B.xml" when="2026-10-25T10:28:58.469438+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 184B (Kings_1 1:12 – Kings_1 1:37)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:28:58.469438+00:00"/>
+  </entry>
+  <entry folio="185A" href="185A.xml" when="2026-10-25T10:29:06.884498+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 185A (Kings_1 1:37 – Kings_1 2:5)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:29:06.884498+00:00"/>
+  </entry>
+  <entry folio="185B" href="185B.xml" when="2026-10-25T10:29:14.865603+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 185B (Kings_1 2:5 – Kings_1 2:27)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:29:14.865603+00:00"/>
+  </entry>
+  <entry folio="186A" href="186A.xml" when="2026-10-25T10:29:22.090564+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 186A (Kings_1 2:28 – Kings_1 3:2)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T10:29:22.090564+00:00"/>
+  </entry>
+  <entry folio="186B" href="186B.xml" when="2026-10-25T02:58:52.868511+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 186B (Kings_1 3:2 – Kings_1 3:24)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:58:52.868511+00:00"/>
+  </entry>
+  <entry folio="187A" href="187A.xml" when="2026-10-25T02:58:53.921877+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 187A (Kings_1 3:25 – Kings_1 5:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:58:53.921877+00:00"/>
+  </entry>
+  <entry folio="187B" href="187B.xml" when="2026-10-25T02:58:54.908324+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 187B (Kings_1 5:4 – Kings_1 5:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:58:54.908324+00:00"/>
+  </entry>
+  <entry folio="188A" href="188A.xml" when="2026-10-25T02:58:55.900998+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 188A (Kings_1 5:25 – Kings_1 6:16)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:58:55.900998+00:00"/>
+  </entry>
+  <entry folio="188B" href="188B.xml" when="2026-10-25T02:58:56.880559+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 188B (Kings_1 6:16 – Kings_1 7:6)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:58:56.880559+00:00"/>
+  </entry>
+  <entry folio="189A" href="189A.xml" when="2026-10-25T02:58:57.862508+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 189A (Kings_1 7:6 – Kings_1 7:27)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:58:57.862508+00:00"/>
+  </entry>
+  <entry folio="189B" href="189B.xml" when="2026-10-25T02:58:58.856298+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 189B (Kings_1 7:27 – Kings_1 7:49)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:58:58.856298+00:00"/>
+  </entry>
+  <entry folio="190A" href="190A.xml" when="2026-10-25T02:58:59.877468+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 190A (Kings_1 7:49 – Kings_1 8:21)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:58:59.877468+00:00"/>
+  </entry>
+  <entry folio="190B" href="190B.xml" when="2026-10-25T02:59:00.915490+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 190B (Kings_1 8:21 – Kings_1 8:40)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:00.915490+00:00"/>
+  </entry>
+  <entry folio="191A" href="191A.xml" when="2026-10-25T02:59:01.912084+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 191A (Kings_1 8:40 – Kings_1 8:62)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:01.912084+00:00"/>
+  </entry>
+  <entry folio="191B" href="191B.xml" when="2026-10-25T02:59:02.902617+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 191B (Kings_1 8:62 – Kings_1 9:14)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:02.902617+00:00"/>
+  </entry>
+  <entry folio="192A" href="192A.xml" when="2026-10-25T02:59:03.896747+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 192A (Kings_1 9:14 – Kings_1 10:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:03.896747+00:00"/>
+  </entry>
+  <entry folio="192B" href="192B.xml" when="2026-10-25T02:59:04.888396+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 192B (Kings_1 10:10 – Kings_1 11:3)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:04.888396+00:00"/>
+  </entry>
+  <entry folio="193A" href="193A.xml" when="2026-10-25T02:59:05.893118+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 193A (Kings_1 11:3 – Kings_1 11:26)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:05.893118+00:00"/>
+  </entry>
+  <entry folio="193B" href="193B.xml" when="2026-10-25T02:59:06.879071+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 193B (Kings_1 11:26 – Kings_1 12:6)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:06.879071+00:00"/>
+  </entry>
+  <entry folio="194A" href="194A.xml" when="2026-10-25T02:59:07.934540+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 194A (Kings_1 12:6 – Kings_1 12:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:07.934540+00:00"/>
+  </entry>
+  <entry folio="194B" href="194B.xml" when="2026-10-25T02:59:08.941887+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 194B (Kings_1 12:26 – Kings_1 13:12)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:08.941887+00:00"/>
+  </entry>
+  <entry folio="195A" href="195A.xml" when="2026-10-25T02:59:09.981350+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 195A (Kings_1 13:12 – Kings_1 14:1)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:09.981350+00:00"/>
+  </entry>
+  <entry folio="195B" href="195B.xml" when="2026-10-25T02:59:11.071485+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 195B (Kings_1 14:1 – Kings_1 14:21)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:11.071485+00:00"/>
+  </entry>
+  <entry folio="196A" href="196A.xml" when="2026-10-25T02:59:12.172031+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 196A (Kings_1 14:21 – Kings_1 15:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:12.172031+00:00"/>
+  </entry>
+  <entry folio="196B" href="196B.xml" when="2026-10-25T02:59:13.180617+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 196B (Kings_1 15:17 – Kings_1 16:5)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:13.180617+00:00"/>
+  </entry>
+  <entry folio="197A" href="197A.xml" when="2026-10-25T02:59:14.175122+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 197A (Kings_1 16:5 – Kings_1 16:26)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:14.175122+00:00"/>
+  </entry>
+  <entry folio="197B" href="197B.xml" when="2026-10-25T02:59:15.268927+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 197B (Kings_1 16:26 – Kings_1 17:16)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:15.268927+00:00"/>
+  </entry>
+  <entry folio="198A" href="198A.xml" when="2026-10-25T02:59:16.303626+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 198A (Kings_1 17:17 – Kings_1 18:16)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:16.303626+00:00"/>
+  </entry>
+  <entry folio="198B" href="198B.xml" when="2026-10-25T02:59:17.298233+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 198B (Kings_1 18:16 – Kings_1 18:37)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T02:59:17.298233+00:00"/>
+  </entry>
+  <entry folio="199A" href="199A.xml" when="2026-10-25T11:27:17.697290+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 199A (Kings_1 18:37 – Kings_1 19:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:17.697290+00:00"/>
+  </entry>
+  <entry folio="199B" href="199B.xml" when="2026-10-25T11:27:18.697960+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 199B (Kings_1 19:13 – Kings_1 20:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:18.697960+00:00"/>
+  </entry>
+  <entry folio="200A" href="200A.xml" when="2026-10-25T11:27:19.688951+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 200A (Kings_1 20:13 – Kings_1 20:32)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:19.688951+00:00"/>
+  </entry>
+  <entry folio="200B" href="200B.xml" when="2026-10-25T11:27:20.722009+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 200B (Kings_1 20:32 – Kings_1 21:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:20.722009+00:00"/>
+  </entry>
+  <entry folio="201A" href="201A.xml" when="2026-10-25T11:27:21.712565+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 201A (Kings_1 21:7 – Kings_1 22:1)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:21.712565+00:00"/>
+  </entry>
+  <entry folio="201B" href="201B.xml" when="2026-10-25T11:27:22.700568+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 201B (Kings_1 22:1 – Kings_1 22:23)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:22.700568+00:00"/>
+  </entry>
+  <entry folio="202A" href="202A.xml" when="2026-10-25T11:27:23.713645+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 202A (Kings_1 22:23 – Kings_1 22:48)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:23.713645+00:00"/>
+  </entry>
+  <entry folio="202B" href="202B.xml" when="2026-10-25T11:27:24.720553+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 202B (Kings_1 22:48 – Kings_2 1:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:24.720553+00:00"/>
+  </entry>
+  <entry folio="203A" href="203A.xml" when="2026-10-25T11:27:25.731543+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 203A (Kings_2 1:13 – Kings_2 2:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:25.731543+00:00"/>
+  </entry>
+  <entry folio="203B" href="203B.xml" when="2026-10-25T11:27:26.733740+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 203B (Kings_2 2:13 – Kings_2 3:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:26.733740+00:00"/>
+  </entry>
+  <entry folio="204A" href="204A.xml" when="2026-10-25T11:27:27.730632+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 204A (Kings_2 3:11 – Kings_2 4:6)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:27.730632+00:00"/>
+  </entry>
+  <entry folio="204B" href="204B.xml" when="2026-10-25T11:27:28.742889+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 204B (Kings_2 4:6 – Kings_2 4:30)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:28.742889+00:00"/>
+  </entry>
+  <entry folio="205A" href="205A.xml" when="2026-10-25T11:27:29.736047+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 205A (Kings_2 4:30 – Kings_2 5:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:29.736047+00:00"/>
+  </entry>
+  <entry folio="205B" href="205B.xml" when="2026-10-25T11:27:30.737444+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 205B (Kings_2 5:7 – Kings_2 5:26)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:30.737444+00:00"/>
+  </entry>
+  <entry folio="206A" href="206A.xml" when="2026-10-25T11:27:31.737414+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 206A (Kings_2 5:26 – Kings_2 6:23)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:31.737414+00:00"/>
+  </entry>
+  <entry folio="206B" href="206B.xml" when="2026-10-25T11:27:32.729624+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 206B (Kings_2 6:23 – Kings_2 7:8)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:32.729624+00:00"/>
+  </entry>
+  <entry folio="207A" href="207A.xml" when="2026-10-25T11:27:33.759054+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 207A (Kings_2 7:8 – Kings_2 8:5)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:33.759054+00:00"/>
+  </entry>
+  <entry folio="207B" href="207B.xml" when="2026-10-25T11:27:34.762650+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 207B (Kings_2 8:5 – Kings_2 8:27)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:34.762650+00:00"/>
+  </entry>
+  <entry folio="208A" href="208A.xml" when="2026-10-25T11:27:35.750202+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 208A (Kings_2 8:27 – Kings_2 9:18)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:35.750202+00:00"/>
+  </entry>
+  <entry folio="208B" href="208B.xml" when="2026-10-25T11:27:36.743247+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 208B (Kings_2 9:18 – Kings_2 10:1)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:36.743247+00:00"/>
+  </entry>
+  <entry folio="209A" href="209A.xml" when="2026-10-25T11:27:37.735493+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 209A (Kings_2 10:1 – Kings_2 10:19)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:37.735493+00:00"/>
+  </entry>
+  <entry folio="209B" href="209B.xml" when="2026-10-25T11:27:38.745020+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 209B (Kings_2 10:19 – Kings_2 11:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:38.745020+00:00"/>
+  </entry>
+  <entry folio="210A" href="210A.xml" when="2026-10-25T11:27:39.857440+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 210A (Kings_2 11:4 – Kings_2 12:5)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:39.857440+00:00"/>
+  </entry>
+  <entry folio="210B" href="210B.xml" when="2026-10-25T11:27:40.888914+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 210B (Kings_2 12:5 – Kings_2 13:1)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:40.888914+00:00"/>
+  </entry>
+  <entry folio="211A" href="211A.xml" when="2026-10-25T11:27:41.910240+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 211A (Kings_2 13:1 – Kings_2 13:21)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:41.910240+00:00"/>
+  </entry>
+  <entry folio="211B" href="211B.xml" when="2026-10-25T11:27:42.931143+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 211B (Kings_2 13:21 – Kings_2 14:15)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:42.931143+00:00"/>
+  </entry>
+  <entry folio="212A" href="212A.xml" when="2026-10-25T11:27:43.961151+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 212A (Kings_2 14:15 – Kings_2 15:8)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:43.961151+00:00"/>
+  </entry>
+  <entry folio="212B" href="212B.xml" when="2026-10-25T11:27:45.053931+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 212B (Kings_2 15:9 – Kings_2 15:29)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:45.053931+00:00"/>
+  </entry>
+  <entry folio="213A" href="213A.xml" when="2026-10-25T11:27:46.071205+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 213A (Kings_2 15:29 – Kings_2 16:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:46.071205+00:00"/>
+  </entry>
+  <entry folio="213B" href="213B.xml" when="2026-10-25T11:27:47.065707+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 213B (Kings_2 16:11 – Kings_2 17:12)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:47.065707+00:00"/>
+  </entry>
+  <entry folio="214A" href="214A.xml" when="2026-10-25T11:27:48.059018+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 214A (Kings_2 17:12 – Kings_2 17:32)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:48.059018+00:00"/>
+  </entry>
+  <entry folio="214B" href="214B.xml" when="2026-10-25T11:27:49.090520+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 214B (Kings_2 17:32 – Kings_2 18:12)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:49.090520+00:00"/>
+  </entry>
+  <entry folio="215A" href="215A.xml" when="2026-10-25T11:27:50.141796+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 215A (Kings_2 18:12 – Kings_2 18:28)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:50.141796+00:00"/>
+  </entry>
+  <entry folio="215B" href="215B.xml" when="2026-10-25T11:27:51.199358+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 215B (Kings_2 18:28 – Kings_2 19:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:51.199358+00:00"/>
+  </entry>
+  <entry folio="216A" href="216A.xml" when="2026-10-25T11:27:52.198557+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 216A (Kings_2 19:11 – Kings_2 19:32)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:52.198557+00:00"/>
+  </entry>
+  <entry folio="216B" href="216B.xml" when="2026-10-25T11:27:53.461004+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 216B (Kings_2 19:33 – Kings_2 20:15)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:53.461004+00:00"/>
+  </entry>
+  <entry folio="217A" href="217A.xml" when="2026-10-25T11:27:54.470475+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 217A (Kings_2 20:15 – Kings_2 21:16)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:54.470475+00:00"/>
+  </entry>
+  <entry folio="217B" href="217B.xml" when="2026-10-25T11:27:55.506738+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 217B (Kings_2 21:16 – Kings_2 22:12)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:55.506738+00:00"/>
+  </entry>
+  <entry folio="218A" href="218A.xml" when="2026-10-25T11:27:56.583918+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 218A (Kings_2 22:13 – Kings_2 23:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:56.583918+00:00"/>
+  </entry>
+  <entry folio="218B" href="218B.xml" when="2026-10-25T11:27:57.624623+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 218B (Kings_2 23:7 – Kings_2 23:24)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T11:27:57.624623+00:00"/>
+  </entry>
+  <entry folio="219A" href="219A.xml" when="2026-10-25T18:01:45.364815+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 219A (Kings_2 23:24 – Kings_2 24:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:45.364815+00:00"/>
+  </entry>
+  <entry folio="219B" href="219B.xml" when="2026-10-25T18:01:46.367368+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 219B (Kings_2 24:7 – Kings_2 25:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:46.367368+00:00"/>
+  </entry>
+  <entry folio="220A" href="220A.xml" when="2026-10-25T18:01:47.393512+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 220A (Kings_2 25:10 – Kings_2 25:28)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:47.393512+00:00"/>
+  </entry>
+  <entry folio="220B" href="220B.xml" when="2026-10-25T18:01:48.392597+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 220B (Kings_2 25:28 – Isaiah 1:24)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:48.392597+00:00"/>
+  </entry>
+  <entry folio="221A" href="221A.xml" when="2026-10-25T18:01:49.391872+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 221A (Isaiah 1:24 – Isaiah 2:22)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:49.391872+00:00"/>
+  </entry>
+  <entry folio="221B" href="221B.xml" when="2026-10-25T18:01:50.384704+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 221B (Isaiah 3:1 – Isaiah 4:5)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:50.384704+00:00"/>
+  </entry>
+  <entry folio="222A" href="222A.xml" when="2026-10-25T18:01:51.385589+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 222A (Isaiah 4:5 – Isaiah 5:26)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:51.385589+00:00"/>
+  </entry>
+  <entry folio="222B" href="222B.xml" when="2026-10-25T18:01:52.374173+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 222B (Isaiah 5:26 – Isaiah 7:6)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:52.374173+00:00"/>
+  </entry>
+  <entry folio="223A" href="223A.xml" when="2026-10-25T18:01:53.373756+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 223A (Isaiah 7:6 – Isaiah 8:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:53.373756+00:00"/>
+  </entry>
+  <entry folio="223B" href="223B.xml" when="2026-10-25T18:01:54.382214+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 223B (Isaiah 8:7 – Isaiah 9:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T18:01:54.382214+00:00"/>
+  </entry>
+  <entry folio="224A" href="224A.xml" when="2026-10-25T17:52:46.895405+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 224A (Isaiah 9:11 – Isaiah 10:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T17:52:46.895405+00:00"/>
+  </entry>
+  <entry folio="224B" href="224B.xml" when="2026-10-25T17:52:47.891538+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 224B (Isaiah 10:17 – Isaiah 11:12)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T17:52:47.891538+00:00"/>
+  </entry>
+  <entry folio="225A" href="225A.xml" when="2026-10-25T17:52:48.953332+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 225A (Isaiah 11:12 – Isaiah 13:19)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T17:52:48.953332+00:00"/>
+  </entry>
+  <entry folio="225B" href="225B.xml" when="2026-10-25T17:52:49.975742+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 225B (Isaiah 13:19 – Isaiah 14:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T17:52:49.975742+00:00"/>
+  </entry>
+  <entry folio="226A" href="226A.xml" when="2026-10-25T17:52:50.964538+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 226A (Isaiah 14:25 – Isaiah 16:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-25T17:52:50.964538+00:00"/>
+  </entry>
+  <entry folio="226B" href="226B.xml" when="2026-10-25T14:37:38.023331+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 226B (Isaiah 16:10 – Isaiah 18:5)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:37:38.023331+00:00"/>
+  </entry>
+  <entry folio="227A" href="227A.xml" when="2026-10-25T14:37:44.764208+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 227A (Isaiah 18:5 – Isaiah 19:21)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:37:44.764208+00:00"/>
+  </entry>
+  <entry folio="227B" href="227B.xml" when="2026-10-25T14:37:51.687445+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 227B (Isaiah 19:21 – Isaiah 21:13)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:37:51.687445+00:00"/>
+  </entry>
+  <entry folio="228A" href="228A.xml" when="2026-10-25T14:37:58.382569+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 228A (Isaiah 21:13 – Isaiah 22:25)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:37:58.382569+00:00"/>
+  </entry>
+  <entry folio="228B" href="228B.xml" when="2026-10-25T14:38:05.202270+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 228B (Isaiah 22:25 – Isaiah 24:11)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:38:05.202270+00:00"/>
+  </entry>
+  <entry folio="229A" href="229A.xml" when="2026-10-25T14:38:12.176820+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 229A (Isaiah 24:12 – Isaiah 26:5)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:38:12.176820+00:00"/>
+  </entry>
+  <entry folio="229B" href="229B.xml" when="2026-10-25T14:38:19.426490+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 229B (Isaiah 26:5 – Isaiah 27:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:38:19.426490+00:00"/>
+  </entry>
+  <entry folio="230A" href="230A.xml" when="2026-10-25T14:38:26.726814+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 230A (Isaiah 27:12 – Isaiah 28:23)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:38:26.726814+00:00"/>
+  </entry>
+  <entry folio="230B" href="230B.xml" when="2026-10-25T14:38:33.603180+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 230B (Isaiah 28:23 – Isaiah 29:19)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T14:38:33.603180+00:00"/>
+  </entry>
+  <entry folio="231A" href="231A.xml" when="2026-10-25T18:27:14.731336+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 231A (Isaiah 29:19 – Isaiah 30:19)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:27:14.731336+00:00"/>
+  </entry>
+  <entry folio="231B" href="231B.xml" when="2026-10-25T18:27:28.673423+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 231B (Isaiah 30:19 – Isaiah 31:6)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:27:28.673423+00:00"/>
+  </entry>
+  <entry folio="232A" href="232A.xml" when="2026-10-25T18:27:44.941653+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 232A (Isaiah 31:7 – Isaiah 33:9)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:27:44.941653+00:00"/>
+  </entry>
+  <entry folio="232B" href="232B.xml" when="2026-10-25T18:28:01.202774+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 232B (Isaiah 33:9 – Isaiah 34:14)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:28:01.202774+00:00"/>
+  </entry>
+  <entry folio="233A" href="233A.xml" when="2026-10-25T18:28:17.201769+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 233A (Isaiah 34:14 – Isaiah 36:10)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:28:17.201769+00:00"/>
+  </entry>
+  <entry folio="233B" href="233B.xml" when="2026-10-25T18:28:33.540561+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 233B (Isaiah 36:10 – Isaiah 37:8)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:28:33.540561+00:00"/>
+  </entry>
+  <entry folio="234A" href="234A.xml" when="2026-10-25T18:28:51.448532+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 234A (Isaiah 37:8 – Isaiah 37:32)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:28:51.448532+00:00"/>
+  </entry>
+  <entry folio="234B" href="234B.xml" when="2026-10-25T18:29:07.750058+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 234B (Isaiah 37:32 – Isaiah 38:18)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:29:07.750058+00:00"/>
+  </entry>
+  <entry folio="235A" href="235A.xml" when="2026-10-25T18:29:23.937969+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 235A (Isaiah 38:18 – Isaiah 40:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:29:23.937969+00:00"/>
+  </entry>
+  <entry folio="235B" href="235B.xml" when="2026-10-25T18:49:30.208068+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 235B (Isaiah 40:12 – Isaiah 41:10)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:49:30.208068+00:00"/>
+  </entry>
+  <entry folio="236A" href="236A.xml" when="2026-10-25T18:49:44.935642+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 236A (Isaiah 41:10 – Isaiah 42:7)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:49:44.935642+00:00"/>
+  </entry>
+  <entry folio="236B" href="236B.xml" when="2026-10-25T18:50:00.532297+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 236B (Isaiah 42:7 – Isaiah 43:9)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:50:00.532297+00:00"/>
+  </entry>
+  <entry folio="237A" href="237A.xml" when="2026-10-25T18:50:13.984036+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 237A (Isaiah 43:9 – Isaiah 44:11)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:50:13.984036+00:00"/>
+  </entry>
+  <entry folio="237B" href="237B.xml" when="2026-10-25T18:50:29.786480+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 237B (Isaiah 44:11 – Isaiah 45:7)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:50:29.786480+00:00"/>
+  </entry>
+  <entry folio="238A" href="238A.xml" when="2026-10-25T18:50:41.414305+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 238A (Isaiah 45:7 – Isaiah 46:6)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:50:41.414305+00:00"/>
+  </entry>
+  <entry folio="238B" href="238B.xml" when="2026-10-25T18:50:57.554789+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 238B (Isaiah 46:6 – Isaiah 48:1)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:50:57.554789+00:00"/>
+  </entry>
+  <entry folio="239A" href="239A.xml" when="2026-10-25T18:51:14.332232+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 239A (Isaiah 48:1 – Isaiah 49:6)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:51:14.332232+00:00"/>
+  </entry>
+  <entry folio="239B" href="239B.xml" when="2026-10-25T18:51:32.709876+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 239B (Isaiah 49:6 – Isaiah 50:2)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T18:51:32.709876+00:00"/>
+  </entry>
+  <entry folio="240A" href="240A.xml" when="2026-10-25T19:17:43.422522+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 240A (Isaiah 50:2 – Isaiah 51:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:17:43.422522+00:00"/>
+  </entry>
+  <entry folio="240B" href="240B.xml" when="2026-10-25T19:17:55.050446+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 240B (Isaiah 51:12 – Isaiah 52:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:17:55.050446+00:00"/>
+  </entry>
+  <entry folio="241A" href="241A.xml" when="2026-10-25T19:18:07.495779+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 241A (Isaiah 52:12 – Isaiah 54:10)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:18:07.495779+00:00"/>
+  </entry>
+  <entry folio="241B" href="241B.xml" when="2026-10-25T19:18:20.032601+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 241B (Isaiah 54:10 – Isaiah 56:4)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:18:20.032601+00:00"/>
+  </entry>
+  <entry folio="242A" href="242A.xml" when="2026-10-25T19:18:32.630762+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 242A (Isaiah 56:5 – Isaiah 57:19)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:18:32.630762+00:00"/>
+  </entry>
+  <entry folio="242B" href="242B.xml" when="2026-10-25T19:18:45.064922+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 242B (Isaiah 57:19 – Isaiah 59:7)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:18:45.064922+00:00"/>
+  </entry>
+  <entry folio="243A" href="243A.xml" when="2026-10-25T19:18:57.837522+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 243A (Isaiah 59:7 – Isaiah 60:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:18:57.837522+00:00"/>
+  </entry>
+  <entry folio="243B" href="243B.xml" when="2026-10-25T19:19:09.556843+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 243B (Isaiah 60:12 – Isaiah 62:1)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:19:09.556843+00:00"/>
+  </entry>
+  <entry folio="244A" href="244A.xml" when="2026-10-25T19:19:22.095777+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 244A (Isaiah 62:1 – Isaiah 63:16)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-25T19:19:22.095777+00:00"/>
   </entry>
 </index>
