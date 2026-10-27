@@ -88,6 +88,7 @@ uv run leningrad vendor-seed          # download and pin the seed mapping
 uv run leningrad download-uxlc        # fetch and extract the UXLC book XMLs
 uv run leningrad download-images      # fetch folio images from the source
 uv run leningrad build-word-stream    # flatten the UXLC XML into a word stream
+uv run leningrad check-seed           # flag seed page boundaries to check against the image
 ```
 
 **Group 2a:** Commands used for aligning folios with Gemini:
@@ -275,6 +276,17 @@ Rerun the `parse-raw` command to validate the fix.
 #### Incorrect upstream data
 
 The upstream data can be incorrect.
+
+Known seed boundary errors fall where a word repeats within a verse: the boundary is set at the other copy of the word.
+Before you align, run:
+
+```bash
+uv run leningrad check-seed --start-folio <FOLIO>
+```
+
+It lists each boundary from `<FOLIO>` onward where the last word of a side, or the first word of the next side, occurs again in the same verse.
+For each flagged boundary, look at both images and check which words end the first side.
+Most flagged boundaries are correct. The command writes nothing.
 
 For example, according to the seed file, the last word on 027B was incorrectly labeled as the first word of Genesis 44:23, and the first word on 027A wasincorrectly labeled as the second word of Genesis 44:23.
 

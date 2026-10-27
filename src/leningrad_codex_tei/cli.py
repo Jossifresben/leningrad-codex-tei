@@ -25,6 +25,7 @@ from leningrad_codex_tei.schemas import (
     WordStreamProvenance,
 )
 from leningrad_codex_tei.stages import align as align_stage
+from leningrad_codex_tei.stages import check_seed as check_seed_stage
 from leningrad_codex_tei.stages import download as download_stage
 from leningrad_codex_tei.stages import harness as harness_stage
 from leningrad_codex_tei.stages import index as index_stage
@@ -1074,6 +1075,53 @@ def validate(config: Config, folio: str | None, start_folio: str | None) -> None
             status=FolioStatus.ALIGNED if result.passed else None,
         )
         click.echo(f"validate: {page} {result.status} {result.checks}")
+
+
+def _flag_line(flag: check_seed_stage.BoundaryFlag) -> str:
+    parts = []
+    if flag.last_also_at:
+        at = ", ".join(str(i) for i in flag.last_also_at)
+        parts.append(
+            f"last word on {flag.before} (word {flag.last.word_index}, "
+            f"{flag.last.text}) also at word {at}"
+        )
+    if flag.first_also_at:
+        at = ", ".join(str(i) for i in flag.first_also_at)
+        parts.append(
+            f"first word on {flag.after} (word {flag.first.word_index}, "
+            f"{flag.first.text}) also at word {at}"
+        )
+    return f"check-seed: {flag.before}/{flag.after} {flag.ref}: " + "; ".join(parts)
+
+
+@cli.command(name="check-seed")
+@click.option("--folio", help="Check only the boundaries of this folio side.")
+@click.option(
+    "--start-folio",
+    "start_folio",
+    default=None,
+    help="Check boundaries from this folio side onward. Cannot be used with --folio.",
+)
+@click.pass_obj
+def check_seed(config: Config, folio: str | None, start_folio: str | None) -> None:
+    """Flag seed page boundaries on a word that repeats in the verse.
+
+    Known seed errors (#1076) put the boundary at the other copy of a
+    repeated word. Check the image at each flagged boundary before you
+    align. A flag is not an error. Writes nothing.
+    """
+    if folio is not None and start_folio is not None:
+        raise click.ClickException("--folio cannot be used with --start-folio")
+    seed = json.loads(config.paths.seed.read_text(encoding="utf-8"))
+    stream = stream_stage.load_word_stream(config.paths.word_stream)
+    flags = check_seed_stage.find_repeated_boundaries(seed, stream)
+    if folio is not None:
+        flags = [f for f in flags if folio in (f.before, f.after)]
+    elif start_folio is not None:
+        flags = [f for f in flags if f.after >= start_folio]
+    for flag in flags:
+        click.echo(_flag_line(flag))
+    click.echo(f"check-seed: {len(flags)} flagged")
 
 
 @cli.command()
