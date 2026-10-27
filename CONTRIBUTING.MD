@@ -315,6 +315,30 @@ In that instance, the seed file had to be modified
 },
 ```
 
+##### Reporting seed boundary errors
+
+Most contributors cannot open issues on the upstream repo (`bdenckla/MAM-basics`).
+So, after you fix the seed file (you or an agent can make the fix), report the error as a comment on [issue #1076](https://github.com/charlesLoder/leningrad-codex-tei/issues/1076).
+The maintainer passes the reports upstream.
+
+Check the comments on the issue first. Do not post a case that is already there.
+
+Give these details:
+
+- The pages (e.g. `124B / 125A`) and the verse (e.g. Josh 7:12)
+- The seed values now and the values they should be (`stopp` and `startp`)
+- What the images show on each page (the last words of the first page and the first words of the second page)
+- The pull request that uses the fixed boundary
+
+Also list the error in the pull request body as an item for human review.
+If you use an agent, it gives you the path of the image file on disk, so you can check the boundary yourself.
+
+If you use the `gh` cli:
+
+```bash
+gh issue comment 1076 --repo charlesLoder/leningrad-codex-tei --body-file <FILE>
+```
+
 ### Generating the TEI document
 
 The next step is to generate the TEI documents in `/edition`.

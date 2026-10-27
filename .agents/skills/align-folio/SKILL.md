@@ -26,8 +26,8 @@ Paths below use `{alignments}` for `config.paths.alignments`
 - Write only these files: `reply.xml`, `run.json`, and files under
   `work/` in the task folder (`crop.py` writes `work/crops.json`;
   do not edit it).
-- Do not change `packet.json`, `prompt.md`, the image, the seed, the
-  word stream, source code, or this skill. `ingest-folio` checks the
+- Do not change `packet.json`, `prompt.md`, the image, the word
+  stream, source code, or this skill. `ingest-folio` checks the
   hashes and rejects the run if they change.
 - Do not use replies, alignments or TEI from other folio sides.
 - Do not place words from the full image alone. Use the crops.
@@ -35,6 +35,8 @@ Paths below use `{alignments}` for `config.paths.alignments`
   refused), stop and tell the user. Do not go on without crops.
 - Do not run `generate-tei` unless the user asks. If they ask, use
   `--folio <FOLIO>` only.
+- Change the seed only for a boundary error, as described in
+  "Seed boundary errors" below.
 
 ## How to read the prompt
 
@@ -213,6 +215,44 @@ Issues may include, but are not limited to:
 - when the text is badly damaged and needs additional review
 
 Keep the notes per folio side, so `folio-pr` can copy them into the pull request body.
+
+## Seed boundary errors
+
+The seed can be wrong where a folio side starts or stops. A sign of
+this is that the first or last words of the slice do not match the
+image. This often happens where a word occurs twice in a verse and
+the boundary is set at the wrong copy.
+
+If you find a boundary error:
+
+1. **Tell the user and ask to change the seed.** Give the absolute
+   path of the image file on disk (`image_path` in `packet.json`),
+   so the user can check it. Also give the pages, the verse, the seed
+   `stopp`/`startp` values now, and the values that match the image.
+   Ask if you may change the seed file. The user or you can make the
+   change, as the "Incorrect upstream data" section of
+   `CONTRIBUTING.MD` describes. Check both pages of the boundary.
+2. **Change the seed** only after the user agrees (or you were told
+   to). The packet holds the hash of the seed, so after the change
+   run `prepare-folio` again for this folio side and start again at
+   step 1. The other page of the boundary also needs a new packet.
+3. **Report it as an item for human review** in `run.json` `notes`
+   and in the review notes of the folio side. Include the image path.
+4. **Report it as a comment on issue #1076**, because contributors
+   cannot open issues on the upstream repo. Ask the user before you
+   post, because the comment goes out under their account.
+   - Read the comments first:
+     `gh issue view 1076 --repo charlesLoder/leningrad-codex-tei --comments`.
+     Do not post a case that is already there.
+   - Write the comment in `{alignments}/tasks/<FOLIO>/work/` (for
+     example `seed-report.md`). Use the same details as the table in
+     the issue: pages, verse, seed now, should be, what the images
+     show, and the pull request when it is known.
+   - Post it:
+     `gh issue comment 1076 --repo charlesLoder/leningrad-codex-tei --body-file <FILE>`.
+   - If `gh` is not available, give the text to the user to post.
+   - Add a link to the comment in the review notes, so `folio-pr`
+     can copy it into the pull request body.
 
 ## Notes
 
