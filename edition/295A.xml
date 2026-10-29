@@ -39,6 +39,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe marker before Ezek 36:1 to column 3, line 12.
+      </change>
       <change when="2026-10-29T12:26:30.763611+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-29T12:21:45.137192+00:00" who="#contrib-charles-w-loder">Aligned Ezekiel 34:26 – Ezekiel 36:4 (343 atoms).
@@ -462,8 +465,8 @@
             <w xml:id="f295A-w-201355">אֲנִ֥י</w>
             <w xml:id="f295A-w-201356">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f295A-pc-201356">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f295A-s-Ezekiel-35-15"/>
           <lb xml:id="f295A-lb-3-12" n="12"/>
+            <milestone unit="section" subtype="pe" xml:id="f295A-s-Ezekiel-35-15"/>
           <lb xml:id="f295A-lb-3-13" n="13"/>
             <milestone unit="verse" n="Ezekiel-36-1" xml:id="f295A-v-Ezekiel-36-1"/>
             <w xml:id="f295A-w-201357">וְאַתָּ֣ה</w>
