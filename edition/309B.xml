@@ -39,6 +39,12 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe marker before Amos 3:11 to column 3, line 9.
+      </change>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe marker before Amos 3:1 to column 2, line 5.
+      </change>
       <change when="2026-10-29T22:45:18.876812+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-29T22:35:52.512464+00:00" who="#contrib-charles-w-loder">Aligned Amos 2:7 – Amos 4:1 (334 atoms).
@@ -247,8 +253,8 @@
             <w xml:id="f309B-w-210899">נְאֻם־</w>
             <w xml:id="f309B-w-210900">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-210900">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f309B-s-Amos-2-16"/>
           <lb xml:id="f309B-lb-2-5" n="5"/>
+            <milestone unit="section" subtype="pe" xml:id="f309B-s-Amos-2-16"/>
           <lb xml:id="f309B-lb-2-6" n="6"/>
             <milestone unit="verse" n="Amos-3-1" xml:id="f309B-v-Amos-3-1"/>
             <w xml:id="f309B-w-210901">שִׁמְע֞וּ</w>
@@ -432,8 +438,8 @@
             <w xml:id="f309B-w-211031">וָשֹׁ֖ד</w>
             <w xml:id="f309B-w-211032">בְּאַרְמְנֽוֹתֵיהֶֽם</w>
             <pc type="sof-pasuq" xml:id="f309B-pc-211032">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f309B-s-Amos-3-10"/>
           <lb xml:id="f309B-lb-3-9" n="9"/>
+            <milestone unit="section" subtype="pe" xml:id="f309B-s-Amos-3-10"/>
           <lb xml:id="f309B-lb-3-10" n="10"/>
             <milestone unit="verse" n="Amos-3-11" xml:id="f309B-v-Amos-3-11"/>
             <w xml:id="f309B-w-211033">לָכֵ֗ן</w>

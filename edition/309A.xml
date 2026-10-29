@@ -39,6 +39,18 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe marker before Amos 2:4 to column 3, line 14.
+      </change>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe marker before Amos 2:1 to column 3, line 3.
+      </change>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe marker before Amos 1:13 to column 2, line 19.
+      </change>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe marker before Amos 1:9 to column 2, line 4.
+      </change>
       <change when="2026-10-29T22:45:17.841781+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-29T22:35:12.219706+00:00" who="#contrib-charles-w-loder">Aligned Amos 1:1 – Amos 2:7 (302 atoms).
@@ -239,8 +251,8 @@
             <w xml:id="f309A-w-210590">אֲדֹנָ֥י</w>
             <w xml:id="f309A-w-210591">יְהוִֽה</w>
             <pc type="sof-pasuq" xml:id="f309A-pc-210591">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f309A-s-Amos-1-8"/>
           <lb xml:id="f309A-lb-2-4" n="4"/>
+            <milestone unit="section" subtype="pe" xml:id="f309A-s-Amos-1-8"/>
           <lb xml:id="f309A-lb-2-5" n="5"/>
             <milestone unit="verse" n="Amos-1-9" xml:id="f309A-v-Amos-1-9"/>
             <w xml:id="f309A-w-210592">כֹּ֚ה</w>
@@ -319,8 +331,8 @@
             <w xml:id="f309A-w-210645">אַרְמְנ֥וֹת</w>
             <w xml:id="f309A-w-210646">בָּצְרָֽה</w>
             <pc type="sof-pasuq" xml:id="f309A-pc-210646">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f309A-s-Amos-1-12"/>
           <lb xml:id="f309A-lb-2-19" n="19"/>
+            <milestone unit="section" subtype="pe" xml:id="f309A-s-Amos-1-12"/>
           <lb xml:id="f309A-lb-2-20" n="20"/>
             <milestone unit="verse" n="Amos-1-13" xml:id="f309A-v-Amos-1-13"/>
             <w xml:id="f309A-w-210647">כֹּ֚ה</w>
@@ -377,8 +389,8 @@
             <w xml:id="f309A-w-210685">אָמַ֥ר</w>
             <w xml:id="f309A-w-210686">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f309A-pc-210686">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f309A-s-Amos-1-15"/>
           <lb xml:id="f309A-lb-3-3" n="3"/>
+            <milestone unit="section" subtype="pe" xml:id="f309A-s-Amos-1-15"/>
           <lb xml:id="f309A-lb-3-4" n="4"/>
             <milestone unit="verse" n="Amos-2-1" xml:id="f309A-v-Amos-2-1"/>
             <w xml:id="f309A-w-210687">כֹּ֚ה</w>
@@ -433,8 +445,8 @@
             <w xml:id="f309A-w-210723">אָמַ֥ר</w>
             <w xml:id="f309A-w-210724">יְהוָֽה</w>
             <pc type="sof-pasuq" xml:id="f309A-pc-210724">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f309A-s-Amos-2-3"/>
           <lb xml:id="f309A-lb-3-14" n="14"/>
+            <milestone unit="section" subtype="pe" xml:id="f309A-s-Amos-2-3"/>
           <lb xml:id="f309A-lb-3-15" n="15"/>
             <milestone unit="verse" n="Amos-2-4" xml:id="f309A-v-Amos-2-4"/>
             <w xml:id="f309A-w-210725">כֹּ֚ה</w>

@@ -39,6 +39,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe marker before Joel 2:15 to column 2, line 5.
+      </change>
       <change when="2026-10-29T22:45:15.726243+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-29T22:35:09.785419+00:00" who="#contrib-charles-w-loder">Aligned Joel 2:4 – Joel 3:1 (338 atoms).
@@ -260,8 +263,8 @@
             <w xml:id="f308A-w-209945">לַיהוָ֖ה</w>
             <w xml:id="f308A-w-209946">אֱלֹהֵיכֶֽם</w>
             <pc type="sof-pasuq" xml:id="f308A-pc-209946">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f308A-s-Joel-2-14"/>
           <lb xml:id="f308A-lb-2-5" n="5"/>
+            <milestone unit="section" subtype="pe" xml:id="f308A-s-Joel-2-14"/>
           <lb xml:id="f308A-lb-2-6" n="6"/>
             <milestone unit="verse" n="Joel-2-15" xml:id="f308A-v-Joel-2-15"/>
             <w xml:id="f308A-w-209947">תִּקְע֥וּ</w>
