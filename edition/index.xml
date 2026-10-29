@@ -1,8 +1,8 @@
 <index>
   <appInfo>
-    <application ident="leningrad-codex-tei" version="0.9.0">
+    <application ident="leningrad-codex-tei" version="0.10.0">
       <label>Leningrad Codex TEI</label>
-      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.9.0"/>
+      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.10.0"/>
     </application>
   </appInfo>
   <entry folio="001B" href="001B.xml" when="2026-10-20" contributor="Charles W. Loder">
@@ -2894,5 +2894,205 @@
     <title>Leningrad Codex — 291A (Ezekiel 27:35 – Ezekiel 28:25)</title>
     <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
     <date when="2026-10-29T02:09:32.627349+00:00"/>
+  </entry>
+  <entry folio="291B" href="291B.xml" when="2026-10-29T12:26:22.571544+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 291B (Ezekiel 28:25 – Ezekiel 29:19)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:22.571544+00:00"/>
+  </entry>
+  <entry folio="292A" href="292A.xml" when="2026-10-29T12:26:23.581931+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 292A (Ezekiel 29:19 – Ezekiel 30:23)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:23.581931+00:00"/>
+  </entry>
+  <entry folio="292B" href="292B.xml" when="2026-10-29T12:26:25.037399+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 292B (Ezekiel 30:23 – Ezekiel 31:18)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:25.037399+00:00"/>
+  </entry>
+  <entry folio="293A" href="293A.xml" when="2026-10-29T12:26:26.313380+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 293A (Ezekiel 32:1 – Ezekiel 32:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:26.313380+00:00"/>
+  </entry>
+  <entry folio="293B" href="293B.xml" when="2026-10-29T12:26:27.444743+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 293B (Ezekiel 32:25 – Ezekiel 33:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:27.444743+00:00"/>
+  </entry>
+  <entry folio="294A" href="294A.xml" when="2026-10-29T12:26:28.507164+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 294A (Ezekiel 33:13 – Ezekiel 34:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:28.507164+00:00"/>
+  </entry>
+  <entry folio="294B" href="294B.xml" when="2026-10-29T12:26:29.714397+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 294B (Ezekiel 34:4 – Ezekiel 34:26)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:29.714397+00:00"/>
+  </entry>
+  <entry folio="295A" href="295A.xml" when="2026-10-29T12:26:30.763611+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 295A (Ezekiel 34:26 – Ezekiel 36:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:30.763611+00:00"/>
+  </entry>
+  <entry folio="295B" href="295B.xml" when="2026-10-29T12:26:31.790035+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 295B (Ezekiel 36:4 – Ezekiel 36:26)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:31.790035+00:00"/>
+  </entry>
+  <entry folio="296A" href="296A.xml" when="2026-10-29T12:26:32.834707+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 296A (Ezekiel 36:26 – Ezekiel 37:12)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T12:26:32.834707+00:00"/>
+  </entry>
+  <entry folio="296B" href="296B.xml" when="2026-10-29T10:35:03.860501+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 296B (Ezekiel 37:12 – Ezekiel 38:5)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:03.860501+00:00"/>
+  </entry>
+  <entry folio="297A" href="297A.xml" when="2026-10-29T10:35:04.790749+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 297A (Ezekiel 38:5 – Ezekiel 39:1)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:04.790749+00:00"/>
+  </entry>
+  <entry folio="297B" href="297B.xml" when="2026-10-29T10:35:05.676829+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 297B (Ezekiel 39:1 – Ezekiel 39:24)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:05.676829+00:00"/>
+  </entry>
+  <entry folio="298A" href="298A.xml" when="2026-10-29T10:35:06.573991+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 298A (Ezekiel 39:24 – Ezekiel 40:16)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:06.573991+00:00"/>
+  </entry>
+  <entry folio="298B" href="298B.xml" when="2026-10-29T10:35:07.478056+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 298B (Ezekiel 40:16 – Ezekiel 40:41)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:07.478056+00:00"/>
+  </entry>
+  <entry folio="299A" href="299A.xml" when="2026-10-29T10:35:08.371866+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 299A (Ezekiel 40:41 – Ezekiel 41:12)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:08.371866+00:00"/>
+  </entry>
+  <entry folio="299B" href="299B.xml" when="2026-10-29T10:35:09.301316+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 299B (Ezekiel 41:12 – Ezekiel 42:11)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:09.301316+00:00"/>
+  </entry>
+  <entry folio="300A" href="300A.xml" when="2026-10-29T10:35:10.187570+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 300A (Ezekiel 42:11 – Ezekiel 43:11)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:10.187570+00:00"/>
+  </entry>
+  <entry folio="300B" href="300B.xml" when="2026-10-29T10:35:11.077509+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 300B (Ezekiel 43:11 – Ezekiel 44:5)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:11.077509+00:00"/>
+  </entry>
+  <entry folio="301A" href="301A.xml" when="2026-10-29T10:35:12.005936+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 301A (Ezekiel 44:5 – Ezekiel 44:27)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T10:35:12.005936+00:00"/>
+  </entry>
+  <entry folio="301B" href="301B.xml" when="2026-10-29T16:26:14.051505+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 301B (Ezekiel 44:27 – Ezekiel 45:17)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:14.051505+00:00"/>
+  </entry>
+  <entry folio="302A" href="302A.xml" when="2026-10-29T16:26:15.095349+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 302A (Ezekiel 45:17 – Ezekiel 46:14)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:15.095349+00:00"/>
+  </entry>
+  <entry folio="302B" href="302B.xml" when="2026-10-29T16:26:16.156411+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 302B (Ezekiel 46:14 – Ezekiel 47:12)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:16.156411+00:00"/>
+  </entry>
+  <entry folio="303A" href="303A.xml" when="2026-10-29T16:26:17.135553+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 303A (Ezekiel 47:12 – Ezekiel 48:11)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:17.135553+00:00"/>
+  </entry>
+  <entry folio="303B" href="303B.xml" when="2026-10-29T16:26:18.124928+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 303B (Ezekiel 48:11 – Ezekiel 48:32)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:18.124928+00:00"/>
+  </entry>
+  <entry folio="304A" href="304A.xml" when="2026-10-29T16:26:19.063838+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 304A (Ezekiel 48:32 – Hosea 2:10)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:19.063838+00:00"/>
+  </entry>
+  <entry folio="304B" href="304B.xml" when="2026-10-29T16:26:19.980188+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 304B (Hosea 2:10 – Hosea 4:4)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:19.980188+00:00"/>
+  </entry>
+  <entry folio="305A" href="305A.xml" when="2026-10-29T16:26:21.094847+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 305A (Hosea 4:4 – Hosea 5:15)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:21.094847+00:00"/>
+  </entry>
+  <entry folio="305B" href="305B.xml" when="2026-10-29T16:26:22.200093+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 305B (Hosea 5:15 – Hosea 8:5)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:22.200093+00:00"/>
+  </entry>
+  <entry folio="306A" href="306A.xml" when="2026-10-29T16:26:23.340494+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 306A (Hosea 8:6 – Hosea 10:3)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-29T16:26:23.340494+00:00"/>
+  </entry>
+  <entry folio="306B" href="306B.xml" when="2026-10-29T22:45:12.599058+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 306B (Hosea 10:3 – Hosea 12:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:12.599058+00:00"/>
+  </entry>
+  <entry folio="307A" href="307A.xml" when="2026-10-29T22:45:13.636776+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 307A (Hosea 12:5 – Hosea 14:6)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:13.636776+00:00"/>
+  </entry>
+  <entry folio="307B" href="307B.xml" when="2026-10-29T22:45:14.645539+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 307B (Hosea 14:6 – Joel 2:3)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:14.645539+00:00"/>
+  </entry>
+  <entry folio="308A" href="308A.xml" when="2026-10-29T22:45:15.726243+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 308A (Joel 2:4 – Joel 3:1)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:15.726243+00:00"/>
+  </entry>
+  <entry folio="308B" href="308B.xml" when="2026-10-29T22:45:16.791743+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 308B (Joel 3:1 – Joel 4:21)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:16.791743+00:00"/>
+  </entry>
+  <entry folio="309A" href="309A.xml" when="2026-10-29T22:45:17.841781+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 309A (Amos 1:1 – Amos 2:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:17.841781+00:00"/>
+  </entry>
+  <entry folio="309B" href="309B.xml" when="2026-10-29T22:45:18.876812+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 309B (Amos 2:7 – Amos 4:1)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:18.876812+00:00"/>
+  </entry>
+  <entry folio="310A" href="310A.xml" when="2026-10-29T22:45:19.921046+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 310A (Amos 4:1 – Amos 5:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:19.921046+00:00"/>
+  </entry>
+  <entry folio="310B" href="310B.xml" when="2026-10-29T22:45:21.102871+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 310B (Amos 5:11 – Amos 6:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:21.102871+00:00"/>
+  </entry>
+  <entry folio="311A" href="311A.xml" when="2026-10-29T22:45:22.157111+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 311A (Amos 6:11 – Amos 8:3)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T22:45:22.157111+00:00"/>
   </entry>
 </index>
