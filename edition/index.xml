@@ -1,8 +1,8 @@
 <index>
   <appInfo>
-    <application ident="leningrad-codex-tei" version="0.8.0">
+    <application ident="leningrad-codex-tei" version="0.9.0">
       <label>Leningrad Codex TEI</label>
-      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.8.0"/>
+      <ptr type="release" target="https://github.com/charlesLoder/leningrad-codex-tei/releases/tag/v0.9.0"/>
     </application>
   </appInfo>
   <entry folio="001B" href="001B.xml" when="2026-10-20" contributor="Charles W. Loder">
@@ -2424,5 +2424,475 @@
     <title>Leningrad Codex — 244A (Isaiah 62:1 – Isaiah 63:16)</title>
     <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
     <date when="2026-10-25T19:19:22.095777+00:00"/>
+  </entry>
+  <entry folio="244B" href="244B.xml" when="2026-10-26T14:15:00.781794+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 244B (Isaiah 63:16 – Isaiah 65:12)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:00.781794+00:00"/>
+  </entry>
+  <entry folio="245A" href="245A.xml" when="2026-10-26T14:15:07.503522+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 245A (Isaiah 65:12 – Isaiah 66:10)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:07.503522+00:00"/>
+  </entry>
+  <entry folio="245B" href="245B.xml" when="2026-10-26T14:15:14.372287+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 245B (Isaiah 66:10 – Jeremiah 1:7)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:14.372287+00:00"/>
+  </entry>
+  <entry folio="246A" href="246A.xml" when="2026-10-26T14:15:21.105318+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 246A (Jeremiah 1:7 – Jeremiah 2:11)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:21.105318+00:00"/>
+  </entry>
+  <entry folio="246B" href="246B.xml" when="2026-10-26T14:15:27.898081+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 246B (Jeremiah 2:11 – Jeremiah 2:37)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:27.898081+00:00"/>
+  </entry>
+  <entry folio="247A" href="247A.xml" when="2026-10-26T14:15:34.568001+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 247A (Jeremiah 2:37 – Jeremiah 3:21)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:34.568001+00:00"/>
+  </entry>
+  <entry folio="247B" href="247B.xml" when="2026-10-26T14:15:41.276734+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 247B (Jeremiah 3:21 – Jeremiah 4:20)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:41.276734+00:00"/>
+  </entry>
+  <entry folio="248A" href="248A.xml" when="2026-10-26T14:15:47.957089+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 248A (Jeremiah 4:20 – Jeremiah 5:15)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:47.957089+00:00"/>
+  </entry>
+  <entry folio="248B" href="248B.xml" when="2026-10-26T14:15:54.618334+00:00" contributor="sarahmccuan">
+    <title>Leningrad Codex — 248B (Jeremiah 5:15 – Jeremiah 6:9)</title>
+    <persName ref="mailto:salinthesouth@gmail.com">sarahmccuan</persName>
+    <date when="2026-10-26T14:15:54.618334+00:00"/>
+  </entry>
+  <entry folio="249A" href="249A.xml" when="2026-10-27T12:47:43.149432+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 249A (Jeremiah 6:9 – Jeremiah 7:4)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:43.149432+00:00"/>
+  </entry>
+  <entry folio="249B" href="249B.xml" when="2026-10-27T12:47:44.080782+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 249B (Jeremiah 7:4 – Jeremiah 7:24)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:44.080782+00:00"/>
+  </entry>
+  <entry folio="250A" href="250A.xml" when="2026-10-27T12:47:45.183728+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 250A (Jeremiah 7:24 – Jeremiah 8:9)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:45.183728+00:00"/>
+  </entry>
+  <entry folio="250B" href="250B.xml" when="2026-10-27T12:47:46.596364+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 250B (Jeremiah 8:9 – Jeremiah 9:9)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:46.596364+00:00"/>
+  </entry>
+  <entry folio="251A" href="251A.xml" when="2026-10-27T12:47:47.573581+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 251A (Jeremiah 9:9 – Jeremiah 10:9)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:47.573581+00:00"/>
+  </entry>
+  <entry folio="251B" href="251B.xml" when="2026-10-27T12:47:48.670799+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 251B (Jeremiah 10:9 – Jeremiah 11:8)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:48.670799+00:00"/>
+  </entry>
+  <entry folio="252A" href="252A.xml" when="2026-10-27T12:47:49.952283+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 252A (Jeremiah 11:8 – Jeremiah 12:6)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:49.952283+00:00"/>
+  </entry>
+  <entry folio="252B" href="252B.xml" when="2026-10-27T12:47:50.928565+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 252B (Jeremiah 12:6 – Jeremiah 13:13)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:50.928565+00:00"/>
+  </entry>
+  <entry folio="253A" href="253A.xml" when="2026-10-27T12:47:51.864201+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 253A (Jeremiah 13:13 – Jeremiah 14:13)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:51.864201+00:00"/>
+  </entry>
+  <entry folio="253B" href="253B.xml" when="2026-10-27T12:47:52.811978+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 253B (Jeremiah 14:13 – Jeremiah 15:11)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-27T12:47:52.811978+00:00"/>
+  </entry>
+  <entry folio="254A" href="254A.xml" when="2026-10-28T03:26:13.533018+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 254A (Jeremiah 15:11 – Jeremiah 16:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:13.533018+00:00"/>
+  </entry>
+  <entry folio="254B" href="254B.xml" when="2026-10-28T03:26:14.522831+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 254B (Jeremiah 16:11 – Jeremiah 17:13)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:14.522831+00:00"/>
+  </entry>
+  <entry folio="255A" href="255A.xml" when="2026-10-28T03:26:15.528385+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 255A (Jeremiah 17:13 – Jeremiah 18:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:15.528385+00:00"/>
+  </entry>
+  <entry folio="255B" href="255B.xml" when="2026-10-28T03:26:16.568248+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 255B (Jeremiah 18:10 – Jeremiah 19:8)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:16.568248+00:00"/>
+  </entry>
+  <entry folio="256A" href="256A.xml" when="2026-10-28T03:26:17.621314+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 256A (Jeremiah 19:8 – Jeremiah 20:12)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:17.621314+00:00"/>
+  </entry>
+  <entry folio="256B" href="256B.xml" when="2026-10-28T03:26:18.632858+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 256B (Jeremiah 20:12 – Jeremiah 22:2)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:18.632858+00:00"/>
+  </entry>
+  <entry folio="257A" href="257A.xml" when="2026-10-28T03:26:19.632752+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 257A (Jeremiah 22:2 – Jeremiah 22:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:19.632752+00:00"/>
+  </entry>
+  <entry folio="257B" href="257B.xml" when="2026-10-28T03:26:20.619039+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 257B (Jeremiah 22:25 – Jeremiah 23:15)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:20.619039+00:00"/>
+  </entry>
+  <entry folio="258A" href="258A.xml" when="2026-10-28T03:26:21.626076+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 258A (Jeremiah 23:16 – Jeremiah 23:39)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:21.626076+00:00"/>
+  </entry>
+  <entry folio="258B" href="258B.xml" when="2026-10-28T03:26:22.650704+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 258B (Jeremiah 23:39 – Jeremiah 25:6)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:22.650704+00:00"/>
+  </entry>
+  <entry folio="259A" href="259A.xml" when="2026-10-28T03:26:23.659800+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 259A (Jeremiah 25:6 – Jeremiah 25:27)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:23.659800+00:00"/>
+  </entry>
+  <entry folio="259B" href="259B.xml" when="2026-10-28T03:26:24.663428+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 259B (Jeremiah 25:27 – Jeremiah 26:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:24.663428+00:00"/>
+  </entry>
+  <entry folio="260A" href="260A.xml" when="2026-10-28T03:26:25.653947+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 260A (Jeremiah 26:11 – Jeremiah 27:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:25.653947+00:00"/>
+  </entry>
+  <entry folio="260B" href="260B.xml" when="2026-10-28T03:26:26.648022+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 260B (Jeremiah 27:7 – Jeremiah 28:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:26.648022+00:00"/>
+  </entry>
+  <entry folio="261A" href="261A.xml" when="2026-10-28T03:26:27.699882+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 261A (Jeremiah 28:4 – Jeremiah 29:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:27.699882+00:00"/>
+  </entry>
+  <entry folio="261B" href="261B.xml" when="2026-10-28T03:26:28.710622+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 261B (Jeremiah 29:8 – Jeremiah 29:26)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:28.710622+00:00"/>
+  </entry>
+  <entry folio="262A" href="262A.xml" when="2026-10-28T03:26:29.699513+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 262A (Jeremiah 29:27 – Jeremiah 30:20)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:29.699513+00:00"/>
+  </entry>
+  <entry folio="262B" href="262B.xml" when="2026-10-28T03:26:30.699097+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 262B (Jeremiah 30:20 – Jeremiah 31:21)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:30.699097+00:00"/>
+  </entry>
+  <entry folio="263A" href="263A.xml" when="2026-10-28T03:26:31.690790+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 263A (Jeremiah 31:21 – Jeremiah 32:3)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:31.690790+00:00"/>
+  </entry>
+  <entry folio="263B" href="263B.xml" when="2026-10-28T03:26:32.720971+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 263B (Jeremiah 32:3 – Jeremiah 32:24)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:26:32.720971+00:00"/>
+  </entry>
+  <entry folio="264A" href="264A.xml" when="2026-10-28T03:46:06.991902+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 264A (Jeremiah 32:24 – Jeremiah 33:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:06.991902+00:00"/>
+  </entry>
+  <entry folio="264B" href="264B.xml" when="2026-10-28T03:46:07.981961+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 264B (Jeremiah 33:4 – Jeremiah 33:26)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:07.981961+00:00"/>
+  </entry>
+  <entry folio="265A" href="265A.xml" when="2026-10-28T03:46:08.985370+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 265A (Jeremiah 33:26 – Jeremiah 34:18)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:08.985370+00:00"/>
+  </entry>
+  <entry folio="265B" href="265B.xml" when="2026-10-28T03:46:10.026275+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 265B (Jeremiah 34:18 – Jeremiah 35:16)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:10.026275+00:00"/>
+  </entry>
+  <entry folio="266A" href="266A.xml" when="2026-10-28T03:46:11.047731+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 266A (Jeremiah 35:16 – Jeremiah 36:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:11.047731+00:00"/>
+  </entry>
+  <entry folio="266B" href="266B.xml" when="2026-10-28T03:46:12.160615+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 266B (Jeremiah 36:17 – Jeremiah 37:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:12.160615+00:00"/>
+  </entry>
+  <entry folio="267A" href="267A.xml" when="2026-10-28T03:46:13.160510+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 267A (Jeremiah 37:4 – Jeremiah 38:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:13.160510+00:00"/>
+  </entry>
+  <entry folio="267B" href="267B.xml" when="2026-10-28T03:46:14.155634+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 267B (Jeremiah 38:4 – Jeremiah 38:23)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:14.155634+00:00"/>
+  </entry>
+  <entry folio="268A" href="268A.xml" when="2026-10-28T03:46:15.146931+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 268A (Jeremiah 38:24 – Jeremiah 39:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:15.146931+00:00"/>
+  </entry>
+  <entry folio="268B" href="268B.xml" when="2026-10-28T03:46:16.177763+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 268B (Jeremiah 39:17 – Jeremiah 40:16)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:16.177763+00:00"/>
+  </entry>
+  <entry folio="269A" href="269A.xml" when="2026-10-28T03:46:17.176032+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 269A (Jeremiah 40:16 – Jeremiah 41:17)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:17.176032+00:00"/>
+  </entry>
+  <entry folio="269B" href="269B.xml" when="2026-10-28T03:46:18.177656+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 269B (Jeremiah 41:17 – Jeremiah 42:18)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:18.177656+00:00"/>
+  </entry>
+  <entry folio="270A" href="270A.xml" when="2026-10-28T03:46:19.167964+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 270A (Jeremiah 42:18 – Jeremiah 44:3)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:19.167964+00:00"/>
+  </entry>
+  <entry folio="270B" href="270B.xml" when="2026-10-28T03:46:20.213880+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 270B (Jeremiah 44:3 – Jeremiah 44:20)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:20.213880+00:00"/>
+  </entry>
+  <entry folio="271A" href="271A.xml" when="2026-10-28T03:46:21.259947+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 271A (Jeremiah 44:20 – Jeremiah 46:2)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-28T03:46:21.259947+00:00"/>
+  </entry>
+  <entry folio="271B" href="271B.xml" when="2026-10-28T12:36:39.170527+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 271B (Jeremiah 46:2 – Jeremiah 46:28)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:39.170527+00:00"/>
+  </entry>
+  <entry folio="272A" href="272A.xml" when="2026-10-28T12:36:41.108958+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 272A (Jeremiah 46:28 – Jeremiah 48:22)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:41.108958+00:00"/>
+  </entry>
+  <entry folio="272B" href="272B.xml" when="2026-10-28T12:36:42.960878+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 272B (Jeremiah 48:22 – Jeremiah 49:3)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:42.960878+00:00"/>
+  </entry>
+  <entry folio="273A" href="273A.xml" when="2026-10-28T12:36:44.761802+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 273A (Jeremiah 49:3 – Jeremiah 49:29)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:44.761802+00:00"/>
+  </entry>
+  <entry folio="273B" href="273B.xml" when="2026-10-28T12:36:46.525120+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 273B (Jeremiah 49:29 – Jeremiah 50:13)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:46.525120+00:00"/>
+  </entry>
+  <entry folio="274A" href="274A.xml" when="2026-10-28T12:36:48.275560+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 274A (Jeremiah 50:13 – Jeremiah 50:39)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:48.275560+00:00"/>
+  </entry>
+  <entry folio="274B" href="274B.xml" when="2026-10-28T12:36:50.021032+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 274B (Jeremiah 50:39 – Jeremiah 51:19)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:50.021032+00:00"/>
+  </entry>
+  <entry folio="275A" href="275A.xml" when="2026-10-28T12:36:51.778153+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 275A (Jeremiah 51:19 – Jeremiah 51:46)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:51.778153+00:00"/>
+  </entry>
+  <entry folio="275B" href="275B.xml" when="2026-10-28T12:36:53.529508+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 275B (Jeremiah 51:46 – Jeremiah 52:6)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:53.529508+00:00"/>
+  </entry>
+  <entry folio="276A" href="276A.xml" when="2026-10-28T12:36:55.289700+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 276A (Jeremiah 52:6 – Jeremiah 52:26)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T12:36:55.289700+00:00"/>
+  </entry>
+  <entry folio="276B" href="276B.xml" when="2026-10-28T14:48:38.442993+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 276B (Jeremiah 52:26 – Ezekiel 1:16)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:38.442993+00:00"/>
+  </entry>
+  <entry folio="277A" href="277A.xml" when="2026-10-28T14:48:40.179728+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 277A (Ezekiel 1:16 – Ezekiel 3:3)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:40.179728+00:00"/>
+  </entry>
+  <entry folio="277B" href="277B.xml" when="2026-10-28T14:48:41.970606+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 277B (Ezekiel 3:3 – Ezekiel 3:27)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:41.970606+00:00"/>
+  </entry>
+  <entry folio="278A" href="278A.xml" when="2026-10-28T14:48:43.732824+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 278A (Ezekiel 3:27 – Ezekiel 5:5)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:43.732824+00:00"/>
+  </entry>
+  <entry folio="278B" href="278B.xml" when="2026-10-28T14:48:45.473551+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 278B (Ezekiel 5:5 – Ezekiel 6:9)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:45.473551+00:00"/>
+  </entry>
+  <entry folio="279A" href="279A.xml" when="2026-10-28T14:48:47.212982+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 279A (Ezekiel 6:9 – Ezekiel 7:20)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:47.212982+00:00"/>
+  </entry>
+  <entry folio="279B" href="279B.xml" when="2026-10-28T14:48:48.975831+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 279B (Ezekiel 7:20 – Ezekiel 8:16)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:48.975831+00:00"/>
+  </entry>
+  <entry folio="280A" href="280A.xml" when="2026-10-28T14:48:50.738168+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 280A (Ezekiel 8:16 – Ezekiel 10:7)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:50.738168+00:00"/>
+  </entry>
+  <entry folio="280B" href="280B.xml" when="2026-10-28T14:48:52.496884+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 280B (Ezekiel 10:7 – Ezekiel 11:10)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:52.496884+00:00"/>
+  </entry>
+  <entry folio="281A" href="281A.xml" when="2026-10-28T14:48:54.256635+00:00" contributor="Jossi Fresco">
+    <title>Leningrad Codex — 281A (Ezekiel 11:10 – Ezekiel 12:8)</title>
+    <persName ref="mailto:jossif@gmail.com">Jossi Fresco</persName>
+    <date when="2026-10-28T14:48:54.256635+00:00"/>
+  </entry>
+  <entry folio="281B" href="281B.xml" when="2026-10-29T02:09:12.723899+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 281B (Ezekiel 12:8 – Ezekiel 13:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:12.723899+00:00"/>
+  </entry>
+  <entry folio="282A" href="282A.xml" when="2026-10-29T02:09:13.786344+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 282A (Ezekiel 13:7 – Ezekiel 14:4)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:13.786344+00:00"/>
+  </entry>
+  <entry folio="282B" href="282B.xml" when="2026-10-29T02:09:14.831105+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 282B (Ezekiel 14:4 – Ezekiel 14:23)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:14.831105+00:00"/>
+  </entry>
+  <entry folio="283A" href="283A.xml" when="2026-10-29T02:09:15.894896+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 283A (Ezekiel 15:1 – Ezekiel 16:20)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:15.894896+00:00"/>
+  </entry>
+  <entry folio="283B" href="283B.xml" when="2026-10-29T02:09:16.991930+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 283B (Ezekiel 16:21 – Ezekiel 16:47)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:16.991930+00:00"/>
+  </entry>
+  <entry folio="284A" href="284A.xml" when="2026-10-29T02:09:18.021005+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 284A (Ezekiel 16:47 – Ezekiel 17:9)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:18.021005+00:00"/>
+  </entry>
+  <entry folio="284B" href="284B.xml" when="2026-10-29T02:09:19.070639+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 284B (Ezekiel 17:9 – Ezekiel 18:8)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:19.070639+00:00"/>
+  </entry>
+  <entry folio="285A" href="285A.xml" when="2026-10-29T02:09:20.091230+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 285A (Ezekiel 18:8 – Ezekiel 18:31)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:20.091230+00:00"/>
+  </entry>
+  <entry folio="285B" href="285B.xml" when="2026-10-29T02:09:21.121777+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 285B (Ezekiel 18:31 – Ezekiel 20:11)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:21.121777+00:00"/>
+  </entry>
+  <entry folio="286A" href="286A.xml" when="2026-10-29T02:09:22.188069+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 286A (Ezekiel 20:11 – Ezekiel 20:32)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:22.188069+00:00"/>
+  </entry>
+  <entry folio="286B" href="286B.xml" when="2026-10-29T02:09:23.223107+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 286B (Ezekiel 20:32 – Ezekiel 21:10)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:23.223107+00:00"/>
+  </entry>
+  <entry folio="287A" href="287A.xml" when="2026-10-29T02:09:24.258800+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 287A (Ezekiel 21:10 – Ezekiel 21:33)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:24.258800+00:00"/>
+  </entry>
+  <entry folio="287B" href="287B.xml" when="2026-10-29T02:09:25.309904+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 287B (Ezekiel 21:33 – Ezekiel 22:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:25.309904+00:00"/>
+  </entry>
+  <entry folio="288A" href="288A.xml" when="2026-10-29T02:09:26.350735+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 288A (Ezekiel 22:25 – Ezekiel 23:21)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:26.350735+00:00"/>
+  </entry>
+  <entry folio="288B" href="288B.xml" when="2026-10-29T02:09:27.371170+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 288B (Ezekiel 23:22 – Ezekiel 23:46)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:27.371170+00:00"/>
+  </entry>
+  <entry folio="289A" href="289A.xml" when="2026-10-29T02:09:28.474719+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 289A (Ezekiel 23:46 – Ezekiel 24:22)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:28.474719+00:00"/>
+  </entry>
+  <entry folio="289B" href="289B.xml" when="2026-10-29T02:09:29.494792+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 289B (Ezekiel 24:23 – Ezekiel 26:2)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:29.494792+00:00"/>
+  </entry>
+  <entry folio="290A" href="290A.xml" when="2026-10-29T02:09:30.510423+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 290A (Ezekiel 26:2 – Ezekiel 27:7)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:30.510423+00:00"/>
+  </entry>
+  <entry folio="290B" href="290B.xml" when="2026-10-29T02:09:31.578616+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 290B (Ezekiel 27:7 – Ezekiel 27:35)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:31.578616+00:00"/>
+  </entry>
+  <entry folio="291A" href="291A.xml" when="2026-10-29T02:09:32.627349+00:00" contributor="Charles W. Loder">
+    <title>Leningrad Codex — 291A (Ezekiel 27:35 – Ezekiel 28:25)</title>
+    <persName ref="mailto:charles.w.loder@gmail.com">Charles W. Loder</persName>
+    <date when="2026-10-29T02:09:32.627349+00:00"/>
   </entry>
 </index>
