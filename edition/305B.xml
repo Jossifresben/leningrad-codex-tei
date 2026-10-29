@@ -39,6 +39,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-29" who="#contrib-charles-w-loder">
+      Moved the pe section marker after Hosea 6:11 to column 3, line 27.
+      </change>
       <change when="2026-10-29T16:26:22.200093+00:00" who="#contrib-jossi-fresco">Encoded by Jossi Fresco.
       </change>
       <change when="2026-10-29T14:34:44.573967+00:00" who="#contrib-jossi-fresco">Aligned Hosea 5:15 – Hosea 8:5 (349 atoms).
@@ -233,8 +236,8 @@
             <w xml:id="f305B-w-208197">שְׁב֥וּת</w>
             <w xml:id="f305B-w-208198">עַמִּֽי</w>
             <pc type="sof-pasuq" xml:id="f305B-pc-208198">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f305B-s-Hosea-6-11"/>
           <lb xml:id="f305B-lb-1-27" n="27"/>
+            <milestone unit="section" subtype="pe" xml:id="f305B-s-Hosea-6-11"/>
         <cb xml:id="f305B-cb-2" n="2"/>
           <lb xml:id="f305B-lb-2-1" n="1"/>
             <milestone unit="verse" n="Hosea-7-1" xml:id="f305B-v-Hosea-7-1"/>
