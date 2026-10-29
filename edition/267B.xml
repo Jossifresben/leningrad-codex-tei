@@ -39,6 +39,9 @@
       </sourceDesc>
     </fileDesc>
     <revisionDesc>
+      <change when="2026-10-28" who="#contrib-charles-w-loder">
+      Moved the pe section marker after Jeremiah 38:23 to column 3, line 27.
+      </change>
       <change when="2026-10-28T03:46:14.155634+00:00" who="#contrib-charles-w-loder">Encoded by Charles W. Loder.
       </change>
       <change when="2026-10-28T03:37:02.850780+00:00" who="#contrib-charles-w-loder">Aligned Jeremiah 38:4 – Jeremiah 38:23 (376 atoms).
@@ -577,8 +580,8 @@
             <w xml:id="f267B-w-182114">תִּשְׂרֹ֥ף</w>
             <w xml:id="f267B-w-182115">בָּאֵֽשׁ</w>
             <pc type="sof-pasuq" xml:id="f267B-pc-182115">׃</pc>
-            <milestone unit="section" subtype="pe" xml:id="f267B-s-Jeremiah-38-23"/>
           <lb xml:id="f267B-lb-3-27" n="27"/>
+            <milestone unit="section" subtype="pe" xml:id="f267B-s-Jeremiah-38-23"/>
         </ab>
       </div>
     </body>
