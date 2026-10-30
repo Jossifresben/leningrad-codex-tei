@@ -240,7 +240,27 @@ def _annotate_columns(record: AlignmentRecord) -> list[dict]:
             filled.append({"line_number": missing, "atoms": [], "tokens": []})
         col["lines"] = filled
         result.append(col)
+    _move_pe_to_blank_line(result)
     return result
+
+
+def _move_pe_to_blank_line(cols: list[dict]) -> None:
+    """Put a pe that ends a line onto the blank line that follows it.
+
+    The blank line is the open paragraph on the page, so the marker sits
+    there rather than after the last word. This holds across a column
+    break (the blank line can be line 1 of the next column).
+    """
+    lines = [line for col in cols for line in col["lines"]]
+    for line, nxt in zip(lines, lines[1:]):
+        toks = line["tokens"]
+        if (
+            toks
+            and toks[-1]["kind"] == "section"
+            and toks[-1]["subtype"] == "pe"
+            and not nxt["tokens"]
+        ):
+            nxt["tokens"].append(toks.pop())
 
 
 def changes_from_audit(

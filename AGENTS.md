@@ -40,7 +40,7 @@ If making updates to the Python code, check if the README, AGENTS, or CONTRIBUTI
 - **Biblical reference**: Logical address (e.g. Exod 3:24). *Not* structural: marked by verse milestones within folio documents; per-word references are derived by the index build, not stored on each word.
 - **Ketiv**: The consonantal text as written in the codex; what is physically on the page.
 - **Verse milestone**: A TEI `<milestone unit="verse">` marking the point where a verse's text begins within a folio document; present on every folio that contains words of that verse, enabling per-folio search by reference.
-- **samekh / pe**: Paragraph-division markers in the codex. Pe = open (petucha); samekh = closed (setuma). Encoded as milestones with subtype.
+- **samekh / pe**: Paragraph-division markers in the codex. Pe = open (petucha); samekh = closed (setuma). Encoded as milestones with subtype. A pe that ends a line followed by a blank line goes on that blank line, also when the blank line is line 1 of the next column.
 - **Atom number**: Position index in the UXLC word stream. The seed mapping uses these to tie page boundaries to the textual base.
 - **Seed mapping**: A pre-existing verse→location mapping used as the starting point for alignment, verified and corrected rather than derived from scratch.
 - **Segment**: One contiguous atom range of a folio side's slice. Seed records that touch in the word stream merge into one segment. A side gets more than one segment only where the codex book order differs from the word stream (e.g. `409B` runs Job then Proverbs). Segments stay in page order.

@@ -819,6 +819,75 @@ def test_blank_lines_preserved(seed_slice, word_stream, changes) -> None:
     assert kids[idx + 1].get("n") == "3"
 
 
+def _milestone_order(root: etree._Element) -> list[str]:
+    seen: list[str] = []
+    for el in root.iter():
+        tag = etree.QName(el).localname
+        if tag == "w":
+            seen.append(_id(el) or "")
+        elif tag in ("lb", "cb"):
+            seen.append(f"{tag}{el.get('n')}")
+        elif tag == "milestone" and el.get("unit") == "section":
+            seen.append(f"section:{el.get('subtype')}")
+    return seen
+
+
+def test_pe_moves_to_following_blank_line(seed_slice, word_stream, changes) -> None:
+    # the fixture's pe follows atom 6; atom 6 ends c1 l3 and l4 is blank
+    placements = [
+        (1, 1, 1),
+        (2, 1, 1),
+        (3, 1, 1),
+        (4, 1, 2),
+        (5, 1, 2),
+        (6, 1, 3),
+        (7, 1, 5),
+        (8, 1, 5),
+        (9, 1, 5),
+        (10, 1, 5),
+    ]
+    rec = build_alignment_record(seed_slice, seed_slice.words(word_stream), placements)
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=rec,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+    )
+    seen = _milestone_order(etree.fromstring(xml.encode()))
+    i = seen.index("section:pe")
+    assert seen[i - 2 : i + 2] == ["f001B-w-6", "lb4", "section:pe", "lb5"]
+
+
+def test_pe_moves_to_blank_first_line_of_next_column(
+    seed_slice, word_stream, changes
+) -> None:
+    # atom 6 ends column 1; column 2 line 1 is blank
+    placements = [
+        (1, 1, 1),
+        (2, 1, 1),
+        (3, 1, 1),
+        (4, 1, 2),
+        (5, 1, 2),
+        (6, 1, 3),
+        (7, 2, 2),
+        (8, 2, 2),
+        (9, 2, 2),
+        (10, 2, 2),
+    ]
+    rec = build_alignment_record(seed_slice, seed_slice.words(word_stream), placements)
+    xml = render_folio_tei(
+        folio="001B",
+        verse_range="Genesis 1:1 – 2:2",
+        record=rec,
+        page_milestones=[{"folio": "001B"}],
+        changes=changes,
+    )
+    seen = _milestone_order(etree.fromstring(xml.encode()))
+    i = seen.index("section:pe")
+    assert seen[i - 3 : i + 2] == ["f001B-w-6", "cb2", "lb1", "section:pe", "lb2"]
+
+
 def _source_uxlc_resp(root: etree._Element) -> str:
     for stmt in root.findall(f".//{_q('titleStmt')}/{_q('respStmt')}"):
         if _id(stmt) == "source-uxlc":
